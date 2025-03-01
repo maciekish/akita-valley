@@ -147,7 +147,7 @@
     </reporter>
   </reporters>
   <memories class="jmri.managers.configurexml.DefaultMemoryManagerXml">
-    <memory value="9:06 PM">
+    <memory value="8:47 PM">
       <systemName>IMCURRENTTIME</systemName>
     </memory>
     <memory value="1.0">
@@ -350,60 +350,6 @@
       <userName>Middle Turnouts</userName>
     </layoutblock>
   </layoutblocks>
-  <sections class="jmri.configurexml.SectionManagerXml">
-    <section systemName="IY:AUTO:0001" userName="Reversing Loop to Rear Station" creationtype="userdefined">
-      <systemName>IY:AUTO:0001</systemName>
-      <userName>Reversing Loop to Rear Station</userName>
-      <blockentry sName="IB:AUTO:0003" order="0" />
-      <blockentry sName="IB:AUTO:0009" order="1" />
-      <blockentry sName="IB:AUTO:0006" order="2" />
-      <entrypoint fromblock="IB:AUTO:0005" toblock="IB:AUTO:0009" direction="4" fixed="no" fromblockdirection="Northeast" />
-      <entrypoint fromblock="IB:AUTO:0008" toblock="IB:AUTO:0006" direction="4" fixed="no" fromblockdirection="East" />
-      <entrypoint fromblock="IB:AUTO:0004" toblock="IB:AUTO:0003" direction="8" fixed="no" fromblockdirection="East" />
-      <entrypoint fromblock="IB:AUTO:0007" toblock="IB:AUTO:0009" direction="8" fixed="no" fromblockdirection="Northeast" />
-    </section>
-    <section systemName="IY:AUTO:0002" userName="Reversing Loop to Bridge" creationtype="userdefined">
-      <systemName>IY:AUTO:0002</systemName>
-      <userName>Reversing Loop to Bridge</userName>
-      <blockentry sName="IB:AUTO:0003" order="0" />
-      <blockentry sName="IB:AUTO:0009" order="1" />
-      <blockentry sName="IB:AUTO:0007" order="2" />
-      <entrypoint fromblock="IB:AUTO:0004" toblock="IB:AUTO:0003" direction="8" fixed="no" fromblockdirection="East" />
-      <entrypoint fromblock="IB:AUTO:0005" toblock="IB:AUTO:0009" direction="8" fixed="no" fromblockdirection="Northeast" />
-      <entrypoint fromblock="IB:AUTO:0006" toblock="IB:AUTO:0009" direction="8" fixed="no" fromblockdirection="East" />
-      <entrypoint fromblock="IB:AUTO:0004" toblock="IB:AUTO:0007" direction="8" fixed="no" fromblockdirection="West" />
-    </section>
-  </sections>
-  <routes class="jmri.managers.configurexml.DefaultRouteManagerXml">
-    <route userName="Front Station Track 1 to Rear Station">
-      <systemName>IO:AUTO:0001</systemName>
-      <userName>Front Station Track 1 to Rear Station</userName>
-      <routeOutputTurnout systemName="1" state="CLOSED" />
-      <routeOutputTurnout systemName="3" state="CLOSED" />
-      <routeOutputTurnout systemName="4" state="THROWN" />
-    </route>
-    <route userName="Front Station Track 1 to Bridge">
-      <systemName>IO:AUTO:0002</systemName>
-      <userName>Front Station Track 1 to Bridge</userName>
-      <routeOutputTurnout systemName="1" state="CLOSED" />
-      <routeOutputTurnout systemName="3" state="CLOSED" />
-      <routeOutputTurnout systemName="4" state="CLOSED" />
-    </route>
-    <route userName="Front Station Track 1 to Track 2">
-      <systemName>IO:AUTO:0003</systemName>
-      <userName>Front Station Track 1 to Track 2</userName>
-      <routeOutputTurnout systemName="1" state="CLOSED" />
-      <routeOutputTurnout systemName="2" state="CLOSED" />
-      <routeOutputTurnout systemName="3" state="THROWN" />
-    </route>
-    <route userName="Front Station Track 1 to Reversing Loop">
-      <systemName>IO:AUTO:0004</systemName>
-      <userName>Front Station Track 1 to Reversing Loop</userName>
-      <routeOutputTurnout systemName="1" state="THROWN" />
-      <routeOutputTurnout systemName="2" state="THROWN" />
-      <routeOutputTurnout systemName="3" state="THROWN" />
-    </route>
-  </routes>
   <signalmastlogics class="jmri.managers.configurexml.DefaultSignalMastLogicManagerXml">
     <logicDelay>500</logicDelay>
   </signalmastlogics>
@@ -729,9 +675,9 @@
     </operation>
     <operation>
       <type>Store</type>
-      <date>Sat Mar 01 21:06:13 AST 2025</date>
+      <date>Sat Mar 01 20:47:48 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
     </operation>
   </filehistory>
-  <!--Written by JMRI version 5.10+Rca461bd266 on Sat Mar 01 21:06:13 AST 2025-->
+  <!--Written by JMRI version 5.10+Rca461bd266 on Sat Mar 01 20:47:48 AST 2025-->
 </layout-config>
