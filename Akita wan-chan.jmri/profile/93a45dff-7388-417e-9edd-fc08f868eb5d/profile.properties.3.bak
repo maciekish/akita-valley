@@ -1,0 +1,4 @@
+#JMRI Preferences version 5.10+Rca461bd266
+#Fri Feb 28 05:43:22 AST 2025
+jmri-implementation.user-files=profile\:
+jmri-implementation.scripts=program\:jython/
