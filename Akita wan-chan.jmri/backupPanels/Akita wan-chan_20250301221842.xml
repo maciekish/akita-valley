@@ -147,231 +147,13 @@
     </reporter>
   </reporters>
   <memories class="jmri.managers.configurexml.DefaultMemoryManagerXml">
-    <memory value="10:49 PM">
+    <memory value="9:06 PM">
       <systemName>IMCURRENTTIME</systemName>
     </memory>
     <memory value="1.0">
       <systemName>IMRATEFACTOR</systemName>
     </memory>
   </memories>
-  <signalheads class="jmri.managers.configurexml.AbstractSignalHeadManagerXml">
-    <signalhead class="jmri.implementation.configurexml.DccSignalHeadXml">
-      <systemName>LH$1</systemName>
-      <userName>T1 to Loop A</userName>
-      <useAddressOffSet>no</useAddressOffSet>
-      <packetsendcount>1</packetsendcount>
-      <aspect defines="SignalHeadStateDark">
-        <number>8</number>
-      </aspect>
-      <aspect defines="SignalHeadStateRed">
-        <number>0</number>
-      </aspect>
-      <aspect defines="SignalHeadStateYellow">
-        <number>1</number>
-      </aspect>
-      <aspect defines="SignalHeadStateGreen">
-        <number>2</number>
-      </aspect>
-      <aspect defines="SignalHeadStateLunar">
-        <number>3</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingRed">
-        <number>4</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingYellow">
-        <number>5</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingGreen">
-        <number>6</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingLunar">
-        <number>7</number>
-      </aspect>
-    </signalhead>
-    <signalhead class="jmri.implementation.configurexml.DccSignalHeadXml">
-      <systemName>LH$2</systemName>
-      <userName>T1 to Loop B</userName>
-      <useAddressOffSet>no</useAddressOffSet>
-      <packetsendcount>1</packetsendcount>
-      <aspect defines="SignalHeadStateDark">
-        <number>8</number>
-      </aspect>
-      <aspect defines="SignalHeadStateRed">
-        <number>0</number>
-      </aspect>
-      <aspect defines="SignalHeadStateYellow">
-        <number>1</number>
-      </aspect>
-      <aspect defines="SignalHeadStateGreen">
-        <number>2</number>
-      </aspect>
-      <aspect defines="SignalHeadStateLunar">
-        <number>3</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingRed">
-        <number>4</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingYellow">
-        <number>5</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingGreen">
-        <number>6</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingLunar">
-        <number>7</number>
-      </aspect>
-    </signalhead>
-    <signalhead class="jmri.implementation.configurexml.DccSignalHeadXml">
-      <systemName>LH$3</systemName>
-      <userName>T1 to Loop C</userName>
-      <useAddressOffSet>no</useAddressOffSet>
-      <packetsendcount>1</packetsendcount>
-      <aspect defines="SignalHeadStateDark">
-        <number>8</number>
-      </aspect>
-      <aspect defines="SignalHeadStateRed">
-        <number>0</number>
-      </aspect>
-      <aspect defines="SignalHeadStateYellow">
-        <number>1</number>
-      </aspect>
-      <aspect defines="SignalHeadStateGreen">
-        <number>2</number>
-      </aspect>
-      <aspect defines="SignalHeadStateLunar">
-        <number>3</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingRed">
-        <number>4</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingYellow">
-        <number>5</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingGreen">
-        <number>6</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingLunar">
-        <number>7</number>
-      </aspect>
-    </signalhead>
-    <signalhead class="jmri.implementation.configurexml.DccSignalHeadXml">
-      <systemName>LH$4</systemName>
-      <userName>Loop to Middle Turnouts A</userName>
-      <useAddressOffSet>no</useAddressOffSet>
-      <packetsendcount>1</packetsendcount>
-      <aspect defines="SignalHeadStateDark">
-        <number>8</number>
-      </aspect>
-      <aspect defines="SignalHeadStateRed">
-        <number>0</number>
-      </aspect>
-      <aspect defines="SignalHeadStateYellow">
-        <number>1</number>
-      </aspect>
-      <aspect defines="SignalHeadStateGreen">
-        <number>2</number>
-      </aspect>
-      <aspect defines="SignalHeadStateLunar">
-        <number>3</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingRed">
-        <number>4</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingYellow">
-        <number>5</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingGreen">
-        <number>6</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingLunar">
-        <number>7</number>
-      </aspect>
-    </signalhead>
-    <signalhead class="jmri.implementation.configurexml.DccSignalHeadXml">
-      <systemName>LH$5</systemName>
-      <userName>Loop to Middle Turnouts B</userName>
-      <useAddressOffSet>no</useAddressOffSet>
-      <packetsendcount>1</packetsendcount>
-      <aspect defines="SignalHeadStateDark">
-        <number>8</number>
-      </aspect>
-      <aspect defines="SignalHeadStateRed">
-        <number>0</number>
-      </aspect>
-      <aspect defines="SignalHeadStateYellow">
-        <number>1</number>
-      </aspect>
-      <aspect defines="SignalHeadStateGreen">
-        <number>2</number>
-      </aspect>
-      <aspect defines="SignalHeadStateLunar">
-        <number>3</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingRed">
-        <number>4</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingYellow">
-        <number>5</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingGreen">
-        <number>6</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingLunar">
-        <number>7</number>
-      </aspect>
-    </signalhead>
-    <signalhead class="jmri.implementation.configurexml.DccSignalHeadXml">
-      <systemName>LH$6</systemName>
-      <userName>Loop to Middle Turnouts AC</userName>
-      <useAddressOffSet>no</useAddressOffSet>
-      <packetsendcount>1</packetsendcount>
-      <aspect defines="SignalHeadStateDark">
-        <number>8</number>
-      </aspect>
-      <aspect defines="SignalHeadStateRed">
-        <number>0</number>
-      </aspect>
-      <aspect defines="SignalHeadStateYellow">
-        <number>1</number>
-      </aspect>
-      <aspect defines="SignalHeadStateGreen">
-        <number>2</number>
-      </aspect>
-      <aspect defines="SignalHeadStateLunar">
-        <number>3</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingRed">
-        <number>4</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingYellow">
-        <number>5</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingGreen">
-        <number>6</number>
-      </aspect>
-      <aspect defines="SignalHeadStateFlashingLunar">
-        <number>7</number>
-      </aspect>
-    </signalhead>
-  </signalheads>
-  <signalmasts class="jmri.managers.configurexml.DefaultSignalMastManagerXml">
-    <signalmast class="jmri.implementation.configurexml.SignalHeadSignalMastXml">
-      <systemName>IF$shsm:basic-enhanced:three-searchlight-high(T1 to Loop A)(T1 to Loop B)(T1 to Loop C)</systemName>
-      <userName>T1 to Loop</userName>
-      <properties>
-        <property>
-          <key>intermediateSignal</key>
-          <value class="java.lang.Boolean">true</value>
-        </property>
-      </properties>
-      <unlit allowed="no" />
-    </signalmast>
-    <signalmast class="jmri.implementation.configurexml.SignalHeadSignalMastXml">
-      <systemName>IF$shsm:basic-enhanced:three-searchlight-high(T1 to Loop Dwarf A)(T1 to Loop Dwarf B)(T1 to Loop Dwarf C)</systemName>
-      <userName>Loop to Middle Turnouts</userName>
-      <unlit allowed="no" />
-    </signalmast>
-  </signalmasts>
   <blocks class="jmri.configurexml.BlockManagerXml">
     <defaultspeed>Normal</defaultspeed>
     <block systemName="IB:AUTO:0001">
@@ -530,7 +312,7 @@
       <path todir="160" fromdir="80" block="IB:AUTO:0007" />
     </block>
   </blocks>
-  <layoutblocks class="jmri.jmrit.display.layoutEditor.configurexml.LayoutBlockManagerXml" blockrouting="yes">
+  <layoutblocks class="jmri.jmrit.display.layoutEditor.configurexml.LayoutBlockManagerXml">
     <layoutblock systemName="ILB1" occupancysensor="LS100" occupiedsense="2" trackcolor="green" occupiedcolor="red" extracolor="white">
       <systemName>ILB1</systemName>
       <userName>Reversing Loop</userName>
@@ -624,34 +406,9 @@
   </routes>
   <signalmastlogics class="jmri.managers.configurexml.DefaultSignalMastLogicManagerXml">
     <logicDelay>500</logicDelay>
-    <signalmastlogic source="T1 to Loop">
-      <sourceSignalMast>T1 to Loop</sourceSignalMast>
-      <destinationMast destination="Loop to Middle Turnouts">
-        <destinationSignalMast>Loop to Middle Turnouts</destinationSignalMast>
-        <comment />
-        <enabled>yes</enabled>
-        <allowAutoMaticSignalMastGeneration>no</allowAutoMaticSignalMastGeneration>
-        <useLayoutEditor>no</useLayoutEditor>
-        <useLayoutEditorTurnouts>no</useLayoutEditorTurnouts>
-        <useLayoutEditorBlocks>no</useLayoutEditorBlocks>
-        <lockTurnouts>no</lockTurnouts>
-        <blocks>
-          <block>
-            <blockName>Reversing Loop</blockName>
-            <blockState>unoccupied</blockState>
-          </block>
-        </blocks>
-        <turnouts>
-          <turnout>
-            <turnoutName>1</turnoutName>
-            <turnoutState>closed</turnoutState>
-          </turnout>
-        </turnouts>
-      </destinationMast>
-    </signalmastlogic>
   </signalmastlogics>
   <timebase class="jmri.jmrit.simpleclock.configurexml.SimpleTimebaseXml" time="Sat Mar 01 18:50:26 AST 2025" rate="1.0" startrate="1.0" run="yes" master="yes" sync="no" correct="no" display="no" startstopped="no" startrunning="yes" startsettime="no" startclockoption="0" showbutton="no" startsetrate="yes" />
-  <LayoutEditor class="jmri.jmrit.display.layoutEditor.configurexml.LayoutEditorXml" name="Akita wan-chan" x="0" y="38" windowheight="1079" windowwidth="1728" panelheight="1205" panelwidth="3140" sliders="no" scrollable="none" editable="yes" positionable="yes" controlling="yes" animating="yes" showhelpbar="no" drawgrid="no" snaponadd="no" snaponmove="no" antialiasing="no" turnoutcircles="no" tooltipsnotedit="no" tooltipsinedit="yes" mainlinetrackwidth="4" xscale="1.0" yscale="1.0" sidetrackwidth="2" defaulttrackcolor="darkGray" defaultoccupiedtrackcolor="red" defaultalternativetrackcolor="white" defaulttextcolor="black" turnoutcirclecolor="black" turnoutcirclesize="4" turnoutdrawunselectedleg="yes" turnoutbx="20.0" turnoutcx="20.0" turnoutwid="10.0" xoverlong="30.0" xoverhwid="10.0" xovershort="10.0" autoblkgenerate="no" redBackground="128" greenBackground="128" blueBackground="128" gridSize="10" gridSize2nd="10" openDispatcher="no" useDirectTurnoutControl="no">
+  <LayoutEditor class="jmri.jmrit.display.layoutEditor.configurexml.LayoutEditorXml" name="Akita wan-chan" x="0" y="38" windowheight="1079" windowwidth="1728" panelheight="1300" panelwidth="3280" sliders="no" scrollable="none" editable="yes" positionable="yes" controlling="yes" animating="yes" showhelpbar="no" drawgrid="no" snaponadd="no" snaponmove="no" antialiasing="no" turnoutcircles="no" tooltipsnotedit="no" tooltipsinedit="yes" mainlinetrackwidth="4" xscale="1.0" yscale="1.0" sidetrackwidth="2" defaulttrackcolor="darkGray" defaultoccupiedtrackcolor="red" defaultalternativetrackcolor="white" defaulttextcolor="black" turnoutcirclecolor="black" turnoutcirclesize="4" turnoutdrawunselectedleg="yes" turnoutbx="20.0" turnoutcx="20.0" turnoutwid="10.0" xoverlong="30.0" xoverhwid="10.0" xovershort="10.0" autoblkgenerate="no" redBackground="128" greenBackground="128" blueBackground="128" gridSize="10" gridSize2nd="10" openDispatcher="no" useDirectTurnoutControl="no">
     <layoutTrackDrawingOptions name="Akita wan-chan" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutTrackDrawingOptionsXml">
       <mainBallastColor>#000000</mainBallastColor>
       <mainBallastWidth>0</mainBallastWidth>
@@ -678,27 +435,6 @@
       <sideTieLength>0</sideTieLength>
       <sideTieWidth>0</sideTieWidth>
     </layoutTrackDrawingOptions>
-    <sensoricon sensor="BXP88-9" x="1447" y="1015" level="10" forcecontroloff="false" hidden="no" positionable="true" showtooltip="true" editable="true" momentary="false" icon="yes" text="" size="13" style="0" red="0" green="0" blue="0" hasBackground="no" justification="centre" class="jmri.jmrit.display.configurexml.SensorIconXml">
-      <active url="program:resources/icons/smallschematics/tracksegments/circuit-occupied.gif" degrees="0" scale="1.0">
-        <rotation>0</rotation>
-      </active>
-      <inactive url="program:resources/icons/smallschematics/tracksegments/circuit-empty.gif" degrees="0" scale="1.0">
-        <rotation>0</rotation>
-      </inactive>
-      <unknown url="program:resources/icons/smallschematics/tracksegments/circuit-error.gif" degrees="0" scale="1.0">
-        <rotation>0</rotation>
-      </unknown>
-      <inconsistent url="program:resources/icons/smallschematics/tracksegments/circuit-error.gif" degrees="0" scale="1.0">
-        <rotation>0</rotation>
-      </inconsistent>
-      <iconmaps />
-      <activeText red="255" green="0" blue="0" />
-      <inactiveText red="255" green="255" blue="0" />
-      <unknownText red="0" green="0" blue="255" />
-      <inconsistentText red="0" green="0" blue="0" />
-    </sensoricon>
-    <signalmasticon signalmast="T1 to Loop" x="1661" y="908" level="9" forcecontroloff="false" hidden="no" positionable="true" showtooltip="true" editable="true" degrees="90" clickmode="0" litmode="false" scale="1.0" imageset="default" class="jmri.jmrit.display.configurexml.SignalMastIconXml" />
-    <signalmasticon signalmast="Loop to Middle Turnouts" x="2558" y="385" level="9" forcecontroloff="false" hidden="no" positionable="true" showtooltip="true" editable="true" degrees="225" clickmode="0" litmode="false" scale="1.0" imageset="default" class="jmri.jmrit.display.configurexml.SignalMastIconXml" />
     <layoutturnout ident="TO0" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="1026.4000244140625" ycen="939.0" xa="963.4000244140625" ya="939.0" xb="1089.4000244140625" yb="939.0" xc="1087.9000244140625" yc="955.4000244140625" xd="963.4000244140625" yd="939.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" blockname="Front Station Track 1" connectaname="T110" connectbname="T25" connectcname="T6" />
     <layoutturnout ident="TO1" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="1205.699951171875" ycen="987.5" xa="1144.89990234375" ya="971.2000122070312" xb="1266.5" yb="1003.7999877929688" xc="1260.800048828125" yc="1019.2000122070312" xd="1144.89990234375" yd="971.2000122070312" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" blockname="Front Station Track 1" connectaname="T6" connectbname="T7" connectcname="T65" />
     <layoutturnout ident="TO2" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="1678.4000244140625" ycen="939.0" xa="1585.4000244140625" ya="939.0" xb="1771.4000244140625" yb="939.0" xc="1771.199951171875" yc="914.5999755859375" xd="1585.4000244140625" yd="939.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="1" blockname="Front Station Track 1" connectaname="T103" connectbname="T1" connectcname="T26" />
@@ -993,9 +729,9 @@
     </operation>
     <operation>
       <type>Store</type>
-      <date>Sat Mar 01 22:49:04 AST 2025</date>
+      <date>Sat Mar 01 21:06:13 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
     </operation>
   </filehistory>
-  <!--Written by JMRI version 5.10+Rca461bd266 on Sat Mar 01 22:49:04 AST 2025-->
+  <!--Written by JMRI version 5.10+Rca461bd266 on Sat Mar 01 21:06:13 AST 2025-->
 </layout-config>
