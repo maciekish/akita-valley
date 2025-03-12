@@ -9,40 +9,99 @@
   </jmriversion>
   <sensors class="jmri.jmrix.loconet.configurexml.LnSensorManagerXml">
     <sensor inverted="false">
+      <systemName>LS1</systemName>
+      <userName>BXP88-1</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS2</systemName>
+      <userName>BXP88-2</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS3</systemName>
+      <userName>BXP88-3</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS4</systemName>
+      <userName>BXP88-4</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS5</systemName>
+      <userName>BXP88-5</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS6</systemName>
+      <userName>BXP88-6</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS7</systemName>
+      <userName>BXP88-7</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS8</systemName>
+      <userName>BXP88-8</userName>
+    </sensor>
+    <sensor inverted="false">
       <systemName>LS9</systemName>
-      <userName>BXPA88-2-1</userName>
+      <userName>BXP88-9</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS10</systemName>
-      <userName>BXPA88-2-2</userName>
+      <userName>BXP88-10</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS11</systemName>
-      <userName>BXPA88-2-3</userName>
+      <userName>BXP88-11</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS12</systemName>
-      <userName>BXPA88-2-4</userName>
+      <userName>BXP88-12</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS13</systemName>
-      <userName>BXPA88-2-5</userName>
+      <userName>BXP88-13</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS14</systemName>
-      <userName>BXPA88-2-6</userName>
+      <userName>BXP88-14</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS15</systemName>
-      <userName>BXPA88-2-7</userName>
+      <userName>BXP88-15</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS16</systemName>
-      <userName>BXPA88-2-8</userName>
+      <userName>BXP88-16</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS100</systemName>
       <userName>BXPA1-100</userName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS199</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS599</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS600</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS601</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS602</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS603</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS604</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS605</systemName>
+    </sensor>
+    <sensor inverted="false">
+      <systemName>LS606</systemName>
     </sensor>
   </sensors>
   <sensors class="jmri.jmrix.internal.configurexml.InternalSensorManagerXml">
@@ -111,35 +170,35 @@
   <reporters class="jmri.jmrix.loconet.configurexml.LnReporterManagerXml">
     <reporter>
       <systemName>LR8</systemName>
-      <userName>BXPA88-2-1</userName>
+      <userName>BXP88-9</userName>
     </reporter>
     <reporter>
       <systemName>LR9</systemName>
-      <userName>BXPA88-2-2</userName>
+      <userName>BXP88-10</userName>
     </reporter>
     <reporter>
       <systemName>LR10</systemName>
-      <userName>BXPA88-2-3</userName>
+      <userName>BXP88-11</userName>
     </reporter>
     <reporter>
       <systemName>LR11</systemName>
-      <userName>BXPA88-2-4</userName>
+      <userName>BXP88-12</userName>
     </reporter>
     <reporter>
       <systemName>LR12</systemName>
-      <userName>BXPA88-2-5</userName>
+      <userName>BXP88-13</userName>
     </reporter>
     <reporter>
       <systemName>LR13</systemName>
-      <userName>BXPA88-2-6</userName>
+      <userName>BXP88-14</userName>
     </reporter>
     <reporter>
       <systemName>LR14</systemName>
-      <userName>BXPA88-2-7</userName>
+      <userName>BXP88-15</userName>
     </reporter>
     <reporter>
       <systemName>LR15</systemName>
-      <userName>BXPA88-2-8</userName>
+      <userName>BXP88-16</userName>
     </reporter>
     <reporter>
       <systemName>LR99</systemName>
@@ -150,7 +209,7 @@
     </reporter>
   </reporters>
   <memories class="jmri.managers.configurexml.DefaultMemoryManagerXml">
-    <memory value="4:05 PM">
+    <memory value="3:27 PM">
       <systemName>IMCURRENTTIME</systemName>
     </memory>
     <memory value="1.0">
@@ -417,7 +476,7 @@
       <systemName>IB:AUTO:0001</systemName>
       <userName>Yard Track 1</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS14</occupancysensor>
+      <occupancysensor>LS6</occupancysensor>
       <reporter systemName="LR13" useCurrent="no" />
       <path todir="144" fromdir="96" block="IB:AUTO:0004">
         <beansetting setting="4">
@@ -429,7 +488,7 @@
       <systemName>IB:AUTO:0002</systemName>
       <userName>Yard Track 2</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS15</occupancysensor>
+      <occupancysensor>LS7</occupancysensor>
       <reporter systemName="LR14" useCurrent="no" />
       <path todir="128" fromdir="64" block="IB:AUTO:0004">
         <beansetting setting="2">
@@ -463,7 +522,7 @@
       <systemName>IB:AUTO:0004</systemName>
       <userName>Front Station Track 1</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS12</occupancysensor>
+      <occupancysensor>LS4</occupancysensor>
       <reporter systemName="LR11" useCurrent="no" />
       <path todir="96" fromdir="144" block="IB:AUTO:0001">
         <beansetting setting="4">
@@ -515,7 +574,7 @@
       <systemName>IB:AUTO:0005</systemName>
       <userName>Front Station Track 2</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS11</occupancysensor>
+      <occupancysensor>LS3</occupancysensor>
       <reporter systemName="LR10" useCurrent="no" />
       <path todir="80" fromdir="160" block="IB:AUTO:0003">
         <beansetting setting="4">
@@ -533,7 +592,7 @@
       <systemName>IB:AUTO:0006</systemName>
       <userName>Rear Station</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS13</occupancysensor>
+      <occupancysensor>LS5</occupancysensor>
       <reporter systemName="LR12" useCurrent="no" />
       <path todir="128" fromdir="64" block="IB:AUTO:0008" />
       <path todir="64" fromdir="128" block="IB:AUTO:0009" />
@@ -542,7 +601,7 @@
       <systemName>IB:AUTO:0007</systemName>
       <userName>Bridge</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS10</occupancysensor>
+      <occupancysensor>LS2</occupancysensor>
       <reporter systemName="LR9" useCurrent="no" />
       <path todir="64" fromdir="128" block="IB:AUTO:0004">
         <beansetting setting="2">
@@ -555,7 +614,7 @@
       <systemName>IB:AUTO:0008</systemName>
       <userName>Inner Turn</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS9</occupancysensor>
+      <occupancysensor>LS1</occupancysensor>
       <reporter systemName="LR8" useCurrent="no" />
       <path todir="96" fromdir="144" block="IB:AUTO:0004">
         <beansetting setting="4">
@@ -576,7 +635,7 @@
       <systemName>IB:AUTO:0009</systemName>
       <userName>Middle Turnouts</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS16</occupancysensor>
+      <occupancysensor>LS8</occupancysensor>
       <reporter systemName="LR15" useCurrent="no" />
       <path todir="80" fromdir="160" block="IB:AUTO:0003">
         <beansetting setting="2">
@@ -596,35 +655,35 @@
       <systemName>ILB1</systemName>
       <userName>Reversing Loop</userName>
     </layoutblock>
-    <layoutblock systemName="ILB2" occupancysensor="LS14" occupiedsense="2" trackcolor="orange" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB2" occupancysensor="LS6" occupiedsense="2" trackcolor="orange" occupiedcolor="red" extracolor="white">
       <systemName>ILB2</systemName>
       <userName>Yard Track 1</userName>
     </layoutblock>
-    <layoutblock systemName="ILB3" occupancysensor="LS15" occupiedsense="2" trackcolor="yellow" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB3" occupancysensor="LS7" occupiedsense="2" trackcolor="yellow" occupiedcolor="red" extracolor="white">
       <systemName>ILB3</systemName>
       <userName>Yard Track 2</userName>
     </layoutblock>
-    <layoutblock systemName="ILB4" occupancysensor="LS12" occupiedsense="2" trackcolor="blue" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB4" occupancysensor="LS4" occupiedsense="2" trackcolor="blue" occupiedcolor="red" extracolor="white">
       <systemName>ILB4</systemName>
       <userName>Front Station Track 1</userName>
     </layoutblock>
-    <layoutblock systemName="ILB5" occupancysensor="LS11" occupiedsense="2" trackcolor="magenta" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB5" occupancysensor="LS3" occupiedsense="2" trackcolor="magenta" occupiedcolor="red" extracolor="white">
       <systemName>ILB5</systemName>
       <userName>Front Station Track 2</userName>
     </layoutblock>
-    <layoutblock systemName="ILB6" occupancysensor="LS13" occupiedsense="2" trackcolor="orange" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB6" occupancysensor="LS5" occupiedsense="2" trackcolor="orange" occupiedcolor="red" extracolor="white">
       <systemName>ILB6</systemName>
       <userName>Rear Station</userName>
     </layoutblock>
-    <layoutblock systemName="ILB7" occupancysensor="LS10" occupiedsense="2" trackcolor="cyan" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB7" occupancysensor="LS2" occupiedsense="2" trackcolor="cyan" occupiedcolor="red" extracolor="white">
       <systemName>ILB7</systemName>
       <userName>Bridge</userName>
     </layoutblock>
-    <layoutblock systemName="ILB8" occupancysensor="LS9" occupiedsense="2" trackcolor="yellow" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB8" occupancysensor="LS1" occupiedsense="2" trackcolor="yellow" occupiedcolor="red" extracolor="white">
       <systemName>ILB8</systemName>
       <userName>Inner Turn</userName>
     </layoutblock>
-    <layoutblock systemName="ILB9" occupancysensor="LS16" occupiedsense="2" trackcolor="blue" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB9" occupancysensor="LS8" occupiedsense="2" trackcolor="blue" occupiedcolor="red" extracolor="white">
       <systemName>ILB9</systemName>
       <userName>Middle Turnouts</userName>
     </layoutblock>
@@ -922,6 +981,25 @@
       <sideTieLength>0</sideTieLength>
       <sideTieWidth>0</sideTieWidth>
     </layoutTrackDrawingOptions>
+    <sensoricon sensor="BXP88-9" x="1441" y="988" level="10" forcecontroloff="false" hidden="no" positionable="true" showtooltip="false" editable="false" momentary="false" icon="yes" text="" size="13" style="0" red="0" green="0" blue="0" hasBackground="no" justification="centre" class="jmri.jmrit.display.configurexml.SensorIconXml">
+      <active url="program:resources/icons/smallschematics/tracksegments/circuit-occupied.gif" degrees="0" scale="1.0">
+        <rotation>0</rotation>
+      </active>
+      <inactive url="program:resources/icons/smallschematics/tracksegments/circuit-empty.gif" degrees="0" scale="1.0">
+        <rotation>0</rotation>
+      </inactive>
+      <unknown url="program:resources/icons/smallschematics/tracksegments/circuit-error.gif" degrees="0" scale="1.0">
+        <rotation>0</rotation>
+      </unknown>
+      <inconsistent url="program:resources/icons/smallschematics/tracksegments/circuit-error.gif" degrees="0" scale="1.0">
+        <rotation>0</rotation>
+      </inconsistent>
+      <iconmaps />
+      <activeText red="255" green="0" blue="0" />
+      <inactiveText red="255" green="255" blue="0" />
+      <unknownText red="0" green="0" blue="255" />
+      <inconsistentText red="0" green="0" blue="0" />
+    </sensoricon>
     <BlockContentsIcon blockcontents="Reversing Loop" x="2747" y="407" level="4" forcecontroloff="false" hidden="no" positionable="true" showtooltip="false" editable="false" size="13" style="0" red="0" green="0" blue="0" hasBackground="no" margin="2" borderSize="2" redBorder="64" greenBorder="64" blueBorder="64" justification="left" selectable="no" class="jmri.jmrit.display.configurexml.BlockContentsIconXml" />
     <layoutturnout ident="TO0" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="1026.4000244140625" ycen="939.0" xa="963.4000244140625" ya="939.0" xb="1089.4000244140625" yb="939.0" xc="1087.9000244140625" yc="955.4000244140625" xd="963.4000244140625" yd="939.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="302" blockname="Front Station Track 1" connectaname="T110" connectbname="T103" connectcname="T6" />
     <layoutturnout ident="TO1" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="1205.699951171875" ycen="987.5" xa="1144.89990234375" ya="971.2000122070312" xb="1266.5" yb="1003.7999877929688" xc="1260.800048828125" yc="1019.2000122070312" xd="1144.89990234375" yd="971.2000122070312" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="303" blockname="Front Station Track 1" connectaname="T6" connectbname="T7" connectcname="T65" />
@@ -1112,104 +1190,104 @@
   <filehistory>
     <operation>
       <type>app</type>
-      <date>Wed Mar 12 15:51:40 AST 2025</date>
+      <date>Wed Mar 12 15:10:48 AST 2025</date>
       <filename>PanelPro (v5.10.0)</filename>
     </operation>
     <operation>
       <type>Load OK</type>
-      <date>Wed Mar 12 15:51:42 AST 2025</date>
+      <date>Wed Mar 12 15:10:50 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
       <filehistory>
         <operation>
           <type>app</type>
-          <date>Wed Mar 12 15:10:48 AST 2025</date>
+          <date>Wed Mar 12 15:07:33 AST 2025</date>
           <filename>PanelPro (v5.10.0)</filename>
         </operation>
         <operation>
           <type>Load OK</type>
-          <date>Wed Mar 12 15:10:50 AST 2025</date>
+          <date>Wed Mar 12 15:07:35 AST 2025</date>
           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
           <filehistory>
             <operation>
               <type>app</type>
-              <date>Wed Mar 12 15:07:33 AST 2025</date>
+              <date>Sun Mar 09 02:49:46 AST 2025</date>
               <filename>PanelPro (v5.10.0)</filename>
             </operation>
             <operation>
               <type>Load OK</type>
-              <date>Wed Mar 12 15:07:35 AST 2025</date>
+              <date>Sun Mar 09 02:49:48 AST 2025</date>
               <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
               <filehistory>
                 <operation>
                   <type>app</type>
-                  <date>Sun Mar 09 02:49:46 AST 2025</date>
+                  <date>Sun Mar 09 02:31:39 AST 2025</date>
                   <filename>PanelPro (v5.10.0)</filename>
                 </operation>
                 <operation>
                   <type>Load OK</type>
-                  <date>Sun Mar 09 02:49:48 AST 2025</date>
+                  <date>Sun Mar 09 02:31:41 AST 2025</date>
                   <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                   <filehistory>
                     <operation>
                       <type>app</type>
-                      <date>Sun Mar 09 02:31:39 AST 2025</date>
+                      <date>Sun Mar 09 02:22:15 AST 2025</date>
                       <filename>PanelPro (v5.10.0)</filename>
                     </operation>
                     <operation>
                       <type>Load OK</type>
-                      <date>Sun Mar 09 02:31:41 AST 2025</date>
+                      <date>Sun Mar 09 02:22:17 AST 2025</date>
                       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                       <filehistory>
                         <operation>
                           <type>app</type>
-                          <date>Sun Mar 09 02:22:15 AST 2025</date>
+                          <date>Sat Mar 01 20:42:13 AST 2025</date>
                           <filename>PanelPro (v5.10.0)</filename>
                         </operation>
                         <operation>
                           <type>Load OK</type>
-                          <date>Sun Mar 09 02:22:17 AST 2025</date>
+                          <date>Sat Mar 01 20:42:14 AST 2025</date>
                           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                         </operation>
                         <operation>
                           <type>Store</type>
-                          <date>Sun Mar 09 02:30:58 AST 2025</date>
+                          <date>Sat Mar 01 22:49:04 AST 2025</date>
                           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                         </operation>
                       </filehistory>
                     </operation>
                     <operation>
                       <type>Store</type>
-                      <date>Sun Mar 09 02:48:19 AST 2025</date>
+                      <date>Sun Mar 09 02:30:58 AST 2025</date>
                       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                     </operation>
                   </filehistory>
                 </operation>
                 <operation>
                   <type>Store</type>
-                  <date>Wed Mar 12 15:05:32 AST 2025</date>
+                  <date>Sun Mar 09 02:48:19 AST 2025</date>
                   <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                 </operation>
               </filehistory>
             </operation>
             <operation>
               <type>Store</type>
-              <date>Wed Mar 12 15:10:38 AST 2025</date>
+              <date>Wed Mar 12 15:05:32 AST 2025</date>
               <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
             </operation>
           </filehistory>
         </operation>
         <operation>
           <type>Store</type>
-          <date>Wed Mar 12 15:27:54 AST 2025</date>
+          <date>Wed Mar 12 15:10:38 AST 2025</date>
           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
         </operation>
       </filehistory>
     </operation>
     <operation>
       <type>Store</type>
-      <date>Wed Mar 12 16:05:01 AST 2025</date>
+      <date>Wed Mar 12 15:27:54 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
     </operation>
   </filehistory>
-  <!--Written by JMRI version 5.10+Rca461bd266 on Wed Mar 12 16:05:01 AST 2025-->
+  <!--Written by JMRI version 5.10+Rca461bd266 on Wed Mar 12 15:27:54 AST 2025-->
 </layout-config>
