@@ -209,7 +209,7 @@
     </reporter>
   </reporters>
   <memories class="jmri.managers.configurexml.DefaultMemoryManagerXml">
-    <memory value="3:27 PM">
+    <memory value="3:22 PM">
       <systemName>IMCURRENTTIME</systemName>
     </memory>
     <memory value="1.0">
@@ -501,7 +501,7 @@
       <userName>Reversing Loop</userName>
       <permissive>no</permissive>
       <occupancysensor>LS100</occupancysensor>
-      <reporter systemName="LR100" useCurrent="no" />
+      <reporter systemName="LR100" useCurrent="yes" />
       <path todir="128" fromdir="64" block="IB:AUTO:0004">
         <beansetting setting="2">
           <turnout systemName="4" />
@@ -1285,9 +1285,9 @@
     </operation>
     <operation>
       <type>Store</type>
-      <date>Wed Mar 12 15:27:54 AST 2025</date>
+      <date>Wed Mar 12 15:22:14 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
     </operation>
   </filehistory>
-  <!--Written by JMRI version 5.10+Rca461bd266 on Wed Mar 12 15:27:54 AST 2025-->
+  <!--Written by JMRI version 5.10+Rca461bd266 on Wed Mar 12 15:22:14 AST 2025-->
 </layout-config>
