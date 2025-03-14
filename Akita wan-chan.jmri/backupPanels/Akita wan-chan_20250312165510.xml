@@ -42,10 +42,10 @@
     </sensor>
     <sensor inverted="false">
       <systemName>LS100</systemName>
+      <userName>BXPA1-100</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS199</systemName>
-      <userName>BXPA1-100</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS599</systemName>
@@ -169,18 +169,15 @@
       <userName>BXPA88-2-8</userName>
     </reporter>
     <reporter>
-      <systemName>LR16</systemName>
-    </reporter>
-    <reporter>
       <systemName>LR99</systemName>
+      <userName>BXPA1-100</userName>
     </reporter>
     <reporter>
       <systemName>LR100</systemName>
-      <userName>BXPA1-100</userName>
     </reporter>
   </reporters>
   <memories class="jmri.managers.configurexml.DefaultMemoryManagerXml">
-    <memory value="7:30 PM">
+    <memory value="4:07 PM">
       <systemName>IMCURRENTTIME</systemName>
     </memory>
     <memory value="1.0">
@@ -471,7 +468,7 @@
       <systemName>IB:AUTO:0003</systemName>
       <userName>Reversing Loop</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS199</occupancysensor>
+      <occupancysensor>LS100</occupancysensor>
       <reporter systemName="LR100" useCurrent="no" />
       <path todir="128" fromdir="64" block="IB:AUTO:0004">
         <beansetting setting="2">
@@ -622,7 +619,7 @@
     </block>
   </blocks>
   <layoutblocks class="jmri.jmrit.display.layoutEditor.configurexml.LayoutBlockManagerXml" blockrouting="yes">
-    <layoutblock systemName="ILB1" occupancysensor="LS199" occupiedsense="2" trackcolor="green" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB1" occupancysensor="LS100" occupiedsense="2" trackcolor="green" occupiedcolor="red" extracolor="white">
       <systemName>ILB1</systemName>
       <userName>Reversing Loop</userName>
     </layoutblock>
@@ -917,9 +914,15 @@
     <meter>
       <systemName>LVDCS52(s/n4233)Voltage</systemName>
     </meter>
+    <meter>
+      <systemName>LV[70](s/n2087)InputCurrent</systemName>
+    </meter>
+    <meter>
+      <systemName>LV[70](s/n2087)Voltage</systemName>
+    </meter>
   </meters>
   <timebase class="jmri.jmrit.simpleclock.configurexml.SimpleTimebaseXml" time="Sat Mar 01 18:50:26 AST 2025" rate="1.0" startrate="1.0" run="yes" master="yes" sync="no" correct="no" display="no" startstopped="no" startrunning="yes" startsettime="no" startclockoption="0" showbutton="no" startsetrate="yes" />
-  <LayoutEditor class="jmri.jmrit.display.layoutEditor.configurexml.LayoutEditorXml" name="Akita wan-chan" x="0" y="38" windowheight="1079" windowwidth="1728" panelheight="1205" panelwidth="3140" sliders="no" scrollable="none" editable="yes" positionable="yes" controlling="yes" animating="yes" showhelpbar="no" drawgrid="no" snaponadd="no" snaponmove="no" antialiasing="no" turnoutcircles="no" tooltipsnotedit="no" tooltipsinedit="yes" mainlinetrackwidth="4" xscale="1.0" yscale="1.0" sidetrackwidth="2" defaulttrackcolor="darkGray" defaultoccupiedtrackcolor="red" defaultalternativetrackcolor="white" defaulttextcolor="black" turnoutcirclecolor="black" turnoutcirclesize="4" turnoutdrawunselectedleg="yes" turnoutbx="20.0" turnoutcx="20.0" turnoutwid="10.0" xoverlong="30.0" xoverhwid="10.0" xovershort="10.0" autoblkgenerate="no" redBackground="128" greenBackground="128" blueBackground="128" gridSize="10" gridSize2nd="10" openDispatcher="no" useDirectTurnoutControl="no">
+  <LayoutEditor class="jmri.jmrit.display.layoutEditor.configurexml.LayoutEditorXml" name="Akita wan-chan" x="0" y="38" windowheight="1079" windowwidth="1728" panelheight="1205" panelwidth="3140" sliders="no" scrollable="none" editable="no" positionable="yes" controlling="yes" animating="yes" showhelpbar="no" drawgrid="no" snaponadd="no" snaponmove="no" antialiasing="no" turnoutcircles="no" tooltipsnotedit="no" tooltipsinedit="yes" mainlinetrackwidth="4" xscale="1.0" yscale="1.0" sidetrackwidth="2" defaulttrackcolor="darkGray" defaultoccupiedtrackcolor="red" defaultalternativetrackcolor="white" defaulttextcolor="black" turnoutcirclecolor="black" turnoutcirclesize="4" turnoutdrawunselectedleg="yes" turnoutbx="20.0" turnoutcx="20.0" turnoutwid="10.0" xoverlong="30.0" xoverhwid="10.0" xovershort="10.0" autoblkgenerate="no" redBackground="128" greenBackground="128" blueBackground="128" gridSize="10" gridSize2nd="10" openDispatcher="no" useDirectTurnoutControl="no">
     <layoutTrackDrawingOptions name="Akita wan-chan" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutTrackDrawingOptionsXml">
       <mainBallastColor>#000000</mainBallastColor>
       <mainBallastWidth>0</mainBallastWidth>
@@ -946,15 +949,15 @@
       <sideTieLength>0</sideTieLength>
       <sideTieWidth>0</sideTieWidth>
     </layoutTrackDrawingOptions>
-    <BlockContentsIcon blockcontents="Reversing Loop" x="2747" y="407" level="4" forcecontroloff="false" hidden="no" positionable="true" showtooltip="true" editable="true" size="13" style="0" red="0" green="0" blue="0" hasBackground="no" margin="2" borderSize="2" redBorder="64" greenBorder="64" blueBorder="64" justification="left" selectable="no" class="jmri.jmrit.display.configurexml.BlockContentsIconXml" />
-    <layoutturnout ident="TO0" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="1026.4000244140625" ycen="939.0" xa="963.4000244140625" ya="939.0" xb="1089.4000244140625" yb="939.0" xc="1087.9000244140625" yc="955.4000244140625" xd="963.4000244140625" yd="939.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="302" blockname="Front Station Track 1" connectaname="T110" connectbname="T103" connectcname="T6" />
-    <layoutturnout ident="TO1" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="1205.699951171875" ycen="987.5" xa="1144.89990234375" ya="971.2000122070312" xb="1266.5" yb="1003.7999877929688" xc="1260.800048828125" yc="1019.2000122070312" xd="1144.89990234375" yd="971.2000122070312" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="303" blockname="Front Station Track 1" connectaname="T6" connectbname="T7" connectcname="T65" />
-    <layoutturnout ident="TO2" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="1678.4000244140625" ycen="939.0" xa="1585.4000244140625" ya="939.0" xb="1771.4000244140625" yb="939.0" xc="1771.199951171875" yc="914.5999755859375" xd="1585.4000244140625" yd="939.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="4" secondturnoutname="3" blockname="Front Station Track 1" connectaname="T103" connectbname="T35" connectcname="T26" />
-    <layoutturnout ident="TO3" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="1925.9000244140625" ycen="873.5" xa="2018.9000244140625" ya="873.5" xb="1832.9000244140625" yb="873.5" xc="1833.0" yc="898.0" xd="2018.9000244140625" yd="873.5" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="3" secondturnoutname="4" blockname="Front Station Track 2" connectaname="T27" connectbname="T37" connectcname="T26" />
-    <layoutturnout ident="TO4" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="2486.39990234375" ycen="467.29998779296875" xa="2552.099853515625" ya="401.5999755859375" xb="2420.699951171875" yb="533.0" xc="2438.10009765625" yc="550.2000122070312" xd="2552.099853515625" yd="401.5999755859375" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="2" blockname="Reversing Loop" connectaname="T107" connectbname="T51" connectcname="T28" />
-    <layoutturnout ident="TO5" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="2300.89990234375" ycen="614.5999755859375" xa="2355.499755859375" ya="583.0999755859375" xb="2246.300048828125" yb="646.0999755859375" xc="2239.39990234375" yc="631.0999755859375" xd="2355.499755859375" yd="583.0999755859375" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="1" blockname="Middle Turnouts" connectaname="T51" connectbname="T64" connectcname="T125" />
-    <layoutturnout ident="TO6" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="637.6854248046875" ycen="939.1803588867188" xa="702.6854248046875" ya="939.1925659179688" xb="572.6854248046875" yb="939.1681518554688" xc="542.6915283203125" yc="901.1681518554688" xd="702.6854248046875" yd="939.1925659179688" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="301" secondturnoutname="300" secondturnoutinverted="true" blockname="Front Station Track 1" connectaname="T111" connectbname="T5" connectcname="T3" />
-    <layoutturnout ident="TO8" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" showtooltip="yes" continuing="2" xcen="469.0" ycen="873.0" xa="395.67950439453125" ya="845.0" xb="542.3204956054688" yb="901.0" xc="547.3204956054688" yc="873.3397216796875" xd="395.67950439453125" yd="845.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="300" secondturnoutname="301" secondturnoutinverted="true" blockname="Inner Turn" connectaname="T4" connectbname="T3" connectcname="T112" />
+    <BlockContentsIcon blockcontents="Reversing Loop" x="2747" y="407" level="4" forcecontroloff="false" hidden="no" positionable="true" showtooltip="false" editable="false" size="13" style="0" red="0" green="0" blue="0" hasBackground="no" margin="2" borderSize="2" redBorder="64" greenBorder="64" blueBorder="64" justification="left" selectable="no" class="jmri.jmrit.display.configurexml.BlockContentsIconXml" />
+    <layoutturnout ident="TO0" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="1026.4000244140625" ycen="939.0" xa="963.4000244140625" ya="939.0" xb="1089.4000244140625" yb="939.0" xc="1087.9000244140625" yc="955.4000244140625" xd="963.4000244140625" yd="939.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="302" blockname="Front Station Track 1" connectaname="T110" connectbname="T103" connectcname="T6" />
+    <layoutturnout ident="TO1" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="1205.699951171875" ycen="987.5" xa="1144.89990234375" ya="971.2000122070312" xb="1266.5" yb="1003.7999877929688" xc="1260.800048828125" yc="1019.2000122070312" xd="1144.89990234375" yd="971.2000122070312" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="303" blockname="Front Station Track 1" connectaname="T6" connectbname="T7" connectcname="T65" />
+    <layoutturnout ident="TO2" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="1678.4000244140625" ycen="939.0" xa="1585.4000244140625" ya="939.0" xb="1771.4000244140625" yb="939.0" xc="1771.199951171875" yc="914.5999755859375" xd="1585.4000244140625" yd="939.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="4" secondturnoutname="3" blockname="Front Station Track 1" connectaname="T103" connectbname="T35" connectcname="T26" />
+    <layoutturnout ident="TO3" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="1925.9000244140625" ycen="873.5" xa="2018.9000244140625" ya="873.5" xb="1832.9000244140625" yb="873.5" xc="1833.0" yc="898.0" xd="2018.9000244140625" yd="873.5" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="3" secondturnoutname="4" blockname="Front Station Track 2" connectaname="T27" connectbname="T37" connectcname="T26" />
+    <layoutturnout ident="TO4" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="2486.39990234375" ycen="467.29998779296875" xa="2552.099853515625" ya="401.5999755859375" xb="2420.699951171875" yb="533.0" xc="2438.10009765625" yc="550.2000122070312" xd="2552.099853515625" yd="401.5999755859375" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="2" blockname="Reversing Loop" connectaname="T107" connectbname="T51" connectcname="T28" />
+    <layoutturnout ident="TO5" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="2300.89990234375" ycen="614.5999755859375" xa="2355.499755859375" ya="583.0999755859375" xb="2246.300048828125" yb="646.0999755859375" xc="2239.39990234375" yc="631.0999755859375" xd="2355.499755859375" yd="583.0999755859375" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="1" blockname="Middle Turnouts" connectaname="T51" connectbname="T64" connectcname="T125" />
+    <layoutturnout ident="TO6" type="RH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="637.6854248046875" ycen="939.1803588867188" xa="702.6854248046875" ya="939.1925659179688" xb="572.6854248046875" yb="939.1681518554688" xc="542.6915283203125" yc="901.1681518554688" xd="702.6854248046875" yd="939.1925659179688" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutRHTurnoutXml" turnoutname="301" secondturnoutname="300" secondturnoutinverted="true" blockname="Front Station Track 1" connectaname="T111" connectbname="T5" connectcname="T3" />
+    <layoutturnout ident="TO8" type="LH_TURNOUT" hidden="no" disabled="no" disableWhenOccupied="no" continuing="2" xcen="469.0" ycen="873.0" xa="395.67950439453125" ya="845.0" xb="542.3204956054688" yb="901.0" xc="547.3204956054688" yc="873.3397216796875" xd="395.67950439453125" yd="845.0" ver="1" class="jmri.jmrit.display.layoutEditor.configurexml.LayoutLHTurnoutXml" turnoutname="300" secondturnoutname="301" secondturnoutinverted="true" blockname="Inner Turn" connectaname="T4" connectbname="T3" connectcname="T112" />
     <tracksegment ident="T2" blockname="Reversing Loop" connect1name="A4" type1="POS_POINT" connect2name="A5" type2="POS_POINT" dashed="no" mainline="yes" hidden="no" arc="yes" flip="no" circle="yes" angle="45.0" hideConLines="yes" class="jmri.jmrit.display.layoutEditor.configurexml.TrackSegmentXml" />
     <tracksegment ident="T6" blockname="Front Station Track 1" connect1name="TO0" type1="TURNOUT_C" connect2name="TO1" type2="TURNOUT_A" dashed="no" mainline="no" hidden="no" class="jmri.jmrit.display.layoutEditor.configurexml.TrackSegmentXml" />
     <tracksegment ident="T7" blockname="Yard Track 2" connect1name="A11" type1="POS_POINT" connect2name="TO1" type2="TURNOUT_B" dashed="no" mainline="no" hidden="no" arc="yes" flip="no" circle="yes" angle="15.0" hideConLines="yes" class="jmri.jmrit.display.layoutEditor.configurexml.TrackSegmentXml" />
@@ -1136,104 +1139,104 @@
   <filehistory>
     <operation>
       <type>app</type>
-      <date>Fri Mar 14 19:14:18 AST 2025</date>
+      <date>Wed Mar 12 16:05:53 AST 2025</date>
       <filename>PanelPro (v5.10.0)</filename>
     </operation>
     <operation>
       <type>Load OK</type>
-      <date>Fri Mar 14 19:14:19 AST 2025</date>
+      <date>Wed Mar 12 16:05:56 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
       <filehistory>
         <operation>
           <type>app</type>
-          <date>Wed Mar 12 16:50:00 AST 2025</date>
+          <date>Wed Mar 12 15:51:40 AST 2025</date>
           <filename>PanelPro (v5.10.0)</filename>
         </operation>
         <operation>
           <type>Load OK</type>
-          <date>Wed Mar 12 16:50:03 AST 2025</date>
+          <date>Wed Mar 12 15:51:42 AST 2025</date>
           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
           <filehistory>
             <operation>
               <type>app</type>
-              <date>Wed Mar 12 16:05:53 AST 2025</date>
+              <date>Wed Mar 12 15:10:48 AST 2025</date>
               <filename>PanelPro (v5.10.0)</filename>
             </operation>
             <operation>
               <type>Load OK</type>
-              <date>Wed Mar 12 16:05:56 AST 2025</date>
+              <date>Wed Mar 12 15:10:50 AST 2025</date>
               <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
               <filehistory>
                 <operation>
                   <type>app</type>
-                  <date>Wed Mar 12 15:51:40 AST 2025</date>
+                  <date>Wed Mar 12 15:07:33 AST 2025</date>
                   <filename>PanelPro (v5.10.0)</filename>
                 </operation>
                 <operation>
                   <type>Load OK</type>
-                  <date>Wed Mar 12 15:51:42 AST 2025</date>
+                  <date>Wed Mar 12 15:07:35 AST 2025</date>
                   <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                   <filehistory>
                     <operation>
                       <type>app</type>
-                      <date>Wed Mar 12 15:10:48 AST 2025</date>
+                      <date>Sun Mar 09 02:49:46 AST 2025</date>
                       <filename>PanelPro (v5.10.0)</filename>
                     </operation>
                     <operation>
                       <type>Load OK</type>
-                      <date>Wed Mar 12 15:10:50 AST 2025</date>
+                      <date>Sun Mar 09 02:49:48 AST 2025</date>
                       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                       <filehistory>
                         <operation>
                           <type>app</type>
-                          <date>Wed Mar 12 15:07:33 AST 2025</date>
+                          <date>Sun Mar 09 02:31:39 AST 2025</date>
                           <filename>PanelPro (v5.10.0)</filename>
                         </operation>
                         <operation>
                           <type>Load OK</type>
-                          <date>Wed Mar 12 15:07:35 AST 2025</date>
+                          <date>Sun Mar 09 02:31:41 AST 2025</date>
                           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                         </operation>
                         <operation>
                           <type>Store</type>
-                          <date>Wed Mar 12 15:10:38 AST 2025</date>
+                          <date>Sun Mar 09 02:48:19 AST 2025</date>
                           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                         </operation>
                       </filehistory>
                     </operation>
                     <operation>
                       <type>Store</type>
-                      <date>Wed Mar 12 15:27:54 AST 2025</date>
+                      <date>Wed Mar 12 15:05:32 AST 2025</date>
                       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                     </operation>
                   </filehistory>
                 </operation>
                 <operation>
                   <type>Store</type>
-                  <date>Wed Mar 12 16:05:01 AST 2025</date>
+                  <date>Wed Mar 12 15:10:38 AST 2025</date>
                   <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                 </operation>
               </filehistory>
             </operation>
             <operation>
               <type>Store</type>
-              <date>Wed Mar 12 16:20:57 AST 2025</date>
+              <date>Wed Mar 12 15:27:54 AST 2025</date>
               <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
             </operation>
           </filehistory>
         </operation>
         <operation>
           <type>Store</type>
-          <date>Wed Mar 12 16:55:10 AST 2025</date>
+          <date>Wed Mar 12 16:05:01 AST 2025</date>
           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
         </operation>
       </filehistory>
     </operation>
     <operation>
       <type>Store</type>
-      <date>Fri Mar 14 19:30:41 AST 2025</date>
+      <date>Wed Mar 12 16:20:57 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
     </operation>
   </filehistory>
-  <!--Written by JMRI version 5.10+Rca461bd266 on Fri Mar 14 19:30:41 AST 2025-->
+  <!--Written by JMRI version 5.10+Rca461bd266 on Wed Mar 12 16:20:57 AST 2025-->
 </layout-config>

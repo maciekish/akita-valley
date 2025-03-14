@@ -42,10 +42,10 @@
     </sensor>
     <sensor inverted="false">
       <systemName>LS100</systemName>
+      <userName>BXPA1-100</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS199</systemName>
-      <userName>BXPA1-100</userName>
     </sensor>
     <sensor inverted="false">
       <systemName>LS599</systemName>
@@ -169,18 +169,15 @@
       <userName>BXPA88-2-8</userName>
     </reporter>
     <reporter>
-      <systemName>LR16</systemName>
-    </reporter>
-    <reporter>
       <systemName>LR99</systemName>
+      <userName>BXPA1-100</userName>
     </reporter>
     <reporter>
       <systemName>LR100</systemName>
-      <userName>BXPA1-100</userName>
     </reporter>
   </reporters>
   <memories class="jmri.managers.configurexml.DefaultMemoryManagerXml">
-    <memory value="7:30 PM">
+    <memory value="4:55 PM">
       <systemName>IMCURRENTTIME</systemName>
     </memory>
     <memory value="1.0">
@@ -471,7 +468,7 @@
       <systemName>IB:AUTO:0003</systemName>
       <userName>Reversing Loop</userName>
       <permissive>no</permissive>
-      <occupancysensor>LS199</occupancysensor>
+      <occupancysensor>LS100</occupancysensor>
       <reporter systemName="LR100" useCurrent="no" />
       <path todir="128" fromdir="64" block="IB:AUTO:0004">
         <beansetting setting="2">
@@ -622,7 +619,7 @@
     </block>
   </blocks>
   <layoutblocks class="jmri.jmrit.display.layoutEditor.configurexml.LayoutBlockManagerXml" blockrouting="yes">
-    <layoutblock systemName="ILB1" occupancysensor="LS199" occupiedsense="2" trackcolor="green" occupiedcolor="red" extracolor="white">
+    <layoutblock systemName="ILB1" occupancysensor="LS100" occupiedsense="2" trackcolor="green" occupiedcolor="red" extracolor="white">
       <systemName>ILB1</systemName>
       <userName>Reversing Loop</userName>
     </layoutblock>
@@ -1136,104 +1133,104 @@
   <filehistory>
     <operation>
       <type>app</type>
-      <date>Fri Mar 14 19:14:18 AST 2025</date>
+      <date>Wed Mar 12 16:50:00 AST 2025</date>
       <filename>PanelPro (v5.10.0)</filename>
     </operation>
     <operation>
       <type>Load OK</type>
-      <date>Fri Mar 14 19:14:19 AST 2025</date>
+      <date>Wed Mar 12 16:50:03 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
       <filehistory>
         <operation>
           <type>app</type>
-          <date>Wed Mar 12 16:50:00 AST 2025</date>
+          <date>Wed Mar 12 16:05:53 AST 2025</date>
           <filename>PanelPro (v5.10.0)</filename>
         </operation>
         <operation>
           <type>Load OK</type>
-          <date>Wed Mar 12 16:50:03 AST 2025</date>
+          <date>Wed Mar 12 16:05:56 AST 2025</date>
           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
           <filehistory>
             <operation>
               <type>app</type>
-              <date>Wed Mar 12 16:05:53 AST 2025</date>
+              <date>Wed Mar 12 15:51:40 AST 2025</date>
               <filename>PanelPro (v5.10.0)</filename>
             </operation>
             <operation>
               <type>Load OK</type>
-              <date>Wed Mar 12 16:05:56 AST 2025</date>
+              <date>Wed Mar 12 15:51:42 AST 2025</date>
               <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
               <filehistory>
                 <operation>
                   <type>app</type>
-                  <date>Wed Mar 12 15:51:40 AST 2025</date>
+                  <date>Wed Mar 12 15:10:48 AST 2025</date>
                   <filename>PanelPro (v5.10.0)</filename>
                 </operation>
                 <operation>
                   <type>Load OK</type>
-                  <date>Wed Mar 12 15:51:42 AST 2025</date>
+                  <date>Wed Mar 12 15:10:50 AST 2025</date>
                   <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                   <filehistory>
                     <operation>
                       <type>app</type>
-                      <date>Wed Mar 12 15:10:48 AST 2025</date>
+                      <date>Wed Mar 12 15:07:33 AST 2025</date>
                       <filename>PanelPro (v5.10.0)</filename>
                     </operation>
                     <operation>
                       <type>Load OK</type>
-                      <date>Wed Mar 12 15:10:50 AST 2025</date>
+                      <date>Wed Mar 12 15:07:35 AST 2025</date>
                       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                       <filehistory>
                         <operation>
                           <type>app</type>
-                          <date>Wed Mar 12 15:07:33 AST 2025</date>
+                          <date>Sun Mar 09 02:49:46 AST 2025</date>
                           <filename>PanelPro (v5.10.0)</filename>
                         </operation>
                         <operation>
                           <type>Load OK</type>
-                          <date>Wed Mar 12 15:07:35 AST 2025</date>
+                          <date>Sun Mar 09 02:49:48 AST 2025</date>
                           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                         </operation>
                         <operation>
                           <type>Store</type>
-                          <date>Wed Mar 12 15:10:38 AST 2025</date>
+                          <date>Wed Mar 12 15:05:32 AST 2025</date>
                           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                         </operation>
                       </filehistory>
                     </operation>
                     <operation>
                       <type>Store</type>
-                      <date>Wed Mar 12 15:27:54 AST 2025</date>
+                      <date>Wed Mar 12 15:10:38 AST 2025</date>
                       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                     </operation>
                   </filehistory>
                 </operation>
                 <operation>
                   <type>Store</type>
-                  <date>Wed Mar 12 16:05:01 AST 2025</date>
+                  <date>Wed Mar 12 15:27:54 AST 2025</date>
                   <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
                 </operation>
               </filehistory>
             </operation>
             <operation>
               <type>Store</type>
-              <date>Wed Mar 12 16:20:57 AST 2025</date>
+              <date>Wed Mar 12 16:05:01 AST 2025</date>
               <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
             </operation>
           </filehistory>
         </operation>
         <operation>
           <type>Store</type>
-          <date>Wed Mar 12 16:55:10 AST 2025</date>
+          <date>Wed Mar 12 16:20:57 AST 2025</date>
           <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
         </operation>
       </filehistory>
     </operation>
     <operation>
       <type>Store</type>
-      <date>Fri Mar 14 19:30:41 AST 2025</date>
+      <date>Wed Mar 12 16:55:10 AST 2025</date>
       <filename>/Users/maciekish/Developer/Repositories/JMRI/akita-valley/Akita wan-chan.jmri/Akita wan-chan.xml</filename>
     </operation>
   </filehistory>
-  <!--Written by JMRI version 5.10+Rca461bd266 on Fri Mar 14 19:30:41 AST 2025-->
+  <!--Written by JMRI version 5.10+Rca461bd266 on Wed Mar 12 16:55:10 AST 2025-->
 </layout-config>
