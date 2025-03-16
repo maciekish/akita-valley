@@ -1,0 +1,11 @@
+label,START,,,
+if,fnc==1,PLAY_ON,,
+goto,START,,,
+label,PLAY_ON,,,
+play,E233_typ_in.wav,1,0,
+play,E233_typ_loop.wav,0,0,
+label,PLAY_LOOP,,,
+if,fnc==0,END,PLAY_LOOP,
+label,END,,,
+play,E233_typ_out.wav,1,0,
+exit,,,,

@@ -1,0 +1,16 @@
+1 E235_idle
+2 E235_inc
+3 E235_run
+4 E235_dec
+5 E235_startup
+6 E235_shutdown
+7 E233_typ_in
+8 E233_typ_loop
+9 E233_typ_out
+10 E235_doors_ringer
+11 E235_track_3
+12 E235_doors_are_closing
+13 E235_doors_be_careful
+14 E235_doors_actually_closing
+15 Tokyo
+16 Akihabara

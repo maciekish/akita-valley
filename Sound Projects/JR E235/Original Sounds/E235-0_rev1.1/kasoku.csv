@@ -1,0 +1,5 @@
+label,START,,,
+if,spd<1,START,,
+if,acc<=1,START,,
+sply,E235_SiCVVVF_加速.wav,,,
+goto,START,,,

@@ -1,0 +1,6 @@
+label,START,,,
+if,spd<2,START,,
+if,acc>=-1,START,,
+sply,E235_SiCVVVF_減速.wav,,,
+let,share1=share1-30,,,
+goto,START,,,

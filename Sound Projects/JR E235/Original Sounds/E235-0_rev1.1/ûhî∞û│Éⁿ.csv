@@ -1,0 +1,7 @@
+label,START,,,
+if,fnc==0,START,,
+play,EF210_Buzzer3.wav,0,0,
+label,PLAY_LOOP,,,
+if,fnc==1,PLAY_LOOP,,
+stop,,,,
+exit,,,,
