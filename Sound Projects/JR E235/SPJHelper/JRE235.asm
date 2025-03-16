@@ -7,7 +7,7 @@ VERNO	EQU	0x20		;ver 2.00
 ;----------------------------------------------------------------------------
 ;     FUNCTION KEYS DEFINED:   
 ;    F2 Horn/Whistle
-;    F3 FKey 3
+;    F3 Brake Release
 ;    F4 Track 3, Doors Closing
 ;    F7 Tokyo Jingle
 ;    F8 Akihabara Jingle
@@ -221,6 +221,7 @@ CHNL_03_S0
  
    INITIATE_SOUND TRIG_SF10,NORMAL
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_142,SCALE_F  ;Set Volume
+   PLAY Next_Akihabara,no_loop,loop_STD
    END_SOUND
 ;---------------------------------------------
 ;  START CHANNEL 4	'Series 6 Premium Only

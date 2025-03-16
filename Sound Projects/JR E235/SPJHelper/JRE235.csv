@@ -50,8 +50,9 @@ Entry,Event,EButSlot,EButEventType,EButEventParm,EButEventAct,EButEventFct,EButA
  49 , 13 , 30 , 0 , 3 , 2 , 0 , 144 , 0 
  50 , 13 , 30 , 0 , 3 , 1 , 0 , 17 , 0 
  51 , 14 , 23 , 0 , 10 , 2 , 0 , 142 , 0 
- 52 , 15 , 10 , 0 , 20 , 2 , 0 , 135 , 0 
- 53 , 16 , 11 , 0 , 20 , 3 , 3 , 0 , 0 
+ 52 , 14 , 23 , 0 , 10 , 1 , 0 , 18 , 0 
+ 53 , 15 , 10 , 0 , 20 , 2 , 0 , 135 , 0 
+ 54 , 16 , 11 , 0 , 20 , 3 , 3 , 0 , 0 
 Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  0 , 0 ,Set Volume by value in CV 140, 0 , 0 ,           0 , 0 , 0 , 0 
  0 , 1 ,Play Sound Clip 2, 0 , 0 ,         0 , 0 , 0 , 0 
@@ -132,6 +133,7 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  13 , 19 ,Event 13 in Voice 4 slot 0, 0 , 0 ,            0 , 0 , 0 , 0 
  13 , 20 ,Trigger when FKey 3 Turns ON, 0 , 0 ,          0 , 0 , 0 , 0 
  14 , 0 ,Set Volume by value in CV 142, 0 , 0 ,          0 , 0 , 0 , 0 
+ 14 , 1 ,Play Next_Akihabara.wav Once, 0 , 0 ,           0 , 0 , 0 , 0 
  14 , 19 ,Event 14 in Voice 3 slot 3, 0 , 0 ,            0 , 0 , 0 , 0 
  14 , 20 ,Trigger when FKey 10 Turns ON, 0 , 0 ,         0 , 0 , 0 , 0 
  15 , 0 ,Set Mute ON, 0 , 0 ,              0 , 0 , 0 , 0 
@@ -142,7 +144,7 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  16 , 20 ,Trigger when FKey 20 Turns OFF, 0 , 0 ,        0 , 0 , 0 , 0 
 FKeyNo,FKeyName,N/A,N/A,N/A,N/A,N/A,N/A,N/A
  2 ,"Horn/Whistle", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
- 3 ,"FKey 3", 0 , 0 , 0 ,    0 , 0 , 0 , 0 
+ 3 ,"Brake Release", 0 , 0 , 0 ,           0 , 0 , 0 , 0 
  4 ,"Track 3, Doors Closing", 0 , 0 , 0 ,  0 , 0 , 0 , 0 
  7 ,"Tokyo Jingle", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
  8 ,"Akihabara Jingle", 0 , 0 , 0 ,        0 , 0 , 0 , 0 

@@ -7,7 +7,7 @@ Author:   Maciej Swic
 (A) Function Key Definitions
 ============================================================================
 F2	Horn/Whistle
-F3	FKey 3
+F3	Brake Release
 F4	Track 3, Doors Closing
 F7	Tokyo Jingle
 F8	Akihabara Jingle
