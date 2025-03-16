@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xml/XSLT/throttle-config.xsl" type="text/xsl"?>
+<throttle-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jmri.org/xml/schema/throttle-config.xsd">
+  <ThrottleFrame>
+    <ControlPanel displaySpeedSlider="0" trackSlider="false" trackSliderMinInterval="200" switchSliderOnFunction="" hideSpeedStep="false">
+      <window x="0" y="0" width="186" height="442" isVisible="true" isIconified="false" />
+    </ControlPanel>
+    <FunctionPanel>
+      <window x="186" y="0" width="697" height="272" isVisible="true" isIconified="false" />
+    </FunctionPanel>
+    <AddressPanel>
+      <window x="186" y="272" width="697" height="170" isVisible="true" isIconified="false" />
+      <locoaddress>
+        <dcclocoaddress number="8150" longaddress="yes" />
+        <number>8150</number>
+        <protocol>dcc_long</protocol>
+      </locoaddress>
+      <locoaddress>
+        <dcclocoaddress number="" longaddress="no" />
+        <number />
+        <protocol />
+      </locoaddress>
+    </AddressPanel>
+    <SpeedPanel>
+      <window x="0" y="442" width="883" height="85" isVisible="true" isIconified="false" />
+    </SpeedPanel>
+  </ThrottleFrame>
+</throttle-config>

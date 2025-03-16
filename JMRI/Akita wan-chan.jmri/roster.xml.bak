@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/xml/XSLT/roster2array.xsl" type="text/xsl"?>
+<roster-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jmri.org/xml/schema/roster.xsd">
+  <!--Written by JMRI version 5.10+Rca461bd266 on Fri Feb 14 20:22:33 AST 2025-->
+  <roster>
+    <locomotive id="Class 800/0 8150" fileName="Class_800_0_8150.xml" roadNumber="8150" roadName="" mfg="" owner="" model="Class 800/0" dccAddress="8150" comment="" developerID="-1" manufacturerID="129" productID="EM13" maxSpeed="100" imageFilePath="" iconFilePath="" URL="" IsShuntingOn="">
+      <dateUpdated>2025-02-14T17:13:40.271+00:00</dateUpdated>
+      <decoder model="EM13" family="Kato" comment="" maxFnNum="28" />
+      <locoaddress>
+        <dcclocoaddress number="8150" longaddress="yes" />
+        <number>8150</number>
+        <protocol>dcc_long</protocol>
+      </locoaddress>
+      <functionlabels>
+        <functionlabel num="0" lockable="true" functionImage="" functionImageSelected="">Headlight</functionlabel>
+        <functionlabel num="6" lockable="true" functionImage="" functionImageSelected="">Switching Speed</functionlabel>
+      </functionlabels>
+      <soundlabels />
+    </locomotive>
+    <locomotive id="DD51 1164" fileName="DD51_1164.xml" roadNumber="1164" roadName="" mfg="" owner="" model="DD51" dccAddress="1164" comment="" developerID="-1" manufacturerID="129" productID="" maxSpeed="100" imageFilePath="" iconFilePath="" URL="" IsShuntingOn="">
+      <dateUpdated>2025-02-14T17:06:13.990+00:00</dateUpdated>
+      <decoder model="DN163K1D" family="Series 3 with FX3, silent, readback" comment="" maxFnNum="28" />
+      <locoaddress>
+        <dcclocoaddress number="1164" longaddress="yes" />
+        <number>1164</number>
+        <protocol>dcc_long</protocol>
+      </locoaddress>
+      <functionlabels />
+      <soundlabels />
+    </locomotive>
+  </roster>
+</roster-config>
