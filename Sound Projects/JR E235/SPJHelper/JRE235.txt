@@ -7,9 +7,11 @@ Author:   Maciej Swic
 (A) Function Key Definitions
 ============================================================================
 F2	Horn/Whistle
+F3	FKey 3
 F4	Track 3, Doors Closing
 F7	Tokyo Jingle
 F8	Akihabara Jingle
+F10	Next Station: Akihabara
 F20	Mute On/Off
 ============================================================================
 (B) Sound FX defined CV's:
@@ -26,6 +28,7 @@ CV140	Power Unit Volume [64]
 CV141	Horn/Whistle Volume [64]
 CV142	Announcement Volume [64]
 CV143	Platform Jingles Volume [64]
+CV144	Brake Volume [64]
 ============================================================================
 (C) General Notes
 ============================================================================

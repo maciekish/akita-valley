@@ -47,8 +47,11 @@ Entry,Event,EButSlot,EButEventType,EButEventParm,EButEventAct,EButEventFct,EButA
  46 , 11 , 21 , 0 , 7 , 1 , 0 , 15 , 0 
  47 , 12 , 22 , 0 , 8 , 2 , 0 , 143 , 0 
  48 , 12 , 22 , 0 , 8 , 1 , 0 , 16 , 0 
- 49 , 15 , 10 , 0 , 20 , 2 , 0 , 135 , 0 
- 50 , 16 , 11 , 0 , 20 , 3 , 3 , 0 , 0 
+ 49 , 13 , 30 , 0 , 3 , 2 , 0 , 144 , 0 
+ 50 , 13 , 30 , 0 , 3 , 1 , 0 , 17 , 0 
+ 51 , 14 , 23 , 0 , 10 , 2 , 0 , 142 , 0 
+ 52 , 15 , 10 , 0 , 20 , 2 , 0 , 135 , 0 
+ 53 , 16 , 11 , 0 , 20 , 3 , 3 , 0 , 0 
 Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  0 , 0 ,Set Volume by value in CV 140, 0 , 0 ,           0 , 0 , 0 , 0 
  0 , 1 ,Play Sound Clip 2, 0 , 0 ,         0 , 0 , 0 , 0 
@@ -124,6 +127,13 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  12 , 1 ,Play Akihabara.wav Once, 0 , 0 ,  0 , 0 , 0 , 0 
  12 , 19 ,Event 12 in Voice 3 slot 2, 0 , 0 ,            0 , 0 , 0 , 0 
  12 , 20 ,Trigger when FKey 8 Turns ON, 0 , 0 ,          0 , 0 , 0 , 0 
+ 13 , 0 ,Set Volume by value in CV 144, 0 , 0 ,          0 , 0 , 0 , 0 
+ 13 , 1 ,Play E235_brake_release_2.wav Once, 0 , 0 ,     0 , 0 , 0 , 0 
+ 13 , 19 ,Event 13 in Voice 4 slot 0, 0 , 0 ,            0 , 0 , 0 , 0 
+ 13 , 20 ,Trigger when FKey 3 Turns ON, 0 , 0 ,          0 , 0 , 0 , 0 
+ 14 , 0 ,Set Volume by value in CV 142, 0 , 0 ,          0 , 0 , 0 , 0 
+ 14 , 19 ,Event 14 in Voice 3 slot 3, 0 , 0 ,            0 , 0 , 0 , 0 
+ 14 , 20 ,Trigger when FKey 10 Turns ON, 0 , 0 ,         0 , 0 , 0 , 0 
  15 , 0 ,Set Mute ON, 0 , 0 ,              0 , 0 , 0 , 0 
  15 , 19 ,Event 15 in Voice 2 Slot 0, 0 , 0 ,            0 , 0 , 0 , 0 
  15 , 20 ,Trigger when FKey 20 Turns ON, 0 , 0 ,         0 , 0 , 0 , 0 
@@ -132,9 +142,11 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  16 , 20 ,Trigger when FKey 20 Turns OFF, 0 , 0 ,        0 , 0 , 0 , 0 
 FKeyNo,FKeyName,N/A,N/A,N/A,N/A,N/A,N/A,N/A
  2 ,"Horn/Whistle", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
+ 3 ,"FKey 3", 0 , 0 , 0 ,    0 , 0 , 0 , 0 
  4 ,"Track 3, Doors Closing", 0 , 0 , 0 ,  0 , 0 , 0 , 0 
  7 ,"Tokyo Jingle", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
  8 ,"Akihabara Jingle", 0 , 0 , 0 ,        0 , 0 , 0 , 0 
+ 10 ,"Next Station: Akihabara", 0 , 0 , 0 ,              0 , 0 , 0 , 0 
  20 ,"Mute On/Off", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
 SndNo,SndName,SndBits,N/A,N/A,N/A,N/A,N/A,N/A
  0 ,"Silence", 8 , 0 , 0 ,   0 , 0 , 0 , 0 
@@ -154,11 +166,14 @@ SndNo,SndName,SndBits,N/A,N/A,N/A,N/A,N/A,N/A
  14 ,"E235_doors_actually_closing.wav", 16 , 0 , 0 ,     0 , 0 , 0 , 0 
  15 ,"Tokyo.wav", 16 , 0 , 0 ,             0 , 0 , 0 , 0 
  16 ,"Akihabara.wav", 16 , 0 , 0 ,         0 , 0 , 0 , 0 
+ 17 ,"E235_brake_release_2.wav", 16 , 0 , 0 ,            0 , 0 , 0 , 0 
+ 18 ,"Next_Akihabara.wav", 16 , 0 , 0 ,    0 , 0 , 0 , 0 
 CVNo,CVName,N/A,N/A,N/A,N/A,N/A,N/A,N/A
  140 ,"Power Unit Volume [64]", 0 , 0 , 0 ,              0 , 0 , 0 , 0 
  141 ,"Horn/Whistle Volume [64]", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
  142 ,"Announcement Volume [64]", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
  143 ,"Platform Jingles Volume [64]", 0 , 0 , 0 ,        0 , 0 , 0 , 0 
+ 144 ,"Brake Volume [64]", 0 , 0 , 0 ,     0 , 0 , 0 , 0 
 Timer,TimerUsed,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 Tag,TagsUsed,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 MemorySlot,MemoryUsed,N/A,N/A,N/A,N/A,N/A,N/A,N/A

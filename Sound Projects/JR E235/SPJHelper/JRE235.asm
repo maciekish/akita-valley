@@ -7,9 +7,11 @@ VERNO	EQU	0x20		;ver 2.00
 ;----------------------------------------------------------------------------
 ;     FUNCTION KEYS DEFINED:   
 ;    F2 Horn/Whistle
+;    F3 FKey 3
 ;    F4 Track 3, Doors Closing
 ;    F7 Tokyo Jingle
 ;    F8 Akihabara Jingle
+;    F10 Next Station: Akihabara
 ;    F20 Mute On/Off
 ;----------------------------------
 ;   SOUND WAVE FILE HANDLES
@@ -32,6 +34,8 @@ E235_doors_be_careful
 E235_doors_actually_closing
 Tokyo
 Akihabara
+E235_brake_release_2
+Next_Akihabara
    ENDC
 ;-----------------------------------------
 ;   INCLUDED DIGITRAX PROPRIETARY FILES
@@ -51,6 +55,7 @@ SCV_140   ;CV140  Power Unit Volume [64]
 SCV_141   ;CV141  Horn/Whistle Volume [64]
 SCV_142   ;CV142  Announcement Volume [64]
 SCV_143   ;CV143  Platform Jingles Volume [64]
+SCV_144   ;CV144  Brake Volume [64]
    ENDC
 ;--------------------------------------------------------------
 ; Previously defined SCVs - listed here for reference convience
@@ -213,12 +218,21 @@ CHNL_03_S0
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_143,SCALE_F  ;Set Volume
    PLAY Akihabara,no_loop,loop_STD
    END_SOUND
+ 
+   INITIATE_SOUND TRIG_SF10,NORMAL
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_142,SCALE_F  ;Set Volume
+   END_SOUND
 ;---------------------------------------------
 ;  START CHANNEL 4	'Series 6 Premium Only
 ;---------------------------------------------
 CHNL_04_S0
    CHANNEL_START   4
 ;---------------------------------------------
+ 
+   INITIATE_SOUND TRIG_SF3,NORMAL
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_144,SCALE_F  ;Set Volume
+   PLAY E235_brake_release_2,no_loop,loop_STD
+   END_SOUND
 ;  END OF SCHEME 0		
 ;---------------------------------------------
    SKEME_END   0
