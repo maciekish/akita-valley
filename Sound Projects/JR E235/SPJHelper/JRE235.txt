@@ -1,5 +1,5 @@
 ============================================================================
-                       PROJECT: JRE235     DEVELOPED - 2025-03-16
+                       PROJECT: JRE235     DEVELOPED - 2025-03-17
 ============================================================================
 SPJ File: JRE235.spj
 Author:   Maciej Swic
@@ -12,6 +12,7 @@ F4	Track 3, Doors Closing
 F7	Tokyo Jingle
 F8	Akihabara Jingle
 F10	Next Station: Akihabara
+F14	Flange
 F20	Mute On/Off
 ============================================================================
 (B) Sound FX defined CV's:
@@ -29,6 +30,10 @@ CV141	Horn/Whistle Volume [64]
 CV142	Announcement Volume [64]
 CV143	Platform Jingles Volume [64]
 CV144	Brake Volume [64]
+CV145	Flange Volume [64]
+CV146	Flange Cycle Time [64]
+CV147	Joint Volume [64]
+CV148	Joint Cycle Time [64]
 ============================================================================
 (C) General Notes
 ============================================================================

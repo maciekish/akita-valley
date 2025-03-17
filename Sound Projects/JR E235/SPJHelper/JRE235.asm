@@ -3,7 +3,7 @@
 VERNO	EQU	0x20		;ver 2.00 
 ;----------------------------------------------------------------------------
 ;   This Sound Definition Langauge (SDL) was generated
-;   by the SPJHelper Design Tool on 2025-03-16
+;   by the SPJHelper Design Tool on 2025-03-17
 ;----------------------------------------------------------------------------
 ;     FUNCTION KEYS DEFINED:   
 ;    F2 Horn/Whistle
@@ -12,6 +12,7 @@ VERNO	EQU	0x20		;ver 2.00
 ;    F7 Tokyo Jingle
 ;    F8 Akihabara Jingle
 ;    F10 Next Station: Akihabara
+;    F14 Flange
 ;    F20 Mute On/Off
 ;----------------------------------
 ;   SOUND WAVE FILE HANDLES
@@ -19,9 +20,9 @@ VERNO	EQU	0x20		;ver 2.00
    cblock   0   ; Start assigning location of  Sound Clips 0, 1, 2, etc.
 HNDL_MUTE   ; Internal SILENCE value = 0
 E235_idle
-E235_inc
-E235_run
-E235_dec
+E235_idle_run
+E235_run_looped
+E235_run_idle
 E235_startup
 E235_shutdown
 E233_typ_in
@@ -36,6 +37,11 @@ Tokyo
 Akihabara
 E235_brake_release_2
 Next_Akihabara
+flange_1
+flange_2
+flange_3
+joint_in
+joint
    ENDC
 ;-----------------------------------------
 ;   INCLUDED DIGITRAX PROPRIETARY FILES
@@ -56,6 +62,10 @@ SCV_141   ;CV141  Horn/Whistle Volume [64]
 SCV_142   ;CV142  Announcement Volume [64]
 SCV_143   ;CV143  Platform Jingles Volume [64]
 SCV_144   ;CV144  Brake Volume [64]
+SCV_145   ;CV145  Flange Volume [64]
+SCV_146   ;CV146  Flange Cycle Time [64]
+SCV_147   ;CV147  Joint Volume [64]
+SCV_148   ;CV148  Joint Cycle Time [64]
    ENDC
 ;--------------------------------------------------------------
 ; Previously defined SCVs - listed here for reference convience
@@ -125,33 +135,33 @@ CHNL_01_S0
  
    INITIATE_SOUND T_SPD_IDLEXIT,RUN_WHILE_TRIG
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-   PLAY E235_inc,no_loop,loop_STD
+   PLAY E235_idle_run,no_loop,loop_STD
+   LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_USER_0,1,0    ;Set value
+   LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_146,SINTEN_LOW+WORK_SPEED   ;set timer
    END_SOUND
  
    INITIATE_SOUND T_SPD_ACCEL1,RUN_WHILE_TRIG
    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 4,2
-   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-   LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-   PLAY E235_run,no_loop,loop_STD
    END_SOUND
  
    INITIATE_SOUND T_SPD_DECEL1,RUN_WHILE_TRIG
    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 9,7
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-   PLAY E235_run,no_loop,loop_STD
+   PLAY E235_run_looped,no_loop,loop_STD
    END_SOUND
  
    INITIATE_SOUND T_SPD_RUN,RUN_WHILE_TRIG
    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 6,5
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-   PLAY E235_run,loop_till_init_TRIG,loop_INVERT
+   PLAY E235_run_looped,loop_till_init_TRIG,loop_INVERT
    END_SOUND
  
    INITIATE_SOUND TRIG_MOVING,NOT_TRIG
+   LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_USER_0,0,0    ;Set value
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-   PLAY E235_dec,no_loop,loop_STD
+   PLAY E235_run_idle,no_loop,loop_STD
    END_SOUND
  
    INITIATE_SOUND TRIG_SND_ACTV11,RUN_WHILE_TRIG
@@ -188,6 +198,7 @@ CHNL_02_S0
    LOAD_MODIFIER MTYPE_SNDCV, SCV_139,31,0    ;Set to ~4.5 minutes
    LOAD_MODIFIER MTYPE_WORK_IMMED, FMATH_LODE+WORK_DISTANCE,0,0   ;reset work register
    LOAD_MODIFIER MTYPE_SNDCV, SCV_139,31,0    ;Set to ~4.5 minutes
+   LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_146,SINTEN_LOW+WORK_SPEED   ;set timer
    END_SOUND
 ;---------------------------------------------
 ;  START CHANNEL 3
@@ -233,6 +244,41 @@ CHNL_04_S0
    INITIATE_SOUND TRIG_SF3,NORMAL
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_144,SCALE_F  ;Set Volume
    PLAY E235_brake_release_2,no_loop,loop_STD
+   END_SOUND
+ 
+   INITIATE_SOUND TRIG_SF14,NORMAL
+   LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_145,SCALE_F  ;Set Volume
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,3,~0x3,SKIP_LESS   ;~1:4
+   PLAY flange_1,no_loop,loop_STD
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,3,~0x3,SKIP_LESS   ;~1:4
+   PLAY flange_2,no_loop,loop_STD
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,3,~0x3,SKIP_LESS   ;~1:4
+   PLAY flange_3,no_loop,loop_STD
+   END_SOUND
+ 
+   INITIATE_SOUND TRIG_SCAT0,NORMAL
+   LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+   MASK_COMPARE WORK_USER_0,IMMED_DATA,1,COMP_7LSB,SKIP_SAME    ;Skip if Equal
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_145,SCALE_F  ;Set Volume
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,7,~0x7,SKIP_LESS   ;~1:8
+   PLAY flange_1,no_loop,loop_STD
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,7,~0x7,SKIP_LESS   ;~1:8
+   PLAY flange_2,no_loop,loop_STD
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,7,~0x7,SKIP_LESS   ;~1:8
+   PLAY flange_3,no_loop,loop_STD
+   LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_146,SINTEN_LOW+WORK_SPEED   ;set timer
+   END_SOUND
+ 
+   INITIATE_SOUND TRIG_SCAT1,NORMAL
+   LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_147,SCALE_F  ;Set Volume
+   MASK_COMPARE WORK_USER_0,IMMED_DATA,1,COMP_7LSB,SKIP_SAME    ;Skip if Equal
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,7,~0x7,SKIP_LESS   ;~1:8
+   PLAY joint_in,no_loop,loop_STD
+   MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,7,~0x7,SKIP_LESS   ;~1:8
+   PLAY joint,no_loop,loop_STD
+   LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL1,SCV_148,SINTEN_LOW+WORK_SPEED   ;set timer
    END_SOUND
 ;  END OF SCHEME 0		
 ;---------------------------------------------
