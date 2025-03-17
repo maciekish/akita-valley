@@ -149,7 +149,7 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  10 , 1 ,Set Distance gauge 31, 0 , 0 ,    0 , 0 , 0 , 0 
  10 , 2 ,Set Distance gauge 31, 0 , 0 ,    0 , 0 , 0 , 0 
  10 , 3 ,Set Timer 0 by CV146, 0 , 0 ,     0 , 0 , 0 , 0 
- 10 , 19 ,Event 10 in Voice 2 Slot 4, 0 , 0 ,            0 , 0 , 0 , 0 
+ 10 , 19 ,Event 10 in Voice 2 Slot 3, 0 , 0 ,            0 , 0 , 0 , 0 
  10 , 20 ,On Power Up, 0 , 0 ,             0 , 0 , 0 , 0 
  11 , 0 ,Set Volume by value in CV 143, 0 , 0 ,          0 , 0 , 0 , 0 
  11 , 1 ,Play Tokyo.wav Once, 0 , 0 ,      0 , 0 , 0 , 0 
@@ -181,7 +181,7 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  17 , 5 ,Play flange_2.wav Once, 0 , 0 ,   0 , 0 , 0 , 0 
  17 , 6 ,Randomly Do Next 1:4, 0 , 0 ,     0 , 0 , 0 , 0 
  17 , 7 ,Play flange_3.wav Once, 0 , 0 ,   0 , 0 , 0 , 0 
- 17 , 19 ,Event 17 in Voice 4 slot 1, 0 , 0 ,            0 , 0 , 0 , 0 
+ 17 , 19 ,Event 17 in Voice 3 slot 11, 0 , 0 ,           0 , 0 , 0 , 0 
  17 , 20 ,Trigger when FKey 14 Turns ON, 0 , 0 ,         0 , 0 , 0 , 0 
  18 , 0 ,Set Pitch per Notch Setting, 0 , 0 ,            0 , 0 , 0 , 0 
  18 , 1 ,Test Memory Slot 0 for 1, 0 , 0 ,               0 , 0 , 0 , 0 
@@ -193,7 +193,7 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  18 , 7 ,Randomly Do Next 1:8, 0 , 0 ,     0 , 0 , 0 , 0 
  18 , 8 ,Play flange_3.wav Once, 0 , 0 ,   0 , 0 , 0 , 0 
  18 , 9 ,Set Timer 0 by CV146, 0 , 0 ,     0 , 0 , 0 , 0 
- 18 , 19 ,Event 18 in Voice 4 slot 2, 0 , 0 ,            0 , 0 , 0 , 0 
+ 18 , 19 ,Event 18 in Voice 3 slot 12, 0 , 0 ,           0 , 0 , 0 , 0 
  18 , 20 ,While Timer0 is On, 0 , 0 ,      0 , 0 , 0 , 0 
  19 , 0 ,Set Pitch per Notch Setting, 0 , 0 ,            0 , 0 , 0 , 0 
  19 , 1 ,Set Volume by value in CV 147, 0 , 0 ,          0 , 0 , 0 , 0 
@@ -203,7 +203,7 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  19 , 5 ,Randomly Do Next 1:8, 0 , 0 ,     0 , 0 , 0 , 0 
  19 , 6 ,Play joint.wav Once, 0 , 0 ,      0 , 0 , 0 , 0 
  19 , 7 ,Set Timer 1 by CV: 148, 0 , 0 ,   0 , 0 , 0 , 0 
- 19 , 19 ,Event 19 in Voice 4 slot 3, 0 , 0 ,            0 , 0 , 0 , 0 
+ 19 , 19 ,Event 19 in Voice 3 slot 13, 0 , 0 ,           0 , 0 , 0 , 0 
  19 , 20 ,Trigger when Timer 1 Turns ON, 0 , 0 ,         0 , 0 , 0 , 0 
 FKeyNo,FKeyName,N/A,N/A,N/A,N/A,N/A,N/A,N/A
  2 ,"Horn/Whistle", 0 , 0 , 0 ,            0 , 0 , 0 , 0 
