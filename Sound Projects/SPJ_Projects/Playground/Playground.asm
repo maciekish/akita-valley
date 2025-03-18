@@ -31,6 +31,9 @@ E235_shutdown
 E233_horn_in
 E233_horn_loop
 E233_horn_out
+E235_brake_release
+E235_pantograph_up
+E235_pantograph_down
    ENDC
 ;-----------------------------------------
 ;   INCLUDED DIGITRAX PROPRIETARY FILES
@@ -48,6 +51,8 @@ SubID   EQU   5  ; Project #5 - Designed using SPJHelper
    cblock   SCV_FREEFORM   ; Start assigning (after std Digitrax) for CV140, CV141, etc.
 SCV_140   ;CV140  Power Unit Volume [64]
 SCV_141   ;CV141  Horn Volume [64]
+SCV_142   ;CV142  Brake Release Volume [64]
+SCV_143   ;CV143  Pantograph Volume [64]
    ENDC
 ;--------------------------------------------------------------
 ; Previously defined SCVs - listed here for reference convience
@@ -109,8 +114,11 @@ CHNL_01_S0
    ; Startup Sound
    INITIATE_SOUND TRIG_SND_ACTV11,NORMAL+NO_PREEMPT_TRIG
    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 0,0
-   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_143,SCALE_F  ;Set Volume
    PLAY HNDL_MUTE,no_loop,loop_STD
+   PLAY E235_pantograph_up,no_loop,loop_STD
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+   DELAY_SOUND DELAY_THIS,40,DELAY_GLOBAL
    PLAY E235_startup,no_loop,loop_STD
    PLAY E235_idle,no_loop,loop_STD
    END_SOUND
@@ -120,6 +128,8 @@ CHNL_01_S0
    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
    PLAY E235_idle,no_loop,loop_STD
    PLAY E235_shutdown,no_loop,loop_STD
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_143,SCALE_F  ;Set Volume
+   PLAY E235_pantograph_down,no_loop,loop_STD
    END_SOUND
  
    ; Idle to Run Sound
@@ -234,6 +244,13 @@ CHNL_03_S0
 CHNL_04_S0
    CHANNEL_START   4
 ;---------------------------------------------
+
+   ; Brake Release
+   INITIATE_SOUND T_SPD_IDLEXIT,ZAP
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_142,SCALE_F  ;Set Volume
+   MASK_COMPARE WORK_STATUS_BITS,IMMED_DATA,WKSB_RUN_MASK,COMP_7LSB,SKIP_SAME  ; Skip next if motor is NOT running
+   PLAY E235_brake_release,no_loop,loop_STD
+   END_SOUND
  
 ;  END OF SCHEME 0		
 ;---------------------------------------------
