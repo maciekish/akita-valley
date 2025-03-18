@@ -65,9 +65,9 @@ Entry,Event,EButSlot,EButEventType,EButEventParm,EButEventAct,EButEventFct,EButA
  64 , 17 , 31 , 0 , 14 , 1 , 0 , 20 , 0 
  65 , 17 , 31 , 0 , 14 , 16 , 0 , 0 , 0 
  66 , 17 , 31 , 0 , 14 , 1 , 0 , 21 , 0 
- 67 , 18 , 32 , 5 , 0 , 4 , 0 , 0 , 0 
- 68 , 18 , 32 , 5 , 0 , 12 , 0 , 0 , 1 
- 69 , 18 , 32 , 5 , 0 , 2 , 0 , 145 , 0 
+ 67 , 18 , 32 , 5 , 0 , 12 , 0 , 0 , 1 
+ 68 , 18 , 32 , 5 , 0 , 2 , 0 , 145 , 0 
+ 69 , 18 , 32 , 5 , 0 , 4 , 0 , 0 , 0 
  70 , 18 , 32 , 5 , 0 , 16 , 0 , 0 , 0 
  71 , 18 , 32 , 5 , 0 , 1 , 0 , 19 , 0 
  72 , 18 , 32 , 5 , 0 , 16 , 0 , 0 , 0 
@@ -75,9 +75,9 @@ Entry,Event,EButSlot,EButEventType,EButEventParm,EButEventAct,EButEventFct,EButA
  74 , 18 , 32 , 5 , 0 , 16 , 0 , 0 , 0 
  75 , 18 , 32 , 5 , 0 , 1 , 0 , 21 , 0 
  76 , 18 , 32 , 5 , 0 , 7 , 0 , 0 , 146 
- 77 , 19 , 33 , 5 , 1 , 4 , 0 , 0 , 0 
+ 77 , 19 , 33 , 5 , 1 , 12 , 0 , 0 , 1 
  78 , 19 , 33 , 5 , 1 , 2 , 0 , 147 , 0 
- 79 , 19 , 33 , 5 , 1 , 12 , 0 , 0 , 1 
+ 79 , 19 , 33 , 5 , 1 , 4 , 0 , 0 , 0 
  80 , 19 , 33 , 5 , 1 , 16 , 0 , 0 , 0 
  81 , 19 , 33 , 5 , 1 , 1 , 0 , 22 , 0 
  82 , 19 , 33 , 5 , 1 , 16 , 0 , 0 , 0 
@@ -186,9 +186,9 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  17 , 7 ,Play flange_3.wav Once, 0 , 0 ,   0 , 0 , 0 , 0 
  17 , 19 ,Event 17 in Voice 3 slot 11, 0 , 0 ,           0 , 0 , 0 , 0 
  17 , 20 ,Trigger when FKey 14 Turns ON, 0 , 0 ,         0 , 0 , 0 , 0 
- 18 , 0 ,Set Pitch per Notch Setting, 0 , 0 ,            0 , 0 , 0 , 0 
- 18 , 1 ,Test Memory Slot 0 for 1, 0 , 0 ,               0 , 0 , 0 , 0 
- 18 , 2 ,Set Volume by value in CV 145, 0 , 0 ,          0 , 0 , 0 , 0 
+ 18 , 0 ,Test Memory Slot 0 for 1, 0 , 0 ,               0 , 0 , 0 , 0 
+ 18 , 1 ,Set Volume by value in CV 145, 0 , 0 ,          0 , 0 , 0 , 0 
+ 18 , 2 ,Set Pitch per Notch Setting, 0 , 0 ,            0 , 0 , 0 , 0 
  18 , 3 ,Randomly Do Next 1:2, 0 , 0 ,     0 , 0 , 0 , 0 
  18 , 4 ,Play flange_1.wav, 0 , 0 ,        0 , 0 , 0 , 0 
  18 , 5 ,Randomly Do Next 1:2, 0 , 0 ,     0 , 0 , 0 , 0 
@@ -198,9 +198,9 @@ Event,Activity,Description,N/A,N/A,N/A,N/A,N/A,N/A
  18 , 9 ,Set Timer 0 by CV146, 0 , 0 ,     0 , 0 , 0 , 0 
  18 , 19 ,Event 18 in Voice 3 slot 12, 0 , 0 ,           0 , 0 , 0 , 0 
  18 , 20 ,While Timer0 is On, 0 , 0 ,      0 , 0 , 0 , 0 
- 19 , 0 ,Set Pitch per Notch Setting, 0 , 0 ,            0 , 0 , 0 , 0 
+ 19 , 0 ,Test Memory Slot 0 for 1, 0 , 0 ,               0 , 0 , 0 , 0 
  19 , 1 ,Set Volume by value in CV 147, 0 , 0 ,          0 , 0 , 0 , 0 
- 19 , 2 ,Test Memory Slot 0 for 1, 0 , 0 ,               0 , 0 , 0 , 0 
+ 19 , 2 ,Set Pitch per Notch Setting, 0 , 0 ,            0 , 0 , 0 , 0 
  19 , 3 ,Randomly Do Next 1:2, 0 , 0 ,     0 , 0 , 0 , 0 
  19 , 4 ,Play joint_in.wav Once, 0 , 0 ,   0 , 0 , 0 , 0 
  19 , 5 ,Randomly Do Next 1:2, 0 , 0 ,     0 , 0 , 0 , 0 
