@@ -1,5 +1,5 @@
 ============================================================================
-                       PROJECT: JRE235     DEVELOPED - 2025-03-17
+                       PROJECT: JRE235     DEVELOPED - 2025-03-18
 ============================================================================
 SPJ File: JRE235.spj
 Author:   Maciej Swic
@@ -13,6 +13,7 @@ F7	Tokyo Jingle
 F8	Akihabara Jingle
 F10	Next Station: Akihabara
 F14	Flange
+F15	Joint
 F20	Mute On/Off
 ============================================================================
 (B) Sound FX defined CV's:
