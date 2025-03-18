@@ -1,4 +1,4 @@
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  1
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,14 +57,14 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00001 ;This information is copyrighted all rights reserved. No commercial use permitted without written permis
                       00002 
                       00003         STITLE          "SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY. 
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  2
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  2
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
                       00004 
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  3
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  3
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -123,7 +123,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00055 
   00000040            00056 MIN_WAV_LENGTH  EQU     64              ;if this or below (Z=no HNDL) will skip fragment.
                       00057 
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  4
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  4
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -148,7 +148,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00074 ; This Digitrax source file will cross-assemble a binary file with the MACRO capability of any compatibl
                       00075 ;In particular, this source code is compatible and tested with the Microchip Inc. MPASM assembler runnin
                       00076 ; MPLAB IDE 7.20 development environment, available from www.microchip.com.
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  5
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  5
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -207,7 +207,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00127 
                       00128 ;=========================================================
                       00129 ;TTTTTTTTTTTTTTTTTTTTTT
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  6
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  6
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -266,7 +266,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   0000000C            00180 TRIG_SF0        EQU     0x0C            ;headlight/F0 state
   0000000D            00181 TRIG_DIRNOW_CHNG EQU    0x0D            ;have DIR_NOW changed
   0000000E            00182 TRIG_MOVING     EQU     0x0E            ;SPD = Non-Zero
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  7
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  7
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -325,7 +325,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00233 ; and can be read back by TRANSPONDING as external ALARMS etc
                       00234 
   00000050            00235 TRIG_IN_BASE    EQU     0x50                    ;
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  8
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  8
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -384,7 +384,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   0000007B            00286 T_SPD_DEC_IDLE  EQU     TSPD+11
   0000007C            00287 T_SPD_TURNOFF   EQU     TSPD+12
   0000007D            00288 T_SPD_DEC_SP1   EQU     TSPD+13
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE  9
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE  9
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -443,7 +443,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000019            00339 loop_till_F10   EQU     TRIG_SF10
   0000001A            00340 loop_till_F11   EQU     TRIG_SF11
   0000001B            00341 loop_till_F12   EQU     TRIG_SF12
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 10
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 10
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -502,7 +502,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00392 ;FMATH_ADD      EQU     0x80    ;add signed value
   000000A0            00393 FMATH_INTEGRATE EQU     0xA0    ;add signed value to WORK,MATH_FLAG SET if over/underflo,or clamp LIMIT 
   000000C0            00394 FMATH_TEST_ZERO EQU     0xC0    ; see if WORK under MASK is ZERO, if ZERO set MATH bit
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 11
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 11
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -561,7 +561,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000017            00445 WORK_SKAT_SLOW  EQU     0x17
                       00446 
   00000018            00447 WORK_DISTANCE   EQU     0x18
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 12
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 12
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -620,7 +620,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000038            00498 SCAT_CMD_SAWTOOTH_REV   EQU     0x38
                       00499 
   00000003            00500 SCAT_PERIOD_POLARITY_BIT EQU    3               ;1= reverse WORK influence
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 13
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 13
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -679,7 +679,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000006            00551 SUM_BIT         EQU     6               ;1=add ARG1/2 variation,0=multiply
   00000005            00552 MG1_BIT         EQU     5               ;these code meaning of LO nibble
   00000004            00553 MG0_BIT         EQU     4
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 14
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 14
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -738,7 +738,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00604 
                       00605 
                       00606 
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 15
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 15
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -797,7 +797,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00657         ENDC
                       00658         
                       00659 ;CV133, SNDCV_STEAM /DRIVER size bit7=1 means EXTERNAL INPUT_0 generates a special CAM code as well
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 16
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 16
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -830,7 +830,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00003         STITLE          "SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOL
                       00004 
                       00005 
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 17
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 17
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -889,7 +889,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00056 
                       00057 ;-------------------
                       00058 ;CHNL_END       EQU     0xFF            ;this CHNL number stops SCHEME evaluation
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 18
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 18
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -948,7 +948,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00109 ; 16 bit version uses the simple 2 byte PLAY macro, and substitutes 4 byte XPLAY if hndl> 64
                       00110 
                       00111  
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 19
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 19
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1007,7 +1007,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00073 ;--------------------------------------------------------------
                       00074 ;   SCV_RESET (CV8)  Reset Decoder values to factory
                       00075 ;   SCV_MASTER_VOL (CV58) Master Volume Setting
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 20
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 20
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1054,7 +1054,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000000                00114    ORG   0                                                                      
                       00115    SKEME_START   0   ; defines the start of scheme 0
   00000000                M SKEME_BASE      SET     $                               ;for offset calc
-000000 00F1 BC01          M                 DB      CMD_SKEME_START,(0        &0x1F), high((SKEME_NEXT0-$)+2),        low((SKEME_NEX
+000000 00F1 C001          M                 DB      CMD_SKEME_START,(0        &0x1F), high((SKEME_NEXT0-$)+2),        low((SKEME_NEX
                       00116    SDL_VERSION VERSION_1   ; Required by SDL
 000004 1082               M                 DB      CMD_MARK_VERSION,VERSION_1
                       00117 ;---------------------------------------------
@@ -1066,7 +1066,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                           M ;CTEMP += 1
                       00122 ;---------------------------------------------
                       00123  
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 21
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 21
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1125,7 +1125,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00142    LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL1,SCV_148,SINTEN_LOW+WORK_SPEED   ;set timer
 000034 21E4 4093          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SCATTER&0x0F),SCAT_CMD_PERIOD+SCAT_CHNL1,SCV_148,SINTEN_L
                       00143    END_SOUND
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 22
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 22
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1184,7 +1184,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00164    END_SOUND
 00006E 0000               M                 DB      CMD_END_SND,0
                       00165  
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 23
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 23
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1243,7 +1243,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 00009A 9F90               M                 DB      CMD_INITIATE_SND + ((NOT_TRIG) & 0x07), TRIG_SF20 +((NOT_TRIG) & 0x80)
   0000000A                M ICNT += 1
                           M 
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 24
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 24
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1302,7 +1302,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00213  
                       00214    INITIATE_SOUND TRIG_SF4,NORMAL
 0000CA 0B90               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SF4 +((NORMAL) & 0x80)
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 25
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 25
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1361,7 +1361,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   0000000F                M ICNT += 1
                           M 
                       00233    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_143,SCALE_F  ;Set Volume
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 26
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 26
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1420,7 +1420,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00256    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
 000118 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
                       00257    PLAY flange_1,no_loop,loop_STD
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 27
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 27
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -1465,127 +1465,133 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                           M 
                       00271    MASK_COMPARE WORK_USER_0,IMMED_DATA,1,COMP_7LSB,SKIP_SAME    ;Skip if Equal
 00013C 1AFC 8001          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_USER_0,1,COMP_7LSB
-                      00272    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_145,SCALE_F  ;Set Volume
-000140 80E1 0F90          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_145,SCALE_F
-                      00273    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-000144 A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
-                      00274    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
-000148 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
-                      00275    PLAY flange_1,no_loop,loop_STD
+                      00272    BRANCH_TO TAG0
+000140 5CC1               M                 DB      CMD_GOTO_SND + ((high (TAG0-SKEME_BASE)) & 0x0F) , low (TAG0-SKEME_BASE) 
+                      00273    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_145,SCALE_F  ;Set Volume
+000142 80E1 0F90          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_145,SCALE_F
+                      00274    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+000146 A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
+                      00275    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
+00014A 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
+                      00276    PLAY flange_1,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-00014C 1340               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (flange_1 & 0x3F)+((no_loop<<6)&0xC0) 
+00014E 1340               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (flange_1 & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00276    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
-00014E 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
-                      00277    PLAY flange_2,no_loop,loop_STD
-                          M         list ;2 byte PLAY  [HANDLE]
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 28
+                      00277    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
+000150 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 28
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000152 1440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (flange_2 & 0x3F)+((no_loop<<6)&0xC0) 
-                          M         list
-                      00278    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
-000154 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
-                      00279    PLAY flange_3,no_loop,loop_STD
+                      00278    PLAY flange_2,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000158 1540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (flange_3 & 0x3F)+((no_loop<<6)&0xC0) 
+000154 1440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (flange_2 & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00280    LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_146,SINTEN_LOW+WORK_SPEED   ;set timer
-00015A 20E4 4091          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SCATTER&0x0F),SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_146,SINTEN_L
-                      00281    END_SOUND
-00015E 0000               M                 DB      CMD_END_SND,0
-                      00282  
-                      00283    INITIATE_SOUND TRIG_SCAT1,NORMAL
-000160 6190               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SCAT1 +((NORMAL) & 0x80)
+                      00279    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
+000156 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
+                      00280    PLAY flange_3,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+00015A 1540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (flange_3 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+00015C                00281 TAG0
+                      00282    LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_146,SINTEN_LOW+WORK_SPEED   ;set timer
+00015C 20E4 4091          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SCATTER&0x0F),SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_146,SINTEN_L
+                      00283    END_SOUND
+000160 0000               M                 DB      CMD_END_SND,0
+                      00284  
+                      00285    INITIATE_SOUND TRIG_SCAT1,NORMAL
+000162 6190               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SCAT1 +((NORMAL) & 0x80)
   00000015                M ICNT += 1
                           M 
-                      00284    MASK_COMPARE WORK_USER_0,IMMED_DATA,1,COMP_7LSB,SKIP_SAME    ;Skip if Equal
-000162 1AFC 8001          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_USER_0,1,COMP_7LSB
-                      00285    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_147,SCALE_F  ;Set Volume
-000166 80E1 0F92          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_147,SCALE_F
-                      00286    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-00016A A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
-                      00287    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
-00016E 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
-                      00288    PLAY joint_in,no_loop,loop_STD
+                      00286    MASK_COMPARE WORK_USER_0,IMMED_DATA,1,COMP_7LSB,SKIP_SAME    ;Skip if Equal
+000164 1AFC 8001          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_USER_0,1,COMP_7LSB
+                      00287    BRANCH_TO TAG1
+000168 7EC1               M                 DB      CMD_GOTO_SND + ((high (TAG1-SKEME_BASE)) & 0x0F) , low (TAG1-SKEME_BASE) 
+                      00288    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_147,SCALE_F  ;Set Volume
+00016A 80E1 0F92          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_147,SCALE_F
+                      00289    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+00016E A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
+                      00290    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
+000172 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
+                      00291    PLAY joint_in,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000172 1640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (joint_in & 0x3F)+((no_loop<<6)&0xC0) 
+000176 1640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (joint_in & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00289    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
-000174 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
-                      00290    PLAY joint,no_loop,loop_STD
+                      00292    MASK_COMPARE WORK_TIMEBASE,IMMED_DATA,1,~0x1,SKIP_LESS   ;~1:2
+000178 06FE FE01          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_TIMEBASE,1,~0x1
+                      00293    PLAY joint,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000178 1740               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (joint  & 0x3F)+((no_loop<<6)&0xC0) 
+00017C 1740               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (joint  & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00291    LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL1,SCV_148,SINTEN_LOW+WORK_SPEED   ;set timer
-00017A 21E4 4093          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SCATTER&0x0F),SCAT_CMD_PERIOD+SCAT_CHNL1,SCV_148,SINTEN_L
-                      00292    END_SOUND
-00017E 0000               M                 DB      CMD_END_SND,0
-                      00293  
-                      00294    INITIATE_SOUND TRIG_FACTORY_CVRESET,NORMAL
-000180 5A90               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_FACTORY_CVRESET +((NORMAL) & 0x80)
+00017E                00294 TAG1
+                      00295    LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL1,SCV_148,SINTEN_LOW+WORK_SPEED   ;set timer
+00017E 21E4 4093          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SCATTER&0x0F),SCAT_CMD_PERIOD+SCAT_CHNL1,SCV_148,SINTEN_L
+                      00296    END_SOUND
+000182 0000               M                 DB      CMD_END_SND,0
+                      00297  
+                      00298    INITIATE_SOUND TRIG_FACTORY_CVRESET,NORMAL
+000184 5A90               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_FACTORY_CVRESET +((NORMAL) & 0x80)
   00000016                M ICNT += 1
                           M 
-                      00295    LOAD_MODIFIER MTYPE_SNDCV, SCV_132,64,0    ;Set value
-000182 83E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_132,64,0
-                      00296    LOAD_MODIFIER MTYPE_SNDCV, SCV_133,127,0    ;Set value
-000186 84E5 007F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_133,127,0
-                      00297    LOAD_MODIFIER MTYPE_SNDCV, SCV_134,32,0    ;Set value
-00018A 85E5 0020          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_134,32,0
-                      00298    LOAD_MODIFIER MTYPE_SNDCV, SCV_135,0,0    ;Set value
-00018E 86E5 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_135,0,0
-                      00299    LOAD_MODIFIER MTYPE_SNDCV, SCV_139,63,0    ;Set value
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 29
+                      00299    LOAD_MODIFIER MTYPE_SNDCV, SCV_132,64,0    ;Set value
+000186 83E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_132,64,0
+                      00300    LOAD_MODIFIER MTYPE_SNDCV, SCV_133,127,0    ;Set value
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 29
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000192 8AE5 003F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_139,63,0
-                      00300    LOAD_MODIFIER MTYPE_SNDCV, SCV_140,64,0    ;Set value
-000196 8BE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_140,64,0
-                      00301    LOAD_MODIFIER MTYPE_SNDCV, SCV_141,64,0    ;Set value
-00019A 8CE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_141,64,0
-                      00302    LOAD_MODIFIER MTYPE_SNDCV, SCV_142,64,0    ;Set value
-00019E 8DE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_142,64,0
-                      00303    LOAD_MODIFIER MTYPE_SNDCV, SCV_143,64,0    ;Set value
-0001A2 8EE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_143,64,0
-                      00304    LOAD_MODIFIER MTYPE_SNDCV, SCV_144,64,0    ;Set value
-0001A6 8FE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_144,64,0
-                      00305    LOAD_MODIFIER MTYPE_SNDCV, SCV_145,64,0    ;Set value
-0001AA 90E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_145,64,0
-                      00306    LOAD_MODIFIER MTYPE_SNDCV, SCV_146,64,0    ;Set value
-0001AE 91E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_146,64,0
-                      00307    LOAD_MODIFIER MTYPE_SNDCV, SCV_147,64,0    ;Set value
-0001B2 92E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_147,64,0
-                      00308    LOAD_MODIFIER MTYPE_SNDCV, SCV_148,64,0    ;Set value
-0001B6 93E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_148,64,0
-                      00309    END_SOUND
-0001BA 0000               M                 DB      CMD_END_SND,0
-                      00310 ;  END OF SCHEME 0              
-                      00311 ;---------------------------------------------
-                      00312    SKEME_END   0
-0001BC                    M SKEME_NEXT0
+00018A 84E5 007F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_133,127,0
+                      00301    LOAD_MODIFIER MTYPE_SNDCV, SCV_134,32,0    ;Set value
+00018E 85E5 0020          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_134,32,0
+                      00302    LOAD_MODIFIER MTYPE_SNDCV, SCV_135,0,0    ;Set value
+000192 86E5 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_135,0,0
+                      00303    LOAD_MODIFIER MTYPE_SNDCV, SCV_139,63,0    ;Set value
+000196 8AE5 003F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_139,63,0
+                      00304    LOAD_MODIFIER MTYPE_SNDCV, SCV_140,64,0    ;Set value
+00019A 8BE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_140,64,0
+                      00305    LOAD_MODIFIER MTYPE_SNDCV, SCV_141,64,0    ;Set value
+00019E 8CE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_141,64,0
+                      00306    LOAD_MODIFIER MTYPE_SNDCV, SCV_142,64,0    ;Set value
+0001A2 8DE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_142,64,0
+                      00307    LOAD_MODIFIER MTYPE_SNDCV, SCV_143,64,0    ;Set value
+0001A6 8EE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_143,64,0
+                      00308    LOAD_MODIFIER MTYPE_SNDCV, SCV_144,64,0    ;Set value
+0001AA 8FE5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_144,64,0
+                      00309    LOAD_MODIFIER MTYPE_SNDCV, SCV_145,64,0    ;Set value
+0001AE 90E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_145,64,0
+                      00310    LOAD_MODIFIER MTYPE_SNDCV, SCV_146,64,0    ;Set value
+0001B2 91E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_146,64,0
+                      00311    LOAD_MODIFIER MTYPE_SNDCV, SCV_147,64,0    ;Set value
+0001B6 92E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_147,64,0
+                      00312    LOAD_MODIFIER MTYPE_SNDCV, SCV_148,64,0    ;Set value
+0001BA 93E5 0040          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_148,64,0
+                      00313    END_SOUND
+0001BE 0000               M                 DB      CMD_END_SND,0
+                      00314 ;  END OF SCHEME 0              
+                      00315 ;---------------------------------------------
+                      00316    SKEME_END   0
+0001C0                    M SKEME_NEXT0
   00000001                M SCNT += 1
                           M ;CCNT=CTEMP                             ;xfer MAX value seen in last scheme
                           M ;CTEMP = 0
-                      00313 ;---------------------------------------------
-                      00314 ;  MARK END OF SDL      
-                      00315 ;---------------------------------------------
-                      00316    SKEME_START   CLOSE_SKEME   ;REQUIRED
-  000001BC                M SKEME_BASE      SET     $                               ;for offset calc
-0001BC 1FF1 0400          M                 DB      CMD_SKEME_START,(CLOSE_SKEME &0x1F), high((SKEME_NEXT1-$)+2),     low((SKEME_NEX
-                      00317    SKEME_END   CLOSE_SKEME   ;REQUIRED
-0001C0                    M SKEME_NEXT1
+                      00317 ;---------------------------------------------
+                      00318 ;  MARK END OF SDL      
+                      00319 ;---------------------------------------------
+                      00320    SKEME_START   CLOSE_SKEME   ;REQUIRED
+  000001C0                M SKEME_BASE      SET     $                               ;for offset calc
+0001C0 1FF1 0400          M                 DB      CMD_SKEME_START,(CLOSE_SKEME &0x1F), high((SKEME_NEXT1-$)+2),     low((SKEME_NEX
+                      00321    SKEME_END   CLOSE_SKEME   ;REQUIRED
+0001C4                    M SKEME_NEXT1
   00000002                M SCNT += 1
                           M ;CCNT=CTEMP                             ;xfer MAX value seen in last scheme
                           M ;CTEMP = 0
-0001C0                00318 END_SDF   ;REQUIRED
-                      00319    END   ;REQUIRED
-MPASM  5.30                        JRE235.ASM   3-18-2025  6:10:26         PAGE 30
+0001C4                00322 END_SDF   ;REQUIRED
+                      00323    END   ;REQUIRED
+MPASM  5.30                        JRE235.ASM   3-18-2025  7:15:06         PAGE 30
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
@@ -1598,11 +1604,12 @@ MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
 0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
 0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXX------------ ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Bytes Used:   448
-Program Memory Bytes Free: 15936
+Program Memory Bytes Used:   452
+Program Memory Bytes Free: 15932
 
 
 Errors   :     0
