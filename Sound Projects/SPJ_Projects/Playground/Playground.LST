@@ -1,4 +1,4 @@
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  1
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -7,46 +7,44 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00001    LIST   P=18f242,C=132,T=ON,R=DEC,ST=OFF
                       00002    TITLE  JRE235 Author: Maciej Swic
   00000020            00003 VERNO   EQU     0x20            ;ver 2.00 
-                      00004 ;----------------------------------------------------------------------------
-                      00005 ;   This Sound Definition Langauge (SDL) was generated
-                      00006 ;   by the SPJHelper Design Tool on 2025-03-18
-                      00007 ;----------------------------------------------------------------------------
-                      00008 ;     FUNCTION KEYS DEFINED:   
-                      00009 ;    F2 Horn/Whistle
-                      00010 ;    F3 Brake Release
-                      00011 ;    F4 Track 3, Doors Closing
-                      00012 ;    F7 Tokyo Jingle
-                      00013 ;    F8 Akihabara Jingle
-                      00014 ;    F10 Next Station: Akihabara
-                      00015 ;    F14 Flange
-                      00016 ;    F15 Joint
-                      00017 ;    F20 Mute On/Off
-                      00018 ;----------------------------------
-                      00019 ;   SOUND WAVE FILE HANDLES
-                      00020 ;----------------------------------
-                      00021    cblock   0   ; Start assigning location of  Sound Clips 0, 1, 2, etc.
-  00000000            00022 HNDL_MUTE   ; Internal SILENCE value = 0
-  00000001            00023 E235_startup
-  00000002            00024 E235_idle
-  00000003            00025 E235_idle_run_1
-  00000004            00026 E235_run_1
-  00000005            00027 E235_run_2
-  00000006            00028 E235_run_3
-  00000007            00029 E235_run_1_idle
-  00000008            00030 E235_shutdown
-  00000009            00031 E233_horn_in
-  0000000A            00032 E233_horn_loop
-  0000000B            00033 E233_horn_out
-                      00034    ENDC
+                      00004 ;----------------------------------
+                      00005 ;   SOUND WAVE FILE HANDLES
+                      00006 ;----------------------------------
+                      00007    cblock   0   ; Start assigning location of  Sound Clips 0, 1, 2, etc.
+  00000000            00008 HNDL_MUTE   ; Internal SILENCE value = 0
+  00000001            00009 E235_startup
+  00000002            00010 E235_idle
+  00000003            00011 E235_idle_run_1
+  00000004            00012 E235_run_1
+  00000005            00013 E235_run_2
+  00000006            00014 E235_run_3
+  00000007            00015 E235_run_1_idle
+  00000008            00016 E235_shutdown
+  00000009            00017 E233_horn_in
+  0000000A            00018 E233_horn_loop
+  0000000B            00019 E233_horn_out
+  0000000C            00020 E235_brake_release
+  0000000D            00021 E235_pantograph_up
+  0000000E            00022 E235_pantograph_down
+  0000000F            00023 E235_brake
+  00000010            00024 E235_joint
+  00000011            00025 E235_doors_ringer
+  00000012            00026 E235_track_1
+  00000013            00027 E235_track_2
+  00000014            00028 E235_track_3
+  00000015            00029 E235_doors_are_closing
+  00000016            00030 E235_doors_be_careful
+  00000017            00031 E235_doors_actually_closing
+                      00032    ENDC
+                      00033 ;-----------------------------------------
+                      00034 ;   INCLUDED DIGITRAX PROPRIETARY FILES
                       00035 ;-----------------------------------------
-                      00036 ;   INCLUDED DIGITRAX PROPRIETARY FILES
-                      00037 ;-----------------------------------------
-                      00038 #INCLUDE   SERIES6_Snd_cmd.INC
+                      00036 #INCLUDE   SERIES6_Snd_cmd.INC
                       00001 ;This information is copyrighted all rights reserved. No commercial use permitted without written permis
                       00002 
                       00003         STITLE          "SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY. 
                       00004 
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  2
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  2
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -105,7 +103,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00055 
   00000040            00056 MIN_WAV_LENGTH  EQU     64              ;if this or below (Z=no HNDL) will skip fragment.
                       00057 
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  3
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  3
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -130,7 +128,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00074 ; This Digitrax source file will cross-assemble a binary file with the MACRO capability of any compatibl
                       00075 ;In particular, this source code is compatible and tested with the Microchip Inc. MPASM assembler runnin
                       00076 ; MPLAB IDE 7.20 development environment, available from www.microchip.com.
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  4
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  4
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -189,7 +187,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00127 
                       00128 ;=========================================================
                       00129 ;TTTTTTTTTTTTTTTTTTTTTT
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  5
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  5
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -248,7 +246,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   0000000C            00180 TRIG_SF0        EQU     0x0C            ;headlight/F0 state
   0000000D            00181 TRIG_DIRNOW_CHNG EQU    0x0D            ;have DIR_NOW changed
   0000000E            00182 TRIG_MOVING     EQU     0x0E            ;SPD = Non-Zero
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  6
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  6
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -307,7 +305,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00233 ; and can be read back by TRANSPONDING as external ALARMS etc
                       00234 
   00000050            00235 TRIG_IN_BASE    EQU     0x50                    ;
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  7
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  7
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -366,7 +364,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   0000007B            00286 T_SPD_DEC_IDLE  EQU     TSPD+11
   0000007C            00287 T_SPD_TURNOFF   EQU     TSPD+12
   0000007D            00288 T_SPD_DEC_SP1   EQU     TSPD+13
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  8
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  8
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -425,7 +423,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000019            00339 loop_till_F10   EQU     TRIG_SF10
   0000001A            00340 loop_till_F11   EQU     TRIG_SF11
   0000001B            00341 loop_till_F12   EQU     TRIG_SF12
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE  9
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE  9
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -484,7 +482,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00392 ;FMATH_ADD      EQU     0x80    ;add signed value
   000000A0            00393 FMATH_INTEGRATE EQU     0xA0    ;add signed value to WORK,MATH_FLAG SET if over/underflo,or clamp LIMIT 
   000000C0            00394 FMATH_TEST_ZERO EQU     0xC0    ; see if WORK under MASK is ZERO, if ZERO set MATH bit
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 10
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 10
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -543,7 +541,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000017            00445 WORK_SKAT_SLOW  EQU     0x17
                       00446 
   00000018            00447 WORK_DISTANCE   EQU     0x18
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 11
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 11
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -602,7 +600,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000038            00498 SCAT_CMD_SAWTOOTH_REV   EQU     0x38
                       00499 
   00000003            00500 SCAT_PERIOD_POLARITY_BIT EQU    3               ;1= reverse WORK influence
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 12
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 12
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -661,7 +659,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   00000006            00551 SUM_BIT         EQU     6               ;1=add ARG1/2 variation,0=multiply
   00000005            00552 MG1_BIT         EQU     5               ;these code meaning of LO nibble
   00000004            00553 MG0_BIT         EQU     4
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 13
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 13
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -720,7 +718,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00604 
                       00605 
                       00606 
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 14
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 14
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -779,7 +777,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00657         ENDC
                       00658         
                       00659 ;CV133, SNDCV_STEAM /DRIVER size bit7=1 means EXTERNAL INPUT_0 generates a special CAM code as well
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 15
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 15
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -806,13 +804,13 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
   0000001C            00678 MAXG_STEAM      EQU     0x1C
   0000007E            00679 MAXP_STEAM      EQU     0x7E            ;was 3E- make more explosive!
                       00680 
-                      00039 #INCLUDE   SERIES6_snd16_macs.INC
+                      00037 #INCLUDE   SERIES6_snd16_macs.INC
                       00001 ;This information is copyrighted all rights reserved. No commercial use permitted without written permis
                       00002 
                       00003         STITLE          "SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOL
                       00004 
                       00005 
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 16
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 16
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -871,7 +869,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00056 
                       00057 ;-------------------
                       00058 ;CHNL_END       EQU     0xFF            ;this CHNL number stops SCHEME evaluation
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 17
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 17
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -930,7 +928,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00109 ; 16 bit version uses the simple 2 byte PLAY macro, and substitutes 4 byte XPLAY if hndl> 64
                       00110 
                       00111  
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 18
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 18
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -965,413 +963,541 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00138         DB      SCNT                            ;Number of SCHEMES      
                       00139         DB      CCNT                            ;Number of CHANNELS 
                       00140         ENDM
+                      00038 ;-----------------------------------------
+                      00039 ;   SYSTEM VARIABLES
                       00040 ;-----------------------------------------
-                      00041 ;   SYSTEM VARIABLES
-                      00042 ;-----------------------------------------
-  00000086            00043 AuthorCode   EQU   0x86   ; AUTHOR code Maciej Swic (CV 252)
-  00000005            00044 SubID   EQU   5  ; Project #5 - Designed using SPJHelper
+  00000086            00041 AuthorCode   EQU   0x86   ; AUTHOR code Maciej Swic (CV 252)
+  00000005            00042 SubID   EQU   5  ; Project #5 - Designed using SPJHelper
+                      00043 ;------------------------------------------
+                      00044 ;   LOCATION FOR CV ADDRESSES
                       00045 ;------------------------------------------
-                      00046 ;   LOCATION FOR CV ADDRESSES
-                      00047 ;------------------------------------------
-                      00048    cblock   SCV_FREEFORM   ; Start assigning (after std Digitrax) for CV140, CV141, etc.
-  0000008B            00049 SCV_140   ;CV140  Power Unit Volume [64]
-  0000008C            00050 SCV_141   ;CV141  Horn Volume [64]
-                      00051    ENDC
-                      00052 ;--------------------------------------------------------------
-                      00053 ; Previously defined SCVs - listed here for reference convience
-                      00054 ;--------------------------------------------------------------
-                      00055 ;   SCV_RESET (CV8)  Reset Decoder values to factory
-                      00056 ;   SCV_MASTER_VOL (CV58) Master Volume Setting
-  00000083            00057 SCV_132 EQU SCV_NOTCH ; Controller Notch Rate
-  00000084            00058 SCV_133 EQU SNDCV_STEAM ; Wheel Diameter. Default 127 for slowest Chuff
-  00000085            00059 SCV_134 EQU SCV_STGEAR ; Wheel Ratio. Default 32 = 100%
-  00000086            00060 SCV_135 EQU SCV_MUTE_VOL; Global volume when muted. Default 0
-  0000008A            00061 SCV_139 EQU SCV_DISTANCE_RATE ; Time value till Gauge Trigger. Default 63 = 9 min
-                      00062 ;------------------------------------------------------------------
-                      00063 ;   LOCAL VARIABLES (Work Registers and Work_User Memory Registers)                                     
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 19
+                      00046    cblock   SCV_FREEFORM   ; Start assigning (after std Digitrax) for CV140, CV141, etc.
+  0000008B            00047 SCV_140   ;CV140  Motor Volume [64]
+  0000008C            00048 SCV_141   ;CV141  Horn Volume [64]
+  0000008D            00049 SCV_142   ;CV142  Brake Release Volume [64]
+  0000008E            00050 SCV_143   ;CV143  Braking Volume [64]
+  0000008F            00051 SCV_144   ;CV144  Pantograph Volume [64]
+  00000090            00052 SCV_147   ;CV147  Joint Volume [64]
+  00000091            00053 SCV_148   ;CV147  Joint Rate [?]
+  00000092            00054 SCV_150   ;CV150  Announement Volume [64]
+                      00055    ENDC
+                      00056 ;--------------------------------------------------------------
+                      00057 ; Previously defined SCVs - listed here for reference convience
+                      00058 ;--------------------------------------------------------------
+                      00059 ;   SCV_RESET (CV8)  Reset Decoder values to factory
+                      00060 ;   SCV_MASTER_VOL (CV58) Master Volume Setting
+  00000083            00061 SCV_132 EQU SCV_NOTCH ; Controller Notch Rate
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 19
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00064 ;------------------------------------------------------------------
-  00000000            00065 WORK_SPEED        EQU   0x00
-  00000001            00066 WORK_NOTCH        EQU   0x01
-  00000000            00067 NOTCH0        EQU 0x00
-  00000010            00068 NOTCH1        EQU       0x10  ; Gives a ~33% split at a Notch Rate of 64 (CV132)
-  00000020            00069 NOTCH2        EQU       0x20
-  00000050            00070 NOTCH3        EQU       0x50
-  00000002            00071 WORK_SERVO        EQU   0x02
-  00000003            00072 WORK_MVOLTS       EQU   0x03
-  00000005            00073 WORK_USER_LINES   EQU   0x05
-  00000006            00074 WORK_TIMEBASE     EQU   0x06
-  00000007            00075 WORK_STATUS_BITS  EQU   0x07
-  00000008            00076 WORK_GLBL_GAIN    EQU   0x08
-  00000009            00077 WORK_GAIN_TRIM    EQU   0x09
-  0000000A            00078 WORK_PITCH_TRIM   EQU   0x0A
-  0000000B            00079 WORK_SPEED_DELTA  EQU   0x0B
-  00000010            00080 WORK_SCATTER4     EQU   0x10
-  00000011            00081 WORK_SCATTER5     EQU   0x11
-  00000012            00082 WORK_SCATTER6     EQU   0x12
-  00000013            00083 WORK_SCATTER7     EQU   0x13
-  00000014            00084 WORK_ACHNL_7F     EQU   0x14
-  00000015            00085 WORK_ACHNL_7E     EQU   0x15
-  00000016            00086 WORK_SKAT_FAST    EQU   0x16
-  00000017            00087 WORK_SKAT_SLOW    EQU   0x17
-  00000018            00088 WORK_DISTANCE     EQU   0x18
-  00000019            00089 WORK_PEAK_SPD     EQU   0x19
-  0000001A            00090 WORK_USER_0       EQU   0x1A
-  0000001B            00091 WORK_USER_1       EQU   0x1B
-  0000001C            00092 WORK_USER_2       EQU   0x1C
-  0000001D            00093 WORK_USER_3       EQU   0x1D
-  0000001E            00094 WORK_USER_4       EQU   0x1E
-  0000001F            00095 WORK_USER_5       EQU   0x1F
-                      00096 ;========================================================================================
-                      00097 ; START SCHEME 0                   
-                      00098 ;========================================================================================
-000000                00099    ORG   0                                                                      
-                      00100    SKEME_START   0   ; defines the start of scheme 0
+  00000084            00062 SCV_133 EQU SNDCV_STEAM ; Wheel Diameter. Default 127 for slowest Chuff
+  00000085            00063 SCV_134 EQU SCV_STGEAR ; Wheel Ratio. Default 32 = 100%
+  00000086            00064 SCV_135 EQU SCV_MUTE_VOL; Global volume when muted. Default 0
+  0000008A            00065 SCV_139 EQU SCV_DISTANCE_RATE ; Time value till Gauge Trigger. Default 63 = 9 min
+                      00066 ;------------------------------------------------------------------
+                      00067 ;   LOCAL VARIABLES (Work Registers and Work_User Memory Registers)                                     
+                      00068 ;------------------------------------------------------------------
+  00000000            00069 WORK_SPEED        EQU   0x00
+  00000001            00070 WORK_NOTCH        EQU   0x01
+  00000000            00071 NOTCH0        EQU 0x00
+  00000010            00072 NOTCH1        EQU       0x10  ; Gives a ~33% split at a Notch Rate of 64 (CV132)
+  00000020            00073 NOTCH2        EQU       0x20
+  00000050            00074 NOTCH3        EQU       0x50
+  00000002            00075 WORK_SERVO        EQU   0x02
+  00000003            00076 WORK_MVOLTS       EQU   0x03
+  00000005            00077 WORK_USER_LINES   EQU   0x05
+  00000006            00078 WORK_TIMEBASE     EQU   0x06
+  00000007            00079 WORK_STATUS_BITS  EQU   0x07
+  00000008            00080 WORK_GLBL_GAIN    EQU   0x08
+  00000009            00081 WORK_GAIN_TRIM    EQU   0x09
+  0000000A            00082 WORK_PITCH_TRIM   EQU   0x0A
+  0000000B            00083 WORK_SPEED_DELTA  EQU   0x0B
+  00000010            00084 WORK_SCATTER4     EQU   0x10
+  00000011            00085 WORK_SCATTER5     EQU   0x11
+  00000012            00086 WORK_SCATTER6     EQU   0x12
+  00000013            00087 WORK_SCATTER7     EQU   0x13
+  00000014            00088 WORK_ACHNL_7F     EQU   0x14
+  00000015            00089 WORK_ACHNL_7E     EQU   0x15
+  00000016            00090 WORK_SKAT_FAST    EQU   0x16
+  00000017            00091 WORK_SKAT_SLOW    EQU   0x17
+  00000018            00092 WORK_DISTANCE     EQU   0x18
+  00000019            00093 WORK_PEAK_SPD     EQU   0x19
+  0000001A            00094 WORK_MOVING      EQU    0x1A ; 1 = Moving, 0 = Not Moving
+  0000001B            00095 WORK_BRAKED       EQU   0x1B ; 1 = Braked, 0 = Not Braked
+  0000001C            00096 WORK_USER_2       EQU   0x1C
+  0000001D            00097 WORK_USER_3       EQU   0x1D
+  0000001E            00098 WORK_USER_4       EQU   0x1E
+  0000001F            00099 WORK_USER_5       EQU   0x1F
+                      00100 ;========================================================================================
+                      00101 ; START SCHEME 0                   
+                      00102 ;========================================================================================
+000000                00103    ORG   0                                                                      
+                      00104    SKEME_START   0   ; defines the start of scheme 0
   00000000                M SKEME_BASE      SET     $                               ;for offset calc
-000000 00F1 F600          M                 DB      CMD_SKEME_START,(0        &0x1F), high((SKEME_NEXT0-$)+2),        low((SKEME_NEX
-                      00101    SDL_VERSION VERSION_1   ; Required by SDL
+000000 00F1 4E01          M                 DB      CMD_SKEME_START,(0        &0x1F), high((SKEME_NEXT0-$)+2),        low((SKEME_NEX
+                      00105    SDL_VERSION VERSION_1   ; Required by SDL
 000004 1082               M                 DB      CMD_MARK_VERSION,VERSION_1
-                      00102 ;---------------------------------------------
-                      00103 ;  START CHANNEL   1 
-                      00104 ;---------------------------------------------
-000006                00105 CHNL_01_S0
-                      00106    CHANNEL_START   1
+                      00106 ;---------------------------------------------
+                      00107 ;  START CHANNEL   1 
+                      00108 ;---------------------------------------------
+000006                00109 CHNL_01_S0
+                      00110    CHANNEL_START   1
 000006 0181               M                 DB      CMD_START_CHNL,1
-                          M ;CTEMP += 1
-                      00107 ;---------------------------------------------
-                      00108  
-                      00109    ; Startup Sound
-                      00110    INITIATE_SOUND TRIG_SND_ACTV11,NORMAL+NO_PREEMPT_TRIG
-000008 0F94               M                 DB      CMD_INITIATE_SND + ((NORMAL+NO_PREEMPT_TRIG) & 0x07), TRIG_SND_ACTV11 +((NORMAL+
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 20
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 20
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+                          M ;CTEMP += 1
+                      00111 ;---------------------------------------------
+                      00112  
+                      00113    ; Startup Sound
+                      00114    INITIATE_SOUND TRIG_SND_ACTV11,NORMAL+NO_PREEMPT_TRIG
+000008 0F94               M                 DB      CMD_INITIATE_SND + ((NORMAL+NO_PREEMPT_TRIG) & 0x07), TRIG_SND_ACTV11 +((NORMAL+
   00000001                M ICNT += 1
                           M 
-                      00111    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 0,0
-00000A 00E3 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,0,0
-                      00112    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-00000E 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00113    PLAY HNDL_MUTE,no_loop,loop_STD
+                      00115    LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_148,SINTEN_LOW+WORK_SPEED   ; Set joint ti
+00000A 20E4 4091          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SCATTER&0x0F),SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_148,SINTEN_L
+                      00116    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 0,0
+00000E 00E3 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,0,0
+                      00117    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_144,SCALE_F  ;Set Volume
+000012 80E1 0F8F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_144,SCALE_F
+                      00118    PLAY HNDL_MUTE,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000012 0040               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (HNDL_MUTE & 0x3F)+((no_loop<<6)&0xC0) 
+000016 0040               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (HNDL_MUTE & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00114    PLAY E235_startup,no_loop,loop_STD
+                      00119    PLAY E235_pantograph_up,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000014 0140               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_startup & 0x3F)+((no_loop<<6)&0xC0) 
+000018 0D40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_pantograph_up & 0x3F)+((no_loop<<6)&0x
                           M         list
-                      00115    PLAY E235_idle,no_loop,loop_STD
+                      00120    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+00001A 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00121    DELAY_SOUND DELAY_THIS,40,DELAY_GLOBAL
+00001E 28B5               M                 DB      CMD_DELAY_SND + (DELAY_GLOBAL & 0x01), (40 & 0x7F)+DELAY_THIS 
+                      00122    PLAY E235_startup,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000016 0240               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_idle & 0x3F)+((no_loop<<6)&0xC0) 
+000020 0140               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_startup & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00116    END_SOUND
-000018 0000               M                 DB      CMD_END_SND,0
-                      00117 
-                      00118    ; Shutdown Sound
-                      00119    INITIATE_SOUND TRIG_SND_ACTV11,NOT_TRIG
-00001A 8F90               M                 DB      CMD_INITIATE_SND + ((NOT_TRIG) & 0x07), TRIG_SND_ACTV11 +((NOT_TRIG) & 0x80)
+                      00123    PLAY E235_idle,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000022 0240               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_idle & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00124    END_SOUND
+000024 0000               M                 DB      CMD_END_SND,0
+                      00125 
+                      00126    ; Shutdown Sound
+                      00127    INITIATE_SOUND TRIG_SND_ACTV11,NOT_TRIG
+000026 8F90               M                 DB      CMD_INITIATE_SND + ((NOT_TRIG) & 0x07), TRIG_SND_ACTV11 +((NOT_TRIG) & 0x80)
   00000002                M ICNT += 1
                           M 
-                      00120    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-00001C 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00121    PLAY E235_idle,no_loop,loop_STD
+                      00128    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+000028 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00129    PLAY E235_idle,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000020 0240               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_idle & 0x3F)+((no_loop<<6)&0xC0) 
+00002C 0240               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_idle & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00122    PLAY E235_shutdown,no_loop,loop_STD
+                      00130    PLAY E235_shutdown,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000022 0840               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_shutdown & 0x3F)+((no_loop<<6)&0xC0) 
+00002E 0840               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_shutdown & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00123    END_SOUND
-000024 0000               M                 DB      CMD_END_SND,0
-                      00124  
-                      00125    ; Idle to Run Sound
-                      00126    INITIATE_SOUND T_SPD_IDLEXIT,RUN_WHILE_TRIG
-000026 7692               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_IDLEXIT +((RUN_WHILE_TRIG) &
+                      00131    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_144,SCALE_F  ;Set Volume
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 21
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000030 80E1 0F8F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_144,SCALE_F
+                      00132    PLAY E235_pantograph_down,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000034 0E40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_pantograph_down & 0x3F)+((no_loop<<6)&
+                          M         list
+                      00133    END_SOUND
+000036 0000               M                 DB      CMD_END_SND,0
+                      00134  
+                      00135    ; Idle to Run Sound
+                      00136    INITIATE_SOUND T_SPD_IDLEXIT,RUN_WHILE_TRIG
+000038 7692               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_IDLEXIT +((RUN_WHILE_TRIG) &
   00000003                M ICNT += 1
                           M 
-                      00127    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-000028 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00128    PLAY E235_idle_run_1,no_loop,loop_STD
+                      00137    LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_MOVING     ,1,0    ;Set to moving
+00003A 1AE6 0001          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_MOVING,1,0
+                      00138    LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_BRAKED     ,0,0    ;Set to NOT braked
+00003E 1BE6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_BRAKED,0,0
+                      00139    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+000042 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00140    PLAY E235_idle_run_1,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-00002C 0340               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_idle_run_1 & 0x3F)+((no_loop<<6)&0xC0)
+000046 0340               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_idle_run_1 & 0x3F)+((no_loop<<6)&0xC0)
                           M         list
-                      00129    END_SOUND
-00002E 0000               M                 DB      CMD_END_SND,0
-                      00130 
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 21
-JRE235 Author: Maciej Swic
-SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-                      00131    ; Acceleration Sound
-                      00132    INITIATE_SOUND T_SPD_ACCEL1,RUN_WHILE_TRIG
-000030 7392               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_ACCEL1 +((RUN_WHILE_TRIG) & 
+                      00141    END_SOUND
+000048 0000               M                 DB      CMD_END_SND,0
+                      00142 
+                      00143    ; Acceleration Sound
+                      00144    INITIATE_SOUND T_SPD_ACCEL1,RUN_WHILE_TRIG
+00004A 7392               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_ACCEL1 +((RUN_WHILE_TRIG) & 
   00000004                M ICNT += 1
                           M 
-                      00133    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 4,2
-000032 00E3 0204          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,4,2
-                      00134    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-000036 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00135    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-00003A A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
-                      00136    
-                      00137    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH1
-00003E 01FF 8010          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
-                      00138    PLAY E235_run_1,no_loop,loop_STD
+                      00145    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 4,2
+00004C 00E3 0204          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,4,2
+                      00146    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+000050 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00147    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+000054 A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
+                      00148    
+                      00149    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
+000058 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
+                      00150    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH2,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH2
+00005C 01FF 8020          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH2,COMP_7LSB
+                      00151    PLAY E235_run_1 ,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000042 0440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_1 & 0x3F)+((no_loop<<6)&0xC0) 
+000060 0440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_1 & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00139    
-                      00140    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
-000044 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
-                      00141    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH3
-000048 01FF 8050          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
-                      00142    PLAY E235_run_2,no_loop,loop_STD
+                      00152    
+                      00153    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
+000062 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
+                      00154    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH3
+000066 01FF 8050          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
+                      00155    PLAY E235_run_2,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-00004C 0540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_2 & 0x3F)+((no_loop<<6)&0xC0) 
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 22
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00006A 0540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_2 & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00143    
-                      00144    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH3
-00004E 01FE 8050          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
-                      00145    PLAY E235_run_3,no_loop,loop_STD
+                      00156    
+                      00157    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH3
+00006C 01FE 8050          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
+                      00158    PLAY E235_run_3,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-000052 0640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_3 & 0x3F)+((no_loop<<6)&0xC0) 
+000070 0640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_3 & 0x3F)+((no_loop<<6)&0xC0) 
                           M         list
-                      00146    
-                      00147    END_SOUND
-000054 0000               M                 DB      CMD_END_SND,0
-                      00148  
-                      00149    ; Deceleration Sound
-                      00150    INITIATE_SOUND T_SPD_DECEL1,RUN_WHILE_TRIG
-000056 7892               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_DECEL1 +((RUN_WHILE_TRIG) & 
+                      00159    
+                      00160    END_SOUND
+000072 0000               M                 DB      CMD_END_SND,0
+                      00161  
+                      00162    ; Deceleration Sound
+                      00163    INITIATE_SOUND T_SPD_DECEL1,RUN_WHILE_TRIG
+000074 7892               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_DECEL1 +((RUN_WHILE_TRIG) & 
   00000005                M ICNT += 1
                           M 
-                      00151    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 9,7
-000058 00E3 0709          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,9,7
-                      00152    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-00005C 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00153    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-000060 A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
-                      00154 
-                      00155    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
-000064 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
-                      00156    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH2,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH2
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 22
+                      00164    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 9,7
+000076 00E3 0709          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,9,7
+                      00165    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+00007A 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00166    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+00007E A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
+                      00167 
+                      00168    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
+000082 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
+                      00169    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH2,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH2
+000086 01FF 8020          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH2,COMP_7LSB
+                      00170    PLAY E235_run_1 ,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+00008A 0440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_1 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00171    
+                      00172    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
+00008C 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
+                      00173    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH3
+000090 01FF 8050          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
+                      00174    PLAY E235_run_2,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000094 0540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_2 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00175    
+                      00176    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH3
+000096 01FE 8050          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
+                      00177    PLAY E235_run_3,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+00009A 0640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_3 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00178    
+                      00179    END_SOUND
+00009C 0000               M                 DB      CMD_END_SND,0
+                      00180 
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 23
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000068 01FF 8020          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH2,COMP_7LSB
-                      00157    PLAY E235_run_1 ,no_loop,loop_STD
-                          M         list ;2 byte PLAY  [HANDLE]
-00006C 0440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_1 & 0x3F)+((no_loop<<6)&0xC0) 
-                          M         list
-                      00158    
-                      00159    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
-00006E 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
-                      00160    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH3
-000072 01FF 8050          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
-                      00161    PLAY E235_run_2,no_loop,loop_STD
-                          M         list ;2 byte PLAY  [HANDLE]
-000076 0540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_2 & 0x3F)+((no_loop<<6)&0xC0) 
-                          M         list
-                      00162    
-                      00163    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH3
-000078 01FE 8050          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
-                      00164    PLAY E235_run_3,no_loop,loop_STD
-                          M         list ;2 byte PLAY  [HANDLE]
-00007C 0640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_3 & 0x3F)+((no_loop<<6)&0xC0) 
-                          M         list
-                      00165    
-                      00166    END_SOUND
-00007E 0000               M                 DB      CMD_END_SND,0
-                      00167 
-                      00168    ; Run Sound
-                      00169    INITIATE_SOUND T_SPD_RUN,RUN_WHILE_TRIG
-000080 7792               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_RUN +((RUN_WHILE_TRIG) & 0x8
+                      00181    ; Run Sound
+                      00182    INITIATE_SOUND T_SPD_RUN,RUN_WHILE_TRIG
+00009E 7792               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), T_SPD_RUN +((RUN_WHILE_TRIG) & 0x8
   00000006                M ICNT += 1
                           M 
-                      00170    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 6,5
-000082 00E3 0506          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,6,5
-                      00171    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-000086 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00172    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-00008A A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
-                      00173 
-                      00174    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
-00008E 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
-                      00175    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH2,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH2
-000092 01FF 8020          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH2,COMP_7LSB
-                      00176    PLAY E235_run_1,loop_till_init_TRIG,loop_INVERT
+                      00183    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 6,5
+0000A0 00E3 0506          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,6,5
+                      00184    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+0000A4 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00185    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+0000A8 A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
+                      00186 
+                      00187    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
+0000AC 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
+                      00188    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH2,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH2
+0000B0 01FF 8020          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH2,COMP_7LSB
+                      00189    PLAY E235_run_1,loop_till_init_TRIG,loop_INVERT
                           M         list ;2 byte PLAY  [HANDLE]
-000096 C449               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_run_1 & 0x3F)+((loop_til
+0000B4 C449               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_run_1 & 0x3F)+((loop_til
                           M         list
-                      00177    
-                      00178    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
-000098 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
-                      00179    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH3
-00009C 01FF 8050          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
-                      00180    PLAY E235_run_2,loop_till_init_TRIG,loop_INVERT
+                      00190    
+                      00191    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH1
+0000B6 01FE 8010          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
+                      00192    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_GRTR  ; Skip next if WORK_NOTCH > NOTCH3
+0000BA 01FF 8050          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
+                      00193    PLAY E235_run_2,loop_till_init_TRIG,loop_INVERT
                           M         list ;2 byte PLAY  [HANDLE]
-0000A0 C549               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_run_2 & 0x3F)+((loop_til
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 23
-JRE235 Author: Maciej Swic
-SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
+0000BE C549               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_run_2 & 0x3F)+((loop_til
                           M         list
-                      00181    
-                      00182    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH3
-0000A2 01FE 8050          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
-                      00183    PLAY E235_run_3,loop_till_init_TRIG,loop_INVERT
+                      00194    
+                      00195    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH3,COMP_7LSB,SKIP_LESS  ; Skip next if WORK_NOTCH < NOTCH3
+0000C0 01FE 8050          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+IMMED_DATA,WORK_NOTCH,NOTCH3,COMP_7LSB
+                      00196    PLAY E235_run_3,loop_till_init_TRIG,loop_INVERT
                           M         list ;2 byte PLAY  [HANDLE]
-0000A6 C649               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_run_3 & 0x3F)+((loop_til
+0000C4 C649               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_run_3 & 0x3F)+((loop_til
                           M         list
-                      00184    
-                      00185    END_SOUND
-0000A8 0000               M                 DB      CMD_END_SND,0
-                      00186  
-                      00187    ; Run to Idle Sound
-                      00188    INITIATE_SOUND TRIG_MOVING,NOT_TRIG
-0000AA 8E90               M                 DB      CMD_INITIATE_SND + ((NOT_TRIG) & 0x07), TRIG_MOVING +((NOT_TRIG) & 0x80)
+                      00197    
+                      00198    END_SOUND
+0000C6 0000               M                 DB      CMD_END_SND,0
+                      00199  
+                      00200    ; Run to Idle Sound
+                      00201    INITIATE_SOUND TRIG_MOVING,NOT_TRIG
+0000C8 8E90               M                 DB      CMD_INITIATE_SND + ((NOT_TRIG) & 0x07), TRIG_MOVING +((NOT_TRIG) & 0x80)
   00000007                M ICNT += 1
                           M 
-                      00189    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-0000AC 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00190    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH0,COMP_7LSB,SKIP_SAME
-0000B0 01FC 8000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_NOTCH,NOTCH0,COMP_7LSB
-                      00191    PLAY E235_run_1_idle,no_loop,loop_STD
+                      00202    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+0000CA 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00203    MASK_COMPARE WORK_MOVING       ,IMMED_DATA,0,COMP_7LSB,SKIP_SAME    ; Skip next if NOT moving
+0000CE 1AFC 8000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_MOVING,0,COMP_7LSB
+                      00204    PLAY E235_run_1_idle,no_loop,loop_STD
                           M         list ;2 byte PLAY  [HANDLE]
-0000B4 0740               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_1_idle & 0x3F)+((no_loop<<6)&0xC0)
+0000D2 0740               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_run_1_idle & 0x3F)+((no_loop<<6)&0xC0)
                           M         list
-                      00192    END_SOUND
-0000B6 0000               M                 DB      CMD_END_SND,0
-                      00193 
-                      00194    ; Idle Sound
-                      00195    INITIATE_SOUND TRIG_SND_ACTV11,RUN_WHILE_TRIG
-0000B8 0F92               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), TRIG_SND_ACTV11 +((RUN_WHILE_TRIG)
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 24
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00205    LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_MOVING     ,0,0    ;Set to NOT moving
+0000D4 1AE6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_MOVING,0,0
+                      00206    END_SOUND
+0000D8 0000               M                 DB      CMD_END_SND,0
+                      00207 
+                      00208    ; Idle Sound
+                      00209    INITIATE_SOUND TRIG_SND_ACTV11,RUN_WHILE_TRIG
+0000DA 0F92               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), TRIG_SND_ACTV11 +((RUN_WHILE_TRIG)
   00000008                M ICNT += 1
                           M 
-                      00196    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 9,7
-0000BA 00E3 0709          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,9,7
-                      00197    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
-0000BE 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
-                      00198    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
-0000C2 A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
-                      00199    PLAY E235_idle,loop_till_init_TRIG,loop_INVERT
+                      00210    LOAD_MODIFIER MTYPE_BLEND, BLEND_CURRENT_CHNL, 9,7
+0000DC 00E3 0709          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,9,7
+                      00211    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_140,SCALE_F  ;Set Volume
+0000E0 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_140,SCALE_F
+                      00212    LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+0000E4 A1E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DI
+                      00213    MASK_COMPARE WORK_NOTCH,IMMED_DATA,NOTCH1,COMP_7LSB,SKIP_GRTR
+0000E8 01FF 8010          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,WORK_NOTCH,NOTCH1,COMP_7LSB
+                      00214    PLAY E235_idle,loop_till_init_TRIG,loop_INVERT
                           M         list ;2 byte PLAY  [HANDLE]
-0000C6 C249               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_idle & 0x3F)+((loop_till
+0000EC C249               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E235_idle & 0x3F)+((loop_till
                           M         list
-                      00200    END_SOUND
-0000C8 0000               M                 DB      CMD_END_SND,0
-                      00201 ;---------------------------------------------
-                      00202 ;  START CHANNEL 2
-                      00203 ;---------------------------------------------
-0000CA                00204 CHNL_02_S0
-                      00205    CHANNEL_START        2
-0000CA 0281               M                 DB      CMD_START_CHNL,2
+                      00215    END_SOUND
+0000EE 0000               M                 DB      CMD_END_SND,0
+                      00216 ;---------------------------------------------
+                      00217 ;  START CHANNEL 2
+                      00218 ;---------------------------------------------
+0000F0                00219 CHNL_02_S0
+                      00220    CHANNEL_START        2
+0000F0 0281               M                 DB      CMD_START_CHNL,2
                           M ;CTEMP += 1
-                      00206 ;---------------------------------------------
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 24
-JRE235 Author: Maciej Swic
-SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-                      00207  
-                      00208    INITIATE_SOUND TRIG_SND_ACTV11,NORMAL
-0000CC 0F90               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SND_ACTV11 +((NORMAL) & 0x80)
+                      00221 ;---------------------------------------------
+                      00222  
+                      00223    ; Start Motor
+                      00224    INITIATE_SOUND TRIG_SND_ACTV11,NORMAL
+0000F2 0F90               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SND_ACTV11 +((NORMAL) & 0x80)
   00000009                M ICNT += 1
                           M 
-                      00209    LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_OR+WORK_STATUS_BITS,WKSB_RUN_MASK,MERGE_ALL_MASK    ;Enable Moto
-0000CE 47E6 0004          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_OR+WORK_STATUS_BITS,WKSB_RUN_MASK,
-                      00210    LOAD_MODIFIER MTYPE_WORK_IMMED, FMATH_LODE+WORK_DISTANCE,0,0   ;reset work register
-0000D2 18E6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_DISTANCE,0,0
-                      00211    LOAD_MODIFIER MTYPE_SNDCV, SCV_139,31,0    ;Set to ~4.5 minutes
-0000D6 8AE5 001F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_139,31,0
-                      00212    LOAD_MODIFIER MTYPE_WORK_IMMED, FMATH_LODE+WORK_DISTANCE,0,0   ;reset work register
-0000DA 18E6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_DISTANCE,0,0
-                      00213    LOAD_MODIFIER MTYPE_SNDCV, SCV_139,31,0    ;Set to ~4.5 minutes
-0000DE 8AE5 001F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_139,31,0
-                      00214    END_SOUND
-0000E2 0000               M                 DB      CMD_END_SND,0
-                      00215 
-                      00216    INITIATE_SOUND TRIG_SF2,NORMAL
-0000E4 0990               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SF2 +((NORMAL) & 0x80)
+                      00225    LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_OR+WORK_STATUS_BITS,WKSB_RUN_MASK,MERGE_ALL_MASK    ;Enable Moto
+0000F4 47E6 0004          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_OR+WORK_STATUS_BITS,WKSB_RUN_MASK,
+                      00226    LOAD_MODIFIER MTYPE_WORK_IMMED, FMATH_LODE+WORK_DISTANCE,0,0   ;reset work register
+0000F8 18E6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_DISTANCE,0,0
+                      00227    LOAD_MODIFIER MTYPE_SNDCV, SCV_139,1,0    ;Set to ~4.5 minutes
+0000FC 8AE5 0001          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_139,1,0
+                      00228    END_SOUND
+000100 0000               M                 DB      CMD_END_SND,0
+                      00229 
+                      00230    ; Horn
+                      00231    INITIATE_SOUND TRIG_SF2,NORMAL
+000102 0990               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SF2 +((NORMAL) & 0x80)
   0000000A                M ICNT += 1
                           M 
-                      00217    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_141,SCALE_F  ;Set Volume
-0000E6 80E1 0F8C          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_141,SCALE_F
-                      00218    PLAY E233_horn_in,no_loop,loop_STD
-                          M         list ;2 byte PLAY  [HANDLE]
-0000EA 0940               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E233_horn_in & 0x3F)+((no_loop<<6)&0xC0) 
-                          M         list
-                      00219    PLAY E233_horn_loop,loop_till_init_TRIG,loop_INVERT
-                          M         list ;2 byte PLAY  [HANDLE]
-0000EC CA49               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E233_horn_loop & 0x3F)+((loop
-                          M         list
-                      00220    PLAY E233_horn_out,no_loop,loop_STD
-                          M         list ;2 byte PLAY  [HANDLE]
-0000EE 0B40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E233_horn_out & 0x3F)+((no_loop<<6)&0xC0) 
-                          M         list
-                      00221    END_SOUND
-0000F0 0000               M                 DB      CMD_END_SND,0
-                      00222 ;---------------------------------------------
-                      00223 ;  START CHANNEL 3
-                      00224 ;---------------------------------------------
-0000F2                00225 CHNL_03_S0
-                      00226    CHANNEL_START   3
-0000F2 0381               M                 DB      CMD_START_CHNL,3
-                          M ;CTEMP += 1
-                      00227 ;---------------------------------------------
-                      00228 
-                      00229 ;---------------------------------------------
-                      00230 ;  START CHANNEL 4      'Series 6 Premium Only
-                      00231 ;---------------------------------------------
-0000F4                00232 CHNL_04_S0
-                      00233    CHANNEL_START   4
-0000F4 0481               M                 DB      CMD_START_CHNL,4
-MPASM  5.30                    PLAYGROUND.ASM   3-18-2025  20:06:40         PAGE 25
+                      00232    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_141,SCALE_F  ;Set Volume
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 25
 JRE235 Author: Maciej Swic
 SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                          M ;CTEMP += 1
-                      00234 ;---------------------------------------------
-                      00235  
-                      00236 ;  END OF SCHEME 0              
+000104 80E1 0F8C          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_141,SCALE_F
+                      00233    PLAY E233_horn_in,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000108 0940               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E233_horn_in & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00234    PLAY E233_horn_loop,loop_till_init_TRIG,loop_INVERT
+                          M         list ;2 byte PLAY  [HANDLE]
+00010A CA49               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (E233_horn_loop & 0x3F)+((loop
+                          M         list
+                      00235    PLAY E233_horn_out,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+00010C 0B40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E233_horn_out & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00236    END_SOUND
+00010E 0000               M                 DB      CMD_END_SND,0
                       00237 ;---------------------------------------------
-                      00238    SKEME_END   0
-0000F6                    M SKEME_NEXT0
+                      00238 ;  START CHANNEL 3
+                      00239 ;---------------------------------------------
+000110                00240 CHNL_03_S0
+                      00241    CHANNEL_START   3
+000110 0381               M                 DB      CMD_START_CHNL,3
+                          M ;CTEMP += 1
+                      00242 ;---------------------------------------------
+                      00243 
+                      00244    INITIATE_SOUND TRIG_SF6,NORMAL
+000112 1190               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SF6 +((NORMAL) & 0x80)
+  0000000B                M ICNT += 1
+                          M 
+                      00245    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_142,SCALE_F  ;Set Volume
+000114 80E1 0F8D          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_142,SCALE_F
+                      00246    PLAY E235_doors_ringer,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000118 1140               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_doors_ringer & 0x3F)+((no_loop<<6)&0xC
+                          M         list
+                      00247    DELAY_SOUND DELAY_THIS,16,DELAY_GLOBAL
+00011A 10B5               M                 DB      CMD_DELAY_SND + (DELAY_GLOBAL & 0x01), (16 & 0x7F)+DELAY_THIS 
+                      00248    PLAY E235_track_3,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+00011C 1440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_track_3 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00249    DELAY_SOUND DELAY_THIS,33,DELAY_GLOBAL
+00011E 21B5               M                 DB      CMD_DELAY_SND + (DELAY_GLOBAL & 0x01), (33 & 0x7F)+DELAY_THIS 
+                      00250    PLAY E235_doors_are_closing,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000120 1540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_doors_are_closing & 0x3F)+((no_loop<<6
+                          M         list
+                      00251    DELAY_SOUND DELAY_THIS,29,DELAY_GLOBAL
+000122 1DB5               M                 DB      CMD_DELAY_SND + (DELAY_GLOBAL & 0x01), (29 & 0x7F)+DELAY_THIS 
+                      00252    PLAY E235_doors_be_careful,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000124 1640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_doors_be_careful & 0x3F)+((no_loop<<6)
+                          M         list
+                      00253    DELAY_SOUND DELAY_THIS,41,DELAY_GLOBAL
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 26
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000126 29B5               M                 DB      CMD_DELAY_SND + (DELAY_GLOBAL & 0x01), (41 & 0x7F)+DELAY_THIS 
+                      00254    PLAY E235_doors_actually_closing,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000128 1740               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_doors_actually_closing & 0x3F)+((no_lo
+                          M         list
+                      00255    END_SOUND
+00012A 0000               M                 DB      CMD_END_SND,0
+                      00256 ;---------------------------------------------
+                      00257 ;  START CHANNEL 4      'Series 6 Premium Only
+                      00258 ;---------------------------------------------
+00012C                00259 CHNL_04_S0
+                      00260    CHANNEL_START   4
+00012C 0481               M                 DB      CMD_START_CHNL,4
+                          M ;CTEMP += 1
+                      00261 ;---------------------------------------------
+                      00262 
+                      00263    ; Brake Release
+                      00264    INITIATE_SOUND T_SPD_IDLEXIT,ZAP
+00012E 7691               M                 DB      CMD_INITIATE_SND + ((ZAP)    & 0x07), T_SPD_IDLEXIT +((ZAP) & 0x80)
+  0000000C                M ICNT += 1
+                          M 
+                      00265    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_142,SCALE_F  ;Set Volume
+000130 80E1 0F8D          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_142,SCALE_F
+                      00266    MASK_COMPARE WORK_STATUS_BITS,IMMED_DATA,WKSB_RUN_MASK,COMP_7LSB,SKIP_SAME  ; Skip next if motor is N
+000134 07FC 8004          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_STATUS_BITS,WKSB_RUN_MASK,COMP_7LSB
+                      00267    PLAY E235_brake_release,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000138 0C40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_brake_release & 0x3F)+((no_loop<<6)&0x
+                          M         list
+                      00268    END_SOUND
+00013A 0000               M                 DB      CMD_END_SND,0
+                      00269 
+                      00270    ; Braking
+                      00271    INITIATE_SOUND TRIG_MOVING,NOT_TRIG
+00013C 8E90               M                 DB      CMD_INITIATE_SND + ((NOT_TRIG) & 0x07), TRIG_MOVING +((NOT_TRIG) & 0x80)
+  0000000D                M ICNT += 1
+                          M 
+                      00272    LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_143,SCALE_F  ;Set Volume
+00013E 80E1 0F8E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_143,SCALE_F
+                      00273    MASK_COMPARE WORK_BRAKED,IMMED_DATA,1,COMP_7LSB,SKIP_SAME
+000142 1BFC 8001          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_BRAKED,1,COMP_7LSB
+                      00274    ;SKIP_ON_TRIGGER TRIG_FALSE,TRIG_MOVING ; Skip if not moving
+                      00275    PLAY E235_brake,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000146 0F40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (E235_brake & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00276    LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_BRAKED     ,1,0    ;Set to braked
+000148 1BE6 0001          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_BRAKED,1,0
+                      00277    END_SOUND
+00014C 0000               M                 DB      CMD_END_SND,0
+                      00278 
+                      00279    ; Joint
+                      00280    ;INITIATE_SOUND TRIG_SCAT0,NORMAL
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 27
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00281    ;LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_147,SCALE_F  ;Set Volume
+                      00282    ;LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+                      00283    ;SKIP_ON_TRIGGER TRIG_FALSE,TRIG_MOVING ; Skip if not moving
+                      00284    ;PLAY E235_joint,no_loop,loop_STD
+                      00285    ;LOAD_MODIFIER MTYPE_SCATTER,SCAT_CMD_PERIOD+SCAT_CHNL0,SCV_148,SINTEN_LOW+WORK_SPEED   ;set timer
+                      00286    ;END_SOUND
+                      00287    
+                      00288    ;INITIATE_SOUND TRIG_DISTANCE,NORMAL
+                      00289    ;LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_147,SCALE_F  ;Set Volume
+                      00290    ;LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,MAXP_DIESEL,DITHERP_DIESEL  ;set pitch
+                      00291    ;PLAY E235_joint,no_loop,loop_STD
+                      00292    ;END_SOUND
+                      00293 
+                      00294 ;  END OF SCHEME 0              
+                      00295 ;---------------------------------------------
+                      00296    SKEME_END   0
+00014E                    M SKEME_NEXT0
   00000001                M SCNT += 1
                           M ;CCNT=CTEMP                             ;xfer MAX value seen in last scheme
                           M ;CTEMP = 0
-                      00239 ;---------------------------------------------
-                      00240 ;  MARK END OF SDL      
-                      00241 ;---------------------------------------------
-                      00242    SKEME_START   CLOSE_SKEME   ;REQUIRED
-  000000F6                M SKEME_BASE      SET     $                               ;for offset calc
-0000F6 1FF1 0400          M                 DB      CMD_SKEME_START,(CLOSE_SKEME &0x1F), high((SKEME_NEXT1-$)+2),     low((SKEME_NEX
-                      00243    SKEME_END   CLOSE_SKEME   ;REQUIRED
-0000FA                    M SKEME_NEXT1
+                      00297 ;---------------------------------------------
+                      00298 ;  MARK END OF SDL      
+                      00299 ;---------------------------------------------
+                      00300    SKEME_START   CLOSE_SKEME   ;REQUIRED
+  0000014E                M SKEME_BASE      SET     $                               ;for offset calc
+00014E 1FF1 0400          M                 DB      CMD_SKEME_START,(CLOSE_SKEME &0x1F), high((SKEME_NEXT1-$)+2),     low((SKEME_NEX
+                      00301    SKEME_END   CLOSE_SKEME   ;REQUIRED
+000152                    M SKEME_NEXT1
   00000002                M SCNT += 1
                           M ;CCNT=CTEMP                             ;xfer MAX value seen in last scheme
                           M ;CTEMP = 0
-0000FA                00244 END_SDF   ;REQUIRED
-                      00245    END   ;REQUIRED
+000152                00302 END_SDF   ;REQUIRED
+                      00303    END   ;REQUIRED
 
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
@@ -1379,12 +1505,20 @@ MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
 0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
 0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXX------
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XX-------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Bytes Used:   250
-Program Memory Bytes Free: 16134
+Program Memory Bytes Used:   338
+Program Memory Bytes Free: 16046
+
+
+MPASM  5.30                    PLAYGROUND.ASM   3-19-2025  1:36:37         PAGE 28
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013 Digitrax Inc.
+
 
 
 Errors   :     0
