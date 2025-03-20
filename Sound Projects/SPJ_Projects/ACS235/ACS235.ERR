@@ -1,0 +1,9 @@
+Warning[202] C:\SPJ_PROJECTS\ACS235\../SFX3P0_SND_MACS.INC 41 : Argument out of range.  Least significant bits used.
+Warning[202] C:\SPJ_PROJECTS\ACS235\../SFX3P0_SND_MACS.INC 51 : Argument out of range.  Least significant bits used.
+Warning[202] C:\SPJ_PROJECTS\ACS235\../SFX3P0_SND_MACS.INC 41 : Argument out of range.  Least significant bits used.
+Warning[202] C:\SPJ_PROJECTS\ACS235\../SFX3P0_SND_MACS.INC 41 : Argument out of range.  Least significant bits used.
+Warning[207] C:\SPJ_PROJECTS\ACS235\ACS235.ASM 704 : Found label after column 1. (ICNT)
+Warning[207] C:\SPJ_PROJECTS\ACS235\ACS235.ASM 705 : Found label after column 1. (TEMP)
+Warning[207] C:\SPJ_PROJECTS\ACS235\ACS235.ASM 706 : Found label after column 1. (MAX_SCHEMES)
+Warning[207] C:\SPJ_PROJECTS\ACS235\ACS235.ASM 707 : Found label after column 1. (MAX_INITIATES)
+Warning[207] C:\SPJ_PROJECTS\ACS235\ACS235.ASM 708 : Found label after column 1. (MAX_CHANNELS)

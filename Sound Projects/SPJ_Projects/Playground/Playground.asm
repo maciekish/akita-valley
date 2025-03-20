@@ -1,20 +1,6 @@
    LIST   P=18f242,C=132,T=ON,R=DEC,ST=OFF
    TITLE  JRE235 Author: Maciej Swic
 VERNO	EQU	0x20		;ver 2.00 
-;----------------------------------------------------------------------------
-;   This Sound Definition Langauge (SDL) was generated
-;   by the SPJHelper Design Tool on 2025-03-18
-;----------------------------------------------------------------------------
-;     FUNCTION KEYS DEFINED:   
-;    F2 Horn/Whistle
-;    F3 Brake Release
-;    F4 Track 3, Doors Closing
-;    F7 Tokyo Jingle
-;    F8 Akihabara Jingle
-;    F10 Next Station: Akihabara
-;    F14 Flange
-;    F15 Joint
-;    F20 Mute On/Off
 ;----------------------------------
 ;   SOUND WAVE FILE HANDLES
 ;----------------------------------
@@ -36,6 +22,13 @@ E235_pantograph_up
 E235_pantograph_down
 E235_brake
 E235_joint
+E235_doors_ringer
+E235_track_1
+E235_track_2
+E235_track_3
+E235_doors_are_closing
+E235_doors_be_careful
+E235_doors_actually_closing
    ENDC
 ;-----------------------------------------
 ;   INCLUDED DIGITRAX PROPRIETARY FILES
@@ -248,6 +241,18 @@ CHNL_03_S0
    CHANNEL_START   3
 ;---------------------------------------------
 
+   INITIATE_SOUND TRIG_SF6,NORMAL
+   LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_142,SCALE_F  ;Set Volume
+   PLAY E235_doors_ringer,no_loop,loop_STD
+   DELAY_SOUND DELAY_THIS,16,DELAY_GLOBAL
+   PLAY E235_track_3,no_loop,loop_STD
+   DELAY_SOUND DELAY_THIS,33,DELAY_GLOBAL
+   PLAY E235_doors_are_closing,no_loop,loop_STD
+   DELAY_SOUND DELAY_THIS,29,DELAY_GLOBAL
+   PLAY E235_doors_be_careful,no_loop,loop_STD
+   DELAY_SOUND DELAY_THIS,41,DELAY_GLOBAL
+   PLAY E235_doors_actually_closing,no_loop,loop_STD
+   END_SOUND
 ;---------------------------------------------
 ;  START CHANNEL 4	'Series 6 Premium Only
 ;---------------------------------------------

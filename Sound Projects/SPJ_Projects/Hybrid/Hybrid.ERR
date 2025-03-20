@@ -1,0 +1,7 @@
+Warning[202] C:\SPJ_PROJECTS\HYBRID\../SFX3P0_SND_MACS.INC 41 : Argument out of range.  Least significant bits used.
+Warning[202] C:\SPJ_PROJECTS\HYBRID\../SFX3P0_SND_MACS.INC 51 : Argument out of range.  Least significant bits used.
+Warning[207] C:\SPJ_PROJECTS\HYBRID\HYBRID.ASM 744 : Found label after column 1. (ICNT)
+Warning[207] C:\SPJ_PROJECTS\HYBRID\HYBRID.ASM 745 : Found label after column 1. (TEMP)
+Warning[207] C:\SPJ_PROJECTS\HYBRID\HYBRID.ASM 746 : Found label after column 1. (MAX_SCHEMES)
+Warning[207] C:\SPJ_PROJECTS\HYBRID\HYBRID.ASM 747 : Found label after column 1. (MAX_INITIATES)
+Warning[207] C:\SPJ_PROJECTS\HYBRID\HYBRID.ASM 748 : Found label after column 1. (MAX_CHANNELS)

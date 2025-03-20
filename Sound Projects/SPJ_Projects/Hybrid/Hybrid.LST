@@ -1,0 +1,2453 @@
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001    LIST   P=18f242,C=132,T=ON,N=75,R=DEC,ST=OFF,W=1,X=ON
+                      00002    TITLE  JRE235 Author: Maciej Swic
+  00000030            00003 VERNO   SET     VERSION_3
+                      00004 ;----------------------------------------------------------------------------
+                      00005 ;   This Sound Definition Langauge (SDL) was generated
+                      00006 ;   by the SPJHelper Design Tool on 2025-03-18
+                      00007 ;----------------------------------------------------------------------------
+                      00008 ;     FUNCTION KEYS DEFINED:   
+                      00009 ;    F2 Horn/Whistle
+                      00010 ;    F3 Brake Release
+                      00011 ;    F4 Track 3, Doors Closing
+                      00012 ;    F7 Tokyo Jingle
+                      00013 ;    F8 Akihabara Jingle
+                      00014 ;    F10 Next Station: Akihabara
+                      00015 ;    F14 Flange
+                      00016 ;    F15 Joint
+                      00017 ;    F20 Mute On/Off
+                      00018 ;----------------------------------
+                      00019 ;   SOUND WAVE FILE HANDLES
+                      00020 ;----------------------------------
+                      00021    cblock   0   ; Start assigning location of  Sound Clips 0, 1, 2, etc.
+  00000000            00022 HNDL_MUTE
+  00000001            00023 STARTUP
+  00000002            00024 INC_01
+  00000003            00025 INC_12
+  00000004            00026 INC_23
+  00000005            00027 RUN_0
+  00000006            00028 RUN_1
+  00000007            00029 RUN_2
+  00000008            00030 RUN_3
+  00000009            00031 DEC_32
+  0000000A            00032 DEC_21
+  0000000B            00033 DEC_10
+  0000000C            00034 SHUTDOWN
+                      00035    ENDC
+                      00036 
+                      00037 ;-----------------------------------------
+                      00038 ;   INCLUDED DIGITRAX PROPRIETARY FILES
+                      00039 ;-----------------------------------------
+                      00040 ;NOLIST
+                      00041    #INCLUDE     ../SFX3p0_snd_cmd.inc
+                      00001 ;This information is copyrighted all rights reserved. No commercial use permitted without written permis
+                      00002 
+                      00003         STITLE          "SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY. 
+                      00004 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  2
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00005         PAGE
+                      00006 ;SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound processor  TECHNOLOGY.  (C) 2004,2005,2006,
+                      00007 
+                      00008 ;This contained information is used to compile/assemble a text "Sound Definition Language" (SDL) source 
+                      00009 ; BINARY executable <name>.SDF file suitable to be downloaded and executed by DIGITRAX products based on
+                      00010 ; Binary data files may be interpreted in a processor or machine that emulates and interprets the comman
+                      00011 ; to provide correct sound results, or may be executed on a micro-coded processor that decodes and execu
+                      00012 ; as "native" instructions.
+                      00013 
+                      00014 ;-------------------
+  00000001            00015 TRUE            EQU     1               ;important bit defs!
+  00000000            00016 FALSE           EQU     0
+                      00017 
+                      00018 ;NOTE: Chuff/Steam exhaust logic is only valid for 8 and 16 bit wav file downloads.  12 bit wav files ar
+                      00019 
+                      00020 ;---THESE ARE MINIMUM Assumed values------
+                      00021 ;for the SDH104 and similar compatible Digitrax first generation 1.xx products with minimum ram size. Fo
+                      00022 ;generation product will expand the minimum capabilies defined for playback, and not limited by the SDF 
+                      00023 
+                      00024 ;FIRST instruction after SKEME_START in the SDF SCHEME binary file must be a version number command e.g.
+                      00025 
+                      00026 ; The version number Default variable VERNO   should be SET   to  VERSION_3 VERSION_2 or VERSION_1;    _
+                      00027 ; this version number is true for following SCHEMES in the SDF; until another "VERNO SET  VERSION_xx" oc
+                      00028 
+  00000010            00029 VERSION_1       EQU     0x10            ;ver 1.00 . first Generation sound FX with only 3 voices
+  00000020            00030 VERSION_2       EQU     0x20            ;ver 2.00
+  00000030            00031 VERSION_3       EQU     0x30            ;ver 3.00
+                      00032 
+                      00033         if      VERNO == VERSION_3
+                      00034         ;8 voice Xpanded SFX decoders
+  00000008            00035 MAX_CHANNELS    set     8       ;3      ;limited by CPU spd  
+  00000100            00036 MAX_INITIATES   set     256     ;64     ;(*4 bytes/INIT), TOTAL all chnls in SCHEME Xpanded=128, standar
+  00000100            00037 MAX_HANDLES             set     256             ;maxiumum handles available
+  00FFFFFF            00038 MAX_WAV_LENGTH  set     0xFFFFFF                ;16,777,215 EXPANDED 1048,575 LEN17, ~95 secs max WAV at
+                      00039 
+                      00040         else
+                      00041         if      VERNO == VERSION_2
+                      00042 ;4 voice Xpanded SFX decoders
+                      00043 MAX_CHANNELS    set     4       ;3      ;limited by CPU spd  [Xpanded has 4 channels/voices, otherwise i
+                      00044 MAX_INITIATES   set     150     ;64     ;(*3 bytes/INIT), TOTAL all chnls in SCHEME Xpanded=128, standar
+                      00045 MAX_HANDLES             set     190             ;maxiumum handles available
+                      00046 MAX_WAV_LENGTH  set     0xFFFFF         ;EXPANDED LEN17, ~95 secs max WAV at 11Ksps
+                      00047 
+                      00048         else
+                      00049 
+                      00050 ;3 voice Legacy SFX decoders
+                      00051 MAX_CHANNELS    set     3       ;3      ;limited by CPU spd  [Xpanded has 4 channels/voices, otherwise i
+                      00052 MAX_INITIATES   set     64      ;64     ;(*3 bytes/INIT), TOTAL all chnls in SCHEME Xpanded=128, standar
+                      00053 MAX_HANDLES             set     64              ;maxiumum handles available
+                      00054 MAX_WAV_LENGTH  set     0x1FFFF         ;short WAV capacity
+                      00055 
+                      00056         endif
+                      00057         endif
+                      00058 
+                      00059 ;common values
+                      00060 
+                      00061 
+  00000040            00062 MAX_SCHEMES     EQU     64              ;defined in OPC
+                      00063 ;MAX_SCHEMES    EQU     32              ;defined in OPC
+  0000FFFF            00064 MAX_SCHEME_LEN  EQU     0xFFFF          ;16bit / 12bit /4K BYTE adr range- INITIATE offset PACKING limit
+                      00065 ;MAX_SCHEME_LEN EQU     0xFFF           ;12bit /4K BYTE adr range- INITIATE offset PACKING limit
+  0000FFFF            00066 MAX_SCHEME_LEN  EQU     0xFFFF          ;16bit / 12bit /4K BYTE adr range- INITIATE offset PACKING limit
+                      00067 ;MAX_SCHEME_LEN EQU     0xFFF           ;12bit /4K BYTE adr range- INITIATE offset PACKING limit
+  000FFFFF            00068 MAX_SDF_LEN     EQU     0xFFFFF         ;32BIT / 16 bit SDF size
+                      00069 ;MAX_SDF_LEN    EQU     0xFFFF          ;16 bit SDF size
+                      00070 
+  00000100            00071 MIN_WAV_LENGTH  EQU     256             ;if this or below (Z=no HNDL) will skip fragment.
+                      00072 ;MIN_WAV_LENGTH EQU     64              ;if this or below (Z=no HNDL) will skip fragment.
+                      00073 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  3
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00005622            00074 WAV_SAMPLE_RATE EQU     22050           ;standard windows .WAV rate, [SECOND generation can interpolate/
+                      00075 ;WAV_SAMPLE_RATE EQU    11025           ;standard windows .WAV rate, [SECOND generation can interpolate/
+  00000008            00076 WAV_SAMPLE_SIZE EQU     8               ;minimum BITS/sample,[SECOND generation can MIX 8,12,16,32 bits/
+                      00077 ;WAV_SAMPLE_SIZE        EQU     8               ;minimum BITS/sample,[SECOND generation can MIX 8,12,16 
+  00000001            00078 MONO            EQU     TRUE            ;single channel data,[SECOND generation can unpack/MIX 2+ CHANNE
+                      00079 
+                      00080 
+                      00081 ;ASSUMPTIONS of SDF file and SOUND PROCESSOR:
+                      00082 ;-------------------------------------------
+                      00083 
+                      00084 ;1) CHANNELS are in order, starting with 1, THIs code will assign from 1 to N, irrespective of OPC arg
+                      00085 ;2) INITIATORS in a channel are in order of PRIORITY. EARLIER entry is higher priority
+                      00086 ;3) LAST .WAV scanned with a handle number will be used
+                      00087 ;4) FIRST scheme match in active TYPE/ SDF will be used. No SCHEME match-> NO sound
+                      00088 ;5) ERROR in SOUND PROGRAM info etc will be given as beeps at POR, if volume >0
+                      00089 ;6) SDF and WAV files can be written in any order up to FLASH mem limit and last version of WAV handle o
+                      00090 ;7) SDF File ends logically with SCHEME =0x1F= CLOSE_SCHEME value
+                      00091 
+                      00092 ; This Digitrax source file will cross-assemble a binary file with the MACRO capability of any compatibl
+                      00093 ;In particular, this source code is compatible and tested with the Microchip Inc. MPASM assembler runnin
+                      00094 ; MPLAB IDE 7.20 development environment, available from www.microchip.com.
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  4
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00095         PAGE
+                      00096 ;MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+                      00097 ;
+                      00098 
+                      00099 ;2 BYTE OPCODE  command byte/bits  DEFINITIONS
+                      00100 
+  00000082            00101 CMD_MARK_VERSION        EQU     0x82            ;define 8 bit VERSION code
+  00000081            00102 CMD_START_CHNL          EQU     0x81            ;flag following CMDS are grouped in a discrete CHNL#    
+  00000000            00103 CMD_END_SND                     EQU     0x00            ;END this chain
+  00000040            00104 CMD_PLAY_SND            EQU     0x40            ;Play sound HANDLE, bump to NEXT CMD in chain
+  00000090            00105 CMD_INITIATE_SND        EQU     0x90            ;trig INITIATE code for a CMD chain
+  000000B1            00106 CMD_BLIP_TRIGGER        EQU     0xB1            ;make TRIGGER event
+  000000B4            00107 CMD_DELAY_SND           EQU     0xB4            ;delay/silence this chnl for ARG*24mS
+  00000004            00108 CMD_SKIP_ON_TRIGGER     EQU     0x04            ;TEST trigger state
+  000000C0            00109 CMD_GOTO_SND            EQU     0xC0            ;continue chain at another CMD offset
+                      00110 
+                      00111 ;CMD_CALL_SND           EQU     0xA0            ;RESERVED-DO Not use version 1.XX
+                      00112 ;CMD_REPEAT_SND         EQU     0xB0            ;RESERVED-DO Not use version 1.XX
+                      00113 ;CMD_PLAY_SND_LAST      EQU     0x60            ;play sound HANDLE and END this chain
+                      00114 
+                      00115 
+                      00116 ; 4 BYTE OPCODE  command byte/bits DEFINITIONS
+                      00117 
+  000000E0            00118 CMD_LOAD_MODIFY         EQU     0xE0            ;LOAD task, load up to 3 bytes of ARGS at DEST coded
+  000000F0            00119 CMD_XGOTO_SND           EQU     0xF0            ; F0,00-aa,aa       4 bytes
+  000000F1            00120 CMD_SKEME_START         EQU     0xF1            ;BEGIN a SCHEME subsection of SDF file, 64KB length code
+  000000F2            00121 CMD_PLAY_EXPANDED       EQU     0xF2            ;long EXPANDED version of PLAY_SOUND cmd
+  000000F8            00122 CMD_MASK_COMPARE        EQU     0xF8            ;TASK to compare values under mask
+                      00123 
+                      00124 
+                      00125 ;MASKS for following CROSS-ASSEMBLER or MACRO assembler
+                      00126 
+  000000FF            00127 CMD_MARK_VERSION_MASK   EQU     0xFF            ;all 8 bits define 8 bit VERSION code CMD
+  000000FF            00128 CMD_END_SND_MASK        EQU      0xFF            ;MASK for CMD decoding, 1 bits are active in OPC
+  000000E0            00129 CMD_PLAY_SND_MASK       EQU      0xE0
+  000000E0            00130 CMD_PLAY_SND_LAST_MASK  EQU      0xE0
+  000000FF            00131 CMD_START_CHNL_MASK     EQU      0xFF   
+  000000F0            00132 CMD_INITIATE_SND_MASK   EQU      0xF0
+  000000F0            00133 CMD_CALL_SND_MASK       EQU      0xF0
+  000000FF            00134 CMD_REPEAT_SND_MASK     EQU      0xFF
+  000000FF            00135 CMD_BLIP_TRIGGER_MASK   EQU      0xFF
+  000000FC            00136 CMD_DELAY_SND_MASK      EQU      0xFC
+  000000FC            00137 CMD_SKIP_ON_TRIGGER_MASK EQU     0xFC
+  000000F0            00138 CMD_GOTO_SND_MASK       EQU      0xF0
+                      00139 
+  000000F0            00140 CMD_LOAD_MODIFY_MASK    EQU      0xF0
+  000000FF            00141 CMD_SKEME_START_MASK    EQU      0xFF
+  000000FF            00142 CMD_PLAY_EXPANDED_MASK  EQU      0xFF
+  000000F8            00143 CMD_MASK_COMPARE_MASK   EQU      0xF8
+                      00144         
+  0000001F            00145 CLOSE_SKEME             EQU     0x1F    ;this SCHEME number stops ALL SCHEME evaluation
+                      00146 
+                      00147 ;=========================================================
+                      00148 ;TTTTTTTTTTTTTTTTTTTTTT
+                      00149 
+                      00150 ;TRIGGER values
+                      00151 ;sound TRIGGER PREMPT control bits
+                      00152 
+                      00153 ; SPECIAL trigs:        POL,0,0,0-0,s,s,s       0-7 are special trigs
+                      00154 ; FN trigger format:    POL,0,0,B-B,b,b,b       BB 1 of 3 bytes 01,10,11 (24 fns), bbb is bit adr#
+                      00155 
+                      00156 
+  00000000            00157 NORMAL          EQU     0               ;(complete .WAV frag/preempt higher/trigger true)
+                      00158 
+  00000001            00159 ZAP             EQU     0x01            ;value for ZAP on PREMPT
+  00000002            00160 RUN_WHILE_TRIG  EQU     0x02            ;mask/binary values
+  00000004            00161 NO_PREEMPT_TRIG EQU     0x04
+  00000080            00162 NOT_TRIG        EQU     0x80            ;12/13/04, in TRIG argument now
+                      00163 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  5
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00164 ;3 ls bits of INITIATE CMD 1ST byte
+  00000000            00165 CMD_ZAP_BIT             EQU     0       ;1=END immed if PREMPTED, 0=finish current .wav frag before END
+  00000001            00166 RUN_WHILE_TRIG_BIT      EQU     1       ;1=persistent while TRIGGER is valid, 0=run once
+  00000002            00167 NO_PREEMPT_TRIG_BIT     EQU     2
+                      00168 
+  00000007            00169 NOT_TRIG_BIT            EQU     7       ;POL bit in TRIG byte 1=reverse POL
+                      00170 
+                      00171 ;----------
+                      00172 ;TRIGGER initiate CODES 
+                      00173 
+  00000000            00174 TRIG_NEVER      EQU     0x00            ;0 is INACTIVE entry (NULL,not a valid INITIATE coding)
+  00000001            00175 TRIG_MODE_CHNG  EQU     0x01            ;
+  00000002            00176 TRIG_MATH       EQU     0x02            ;math result trigger
+  00000003            00177 TRIG_DISTANCE   EQU     0x03            ;have new increment of distance, use for FUEL low alarm, mainten
+                      00178 
+  00000004            00179 TRIG_SPD_INC    EQU     0x04            ;have SPD increase
+  00000005            00180 TRIG_SPD_DEC    EQU     0x05            ;have SPD decrease
+  00000006            00181 TRIG_CAM        EQU     0x06            ;TRIG on CAM event, either H/W input or AUTO-chuff,
+  00000007            00182 TRIG_NOT_TRIG   EQU     0x07            ;brk/loop SPECIAL
+  0000000A            00183 TRIG_CAM2       EQU     0x0A            ;TRIG on CAM2 event, either H/W input or AUTO-chuff,
+                      00184 
+                      00185 ;-------
+                      00186 ;F1-F28 and F0 map into 3 BYTES of static trig state/fn state bits
+                      00187 
+                      00188 ;these triggers preCODED for fast TRIG bit adr   POL,0,BBB,bbb:   BB=byte,bbb=bit adr
+                      00189 ;Mapped to internal allocations
+                      00190 
+  00000006            00191 MOVE_BIT        EQU     6                       ;moving BIT
+  0000001F            00192 MVFN_MASK       EQU     0x1F            ;direct FN bits
+                      00193 
+                      00194 
+  00000008            00195 TRIG_SF1        EQU     0x08            ;F1 change event
+  00000009            00196 TRIG_SF2        EQU     0x09            ;byte 1, bit1
+  0000000A            00197 TRIG_SF3        EQU     0x0A
+  0000000B            00198 TRIG_SF4        EQU     0x0B
+                      00199 
+  0000000C            00200 TRIG_SF0        EQU     0x0C            ;headlight/F0 state
+  0000000D            00201 TRIG_DIRNOW_CHNG EQU    0x0D            ;have DIR_NOW changed
+  0000000E            00202 TRIG_MOVING     EQU     0x0E            ;SPD = Non-Zero
+  0000000F            00203 TRIG_SND_ACTV11 EQU     0x0F            ;DECODER is SPD addressed within CV11 time
+                      00204 
+                      00205 ;----------
+  00000010            00206 TRIG_SF5        EQU     0x10            ;byte 2,bit0
+  00000011            00207 TRIG_SF6        EQU     0x11
+  00000012            00208 TRIG_SF7        EQU     0x12
+  00000013            00209 TRIG_SF8        EQU     0x13
+                      00210 
+  00000014            00211 TRIG_SF13       EQU     0x14            ;BYTE 2, bit 4, 
+  00000015            00212 TRIG_SF14       EQU     0x15
+  00000016            00213 TRIG_SF15       EQU     0x16
+  00000017            00214 TRIG_SF16       EQU     0x17
+                      00215 
+                      00216 ;---------
+  00000018            00217 TRIG_SF9        EQU     0x18            ;byte 3 bit 0
+  00000019            00218 TRIG_SF10       EQU     0x19
+  0000001A            00219 TRIG_SF11       EQU     0x1A
+  0000001B            00220 TRIG_SF12       EQU     0x1B
+                      00221 
+  0000001C            00222 TRIG_SF17       EQU     0x1C            ;byte 3, bit 4
+  0000001D            00223 TRIG_SF18       EQU     0x1D
+  0000001E            00224 TRIG_SF19       EQU     0x1E
+  0000001F            00225 TRIG_SF20       EQU     0x1F
+                      00226 
+                      00227 ;
+                      00228 
+  00000020            00229 TRIG_SF21       EQU     0x20            ;expanded FUNCTIONS
+  00000021            00230 TRIG_SF22       EQU     0x21
+  00000022            00231 TRIG_SF23       EQU     0x22
+  00000023            00232 TRIG_SF24       EQU     0x23
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  6
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00233 
+  00000024            00234 TRIG_SF25       EQU     0x24
+  00000025            00235 TRIG_SF26       EQU     0x25
+  00000026            00236 TRIG_SF27       EQU     0x26
+  00000027            00237 TRIG_SF28       EQU     0x27
+  00000028            00238 TRIG_SF29       EQU     0x28
+                      00239 
+                      00240 ;
+                      00241 ;----------------FIRST 8 bsc regs reserved
+  00000028            00242 TRIG_BSC0       EQU     0x28            ;expanded FUNCTIONS
+  00000029            00243 TRIG_BSC1       EQU     0x29
+  0000002A            00244 TRIG_BSC2       EQU     0x2A
+  0000002B            00245 TRIG_BSC3       EQU     0x2B
+                      00246 
+  0000002C            00247 TRIG_BSC4       EQU     0x2C
+  0000002D            00248 TRIG_BSC5       EQU     0x2D
+  0000002E            00249 TRIG_BSC6       EQU     0x2E
+  0000002F            00250 TRIG_BSC7       EQU     0x2F
+                      00251 
+                      00252 ;------------------
+                      00253 ;these trig lines both REPORT the external inputs to decoder, and CAN also be SET/RESET by SDF trigger c
+                      00254 ; and can be read back by TRANSPONDING as external ALARMS etc
+                      00255 
+  00000050            00256 TRIG_IN_BASE    EQU     0x50                    ;
+                      00257 
+  00000050            00258 TRIG_IN_0       EQU     TRIG_IN_BASE+0                  ;input 0 trig, CAM input if not assigned to STEA
+  00000051            00259 TRIG_IN_1       EQU     TRIG_IN_BASE+1                  ;
+  00000052            00260 TRIG_IN_2       EQU     TRIG_IN_BASE+2                  ;
+  00000053            00261 TRIG_IN_3       EQU     TRIG_IN_BASE+3                  ;
+                      00262 
+  00000054            00263 TRIG_IN_4       EQU     TRIG_IN_BASE+4                  ;
+  00000055            00264 TRIG_IN_5       EQU     TRIG_IN_BASE+5                  ;
+  00000056            00265 TRIG_IN_6       EQU     TRIG_IN_BASE+6                  ;
+  00000057            00266 TRIG_IN_7       EQU     TRIG_IN_BASE+7                  ;
+                      00267 
+  00000058            00268 TRIG_NOTCH_CHNG EQU     TRIG_IN_7+1                     ;when notch changes
+  00000059            00269 TRIG_TIME_16PPS EQU     TRIG_IN_7+2                     ;16 per sec/64mS rate
+  0000005A            00270 TRIG_FACTORY_CVRESET EQU  TRIG_IN_7+3                   ;have CV8=8/9 request, USER definable CV values
+  0000005B            00271 TRIG_OPSPROGWR_CV         EQU   TRIG_IN_7+4                     ;have OPSPROG action
+                      00272 
+                      00273 ;--------------- SCATTER TRIGGER codes, ON/OFF phase per SCATTER task
+  00000060            00274 SCAT_TRIG_BASE  EQU     0x60
+                      00275 
+  00000060            00276 TRIG_SCAT0      EQU     SCAT_TRIG_BASE+0                ;scatter CHNL0, phase A sel NOT_TRIG_BIT
+  00000061            00277 TRIG_SCAT1      EQU     SCAT_TRIG_BASE+1
+  00000062            00278 TRIG_SCAT2      EQU     SCAT_TRIG_BASE+2
+  00000063            00279 TRIG_SCAT3      EQU     SCAT_TRIG_BASE+3
+  00000064            00280 TRIG_SCAT4      EQU     SCAT_TRIG_BASE+4                ;has visible WORK register
+  00000065            00281 TRIG_SCAT5      EQU     SCAT_TRIG_BASE+5                ;has visible WORK register
+  00000066            00282 TRIG_SCAT6      EQU     SCAT_TRIG_BASE+6                ;has visible WORK register
+  00000067            00283 TRIG_SCAT7      EQU     SCAT_TRIG_BASE+7                ;has visible WORK register
+                      00284 
+                      00285 
+                      00286 ;===============================
+                      00287 ; encoded TRIGGER values related to SPEED_STATE code
+                      00288 
+  00000070            00289 T_SS_BASE       EQU     0x70            ;0x20                   ;base TRIG code for this STATE logic
+  00000070            00290 TSPD            EQU     T_SS_BASE               ;base TRIG code for this STATE logic
+                      00291 
+  00000070            00292 T_SPD_MUTE              EQU     TSPD+0
+  00000071            00293 T_SPD_TURNON    EQU     TSPD+1
+  00000072            00294 T_SPD_IDLE              EQU     TSPD+2
+  00000073            00295 T_SPD_ACCEL1    EQU     TSPD+3
+                      00296 
+  00000074            00297 T_SPD_ACC_CHNG  EQU     TSPD+4          ;1st GEN parallel/series chng
+  00000075            00298 T_SPD_ACCEL2    EQU     TSPD+5
+  00000076            00299 T_SPD_IDLEXIT   EQU     TSPD+6          ;leaving IDLE state
+  00000077            00300 T_SPD_RUN               EQU     TSPD+7
+                      00301 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  7
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000078            00302 T_SPD_DECEL1    EQU     TSPD+8
+  00000079            00303 T_SPD_DEC_CHNG  EQU     TSPD+9
+  0000007A            00304 T_SPD_DECEL2    EQU     TSPD+10
+                      00305 ;T_SPD_DIR_CHNG EQU     TSPD+11
+                      00306 
+  0000007B            00307 T_SPD_DEC_IDLE  EQU     TSPD+11
+  0000007C            00308 T_SPD_TURNOFF   EQU     TSPD+12
+  0000007D            00309 T_SPD_DEC_SP1   EQU     TSPD+13
+  0000007E            00310 T_SPD_DEC_SP2   EQU     TSPD+14
+  0000007F            00311 T_SPD_DIR_CHNG  EQU     TSPD+15
+                      00312 
+                      00313 ;============================BREAK/LOOP logic during a .WAV playback==================
+                      00314 
+                      00315 ;WAVBRK modify flags
+                      00316 
+  00000000            00317 loop_STD        EQU     0x00            ;default is NO loop logic modification
+  00000010            00318 loop_GLOBAL     EQU     0x10            ;assert to loop and UP 1 level...
+  00000008            00319 loop_INVERT     EQU     0x08            ;invert/FALSE POL of loop to generate WAV BREAK condition
+                      00320 
+  00000004            00321 loop_GLOBAL_BIT         EQU     4       ;bit # assert to loop and UP 1 level...
+  00000003            00322 loop_INVERT_BIT         EQU     3       ;bit # invert (NOT/FALSE) Polarity of loop condition/evaluation
+                      00323 
+                      00324 ;--------- 32 loop event codes
+  0000001F            00325 loop_MASK       EQU     0x1F            ;mask for VALID BRK rng-5bits
+                      00326 
+                      00327 ;disable loop- just run/playback .WAV file from SOUND flash or other source
+  00000000            00328 no_loop         EQU     0               ;RUN to completeion of WAV segmenT
+                      00329 
+                      00330 ;--------------
+                      00331 ;codes that imply LOOPING of current HANDLE WAV seg till loop WAV BREAK CONDITON met
+                      00332 
+                      00333 
+  00000000            00334 loop_till_NEVER         EQU     TRIG_NEVER              ;same as "no_loop", RUN to completion of WAV seg
+                      00335 
+  00000006            00336 loop_till_cam           EQU     TRIG_CAM                ;loop on CAM event, either H/W input or AUTO-chu
+  0000000A            00337 loop_till_cam2          EQU     TRIG_CAM2               ;loop on CAM2 event, either H/W input or AUTO-ch
+  00000007            00338 loop_till_init_TRIG     EQU     TRIG_NOT_TRIG           ;loop until INITIATE TRIGGER condition NOT met
+                      00339 
+                      00340 ;FUNCTION change events
+                      00341  
+  00000008            00342 loop_till_F1    EQU     TRIG_SF1                ;F1 change event
+  00000009            00343 loop_till_F2    EQU     TRIG_SF2
+  0000000A            00344 loop_till_F3    EQU     TRIG_SF3
+  0000000B            00345 loop_till_F4    EQU     TRIG_SF4
+                      00346 
+  0000000C            00347 loop_till_F0            EQU     TRIG_SF0                ;headlight
+  0000000D            00348 loop_till_DIRNOW_CHNG   EQU     TRIG_DIRNOW_CHNG        ;have DIR_NOW changed
+  0000000E            00349 loop_till_MOVING        EQU     TRIG_MOVING             ;SPD = Non-Zero
+  0000000F            00350 loop_till_SND_ACTV11    EQU     TRIG_SND_ACTV11         ;DECODER is addressed within CV11 time
+                      00351 
+                      00352 
+  00000010            00353 loop_till_F5    EQU     TRIG_SF5
+  00000011            00354 loop_till_F6    EQU     TRIG_SF6
+  00000012            00355 loop_till_F7    EQU     TRIG_SF7
+  00000013            00356 loop_till_F8    EQU     TRIG_SF8
+                      00357 
+  00000018            00358 loop_till_F9    EQU     TRIG_SF9
+  00000019            00359 loop_till_F10   EQU     TRIG_SF10
+  0000001A            00360 loop_till_F11   EQU     TRIG_SF11
+  0000001B            00361 loop_till_F12   EQU     TRIG_SF12
+                      00362 
+                      00363 ;ONLY scatter CHNLS 4-7 [also WORK visibles] can be used for TIMED loop break conditions
+  0000001C            00364 loop_till_SCAT4         EQU     0x1C            ;scatter CHNL4, phase A/B selected by loop_INVERT_BIT
+  0000001D            00365 loop_till_SCAT5         EQU     0x1D            
+  0000001E            00366 loop_till_SCAT6         EQU     0x1E
+  0000001F            00367 loop_till_SCAT7         EQU     0x1F
+                      00368 
+                      00369 
+                      00370 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  8
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00371 ;----------------
+  00000001            00372 DELAY_GLOBAL    EQU     0x01
+  00000080            00373 DELAY_CV        EQU     0x80                    ;delay fron SND_CV range
+  00000000            00374 DELAY_THIS      EQU     0x00                    ;immed data
+                      00375 
+                      00376 ;----------
+                      00377 ;for TEST trigger OPC
+  00000001            00378 TRIG_TRUE       EQU     0x01
+  00000000            00379 TRIG_FALSE      EQU     0x00
+  00000002            00380 ABOVE           EQU     0x02            ;this bit forces eval above on SPD state trigs
+                      00381 
+  00000000            00382 SK_SENS_BIT     EQU     0
+  00000001            00383 ABOVE_BIT       EQU     1
+                      00384 
+                      00385 ;=====================================================================
+                      00386 ;load MODIFY COMMAND arg/VALUES- allows USER maximal configurability/customization in SDF files
+                      00387 ;4byte CMD      1110-mmmm, ARG1,ARG2,ARG3
+                      00388 
+                      00389 ;---------------------
+                      00390 ;modifier control REG command types
+                      00391 ;mmmm target embedded in LOAD MODIFY CMD to direct what following 3 ARG bytes will be loaded TO
+                      00392 
+  00000000            00393 MTYPE_TIME      EQU     0       ;MODIFY timer
+  00000001            00394 MTYPE_GAIN      EQU     1       ;setup a GAIN modify task for current SOUND chain
+  00000002            00395 MTYPE_PITCH     EQU     2       ;setup a PITCH modify task for current SOUND chain
+  00000003            00396 MTYPE_BLEND     EQU     3       ;setup BLEND logic task
+                      00397 
+                      00398 ;undefined NOW
+  00000004            00399 MTYPE_SCATTER   EQU     4       ;preset a SCATTER channel/task
+  00000005            00400 MTYPE_SNDCV     EQU     5       ;modify under MASK SNDCV,ARG1=SNDCV#,ARG2=DATA,ARG3=1bit=chng mask
+  00000006            00401 MTYPE_WORK_IMMED  EQU   6       ;modify WORK reg immed data
+  00000007            00402 MTYPE_WORK_INDIRECT EQU 7       ;modify WORK reg indirect from SCV [selectable sound CV] or other WORK r
+                      00403 
+                      00404 ;---------------
+                      00405 ;values for MATH functions on WORK regs
+                      00406 
+  00000000            00407 FMATH_LODE      EQU     0x00    ;load DATA,,MATH_FLAG SET shows whole WORK is ZERO- DEFAULT task
+  00000020            00408 FMATH_AND       EQU     0x20    ;use to CLR bit(s),MATH_FLAG SET shows whole WORK is ZERO
+  00000040            00409 FMATH_OR        EQU     0x40    ;use to SET  bit(S), MATH FLAG SET shows whole WORK is 1's
+  00000060            00410 FMATH_XOR       EQU     0x60    ;use to flip bit(s), MATH FLAG SET if all flipped bits are now 0 
+                      00411 
+                      00412 ;FMATH_ADD      EQU     0x80    ;add signed value
+  000000A0            00413 FMATH_INTEGRATE EQU     0xA0    ;add signed value to WORK,MATH_FLAG SET if over/underflo,or clamp LIMIT 
+  000000C0            00414 FMATH_TEST_ZERO EQU     0xC0    ; see if WORK under MASK is ZERO, if ZERO set MATH bit
+                      00415 
+                      00416 ;-----1111----------------
+                      00417 ;FIRST modify ARG- COMMAND
+  00000000            00418 GCMD_NONE       EQU             0x00            ;NO gain MODIFY task RUN
+  000000E0            00419 GCMD_MASK       EQU             0xE0            ;3 ms bits 1st CMD decode
+                      00420 
+                      00421 ;32 analog ARGS 3/21
+                      00422 ;TYPE 8 GAIN
+  00000080            00423 IMMED_GAIN_MODIFY   EQU         0x80            ;set new GAIN to [CV# 6 bit offset in ARG1] *CV58 , CV12
+  000000A0            00424 ANALOG_GAIN_MODIFY  EQU         0xA0            ;modify INIT GAIN by analog chnl in 5 ls bits
+                      00425                                                 ;AUX1=          AUX2=dither coding
+                      00426 
+                      00427 
+  00000000            00428 FCMD_NONE       EQU             0x00            ;NO PITCH MODIFY task RUN
+  000000E0            00429 FCMD_MASK       EQU             0xE0            ;3 ms bits 1st CMD decode
+                      00430 
+                      00431 ;type 8 PITCH
+  00000080            00432 CV_PITCH_MODIFY     EQU         0x80            ;set new PITCH to [CV# 6 bit offset in ARG1] , CV120 bas
+  000000A0            00433 ANALOG_PITCH_MODIFY EQU         0xA0            ;modify INIT PITCH by analog chnl in 5 ls bits
+                      00434                                                 ;AUX1=          AUX2=dither coding
+                      00435 
+                      00436 ;==================
+                      00437 ;32 predefined user visible WORK/STATE regs, use these defined values
+                      00438 ;first 16 WORK visible reg address codes.
+                      00439 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE  9
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000000            00440 WORK_SPEED      EQU     0x00            ;SOUND target PWM/SPD 
+  00000001            00441 WORK_NOTCH      EQU     0x01            ;CHNL# for NOTCH Modified spd info, MODUL0 8
+  00000002            00442 WORK_SERVO      EQU     0x02
+  00000003            00443 WORK_MVOLTS     EQU     0x03
+                      00444 
+  00000005            00445 WORK_USER_LINES EQU     0x05
+  00000006            00446 WORK_TIMEBASE   EQU     0x06            ;64mS cntr, ROLL=16 SECS
+  00000007            00447 WORK_STATUS_BITS EQU    0x07            ;PRIMARY decoder STATUS bits
+                      00448 
+  00000008            00449 WORK_GLBL_GAIN  EQU     0x08            ;FULL gain authority
+  00000009            00450 WORK_GAIN_TRIM  EQU     0x09            ;signed (bit7) gain trim +/- 25%
+  0000000A            00451 WORK_PITCH_TRIM EQU     0x0A            ;signed (bit7) pitch trim +/- 25%
+  0000000B            00452 WORK_SPEED_DELTA EQU    0x0B            ;unsigned SPEED change
+                      00453 
+                      00454 ;SECOND 16 WORK  visible reg address codes
+                      00455 
+  00000010            00456 WORK_SCATTER4   EQU     0x10            ;VISIBLE working SCATTER reg
+  00000011            00457 WORK_SCATTER5   EQU     0x11            ;VISIBLE working SCATTER reg
+  00000012            00458 WORK_SCATTER6   EQU     0x12            ;VISIBLE working SCATTER reg
+  00000013            00459 WORK_SCATTER7   EQU     0x13            ;VISIBLE working SCATTER reg
+                      00460 
+  00000014            00461 WORK_ACHNL_7F   EQU     0x14            ;DT400 VARIABLE whistle CHNL
+  00000015            00462 WORK_ACHNL_7E   EQU     0x15
+  00000016            00463 WORK_SKAT_FAST  EQU     0x16
+  00000017            00464 WORK_SKAT_SLOW  EQU     0x17
+                      00465 
+  00000018            00466 WORK_DISTANCE   EQU     0x18
+  00000019            00467 WORK_PEAK_SPD   EQU     0x19
+  0000001A            00468 WORK_USER_0     EQU     0x1A                    ;user  REG
+  0000001B            00469 WORK_USER_1     EQU     0x1B                    ;user  REG
+  0000001C            00470 WORK_USER_2     EQU     0x1C                    ;user  REG
+  0000001D            00471 WORK_USER_3     EQU     0x1D                    ;user  REG
+  0000001E            00472 WORK_USER_4     EQU     0x1E                    ;user  REG
+  0000001F            00473 WORK_USER_5     EQU     0x1F                    ;user  REG
+  00000020            00474 WORK_USER_6     EQU     0x20                    ;user  REG
+  00000021            00475 WORK_USER_7     EQU     0x21                    ;user  REG
+  00000022            00476 WORK_USER_8     EQU     0x22                    ;user  REG
+  00000023            00477 WORK_USER_9     EQU     0x23                    ;user  REG
+  00000024            00478 WORK_USER_10    EQU     0x24                    ;user  REG
+  00000025            00479 WORK_USER_11    EQU     0x25                    ;user  REG
+  00000026            00480 WORK_USER_12    EQU     0x26                    ;user  REG
+  00000027            00481 WORK_USER_13    EQU     0x27                    ;user  REG
+  00000028            00482 WORK_USER_14    EQU     0x28                    ;user  REG
+  00000029            00483 WORK_USER_15    EQU     0x29                    ;user  REG
+                      00484 ;---------------------
+                      00485 ;WORK_STATUS_BITS register bit definitions. data is VOLATILE
+                      00486 
+  00000000            00487 WKSB_ANALOG_BIT EQU     0               ;1=is in ANALOG mode [STATUS mirror]
+  00000001            00488 WKSB_ANALOG_MASK EQU    0x01            ;bit involved
+                      00489 
+  00000001            00490 WKSB_DIRNOW_BIT EQU     1               ;1= rev direction ?[STATUS mirror]
+  00000002            00491 WKSB_DIRNOW_MASK EQU    0x02            ;bit involved
+                      00492 
+  00000002            00493 WKSB_RUN_BIT    EQU     2               ;0= stop motor PWM, non-primemover sounds RUN
+  00000004            00494 WKSB_RUN_MASK EQU       0x04            ;bit involved
+                      00495         
+  00000003            00496 WKSB_ACEL_BIT   EQU     3               ;1= is ACCEL state
+  00000008            00497 WKSB_ACEL_MASK EQU      0x08            ;bit involved
+                      00498 
+  00000004            00499 WKSB_SPDDELTA_BIT  EQU  4               ;1= change SPD by unsigned SPD_DELTA work REG only
+  00000010            00500 WKSB_SPDDELTA_MASK EQU  0x10            ;bit involved
+                      00501 
+  00000007            00502 WKSB_MATH_BIT   EQU     7               ;result from last MODIFY math action (can test with
+  00000080            00503 WKSB_MATH_MASK  EQU     0x80            ;bit involved
+                      00504 
+                      00505 ;========================
+                      00506 ;SCATTER commands as arg bytes in MTYPE_SCATTER
+                      00507 
+                      00508 ;is MODIFY SCTR command  -  1110-0100, cccc-XAAA, aaaa-aaaa, bbbb-bbbb, AAA is 1 of 8 scat tasks/chnls
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 10
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00509 
+                      00510 
+                      00511 ;is SCTR_PERIOD command  -  1110-0100, 0001-PAAA, Srrr-rrrr, IIIw-wwww, 
+                      00512 
+                      00513 ;AAA is 1 of 8 scat tasks/chnls,  P=WORK scatter POLARITY, 
+                      00514 ;S=1 is SOUNDCV src  [0x80=CV141 etc], S=0 rrr-rrrr is RATE in approx 1 sec counts, rate=0 is CNTR hold.
+                      00515 ;III=scatter intensity- 000=no SCATTER, w-wwww is a WORK reg# as SCATTER vary data src
+                      00516 
+                      00517 ;cccc is 16 SCATTER command modes, dddd and eeee are ARG Regs for run modes
+                      00518 
+  00000020            00519 SCAT_CMD_PERIOD         EQU     0x20            ;command for PERIODIC event, SCALABLE scatter speedup on
+  00000028            00520 SCAT_CMD_PERIOD_REV     EQU     0x28            ;command for PERIODIC event, with SCALABLE scatter slowd
+                      00521 
+  00000030            00522 SCAT_CMD_SAWTOOTH       EQU     0x30
+  00000038            00523 SCAT_CMD_SAWTOOTH_REV   EQU     0x38
+                      00524 
+  00000003            00525 SCAT_PERIOD_POLARITY_BIT EQU    3               ;1= reverse WORK influence
+  00000008            00526 SKATTER_INCREMENT       EQU     8               ;phase INCREMENT
+                      00527         
+                      00528 
+  00000000            00529 SCAT_CHNL0              EQU     0x00            ;SCATTER task0 
+  00000001            00530 SCAT_CHNL1              EQU     0x01            ;SCATTER task1 
+  00000002            00531 SCAT_CHNL2              EQU     0x02            ;SCATTER task2 
+  00000003            00532 SCAT_CHNL3              EQU     0x03            ;SCATTER task3 
+  00000004            00533 SCAT_CHNL4              EQU     0x04            ;SCATTER task4- visible WORK reg
+  00000005            00534 SCAT_CHNL5              EQU     0x05            ;SCATTER task5- visible WORK reg
+  00000006            00535 SCAT_CHNL6              EQU     0x06            ;SCATTER task6- visible WORK reg
+  00000007            00536 SCAT_CHNL7              EQU     0x07            ;SCATTER task7- visible WORK reg
+                      00537 
+                      00538 
+  000000E0            00539 SINTEN_IMMED            EQU     0xE0            ;use WORK# as immediate data
+  000000C0            00540 SINTEN_HIGH             EQU     0xC0
+  00000060            00541 SINTEN_MID              EQU     0x60            ;mid scatter intensity 
+  00000040            00542 SINTEN_LOW              EQU     0x40
+  00000020            00543 SINTEN_MIN              EQU     0x20
+  00000000            00544 SINTEN_OFF              EQU     0x00
+                      00545 
+                      00546 ;======================
+  000000C0            00547 DEFAULT_GLBL_GAIN       EQU     0xC0
+  00000000            00548 MERGE_ALL_MASK          EQU     0               ;any 0 bit is involved
+                      00549 
+                      00550 ;----2222--------------
+                      00551 ;2ND modify ARG
+                      00552 
+  00000080            00553 SNDCV_SRC       EQU     0x80            ;this bit set chngs from IMMED to SND_CV to control EFFECT span
+  00000007            00554 SNDCV_SRC_BIT   EQU     7               ;1=ls 7 bits SCV#, 0=ls 7 bits immed arg data
+                      00555 
+                      00556 ;ls 7 bit ARGS
+  00000000            00557 MAXG_NONE       EQU     0x00            ;value of 0 means no scaling, SRC is 100% GAIN
+  00000000            00558 MAXP_NONE       EQU     0x00            ;value of 0 means no scaling, SRC is 100% PITCH
+                      00559 
+                      00560 
+                      00561 ;----3333--------------
+                      00562 ;3RD modify ARG
+                      00563 ;MPUSH          EQU     0x80            ;this bit forces LEVEL OVERIDE
+                      00564 
+  00000080            00565 DITHER          EQU     0x80            ;value to change to DITHER mode
+  00000040            00566 SUMG            EQU     0x40
+                      00567 
+  00000000            00568 MIN_DITH        EQU     0x00
+  00000020            00569 LOW_DITH        EQU     0x20
+  00000040            00570 MID_DITH        EQU     0x40
+  00000060            00571 MAX_DITH        EQU     0x60
+                      00572 
+                      00573 ;MPUSH_BIT      EQU     7
+                      00574 
+  00000007            00575 DITHER_BIT      EQU     7
+  00000006            00576 SUM_BIT         EQU     6               ;1=add ARG1/2 variation,0=multiply
+  00000005            00577 MG1_BIT         EQU     5               ;these code meaning of LO nibble
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 11
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000004            00578 MG0_BIT         EQU     4
+                      00579 
+                      00580 
+                      00581 ;for CMDS 8/9 ls nibble ARG3 is scaling factor to set CV/IMMED data control SPAN
+  0000000F            00582 SCALE_F         EQU     0x0F
+  0000000C            00583 SCALE_C         EQU     0x0C
+  00000008            00584 SCALE_8         EQU     0x08
+  00000006            00585 SCALE_6         EQU     0x06
+  00000005            00586 SCALE_5         EQU     0x05
+  00000004            00587 SCALE_4         EQU     0x04
+  00000002            00588 SCALE_2         EQU     0x02
+                      00589 
+                      00590 ;DITHER ????
+                      00591 
+  00000000            00592 DITHERG_WHISTLE EQU     0x00
+  00000000            00593 DITHERP_WHISTLE EQU     0x00
+                      00594 
+  00000000            00595 DITHERG_DIESEL  EQU     0x00
+  00000000            00596 DITHERP_DIESEL  EQU     0x00
+                      00597 
+  00000000            00598 DITHERG_NONE    EQU     0x00
+  00000000            00599 DITHERP_NONE    EQU     0x00
+                      00600 
+                      00601 ;BLEND logic commnds
+                      00602 ; 1110-BLEND, BLEND_CMDS, BLEND_GAIN_ARG, BLEND_FASE_ARG
+                      00603 
+                      00604 ;BLEND cmds bit encoding
+  000000C0            00605 BLEND_TGTMASK   EQU     0xC0            ;2 ms bits control Blend target
+  00000038            00606 BLEND_FASEMASK  EQU     0x38            ;3  bits FASE_BLEND type, 000=inactive
+  00000007            00607 BLEND_GAINMASK  EQU     0x07            ;3 ls bits GAIN_BLEND type, 000=inactive
+                      00608 
+                      00609 ;MODE0 with ARG=0 is INACTIVE BLEND
+                      00610 
+  00000000            00611 BLEND_CURRENT_CHNL      EQU     0x00 & BLEND_TGTMASK
+  00000040            00612 BLEND_ALL               EQU     0x40 & BLEND_TGTMASK
+                      00613 
+  00000000            00614 BLEND_GAIN0             EQU     0x00 & BLEND_GAINMASK   ;STD logic 0 blend
+  00000001            00615 BLEND_GAIN1             EQU     0x01 & BLEND_GAINMASK   ;alt logic 1 blend
+                      00616 
+  00000000            00617 BLEND_FASE0             EQU     0x00 & BLEND_FASEMASK   ;STD logic 0 blend
+  00000008            00618 BLEND_FASE1             EQU     0x08 & BLEND_FASEMASK   ;alt logic 1 blend
+                      00619 
+                      00620 
+  00000004            00621 BLENDG_DSL_ACCEL0       EQU     0x04            ;GAIN rate for loaded DIESEL
+  00000002            00622 BLENDF_DSL_ACCEL0       EQU     0x02            ;FASE rate for loaded DIESEL
+                      00623 
+  00000006            00624 BLENDG_DSL_ACCEL1       EQU     0x06            ;GAIN rate for loaded DIESEL
+  00000005            00625 BLENDF_DSL_ACCEL1       EQU     0x05            ;GAIN rate for unloading DIESEL
+                      00626 
+  00000009            00627 BLENDG_DSL_DECEL0       EQU     0x09            ;GAIN rate for unloading DIESEL
+  00000007            00628 BLENDF_DSL_DECEL0       EQU     0x07            ;FASE rate for unloading DIESEL
+                      00629 
+                      00630 
+                      00631 
+                      00632 ;COMPARE CMD control bits
+                      00633 
+  00000000            00634 TARGET_DATA     EQU     0x00            ;second COMPARE ARG is WORK reg or SCV
+  00000004            00635 IMMED_DATA      EQU     0x04            ;second COMPARE ARG is IMMEDIATE 8 bit DATA
+                      00636 
+  00000000            00637 SKIP_SAME       EQU     0x00
+  00000001            00638 SKIP_RSVD       EQU     0x01            ;reserved CONDITION code
+  00000002            00639 SKIP_LESS       EQU     0x02
+  00000003            00640 SKIP_GRTR       EQU     0x03    
+                      00641 
+  00000000            00642 COMP_ALL        EQU     0x00            ;1 bits= do not include
+  00000080            00643 COMP_7LSB       EQU     0X80
+                      00644 
+                      00645 
+                      00646 ;       CMD_MASK_COMPARE                IMMED_COMP+SKIP_LESS,WORK_SPEED,0x3F,0
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 12
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR DEFINITION FILE for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,20132018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00647 
+                      00648 
+                      00649 ;mod for WHISTLE GAIN, chng GAIN/VOL based on ANALOG chnl 
+                      00650 ;       LOAD_MODIFIER   MTYPE_GAIN,ANALOG_GAIN_MODIFY+WORK_ACHNL_7F,MAXG_WHISTLE,DITHERG_WHISTLE
+                      00651 ;mod for WHISTLE PITCH
+                      00652 ;       LOAD_MODIFIER   MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_ACHNL_7F,MAXF_WHISTLE,DITHERP_WHISTLE
+                      00653 
+                      00654 ;mod for DIESEL GAIN
+                      00655 ;       LOAD_MODIFIER   MTYPE_GAIN,ANALOG_GAIN_MODIFY+WORK_SPEED,MAXG_DIESEL,DITHERG_DIESEL
+                      00656 ;mod for DIESEL PITCH
+                      00657 ;       LOAD_MODIFIER   MTYPE_PITCH,ANALOG_GAIN_MODIFY+WORK_SPEED,MAXF_DIESEL,DITHERP_DIESEL
+                      00658 
+                      00659 
+                      00660 ;       LOAD_MODIFIER   MTYPE_GAIN,ANALOG_GAIN_MODIFY+WORK_ACHNL_7F,MAXG_WHISTLE,DITHERG_NONE
+                      00661 
+                      00662 
+                      00663 ;sound COMMAND cv definitions
+                      00664 ;THESE first 11 CV"s are FIXED locations used by CODE for fixed meanings/functions
+                      00665 ;CV140/SCV_FREEFORM and above are USER/SDF definable
+                      00666 
+                      00667         CBLOCK  0x80            ;is CV129
+                      00668 
+  00000080            00669 SNDCV_CONFIGA                   ;CV129= config byte
+  00000081            00670 SNDCV_CONFIGB                   ;CV130= config byte
+  00000082            00671 SCV_DCONFIG                     ;CV131= diesel config
+  00000083            00672 SCV_NOTCH                       ;CV132= typ DIESEL NOTCH rate byte
+  00000084            00673 SNDCV_STEAM                     ;CV133= typ steam CAM config byte, x80=EXT or 1-127=DRIVER dia in inches
+  00000085            00674 SCV_STGEAR                      ;CV134= steam gear ratio trim
+  00000086            00675 SCV_MUTE_VOL                    ;CV135= vol level when MUTE action is triggered, e.g. F8=ON
+  00000087            00676 SCV_MAIN_PITCH                  ;CV136
+  00000088            00677 SCV_137
+  00000089            00678 SCV_138                         ;SCV138= 
+  0000008A            00679 SCV_DISTANCE_RATE               ;SCV139= mask for controlling DISTANCE rate event/trigger
+  0000008B            00680 SCV_FREEFORM                    ;SCV_140, here the SCV's are SDF defined
+                      00681 
+                      00682         ENDC
+                      00683         
+                      00684 ;CV133, SNDCV_STEAM /DRIVER size bit7=1 means EXTERNAL INPUT_0 generates a special CAM code as well
+                      00685 
+  00000007            00686 STEAM_CAM_BIT           EQU     7
+                      00687 
+                      00688 ;=======end of FIXED DATA assignments==============
+                      00689 
+                      00690 ;=================
+                      00691 ;USER choices
+                      00692 ;SCAT_AIRCOMP_RATE      EQU     25              ;AIR compressor about 2 mins, above 128 is SNDCV foR RAT
+                      00693 ;SCAT_DRIER_RATE                EQU     10              ;about 10 secs for DRIER
+                      00694 ;SCAT_WATERPUMP_RATE    EQU     100
+                      00695 ;SCAT_COAL_RATE         EQU     120
+                      00696 
+                      00697 
+                      00698 ;specific DFLT values to scale MAX ranges
+  0000006A            00699 MAXG_WHISTLE    EQU     0x6A
+  00000007            00700 MAXP_WHISTLE    EQU     0x07
+  0000001C            00701 MAXG_DIESEL     EQU     0x1C
+  0000003E            00702 MAXP_DIESEL     EQU     0x3E
+  0000001C            00703 MAXG_STEAM      EQU     0x1C
+  0000007E            00704 MAXP_STEAM      EQU     0x7E            ;was 3E- make more explosive!
+                      00705 
+                      00042    #INCLUDE     ../SFX3p0_snd_macs.inc
+                      00001 ;This information is copyrighted all rights reserved. No commercial use permitted without written permis
+                      00002 
+                      00003         STITLE          "SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOL
+                      00004 
+                      00005 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 13
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00006         page
+                      00007 ;===============
+                      00008 ;thes MACROS define the SDL used by DIGITRAX products
+                      00009 ; (C) 2004,2005,2013,2018 Digitrax Inc.
+                      00010 ;MACROS,  hi byte second in DB order!
+                      00011 
+                      00012 ;[4 BYTE COMMANDS] 
+                      00013   
+                      00014 ;DEFINE scheme   =  [0xF1][000s-ssss][hi LEN][lo LEN],  LEN encodes total BYTES in SCHEME
+                      00015 
+                      00016 
+  00000000            00017 SCNT            SET     0               ;scheme COUNT
+  00000000            00018 ICNT            SET     0               ;initiates COUNT
+  00000000            00019 CCNT            SET     0               ;channel COUNT
+  00000000            00020 CTEMP           SET     0               ;max chnl in this scheme
+                      00021 
+  0000001F            00022 CLOSE_SCHEME    EQU     0x1F
+                      00023 SKEME_START     MACRO   SKEME_NO
+                      00024 SKEME_BASE      SET     $                               ;for offset calc
+                      00025                 DB      CMD_SKEME_START,(SKEME_NO &0x1F), high((SKEME_NEXT#V(SCNT)-$)+2), low((SKEME_NEX
+                      00026                 ENDM
+                      00027 
+                      00028 SKEME_END       MACRO   SKEME_NO
+                      00029 SKEME_NEXT#V(SCNT)
+                      00030 SCNT += 1
+                      00031 ;CCNT=CTEMP                             ;xfer MAX value seen in last scheme
+                      00032 ;CTEMP = 0
+                      00033                 ENDM
+                      00034 
+                      00035 
+                      00036 
+                      00037 ;=========== 4 byte commands
+                      00038 ; load moodifier REGS
+                      00039 
+                      00040 LOAD_MODIFIER   MACRO   MOD_TYPE,ARG1,ARG2,ARG3
+                      00041                 DB      CMD_LOAD_MODIFY+(MOD_TYPE&0x0F),ARG1,ARG2,ARG3
+                      00042                 ENDM
+                      00043                 
+                      00044 BRANCH_EXT      MACRO   ADR
+                      00045                 DB      CMD_XGOTO_SND, 0                                                ;F0-00 first 16 
+                      00046                 DB      high (ADR-SKEME_BASE) , low (ADR-SKEME_BASE)                    ;16 bit adr arg
+                      00047                 ENDM
+                      00048                 
+                      00049 ;
+                      00050 MASK_COMPARE    MACRO   SRC,IMMED,TARG,MASK,SKIP
+                      00051                 DB      CMD_MASK_COMPARE+SKIP+IMMED,SRC,TARG,MASK
+                      00052                 ENDM
+                      00053 
+                      00054 ;XPLAY          MACRO   HANDLE,BREAK,WAVBRK_FLGS                        ;Play wave fragment
+                      00055 ;               DB      CMD_PLAY_EXPANDED,(HANDLE & 0xC0)+1             ;ADD REV PLAY FLAG PLUS OTHER BI
+                      00056 ;               DB      ((BREAK>>2)&0x07)+WAVBRK_FLGS, (HANDLE & 0x3F)+((BREAK<<6)&0xC0)        
+                      00057 ;               ENDM
+                      00058 
+                      00059 ;==========================================================
+                      00060 ;[2 BYTE COMMANDS]
+                      00061 
+                      00062 ;-------------------
+                      00063 ;CHNL_END       EQU     0xFF            ;this CHNL number stops SCHEME evaluation
+                      00064 ; CHNL in current scheme ENDS with new SCHEME
+                      00065 
+                      00066 CHANNEL_START   MACRO   CHNL_NO
+                      00067                 DB      CMD_START_CHNL,CHNL_NO
+                      00068 ;CTEMP += 1
+                      00069                 ENDM
+                      00070 ;----
+                      00071 ;This command entry must be first COMMAND in a SDF binary after SKEME_START, so the code version may be 
+                      00072 SDL_VERSION     MACRO   VERSION_NO
+                      00073                 DB      CMD_MARK_VERSION,VERSION_NO
+                      00074                 ENDM
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 14
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00075 ;----
+                      00076 
+                      00077 INITIATE_SOUND  MACRO   TRIGGER,PREMPT
+                      00078                 DB      CMD_INITIATE_SND + ((PREMPT) & 0x07), TRIGGER +((PREMPT) & 0x80)
+                      00079 ICNT += 1
+                      00080 
+                      00081                 ENDM
+                      00082 
+                      00083 ;----RESERVED
+                      00084 ;CALL_SOUND     MACRO   ADR
+                      00085 ;               DB      CMD_CALL_SND + ((high ADR) & 0x0F) , low ADR   
+                      00086 ;               ENDM
+                      00087 
+                      00088 ;---------
+                      00089 BRANCH_TO       MACRO   ADR
+                      00090         
+                      00091         if      (ADR-SKEME_BASE) > 0xFFF                            ;check branch size in SCHEME
+                      00092                 error   ADR range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                      00093         else
+                      00094                 DB      CMD_GOTO_SND + ((high (ADR-SKEME_BASE)) & 0x0F) , low (ADR-SKEME_BASE)  
+                      00095         endif
+                      00096                 
+                      00097                 ENDM
+                      00098 ;----RESERVED
+                      00099 ;REPEAT_SOUND   MACRO   COUNT,BREAK
+                      00100 ;               DB      CMD_REPEAT_SND + (COUNT & 0x0F), BREAK  
+                      00101 ;               ENDM
+                      00102 
+                      00103 DELAY_SOUND     MACRO   MODE,VALUE,GLBL
+                      00104                 DB      CMD_DELAY_SND + (GLBL & 0x01), (VALUE & 0x7F)+MODE  
+                      00105                 ENDM
+                      00106 
+                      00107 SKIP_ON_TRIGGER MACRO   LOGIC,TRIG_VALUE
+                      00108                 DB      CMD_SKIP_ON_TRIGGER + (LOGIC & 0x03), TRIG_VALUE  
+                      00109                 ENDM
+                      00110 GENERATE_TRIGGER MACRO  TRIG_VALUE
+                      00111                 DB      CMD_BLIP_TRIGGER, TRIG_VALUE  
+                      00112                 ENDM
+                      00113 ;----
+                      00114 END_SOUND       MACRO
+                      00115                 DB      CMD_END_SND,0
+                      00116                 ENDM
+                      00117 
+                      00118 ;============================
+                      00119 ;HANDLE play conditions-  allows HANDLE looping on WAVBRK events
+                      00120 ; 16 bit version uses the simple 2 byte PLAY macro, and substitutes 4 byte XPLAY if hndl> 64
+                      00121 ; this version does not test for version limits
+                      00122  
+                      00123 PLAY            MACRO   HANDLE,BREAK,WAVBRK_FLGS                        ;Play wave fragment
+                      00124         nolist
+                      00125         if HANDLE > 255
+                      00126         ;if HANDLE > 190
+                      00127          list
+                      00128          xERROR HANDLE number too high!
+                      00129          endif
+                      00130         if HANDLE < 64
+                      00131         list ;2 byte PLAY  [HANDLE]
+                      00132         DB      CMD_PLAY_SND+((BREAK>>2)&0x07)+WAVBRK_FLGS, (HANDLE & 0x3F)+((BREAK<<6)&0xC0)   
+                      00133         nolist
+                      00134         else
+                      00135         list ;4 byte XPLAY      [HANDLE]
+                      00136                 DB      CMD_PLAY_EXPANDED,(HANDLE & 0xC0)+1             ;ADD REV PLAY FLAG PLUS OTHER BI
+                      00137                 DB      ((BREAK>>2)&0x07)+WAVBRK_FLGS, (HANDLE & 0x3F)+((BREAK<<6)&0xC0)        
+                      00138         nolist
+                      00139         endif
+                      00140         list
+                      00141                 ENDM
+                      00142 
+                      00143 ;dropped USAGE in VERSION 2 S/W!! do NOT use
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 15
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00144 ;PLAY_END       MACRO   HANDLE,BREAK,WAVBRK_FLGS                        ;Play wave fragment
+                      00145 ;               DB      CMD_PLAY_SND_LAST+((BREAK>>2)&0x07)+WAVBRK_FLGS, (HANDLE & 0x3F)+((BREAK<<6)&0xC
+                      00146 ;               ENDM
+                      00147 
+                      00148 STATS   MACRO   ICNT,SCNT,CCNT
+                      00149         DB      ICNT                            ;Number of INITIATES
+                      00150         DB      SCNT                            ;Number of SCHEMES      
+                      00151         DB      CCNT                            ;Number of CHANNELS 
+                      00152         ENDM
+                      00043 ;LIST
+                      00044 ;#INCLUDE       EL7TrigV7.inc
+                      00045 ;#INCLUDE       EL7c4x6d30base.inc
+                      00046 ;#INCLUDE   SERIES6_Snd_cmd.INC
+                      00047 ;#INCLUDE   SERIES6_snd16_macs.INC
+                      00048 
+                      00049 ;-----------------------------------------
+                      00050 ;   SYSTEM VARIABLES
+                      00051 ;-----------------------------------------
+  00000086            00052 CUSTOM_SDF                      EQU     0x86  ;cv152   AUTHOR code Maciej Swic
+  00000046            00053 USER_SDF_SUB_ID set     70    ;cv105   AND CV160
+  00000000            00054 USER_SDF_FIX_ID set     0     ;cv106   AND CV160
+  00000001            00055 PROJECT_ID                      EQU     001   ;cv153   000-254
+  00000086            00056 AuthorCode        EQU   0x86  ;cv25    AUTHOR code John McMasters
+                      00057 
+                      00058 ;------------------------------------------
+                      00059 ;   CONSTANTS
+                      00060 ;------------------------------------------
+                      00061 ; Volume Scaling
+  0000000F            00062 SCALE_F EQU     0x0F
+  0000000E            00063 SCALE_E EQU     0x0E
+  0000000D            00064 SCALE_D EQU     0x0D
+  0000000C            00065 SCALE_C EQU     0x0C
+  0000000B            00066 SCALE_B EQU     0x0B
+  0000000A            00067 SCALE_A EQU     0x0A
+  00000009            00068 SCALE_9 EQU     0x09
+  00000008            00069 SCALE_8 EQU     0x08
+  00000007            00070 SCALE_7 EQU     0x07
+  00000006            00071 SCALE_6 EQU     0x06
+  00000005            00072 SCALE_5 EQU     0x05
+  00000004            00073 SCALE_4 EQU     0x04
+  00000003            00074 SCALE_3 EQU     0x03
+  00000002            00075 SCALE_2 EQU     0x02
+  00000001            00076 SCALE_1 EQU     0x01
+                      00077 
+  00000001            00078 SCALE_INCR_1    EQU 0x01
+  00000002            00079 SCALE_INCR_2    EQU 0x02
+  00000003            00080 SCALE_INCR_3    EQU 0x03
+  00000004            00081 SCALE_INCR_4    EQU 0x04
+  00000006            00082 SCALE_INCR_6    EQU 0x06
+  00000008            00083 SCALE_INCR_8    EQU 0x08
+                      00084 
+                      00085 ;see SCV_LOAD_MIN for Min value to tune minimum volume 1-5 [5] VARY_LOAD / SCALE
+  00000008            00086 SCALE_MIN      EQU      SCALE_8 ; Lowest volume
+  0000000B            00087 SCALE_DRIFT             EQU     SCALE_B
+  0000000C            00088 SCALE_MID               EQU     SCALE_C
+  0000000F            00089 SCALE_MAX               EQU   SCALE_F ; Highest volume
+  00000037            00090 DRIFT_VOLUME    EQU 55  ;Drift Volume           0-64    [20]
+                      00091 
+  0000005E            00092 IMAXP_DIESEL    EQU     0x5E    ;0x7E   ;MAXP_DIESEL    EQU     0x3E
+                      00093 
+                      00094 ; Notching
+  00000010            00095 NOTCH_UP_VAL    EQU     16
+  FFFFFFF0            00096 NOTCH_DOWN_VAL  EQU     -NOTCH_UP_VAL
+  00000000            00097 NOTCH1  EQU     0x00
+  00000010            00098 NOTCH2  EQU     0x10
+  00000020            00099 NOTCH3  EQU     0x20
+  00000030            00100 NOTCH4  EQU     0x30
+  00000040            00101 NOTCH5  EQU     0x40
+  00000050            00102 NOTCH6  EQU     0x50
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 16
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000060            00103 NOTCH7  EQU     0x60
+  00000070            00104 NOTCH8  EQU     0x70
+                      00105 ;NOTCH9 EQU     0x80
+  00000020            00106 MAX_NOTCH_VAL   EQU     NOTCH3
+  00000000            00107 MIN_NOTCH_VAL   EQU     NOTCH1
+                      00108 
+                      00109 ;USER_INTLK_BITS MASKS:
+  00000080            00110 VARY_DRIFT_MASK7        EQU     0x80    ;MASK just do bit7      Vary auto grade crossing 6/25/16        
+  00000040            00111 STATIC_MAINT_MASK6      EQU     0x40    ;MASK just do bit6      STATIC MAINTENANCE SOUNDS INTERLOCK
+  00000020            00112 COUPLER_MASK5           EQU     0x20    ;MASK just do bit5      AUTO COUPLER INTERLOCK
+  00000010            00113 CYLCOCK_MASK4           EQU     0x10    ;MASK just do bit4      OPEN CYLCOCK INTERLOCK
+  00000008            00114 DYN_CTRL_MASK3          EQU     0x08    ;MASK just do bit3      NOT_USED INTERLOCK
+  00000004            00115 AUTO_BRAKE_MASK2        EQU     0x04    ;MASK just do bit2      AUTOMATIC BRAKING INTERLOCK
+  00000002            00116 START_MASK1                     EQU     0x02    ;MASK just do bit1      STARTUP SOUNDS INTERLOCK
+  00000001            00117 COMP_MASK0                      EQU     0x01    ;MASK just do bit0      COMPRESSOR AND AIR SOUNDS INTERL
+                      00118 
+                      00119 ;------------------------------------------
+                      00120 ;   LOCATION FOR CV ADDRESSES
+                      00121 ;------------------------------------------
+                      00122    cblock   SCV_FREEFORM   ; Start assigning (after std Digitrax) for CV140, CV141, etc.
+  0000008B            00123 SCV_PRIME_VOLUME        ;CV140 PRIME mover / Chuff vol  0-64    [40]
+  0000008C            00124 SCV_LOAD_MIN         ;CV141 Range Volume Scale to a value between 1-5. Drifting volume will diminish to 
+                      00125    ENDC
+                      00126 ;--------------------------------------------------------------
+                      00127 ; Previously defined SCVs - listed here for reference convience
+                      00128 ;--------------------------------------------------------------
+                      00129 ;   SCV_RESET (CV8)  Reset Decoder values to factory
+                      00130 ;   SCV_MASTER_VOL (CV58) Master Volume Setting
+  00000083            00131 SCV_132 EQU SCV_NOTCH ; Controller Notch Rate
+  00000084            00132 SCV_133 EQU SNDCV_STEAM ; Wheel Diameter. Default 127 for slowest Chuff
+  00000085            00133 SCV_134 EQU SCV_STGEAR ; Wheel Ratio. Default 32 = 100%
+  00000086            00134 SCV_135 EQU SCV_MUTE_VOL; Global volume when muted. Default 0
+  0000008A            00135 SCV_139 EQU SCV_DISTANCE_RATE ; Time value till Gauge Trigger. Default 63 = 9 min
+                      00136 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 17
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00137         PAGE
+                      00138 
+                      00139 ;------------------------------------------------------------------
+                      00140 ;   LOCAL VARIABLES (Work Registers and Work_User Memory Registers)                                     
+                      00141 ;------------------------------------------------------------------
+                      00142 ;WORK_SPEED       EQU   0x00
+                      00143 ;WORK_NOTCH       EQU   0x01
+                      00144 ;NOTCH0        EQU 0x00
+                      00145 ;NOTCH1        EQU      0x10  ; Gives a ~33% split at a Notch Rate of 64 (CV132)
+                      00146 ;NOTCH2        EQU      0x20
+                      00147 ;NOTCH3        EQU      0x50
+                      00148 ;WORK_SERVO       EQU   0x02
+                      00149 ;WORK_MVOLTS      EQU   0x03
+                      00150 ;WORK_USER_LINES          EQU   0x05
+                      00151 ;WORK_TIMEBASE    EQU   0x06
+                      00152 ;WORK_STATUS_BITS  EQU  0x07
+                      00153 ;WORK_GLBL_GAIN   EQU   0x08
+                      00154 ;WORK_GAIN_TRIM   EQU   0x09
+                      00155 ;WORK_PITCH_TRIM          EQU   0x0A
+                      00156 ;WORK_SPEED_DELTA  EQU  0x0B
+                      00157 ;WORK_SCATTER4    EQU   0x10
+                      00158 ;WORK_SCATTER5    EQU   0x11
+                      00159 ;WORK_SCATTER6    EQU   0x12
+                      00160 ;WORK_SCATTER7    EQU   0x13
+                      00161 ;WORK_ACHNL_7F    EQU   0x14
+                      00162 ;WORK_ACHNL_7E    EQU   0x15
+                      00163 ;WORK_SKAT_FAST   EQU   0x16
+                      00164 ;WORK_SKAT_SLOW   EQU   0x17
+                      00165 ;WORK_DISTANCE    EQU   0x18
+                      00166 ;WORK_PEAK_SPD    EQU   0x19
+                      00167 
+  0000001A            00168 COUNT_LOOP                 EQU WORK_USER_0 ; used to count n times
+  0000001B            00169 PREV_NOTCH                 EQU WORK_USER_1 ; used to remember previous Notch    0x00 - 0x70 [run notches
+  0000001C            00170 VARY_LOAD                  EQU WORK_USER_2 ; used to vary scale from outside motor sound loop   ;range 1
+  0000001D            00171 AIR_PRESS                  EQU WORK_USER_3 ; used to save current air or brake pressure from 90 PSI = Po
+  0000001E            00172 USER_INTLK_BITS EQU WORK_USER_4
+                      00173 
+  0000001A            00174 WORK_USER_0    EQU      0x1A
+  0000001B            00175 WORK_USER_1    EQU      0x1B
+  0000001C            00176 WORK_USER_2        EQU  0x1C
+  0000001D            00177 WORK_USER_3        EQU  0x1D
+  0000001E            00178 WORK_USER_4        EQU  0x1E
+  0000001F            00179 WORK_USER_5        EQU  0x1F
+                      00180 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 18
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00181         PAGE
+                      00182 
+                      00183 ;========================================================================================
+                      00184 ; START SCHEME 0                   
+                      00185 ;========================================================================================
+000000                00186    ORG   0
+                      00187    SKEME_START   0
+  00000000                M SKEME_BASE      SET     $                               ;for offset calc
+000000 00F1 0E02          M                 DB      CMD_SKEME_START,(0        &0x1F), high((SKEME_NEXT0-$)+2),        low((SKEME_NEX
+                      00188    SDL_VERSION VERSION_2
+000004 2082               M                 DB      CMD_MARK_VERSION,VERSION_2
+                      00189 ;---------------------------------------------
+                      00190 ;  START CHANNEL   1 
+                      00191 ;---------------------------------------------
+000006                00192 CHNL_01_S0
+                      00193    CHANNEL_START   1
+000006 0181               M                 DB      CMD_START_CHNL,1
+                          M ;CTEMP += 1
+                      00194 ;---------------------------------------------
+                      00195 
+                      00196         ;----------------------------------------------------
+                      00197         ;       STARTUP
+                      00198         ;----------------------------------------------------
+                      00199    INITIATE_SOUND    TRIG_SND_ACTV11,NORMAL+NO_PREEMPT_TRIG
+000008 0F94               M                 DB      CMD_INITIATE_SND + ((NORMAL+NO_PREEMPT_TRIG) & 0x07), TRIG_SND_ACTV11 +((NORMAL+
+  00000001                M ICNT += 1
+                          M 
+                      00200 
+                      00201    LOAD_MODIFIER     MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_B
+00000A 80E1 0B8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_B
+                      00202    LOAD_MODIFIER           MTYPE_WORK_IMMED,FMATH_AND+USER_INTLK_BITS,~START_MASK1,MERGE_ALL_MASK
+00000E 3EE6 00FD          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_AND+USER_INTLK_BITS,~START_MASK1,M
+                      00203 
+                      00204    PLAY              HNDL_MUTE,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000012 0040               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (HNDL_MUTE & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00205    
+                      00206    SKIP_ON_TRIGGER      TRIG_TRUE,TRIG_MOVING
+000014 0E05               M                 DB      CMD_SKIP_ON_TRIGGER + (TRIG_TRUE & 0x03), TRIG_MOVING 
+                      00207                 PLAY              STARTUP,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000016 0140               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (STARTUP & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00208    
+                      00209    LOAD_MODIFIER           MTYPE_WORK_IMMED,FMATH_OR+USER_INTLK_BITS,START_MASK1,MERGE_ALL_MASK
+000018 5EE6 0002          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_OR+USER_INTLK_BITS,START_MASK1,MER
+                      00210    LOAD_MODIFIER     MTYPE_WORK_IMMED,FMATH_OR+USER_INTLK_BITS,COMP_MASK0,MERGE_ALL_MASK
+00001C 5EE6 0001          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_OR+USER_INTLK_BITS,COMP_MASK0,MERG
+                      00211    LOAD_MODIFIER     MTYPE_WORK_IMMED,WORK_GLBL_GAIN,DEFAULT_GLBL_GAIN,MERGE_ALL_MASK
+000020 08E6 00C0          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),WORK_GLBL_GAIN,DEFAULT_GLBL_GAIN,MERGE_A
+                      00212    
+                      00213    SKIP_ON_TRIGGER      TRIG_TRUE,TRIG_MOVING
+000024 0E05               M                 DB      CMD_SKIP_ON_TRIGGER + (TRIG_TRUE & 0x03), TRIG_MOVING 
+                      00214       PLAY              RUN_0,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000026 0540               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (RUN_0  & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00215    
+                      00216    LOAD_MODIFIER           MTYPE_WORK_IMMED,FMATH_LODE+PREV_NOTCH,0,0
+000028 1BE6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+PREV_NOTCH,0,0
+                      00217    LOAD_MODIFIER     MTYPE_WORK_IMMED,FMATH_LODE+WORK_SPEED_DELTA,NOTCH1,0
+00002C 0BE6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_SPEED_DELTA,NOTCH1,0
+                      00218         LOAD_MODIFIER     MTYPE_WORK_IMMED,FMATH_LODE+PREV_NOTCH,NOTCH1,0
+000030 1BE6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+PREV_NOTCH,NOTCH1,0
+                      00219         LOAD_MODIFIER     MTYPE_WORK_IMMED,FMATH_LODE+WORK_PEAK_SPD,0x00,0
+000034 19E6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_PEAK_SPD,0x00,0
+                      00220    LOAD_MODIFIER     MTYPE_WORK_IMMED,FMATH_LODE+WORK_SPEED_DELTA,0,0
+000038 0BE6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_SPEED_DELTA,0,0
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 19
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00221 
+                      00222    END_SOUND
+00003C 0000               M                 DB      CMD_END_SND,0
+                      00223 
+                      00224         ;----------------------------------------------------
+                      00225         ;       SHUTDOWN
+                      00226         ;----------------------------------------------------
+                      00227         INITIATE_SOUND    TRIG_SND_ACTV11,NOT_TRIG      
+00003E 8F90               M                 DB      CMD_INITIATE_SND + ((NOT_TRIG) & 0x07), TRIG_SND_ACTV11 +((NOT_TRIG) & 0x80)
+  00000002                M ICNT += 1
+                          M 
+                      00228 
+                      00229         MASK_COMPARE      VARY_LOAD,IMMED_DATA,SCV_LOAD_MIN,COMP_ALL,SKIP_GRTR ; Prevent underflow
+000040 1CFF 008C          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,VARY_LOAD,SCV_LOAD_MIN,COMP_ALL
+                      00230                 LOAD_MODIFIER  MTYPE_WORK_IMMED,FMATH_INTEGRATE+VARY_LOAD,-SCALE_INCR_1,SCALE_MAX
+000044 BCE6 0FFF          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+VARY_LOAD,-SCALE_INCR_1,
+                      00231 
+                      00232         PLAY              RUN_1,no_loop,loop_STD        
+                          M         list ;2 byte PLAY  [HANDLE]
+000048 0640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (RUN_1  & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00233 
+                      00234         LOAD_MODIFIER     MTYPE_WORK_IMMED,FMATH_AND+USER_INTLK_BITS,~COMP_MASK0,MERGE_ALL_MASK ; Disabl
+00004A 3EE6 00FE          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_AND+USER_INTLK_BITS,~COMP_MASK0,ME
+                      00235         
+                      00236         PLAY              SHUTDOWN,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+00004E 0C40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (SHUTDOWN & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00237 
+                      00238         END_SOUND       
+000050 0000               M                 DB      CMD_END_SND,0
+                      00239 
+                      00240 ;================================================= major routine ===========================            
+                      00241 ;----------------------------------------------------
+                      00242 ; Increase to run
+                      00243 ; ---------------------------------------------------------
+                      00244         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                      00245         ;       THIS ROUTINE IS CH1_ primary PERSISTENT (NOT INTERRUPTABLE)
+                      00246         ;       this is MODIFIED by DISCRETE notch change logic to vary AMPL with NOTCH setting, RPMs al
+                      00247         ;---------------------------------------------------- 
+                      00248         ; ---------------------------------------------------------
+                      00249         ;     Play increase from stopped idle -- no load    
+                      00250         ; pick up notch at prev and increase to new current:                        
+                      00251         ; ---------------------------------------------------------
+                      00252         INITIATE_SOUND T_SPD_IDLEXIT,NORMAL+NO_PREEMPT_TRIG     ;RUN_WHILE_TRIG+ZAP     ;leaving IDLE st
+000052 7694               M                 DB      CMD_INITIATE_SND + ((NORMAL+NO_PREEMPT_TRIG) & 0x07), T_SPD_IDLEXIT +((NORMAL+NO
+  00000003                M ICNT += 1
+                          M 
+                      00253         ;finish play here due to interrupted idle event: 8/1/19
+                      00254         
+                      00255         LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_MID
+000054 80E1 0C8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_MID
+                      00256         PLAY INC_01,no_loop,loop_STD    ; 
+                          M         list ;2 byte PLAY  [HANDLE]
+000058 0240               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (INC_01 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00257 
+                      00258         ;begin to play acceleration...
+                      00259         LOAD_MODIFIER   MTYPE_WORK_IMMED,FMATH_OR+USER_INTLK_BITS,COUPLER_MASK5,MERGE_ALL_MASK  ;OR=SETt
+00005A 5EE6 0020          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_OR+USER_INTLK_BITS,COUPLER_MASK5,M
+                      00260         ;NOTE: CANNOT PLAY NON PRIME MOVER SOUNDS IN THIS EVENT --
+                      00261         ;               IT INTERRUPTS IDLE SOUNDS...
+                      00262                 ;BRANCH_TO      CH1SC0_IDLE_EXIT_IDLERUN
+                      00263         ;Notch1=0 is initial default...
+                      00264         LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_SPEED_DELTA,NOTCH1,WORK_NOTCH    
+00005E 0BE6 0100          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_SPEED_DELTA,NOTCH1,WORK_
+                      00265         LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+PREV_NOTCH,NOTCH1,WORK_NOTCH  
+000062 1BE6 0100          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+PREV_NOTCH,NOTCH1,WORK_NOTCH
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 20
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00266         LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_LODE+WORK_PEAK_SPD,0x00,0  
+000066 19E6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_PEAK_SPD,0x00,0
+                      00267 
+                      00268         LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+VARY_LOAD,+SCALE_INCR_2,SCALE_MAX   ;increment SC
+00006A BCE6 0F02          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+VARY_LOAD,+SCALE_INCR_2,
+                      00269 
+00006E                00270 CH1SC0_IDLE_EXIT_IDLERUN
+                      00271 
+                      00272 ;---
+                      00273 ;Fall thru to complete transition
+                      00274 
+00006E                00275 CH1SC0_ACCEL_IDLERUN2
+                      00276 ;======================================================================
+                      00277 ;       Evaluate WORK_NOTCH  
+                      00278 ;===================================================================================
+                      00279 ;       WORK_NOTCH is computed by the decoder and is continuously changed.
+                      00280 ;       The rate of change is managed by the SCV_NOTCH   (CV132) Controller Notch Rate where the 
+                      00281 ;       default value CV132=127 is mid range. Lower values are a slower rate -- higher is faster.  
+                      00282 ;       This project uses increments by NOTCH_UP_VAL of decimal 16 [0x10] for each notch.
+                      00283 ;       WORK_NOTCH will vary by more than one increment depending on rate of speed change and notch rate
+                      00284 ;       The variable input to the computation is WORK_SPEED which is an internal value from decimal 0-99
+                      00285 ;       99 divided by 16 gives the 7 integers for notches 1-8.
+                      00286 ;       However the WORK_NOTCH register is incremented by 16's and has the range:
+                      00287 ;       NOTCH   Decimal HEX                     Bit                     Throttle 
+                      00288 ;                                                               7654 3210       Speed (typical)
+                      00289 ;       0               0               (low idle option is at rest, not moving... )
+                      00290 ;       1               0               0x00            0000 0000               0
+                      00291 ;       2               16              0x10            0001 0000               12
+                      00292 ;       3               32              0x20            0010 0000               24
+                      00293 ;       4               48              0x30            0011 0000               36
+                      00294 ;       5               64              0x40            0100 0000               48
+                      00295 ;       6               80              0x50            0101 0000               60
+                      00296 ;       7               96              0x60            0110 0000               72
+                      00297 ;       8               112             0x70            0111 0000               84
+                      00298 ;       9               128             0x80            1000 0000               96
+                      00299 ;       10              144             0x90            1001 0000
+                      00300 ;       11              160             0xA0            1010 0000
+                      00301 ;       12              176             0xB0            1011 0000
+                      00302 ;       13              192             0xC0            1100 0000
+                      00303 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00304 
+00006E                00305 CH1SC0_STARTMOVE_END_ACCL
+                      00306         ;======================== current notch is passed to continuous running
+                      00307         ;                                                       via PREV_NOTCH. Any additional accelerat
+                      00308         ;                                                       or deceleration is processed there.
+                      00309         ;========================
+                      00310         ;v6.1 DO fall thru to run continuous 
+                      00311         BRANCH_TO       CH1SC0_CONTINUOUS_NOTCH 
+                          M         
+                          M         if      (CH1SC0_CONTINUOUS_NOTCH-SKEME_BASE) > 0xFFF        ;check branch size in SCHEME
+                          M                 error   CH1SC0_CONTINUOUS_NOTCH range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00006E 74C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_CONTINUOUS_NOTCH-SKEME_BASE)) & 0x0F) , low (CH1SC
+                          M         endif
+                          M                 
+                      00312         END_SOUND
+000070 0000               M                 DB      CMD_END_SND,0
+                      00313 
+                      00314         
+                      00315         ; ------------------------------------------------
+                      00316         ;  CONTINUOUS NOTCH SOUNDS WITH INTER-NOTCH SOUNDS
+                      00317         ; ------------------------------------------------
+                      00318 ;-------------------------------
+                      00319 ;DIESEL RUN phase
+                      00320         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                      00321         ;       THIS ROUTINE IS CH1_ primary PERSISTENT (NOT INTERRUPTABLE)
+                      00322         ;       this is MODIFIED by DISCRETE notch change logic to vary AMPL with NOTCH setting, RPMs al
+                      00323         ;----------------------------------------------------
+                      00324 ;UC1.6.2================
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 21
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00325         INITIATE_SOUND  TRIG_MOVING,RUN_WHILE_TRIG      ;+ZAP   ;T_SPD_RUN
+000072 0E92               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), TRIG_MOVING +((RUN_WHILE_TRIG) & 0
+  00000004                M ICNT += 1
+                          M 
+                      00326         ;+++++++++++++++++++++++++++++++++++++++++++++++++
+000074                00327 CH1SC0_CONTINUOUS_NOTCH
+                      00328         ;SKIP_ON_TRIGGER        TRIG_FALSE,TRIG_FAND_ON         ; But skip if SF33 was previously on
+                      00329         ;       BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS  
+                      00330                 
+                      00331         LOAD_MODIFIER   MTYPE_BLEND,BLEND_CURRENT_CHNL+BLEND_GAIN0+BLEND_FASE0,BLENDG_DSL_ACCEL1,BLENDF_
+000074 00E3 0506          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL+BLEND_GAIN0+BLEND_FASE0,BL
+                      00332         LOAD_MODIFIER MTYPE_PITCH,ANALOG_PITCH_MODIFY+0x0,IMAXP_DIESEL,DITHERP_DIESEL   ;for discrete no
+000078 A0E2 005E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+0x0,IMAXP_DIESEL,DITHERP_
+                      00333         ;since prev = 10=NOTCH2 and work = 0 or 10 do next transition...
+                      00334 
+00007C                00335 CH1SC0_TEST_LOAD_RUN
+                      00336         SKIP_ON_TRIGGER TRIG_TRUE,T_SPD_DECEL1          ;check if DECEL
+00007C 7805               M                 DB      CMD_SKIP_ON_TRIGGER + (TRIG_TRUE & 0x03), T_SPD_DECEL1 
+                      00337                 BRANCH_TO       CH1SC0_LOAD_RUN_TEST_ACCEL
+                          M         
+                          M         if      (CH1SC0_LOAD_RUN_TEST_ACCEL-SKEME_BASE) > 0xFFF     ;check branch size in SCHEME
+                          M                 error   CH1SC0_LOAD_RUN_TEST_ACCEL range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00007E 82C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_LOAD_RUN_TEST_ACCEL-SKEME_BASE)) & 0x0F) , low (CH
+                          M         endif
+                          M                 
+                      00338         BRANCH_TO       CH1SC0_LOAD_RUN_IS_DECEL
+                          M         
+                          M         if      (CH1SC0_LOAD_RUN_IS_DECEL-SKEME_BASE) > 0xFFF       ;check branch size in SCHEME
+                          M                 error   CH1SC0_LOAD_RUN_IS_DECEL range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000080 98C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_LOAD_RUN_IS_DECEL-SKEME_BASE)) & 0x0F) , low (CH1S
+                          M         endif
+                          M                 
+                      00339 ;---
+000082                00340 CH1SC0_LOAD_RUN_TEST_ACCEL
+                      00341         ;should continue to run up to NOTCH3...
+                      00342 
+                      00343         SKIP_ON_TRIGGER TRIG_TRUE,T_SPD_ACCEL1          ;check if ACCEL
+000082 7305               M                 DB      CMD_SKIP_ON_TRIGGER + (TRIG_TRUE & 0x03), T_SPD_ACCEL1 
+                      00344                 BRANCH_TO       CH1SC0_LOAD_RUN_CADENCE
+                          M         
+                          M         if      (CH1SC0_LOAD_RUN_CADENCE-SKEME_BASE) > 0xFFF        ;check branch size in SCHEME
+                          M                 error   CH1SC0_LOAD_RUN_CADENCE range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000084 B8C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_LOAD_RUN_CADENCE-SKEME_BASE)) & 0x0F) , low (CH1SC
+                          M         endif
+                          M                 
+                      00345                 
+                      00346         ;ACCCEL1 STAYS ON UNTIL THROTTLE IS DECREASED...
+000086                00347 CH1SC0_LOAD_RUN_IS_ACCEL
+                      00348         LOAD_MODIFIER  MTYPE_BLEND,BLEND_CURRENT_CHNL,BLENDG_DSL_ACCEL0,BLENDF_DSL_ACCEL0
+000086 00E3 0204          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,BLENDG_DSL_ACCEL0,BLENDF_D
+                      00349         LOAD_MODIFIER  MTYPE_PITCH,ANALOG_PITCH_MODIFY,MAXP_DIESEL,0x0  
+00008A A0E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY,MAXP_DIESEL,0x0
+                      00350         LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+VARY_LOAD,+SCALE_INCR_6,SCALE_MAX   ;Increment
+00008E BCE6 0F06          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+VARY_LOAD,+SCALE_INCR_6,
+                      00351                 
+                      00352         ;set drift interlock:
+                      00353         ;(drift is interlocked when not decelerating. when accelerating heavy sounds play.
+                      00354         ;interlock is set on bit is =1)(i.e. DRIFTING IS OFF)
+                      00355         LOAD_MODIFIER   MTYPE_WORK_IMMED,FMATH_OR+USER_INTLK_BITS,VARY_DRIFT_MASK7,MERGE_ALL_MASK       
+000092 5EE6 0080          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_OR+USER_INTLK_BITS,VARY_DRIFT_MASK
+                      00356 
+                      00357         BRANCH_TO       CH1SC0_LOAD_RUN_CADENCE
+                          M         
+                          M         if      (CH1SC0_LOAD_RUN_CADENCE-SKEME_BASE) > 0xFFF        ;check branch size in SCHEME
+                          M                 error   CH1SC0_LOAD_RUN_CADENCE range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 22
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000096 B8C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_LOAD_RUN_CADENCE-SKEME_BASE)) & 0x0F) , low (CH1SC
+                          M         endif
+                          M                 
+                      00358 
+000098                00359 CH1SC0_LOAD_RUN_IS_DECEL
+                      00360         LOAD_MODIFIER  MTYPE_BLEND,BLEND_CURRENT_CHNL,BLENDG_DSL_DECEL0,BLENDF_DSL_DECEL0
+000098 00E3 0709          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,BLENDG_DSL_DECEL0,BLENDF_D
+                      00361         LOAD_MODIFIER  MTYPE_PITCH,ANALOG_PITCH_MODIFY,MAXP_DIESEL,0x0
+00009C A0E2 003E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY,MAXP_DIESEL,0x0
+                      00362         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCV_LOAD_MIN,COMP_ALL,SKIP_GRTR            ;Prevent underfl
+0000A0 1CFF 008C          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,VARY_LOAD,SCV_LOAD_MIN,COMP_ALL
+                      00363                 LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+VARY_LOAD,-SCALE_INCR_2,SCALE_MAX        
+0000A4 BCE6 0FFE          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+VARY_LOAD,-SCALE_INCR_2,
+                      00364         ;decrement delta after throttle change:.............
+                      00365         LOAD_MODIFIER   MTYPE_WORK_IMMED,FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,MAX_NOTCH_VAL   ;decreme
+0000A8 ABE6 20F0          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,M
+                      00366         MASK_COMPARE    WORK_SPEED_DELTA,IMMED_DATA,MIN_NOTCH_VAL,COMP_ALL,SKIP_SAME            ;prevent
+0000AC 0BFC 0000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_SPEED_DELTA,MIN_NOTCH_VAL,COMP_ALL
+                      00367                 LOAD_MODIFIER   MTYPE_WORK_IMMED,FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,MAX_NOTCH_VAL   
+0000B0 ABE6 20F0          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,M
+                      00368 
+                      00369         ;unset drift interlock: (DRIFTING IS ON)
+                      00370         LOAD_MODIFIER   MTYPE_WORK_IMMED,FMATH_AND+USER_INTLK_BITS,~VARY_DRIFT_MASK7,MERGE_ALL_MASK     
+Warning[202]: Argument out of range.  Least significant bits used.
+0000B4 3EE6 007F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_AND+USER_INTLK_BITS,~VARY_DRIFT_MA
+                      00371 
+                      00372 ;-----
+0000B8                00373 CH1SC0_LOAD_RUN_CADENCE
+                      00374         ;(drift is interlocked when not decelerating. when accelerating heavy sounds play.
+                      00375         ;interlock is set on bit is =1)(i.e. DRIFTING IS OFF)
+                      00376         MASK_COMPARE    USER_INTLK_BITS,IMMED_DATA,VARY_DRIFT_MASK7,~VARY_DRIFT_MASK7,SKIP_SAME ;bit7   
+Warning[202]: Argument out of range.  Least significant bits used.
+0000B8 1EFC 7F80          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,USER_INTLK_BITS,VARY_DRIFT_MASK7,~VARY_DRI
+                      00377                 BRANCH_TO       CH1SC0_SET_LIGHT_DRIFT
+                          M         
+                          M         if      (CH1SC0_SET_LIGHT_DRIFT-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_SET_LIGHT_DRIFT range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000BC F4C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_SET_LIGHT_DRIFT-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00378         
+                      00379 ;;;;;;;;;;;VARY_LOAD            EQU WORK_USER_2 ; used to vary scale from outside motor sound loop      
+                      00380                         ;                                                               ; used to branch
+                      00381         ;tune VARY_LOAD with SCV_LOAD_MIN:
+                      00382 ;;;;;;;;;;;;;;; coding extra GOTOs in branch table::::::::::::::::::
+                      00383         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_F,COMP_ALL,SKIP_SAME
+0000BE 1CFC 000F          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,VARY_LOAD,SCALE_F,COMP_ALL
+                      00384                 BRANCH_TO       CH1SC0_EXAUST_15
+                          M         
+                          M         if      (CH1SC0_EXAUST_15-SKEME_BASE) > 0xFFF               ;check branch size in SCHEME
+                          M                 error   CH1SC0_EXAUST_15 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000C2 CAC0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_EXAUST_15-SKEME_BASE)) & 0x0F) , low (CH1SC0_EXAUS
+                          M         endif
+                          M                 
+                      00385         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_F
+0000C4 80E1 0F8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_F
+                      00386         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000C8 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00387                 
+0000CA                00388 CH1SC0_EXAUST_15        
+                      00389         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_E,COMP_ALL,SKIP_SAME
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 23
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0000CA 1CFC 000E          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,VARY_LOAD,SCALE_E,COMP_ALL
+                      00390                 BRANCH_TO       CH1SC0_EXAUST_14
+                          M         
+                          M         if      (CH1SC0_EXAUST_14-SKEME_BASE) > 0xFFF               ;check branch size in SCHEME
+                          M                 error   CH1SC0_EXAUST_14 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000CE D6C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_EXAUST_14-SKEME_BASE)) & 0x0F) , low (CH1SC0_EXAUS
+                          M         endif
+                          M                 
+                      00391         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_E
+0000D0 80E1 0E8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_E
+                      00392         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000D4 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00393                 
+0000D6                00394 CH1SC0_EXAUST_14
+                      00395         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_D,COMP_ALL,SKIP_SAME
+0000D6 1CFC 000D          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,VARY_LOAD,SCALE_D,COMP_ALL
+                      00396                 BRANCH_TO       CH1SC0_EXAUST_13
+                          M         
+                          M         if      (CH1SC0_EXAUST_13-SKEME_BASE) > 0xFFF               ;check branch size in SCHEME
+                          M                 error   CH1SC0_EXAUST_13 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000DA E2C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_EXAUST_13-SKEME_BASE)) & 0x0F) , low (CH1SC0_EXAUS
+                          M         endif
+                          M                 
+                      00397         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_D
+0000DC 80E1 0D8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_D
+                      00398         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000E0 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00399                 
+0000E2                00400 CH1SC0_EXAUST_13
+                      00401         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_C,COMP_ALL,SKIP_SAME
+0000E2 1CFC 000C          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,VARY_LOAD,SCALE_C,COMP_ALL
+                      00402                 BRANCH_TO       CH1SC0_EXAUST_12
+                          M         
+                          M         if      (CH1SC0_EXAUST_12-SKEME_BASE) > 0xFFF               ;check branch size in SCHEME
+                          M                 error   CH1SC0_EXAUST_12 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000E6 EEC0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_EXAUST_12-SKEME_BASE)) & 0x0F) , low (CH1SC0_EXAUS
+                          M         endif
+                          M                 
+                      00403         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_C
+0000E8 80E1 0C8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_C
+                      00404         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000EC 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00405                 
+0000EE                00406 CH1SC0_EXAUST_12
+                      00407         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_B
+0000EE 80E1 0B8B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_B
+                      00408         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 24
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000F2 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00409                 
+0000F4                00410 CH1SC0_SET_LIGHT_DRIFT  
+                      00411         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_F,COMP_ALL,SKIP_SAME
+0000F4 1CFC 000F          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,VARY_LOAD,SCALE_F,COMP_ALL
+                      00412                 BRANCH_TO       CH1SC0_DRIFT_15
+                          M         
+                          M         if      (CH1SC0_DRIFT_15-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_DRIFT_15 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000F8 00C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DRIFT_15-SKEME_BASE)) & 0x0F) , low (CH1SC0_DRIFT_
+                          M         endif
+                          M                 
+                      00413         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_F
+0000FA 80E1 0F37          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_F
+                      00414         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0000FE 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00415         
+000100                00416 CH1SC0_DRIFT_15
+                      00417         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_E,COMP_ALL,SKIP_SAME
+000100 1CFC 000E          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,VARY_LOAD,SCALE_E,COMP_ALL
+                      00418                 BRANCH_TO       CH1SC0_DRIFT_14
+                          M         
+                          M         if      (CH1SC0_DRIFT_14-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_DRIFT_14 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000104 0CC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DRIFT_14-SKEME_BASE)) & 0x0F) , low (CH1SC0_DRIFT_
+                          M         endif
+                          M                 
+                      00419         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_E
+000106 80E1 0E37          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_E
+                      00420         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00010A 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00421                 
+00010C                00422 CH1SC0_DRIFT_14
+                      00423         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_D,COMP_ALL,SKIP_SAME
+00010C 1CFC 000D          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,VARY_LOAD,SCALE_D,COMP_ALL
+                      00424                 BRANCH_TO       CH1SC0_DRIFT_13
+                          M         
+                          M         if      (CH1SC0_DRIFT_13-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_DRIFT_13 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000110 18C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DRIFT_13-SKEME_BASE)) & 0x0F) , low (CH1SC0_DRIFT_
+                          M         endif
+                          M                 
+                      00425         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_D
+000112 80E1 0D37          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_D
+                      00426         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 25
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000116 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00427                 
+000118                00428 CH1SC0_DRIFT_13
+                      00429         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_C
+000118 80E1 0C37          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,DRIFT_VOLUME,SCALE_C
+                      00430         BRANCH_TO       CH1SC0_RUN_MAIN
+                          M         
+                          M         if      (CH1SC0_RUN_MAIN-SKEME_BASE) > 0xFFF                ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_MAIN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00011C 1EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_MAIN-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_MA
+                          M         endif
+                          M                 
+                      00431                 
+                      00432         
+                      00433 ;--
+00011E                00434 CH1SC0_RUN_MAIN
+                      00435 
+                      00436 ;;;;;;;;;;;;;;;;;;;;;;;;; EVALUATE MOTOR ::::::::::::::::::
+                      00437 
+00011E                00438 CH1SC0_EVAL_LOAD_RUN
+                      00439 ;==============================================================
+                      00440 ; all normal changes to notch come thru here:           
+                      00441         ;CONTINUE CHECKING NOTCH CHANGES:
+                      00442 ;======================================================================
+                      00443 ;       Evaluate WORK_NOTCH  
+                      00444 ;======================================================================
+                      00445         ;TEST VARIOUS WAYS TO DETERMINE NOTCH CHANGE DIRECTION:
+00011E                00446 CH1SC0_CURRNOTCH_TEST
+                      00447         ;accelerate?
+                      00448         MASK_COMPARE    PREV_NOTCH,TARGET_DATA,WORK_NOTCH,COMP_7LSB,SKIP_LESS   ;Skip if   previousNotch
+00011E 1BFA 8001          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+TARGET_DATA,PREV_NOTCH,WORK_NOTCH,COMP_7LSB
+                      00449                 BRANCH_TO       CH1SC0_CURRNOTCH_TEST2          ;work is less
+                          M         
+                          M         if      (CH1SC0_CURRNOTCH_TEST2-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_CURRNOTCH_TEST2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000122 26C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_CURRNOTCH_TEST2-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00450         BRANCH_TO       CH1SC0_SETACC
+                          M         
+                          M         if      (CH1SC0_SETACC-SKEME_BASE) > 0xFFF                  ;check branch size in SCHEME
+                          M                 error   CH1SC0_SETACC range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000124 38C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_SETACC-SKEME_BASE)) & 0x0F) , low (CH1SC0_SETACC-S
+                          M         endif
+                          M                 
+                      00451         
+000126                00452 CH1SC0_CURRNOTCH_TEST2  ;is decelerate?
+                      00453         MASK_COMPARE    WORK_NOTCH,TARGET_DATA,PREV_NOTCH,COMP_7LSB,SKIP_LESS   ;Skip unless  previousNo
+000126 01FA 801B          M                 DB      CMD_MASK_COMPARE+SKIP_LESS+TARGET_DATA,WORK_NOTCH,PREV_NOTCH,COMP_7LSB
+                      00454                 BRANCH_TO       CH1SC0_CURRNOTCH_TEST3  ;prev is equal
+                          M         
+                          M         if      (CH1SC0_CURRNOTCH_TEST3-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_CURRNOTCH_TEST3 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00012A 2EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_CURRNOTCH_TEST3-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00455         BRANCH_TO       CH1SC0_SETDEC                           ;decelerate
+                          M         
+                          M         if      (CH1SC0_SETDEC-SKEME_BASE) > 0xFFF                  ;check branch size in SCHEME
+                          M                 error   CH1SC0_SETDEC range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00012C 76C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_SETDEC-SKEME_BASE)) & 0x0F) , low (CH1SC0_SETDEC-S
+                          M         endif
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 26
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M                 
+                      00456 
+00012E                00457 CH1SC0_CURRNOTCH_TEST3  
+                      00458         ;no change?  PREViousNotch = current
+                      00459         ;work notch may change mid routine to a lesser value...
+                      00460         MASK_COMPARE    PREV_NOTCH,TARGET_DATA,WORK_NOTCH,COMP_7LSB,SKIP_SAME   ;Skip if   previousNotch
+00012E 1BF8 8001          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+TARGET_DATA,PREV_NOTCH,WORK_NOTCH,COMP_7LSB
+                      00461                 BRANCH_TO       CH1SC0_ERROR    ;skipped when =
+                          M         
+                          M         if      (CH1SC0_ERROR-SKEME_BASE) > 0xFFF                   ;check branch size in SCHEME
+                          M                 error   CH1SC0_ERROR range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000132 36C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_ERROR-SKEME_BASE)) & 0x0F) , low (CH1SC0_ERROR-SKE
+                          M         endif
+                          M                 
+                      00462         ;run:
+                      00463         BRANCH_TO       CH1SC0_SETRUN
+                          M         
+                          M         if      (CH1SC0_SETRUN-SKEME_BASE) > 0xFFF                  ;check branch size in SCHEME
+                          M                 error   CH1SC0_SETRUN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000134 A4C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_SETRUN-SKEME_BASE)) & 0x0F) , low (CH1SC0_SETRUN-S
+                          M         endif
+                          M                 
+                      00464         
+000136                00465 CH1SC0_ERROR
+                      00466         ;DEBUG: THROTTLE ERROR....
+                      00467         ;PLAY DEBUG1,no_loop,loop_STD   
+                      00468         BRANCH_TO       CH1SC0_SETRUN
+                          M         
+                          M         if      (CH1SC0_SETRUN-SKEME_BASE) > 0xFFF                  ;check branch size in SCHEME
+                          M                 error   CH1SC0_SETRUN range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000136 A4C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_SETRUN-SKEME_BASE)) & 0x0F) , low (CH1SC0_SETRUN-S
+                          M         endif
+                          M                 
+                      00469 
+                      00470         
+                      00471         
+                      00472 ;=====================BEGIN ACCELERATION TO NEW NOTCH===================================================
+000138                00473 CH1SC0_SETACC           
+                      00474         LOAD_MODIFIER MTYPE_BLEND,BLEND_CURRENT_CHNL,BLENDG_DSL_ACCEL0,BLENDF_DSL_ACCEL0        ; motor 
+000138 00E3 0204          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,BLENDG_DSL_ACCEL0,BLENDF_D
+                      00475 ;===================================
+00013C                00476 CH1SC0_SETACC_START
+                      00477 ;============================================================================================   
+                      00478 ;       PREV_NOTCH is an integer work register value between 0 and 7 representing the nominal 
+                      00479 ;       prior running notch. It is set by the continuous running routine.
+                      00480 ;==================================================================
+00013C                00481 CH1SC0_ACC_TESTN        
+                      00482         MASK_COMPARE PREV_NOTCH,IMMED_DATA,NOTCH1,COMP_ALL,SKIP_SAME    ;Skip if Equal
+00013C 1BFC 0000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,PREV_NOTCH,NOTCH1,COMP_ALL
+                      00483                 BRANCH_TO       CH1SC0_ACC_TESTN2
+                          M         
+                          M         if      (CH1SC0_ACC_TESTN2-SKEME_BASE) > 0xFFF              ;check branch size in SCHEME
+                          M                 error   CH1SC0_ACC_TESTN2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000140 44C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_ACC_TESTN2-SKEME_BASE)) & 0x0F) , low (CH1SC0_ACC_
+                          M         endif
+                          M                 
+                      00484         BRANCH_TO       CH1SC0_ACC1
+                          M         
+                          M         if      (CH1SC0_ACC1-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_ACC1 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000142 5EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_ACC1-SKEME_BASE)) & 0x0F) , low (CH1SC0_ACC1-SKEME
+                          M         endif
+                          M                 
+                      00485  
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 27
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000144                00486 CH1SC0_ACC_TESTN2       
+                      00487         MASK_COMPARE PREV_NOTCH,IMMED_DATA,NOTCH2,COMP_ALL,SKIP_SAME    ;Skip if Equal
+000144 1BFC 0010          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,PREV_NOTCH,NOTCH2,COMP_ALL
+                      00488                 BRANCH_TO       CH1SC0_ACC_TESTN3
+                          M         
+                          M         if      (CH1SC0_ACC_TESTN3-SKEME_BASE) > 0xFFF              ;check branch size in SCHEME
+                          M                 error   CH1SC0_ACC_TESTN3 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000148 4CC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_ACC_TESTN3-SKEME_BASE)) & 0x0F) , low (CH1SC0_ACC_
+                          M         endif
+                          M                 
+                      00489         BRANCH_TO       CH1SC0_ACC2
+                          M         
+                          M         if      (CH1SC0_ACC2-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_ACC2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00014A 62C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_ACC2-SKEME_BASE)) & 0x0F) , low (CH1SC0_ACC2-SKEME
+                          M         endif
+                          M                 
+                      00490         
+00014C                00491 CH1SC0_ACC_TESTN3       
+                      00492         MASK_COMPARE PREV_NOTCH,IMMED_DATA,NOTCH3,COMP_ALL,SKIP_SAME    ;Skip if Equal
+00014C 1BFC 0020          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,PREV_NOTCH,NOTCH3,COMP_ALL
+                      00493                 BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS  
+                          M         
+                          M         if      (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_NEXT_RUN_SOUNDS range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000150 C2C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00494         BRANCH_TO       CH1SC0_ACC3
+                          M         
+                          M         if      (CH1SC0_ACC3-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_ACC3 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000152 72C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_ACC3-SKEME_BASE)) & 0x0F) , low (CH1SC0_ACC3-SKEME
+                          M         endif
+                          M                 
+                      00495         
+                      00496 ;=========================================
+000154                00497 CH1SC0_INCR_PREV_NOTCH_ACC      
+                      00498 ;--------------
+                      00499         MASK_COMPARE    PREV_NOTCH,TARGET_DATA,WORK_NOTCH,COMP_7LSB,SKIP_GRTR   ;Skip if  previousNotch 
+000154 1BFB 8001          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+TARGET_DATA,PREV_NOTCH,WORK_NOTCH,COMP_7LSB
+                      00500                 LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+PREV_NOTCH,+0x10,MAX_NOTCH_VAL   ; Increm
+000158 BBE6 2010          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+PREV_NOTCH,+0x10,MAX_NOT
+                      00501         BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS
+                          M         
+                          M         if      (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_NEXT_RUN_SOUNDS range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00015C C2C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00502         
+                      00503 
+                      00504 ;========================================================================
+00015E                00505 CH1SC0_ACC1             
+                      00506 ;========================================================================
+                      00507         ; will rev to next notch; running will lower to correct notch;
+                      00508         ; run1 sounds will only play when CV132 computes notch1;
+                      00509         ; Skipped when prev >= 1  (current must be > 1 to enter ACC (see compare above in normal))
+                      00510         ; Only plays when manually selected notch 2:
+                      00511 
+                      00512         PLAY INC_12,no_loop,loop_STD    
+                          M         list ;2 byte PLAY  [HANDLE]
+00015E 0340               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (INC_12 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 28
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00513         BRANCH_TO       CH1SC0_INCR_PREV_NOTCH_ACC
+                          M         
+                          M         if      (CH1SC0_INCR_PREV_NOTCH_ACC-SKEME_BASE) > 0xFFF     ;check branch size in SCHEME
+                          M                 error   CH1SC0_INCR_PREV_NOTCH_ACC range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000160 54C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_INCR_PREV_NOTCH_ACC-SKEME_BASE)) & 0x0F) , low (CH
+                          M         endif
+                          M                 
+                      00514         
+000162                00515 CH1SC0_ACC2
+                      00516         PLAY INC_23,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000162 0440               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (INC_23 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00517         
+                      00518         ;decrement delta after throttle change:.............
+                      00519         LOAD_MODIFIER   MTYPE_WORK_IMMED,FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,MAX_NOTCH_VAL   ;decreme
+000164 ABE6 20F0          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,M
+                      00520         MASK_COMPARE    WORK_SPEED_DELTA,IMMED_DATA,MIN_NOTCH_VAL,COMP_ALL,SKIP_SAME            ;prevent
+000168 0BFC 0000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_SPEED_DELTA,MIN_NOTCH_VAL,COMP_ALL
+                      00521                 LOAD_MODIFIER   MTYPE_WORK_IMMED,FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,MAX_NOTCH_VAL   
+00016C ABE6 20F0          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+WORK_SPEED_DELTA,-0x10,M
+                      00522 
+                      00523         BRANCH_TO       CH1SC0_INCR_PREV_NOTCH_ACC
+                          M         
+                          M         if      (CH1SC0_INCR_PREV_NOTCH_ACC-SKEME_BASE) > 0xFFF     ;check branch size in SCHEME
+                          M                 error   CH1SC0_INCR_PREV_NOTCH_ACC range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000170 54C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_INCR_PREV_NOTCH_ACC-SKEME_BASE)) & 0x0F) , low (CH
+                          M         endif
+                          M                 
+                      00524         
+000172                00525 CH1SC0_ACC3
+                      00526         PLAY RUN_3,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000172 0840               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (RUN_3  & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00527         BRANCH_TO       CH1SC0_INCR_PREV_NOTCH_ACC
+                          M         
+                          M         if      (CH1SC0_INCR_PREV_NOTCH_ACC-SKEME_BASE) > 0xFFF     ;check branch size in SCHEME
+                          M                 error   CH1SC0_INCR_PREV_NOTCH_ACC range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000174 54C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_INCR_PREV_NOTCH_ACC-SKEME_BASE)) & 0x0F) , low (CH
+                          M         endif
+                          M                 
+                      00528         
+                      00529 ;================================================
+                      00530 ; Decelerate CHANGE IN NOTCH DOWN:
+000176                00531 CH1SC0_SETDEC
+                      00532         ; Yes Decelerate:
+                      00533         LOAD_MODIFIER MTYPE_BLEND,BLEND_CURRENT_CHNL,BLENDG_DSL_DECEL0,BLENDF_DSL_DECEL0        ; motor 
+000176 00E3 0709          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL,BLENDG_DSL_DECEL0,BLENDF_D
+                      00534 
+                      00535         
+00017A                00536 CH1SC0_DEC_TESTN
+                      00537 ;============================================================================================   
+                      00538 ;       PREV_NOTCH is an integer work register value between 0 and 7 representing the nominal 
+                      00539 ;       prior running notch. It is set by the continuous running routine.
+                      00540 ;==================================================================
+00017A                00541 CH1SC0_DEC_TESTN1               
+                      00542         MASK_COMPARE PREV_NOTCH,IMMED_DATA,NOTCH1,COMP_ALL,SKIP_SAME    ;Skip if Equal
+00017A 1BFC 0000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,PREV_NOTCH,NOTCH1,COMP_ALL
+                      00543                 BRANCH_TO       CH1SC0_DEC_TESTN2       
+                          M         
+                          M         if      (CH1SC0_DEC_TESTN2-SKEME_BASE) > 0xFFF              ;check branch size in SCHEME
+                          M                 error   CH1SC0_DEC_TESTN2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00017E 82C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DEC_TESTN2-SKEME_BASE)) & 0x0F) , low (CH1SC0_DEC_
+                          M         endif
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 29
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M                 
+                      00544         BRANCH_TO       CH1SC0_DEC1
+                          M         
+                          M         if      (CH1SC0_DEC1-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_DEC1 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000180 9EC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DEC1-SKEME_BASE)) & 0x0F) , low (CH1SC0_DEC1-SKEME
+                          M         endif
+                          M                 
+                      00545         
+000182                00546 CH1SC0_DEC_TESTN2       
+                      00547         MASK_COMPARE PREV_NOTCH,IMMED_DATA,NOTCH2,COMP_ALL,SKIP_SAME    ;Skip if Equal
+000182 1BFC 0010          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,PREV_NOTCH,NOTCH2,COMP_ALL
+                      00548                 BRANCH_TO       CH1SC0_DEC_TESTN3
+                          M         
+                          M         if      (CH1SC0_DEC_TESTN3-SKEME_BASE) > 0xFFF              ;check branch size in SCHEME
+                          M                 error   CH1SC0_DEC_TESTN3 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000186 8AC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DEC_TESTN3-SKEME_BASE)) & 0x0F) , low (CH1SC0_DEC_
+                          M         endif
+                          M                 
+                      00549         BRANCH_TO       CH1SC0_DEC2
+                          M         
+                          M         if      (CH1SC0_DEC2-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_DEC2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000188 9AC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DEC2-SKEME_BASE)) & 0x0F) , low (CH1SC0_DEC2-SKEME
+                          M         endif
+                          M                 
+                      00550         
+00018A                00551 CH1SC0_DEC_TESTN3       
+                      00552         BRANCH_TO       CH1SC0_DEC3
+                          M         
+                          M         if      (CH1SC0_DEC3-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_DEC3 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00018A 96C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DEC3-SKEME_BASE)) & 0x0F) , low (CH1SC0_DEC3-SKEME
+                          M         endif
+                          M                 
+                      00553         
+                      00554 
+00018C                00555 CH1SC0_DECR_PREV_NOTCH  
+                      00556 ;---------------        
+00018C                00557 CH1SC0_DECR_PREV_NOTCH_DEC1
+                      00558         MASK_COMPARE    PREV_NOTCH,TARGET_DATA,MIN_NOTCH_VAL,COMP_ALL,SKIP_SAME   ;Skip if  previousNotc
+00018C 1BF8 0000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+TARGET_DATA,PREV_NOTCH,MIN_NOTCH_VAL,COMP_ALL
+                      00559                 LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+PREV_NOTCH,-0x10,MAX_NOTCH_VAL   ;Decreme
+000190 BBE6 20F0          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+PREV_NOTCH,-0x10,MAX_NOT
+                      00560         BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS
+                          M         
+                          M         if      (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_NEXT_RUN_SOUNDS range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000194 C2C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00561 
+000196                00562 CH1SC0_DEC3
+                      00563         PLAY DEC_32,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+000196 0940               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (DEC_32 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00564         BRANCH_TO       CH1SC0_DECR_PREV_NOTCH
+                          M         
+                          M         if      (CH1SC0_DECR_PREV_NOTCH-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_DECR_PREV_NOTCH range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+000198 8CC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DECR_PREV_NOTCH-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 30
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M                 
+                      00565         
+00019A                00566 CH1SC0_DEC2 
+                      00567 
+                      00568         PLAY DEC_21,no_loop,loop_STD    
+                          M         list ;2 byte PLAY  [HANDLE]
+00019A 0A40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (DEC_21 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00569         BRANCH_TO       CH1SC0_DECR_PREV_NOTCH  
+                          M         
+                          M         if      (CH1SC0_DECR_PREV_NOTCH-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_DECR_PREV_NOTCH range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+00019C 8CC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DECR_PREV_NOTCH-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00570         
+00019E                00571 CH1SC0_DEC1 
+                      00572         PLAY DEC_10,no_loop,loop_STD    
+                          M         list ;2 byte PLAY  [HANDLE]
+00019E 0B40               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (DEC_10 & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00573         BRANCH_TO       CH1SC0_DECR_PREV_NOTCH  
+                          M         
+                          M         if      (CH1SC0_DECR_PREV_NOTCH-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_DECR_PREV_NOTCH range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001A0 8CC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_DECR_PREV_NOTCH-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00574 
+                      00575         
+0001A2                00576 CH1SC0_DEC_EXIT
+                      00577         BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS
+                          M         
+                          M         if      (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_NEXT_RUN_SOUNDS range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001A2 C2C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00578 
+                      00579 ;============================================================================================   
+                      00580 ; ALL AFTER NOTCH CHANGE COMES THRU HERE:
+                      00581 ;=====================================
+0001A4                00582 CH1SC0_SETRUN   
+                      00583 ;
+                      00584 ;UC1.7================  BEGIN_RUNNING_SOUNDS
+                      00585         ;----------------------------------------------
+                      00586         ; no change in notch or speed:
+                      00587         ;----------------------------------------------
+0001A4                00588 CH1SC0_SETRUN_START
+                      00589 ; Will catch any missed change and play proper notch sound:
+                      00590 ;======================================================================
+0001A4                00591 CH1SC0_RUN_TESTN
+                      00592         MASK_COMPARE    PREV_NOTCH,IMMED_DATA,NOTCH1,COMP_ALL,SKIP_SAME    ;Skip if Equal
+0001A4 1BFC 0000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,PREV_NOTCH,NOTCH1,COMP_ALL
+                      00593                 BRANCH_TO       CH1SC0_RUN_TESTN2
+                          M         
+                          M         if      (CH1SC0_RUN_TESTN2-SKEME_BASE) > 0xFFF              ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_TESTN2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001A8 ACC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_TESTN2-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_
+                          M         endif
+                          M                 
+                      00594         BRANCH_TO       CH1SC0_RUN1        
+                          M         
+                          M         if      (CH1SC0_RUN1-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN1 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 31
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M         else
+0001AA B6C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN1-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN1-SKEME
+                          M         endif
+                          M                 
+                      00595         
+0001AC                00596 CH1SC0_RUN_TESTN2       
+                      00597         MASK_COMPARE    PREV_NOTCH,IMMED_DATA,NOTCH2,COMP_ALL,SKIP_SAME    ;Skip if Equal
+0001AC 1BFC 0010          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,PREV_NOTCH,NOTCH2,COMP_ALL
+                      00598                 BRANCH_TO       CH1SC0_RUN_TESTN3
+                          M         
+                          M         if      (CH1SC0_RUN_TESTN3-SKEME_BASE) > 0xFFF              ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN_TESTN3 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001B0 B4C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN_TESTN3-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN_
+                          M         endif
+                          M                 
+                      00599         BRANCH_TO       CH1SC0_RUN2
+                          M         
+                          M         if      (CH1SC0_RUN2-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001B2 BAC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN2-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN2-SKEME
+                          M         endif
+                          M                 
+                      00600         
+0001B4                00601 CH1SC0_RUN_TESTN3       
+                      00602         BRANCH_TO       CH1SC0_RUN3
+                          M         
+                          M         if      (CH1SC0_RUN3-SKEME_BASE) > 0xFFF                    ;check branch size in SCHEME
+                          M                 error   CH1SC0_RUN3 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001B4 BEC1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_RUN3-SKEME_BASE)) & 0x0F) , low (CH1SC0_RUN3-SKEME
+                          M         endif
+                          M                 
+                      00603         
+                      00604 
+0001B6                00605 CH1SC0_RUN1
+                      00606         PLAY  RUN_1,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+0001B6 0640               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (RUN_1  & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00607         BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS
+                          M         
+                          M         if      (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_NEXT_RUN_SOUNDS range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001B8 C2C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00608         
+0001BA                00609 CH1SC0_RUN2
+                      00610         PLAY  RUN_2,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+0001BA 0740               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (RUN_2  & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+                      00611         BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS
+                          M         
+                          M         if      (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_NEXT_RUN_SOUNDS range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001BC C2C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00612         
+0001BE                00613 CH1SC0_RUN3
+                      00614         PLAY RUN_3,no_loop,loop_STD
+                          M         list ;2 byte PLAY  [HANDLE]
+0001BE 0840               M         DB      CMD_PLAY_SND+((no_loop>>2)&0x07)+loop_STD,  (RUN_3  & 0x3F)+((no_loop<<6)&0xC0) 
+                          M         list
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 32
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00615         BRANCH_TO       CH1SC0_NEXT_RUN_SOUNDS
+                          M         
+                          M         if      (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE) > 0xFFF         ;check branch size in SCHEME
+                          M                 error   CH1SC0_NEXT_RUN_SOUNDS range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001C0 C2C1               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_NEXT_RUN_SOUNDS-SKEME_BASE)) & 0x0F) , low (CH1SC0
+                          M         endif
+                          M                 
+                      00616                 
+                      00617         
+                      00618 ;=======================================        
+0001C2                00619 CH1SC0_NEXT_RUN_SOUNDS  
+                      00620         ; all must exit here
+                      00621         END_SOUND       
+0001C2 0000               M                 DB      CMD_END_SND,0
+                      00622         
+                      00623         ; ---------------------------------------------------------
+                      00624         ;     END CONTINUOUS SOUNDS
+                      00625         ; ---------------------------------------------------------     
+                      00626         
+                      00627 ;----------------------------------------------------
+                      00628 ;  Decrease to idle             removed 10/2013 used only in NV projects not in DN projects
+                      00629 ;----------------------------------------------------
+                      00630 ;----------------------------------------------------
+                      00631 ;IDLE/not moving Phase
+                      00632         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                      00633         ;       THIS ROUTINE IS CH12_ primary PERSISTENT (NOT INTERRUPTABLE)
+                      00634         ;       this is MODIFIED by DISCRETE notch change logic to vary AMPL with NOTCH setting, RPMs al
+                      00635         ;----------------------------------------------------
+                      00636         INITIATE_SOUND  TRIG_SND_ACTV11,RUN_WHILE_TRIG  ;               T_SPD_IDLE,RUN_WHILE_TRIG
+0001C4 0F92               M                 DB      CMD_INITIATE_SND + ((RUN_WHILE_TRIG) & 0x07), TRIG_SND_ACTV11 +((RUN_WHILE_TRIG)
+  00000005                M ICNT += 1
+                          M 
+                      00637         ; Blend Parms for drifting?
+                      00638         LOAD_MODIFIER  MTYPE_BLEND, BLEND_CURRENT_CHNL+BLEND_GAIN0+BLEND_FASE0, BLENDG_DSL_DECEL0, BLEND
+0001C6 00E3 0709          M                 DB      CMD_LOAD_MODIFY+(MTYPE_BLEND&0x0F),BLEND_CURRENT_CHNL+BLEND_GAIN0+BLEND_FASE0,BL
+                      00639         ;original base code sets both blend and pitch here
+                      00640         LOAD_MODIFIER   MTYPE_PITCH,ANALOG_PITCH_MODIFY+WORK_NOTCH,IMAXP_DIESEL,DITHERP_DIESEL
+0001CA A1E2 005E          M                 DB      CMD_LOAD_MODIFY+(MTYPE_PITCH&0x0F),ANALOG_PITCH_MODIFY+WORK_NOTCH,IMAXP_DIESEL,D
+                      00641         MASK_COMPARE    VARY_LOAD,IMMED_DATA,SCALE_MID,COMP_ALL,SKIP_GRTR               ;prevent underfl
+0001CE 1CFF 000C          M                 DB      CMD_MASK_COMPARE+SKIP_GRTR+IMMED_DATA,VARY_LOAD,SCALE_MID,COMP_ALL
+                      00642                 LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+VARY_LOAD,-SCALE_INCR_1,SCALE_MID    ;dec
+0001D2 BCE6 0CFF          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+VARY_LOAD,-SCALE_INCR_1,
+                      00643 
+                      00644         LOAD_MODIFIER   MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_MIN 
+0001D6 80E1 088B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_MIN
+                      00645         
+0001DA                00646 CH12SC0_RUN_IDLE        
+                      00647         LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+AIR_PRESS,-0x01,0   ;decrease
+0001DA BDE6 00FF          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+AIR_PRESS,-0x01,0
+                      00648 
+                      00649         ;;;;;;;;;;;;;;;;;;;;;; DRIVE HOLD WHEN DELTA >0..........5/30/19
+                      00650         MASK_COMPARE    WORK_SPEED_DELTA,IMMED_DATA,MIN_NOTCH_VAL,COMP_ALL,SKIP_SAME            ;test fo
+0001DE 0BFC 0000          M                 DB      CMD_MASK_COMPARE+SKIP_SAME+IMMED_DATA,WORK_SPEED_DELTA,MIN_NOTCH_VAL,COMP_ALL
+                      00651                 BRANCH_TO       CH1SC0_CONTINUOUS_NOTCH         ;play run notch >0
+                          M         
+                          M         if      (CH1SC0_CONTINUOUS_NOTCH-SKEME_BASE) > 0xFFF        ;check branch size in SCHEME
+                          M                 error   CH1SC0_CONTINUOUS_NOTCH range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001E2 74C0               M                 DB      CMD_GOTO_SND + ((high (CH1SC0_CONTINUOUS_NOTCH-SKEME_BASE)) & 0x0F) , low (CH1SC
+                          M         endif
+                          M                 
+                      00652 
+0001E4                00653 CH12SC0_RUN2_IDLE
+                      00654         ;============== low idle is bit0 value 0
+                      00655         ;                               regular idle is bit0 value 1
+                      00656         ;                               unless ALCO stumble which is bit5
+                      00657         ;==============
+                      00658         PLAY    RUN_0,loop_till_init_TRIG,loop_INVERT
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 33
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M         list ;2 byte PLAY  [HANDLE]
+0001E4 C549               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (RUN_0 & 0x3F)+((loop_till_ini
+                          M         list
+                      00659 
+                      00660         BRANCH_TO       CH12SC0_SKIP_STOPR2
+                          M         
+                          M         if      (CH12SC0_SKIP_STOPR2-SKEME_BASE) > 0xFFF            ;check branch size in SCHEME
+                          M                 error   CH12SC0_SKIP_STOPR2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001E6 F4C1               M                 DB      CMD_GOTO_SND + ((high (CH12SC0_SKIP_STOPR2-SKEME_BASE)) & 0x0F) , low (CH12SC0_S
+                          M         endif
+                          M                 
+                      00661 ;---
+0001E8                00662 CH12SC0_RUN3_LOWIDLE    ;low idle here:
+                      00663 
+                      00664         ;;;;;LONG LOOP HERE TO IDLE:
+                      00665 
+                      00666         ;WHEN LOW IDLE DISABLED PLAY RUN 1: AT CH12SC0_RUN2_IDLE
+                      00667 
+                      00668         ;ELSE PLAY RUN 0
+                      00669         LOAD_MODIFIER MTYPE_WORK_IMMED,FMATH_INTEGRATE+AIR_PRESS,-0x01,0   ;decrease
+0001E8 BDE6 00FF          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_INTEGRATE+AIR_PRESS,-0x01,0
+                      00670  
+                      00671         LOAD_MODIFIER MTYPE_GAIN,IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_MIN
+0001EC 80E1 088B          M                 DB      CMD_LOAD_MODIFY+(MTYPE_GAIN&0x0F),IMMED_GAIN_MODIFY,SCV_PRIME_VOLUME,SCALE_MIN
+                      00672         PLAY    RUN_0,loop_till_init_TRIG,loop_INVERT
+                          M         list ;2 byte PLAY  [HANDLE]
+0001F0 C549               M         DB      CMD_PLAY_SND+((loop_till_init_TRIG>>2)&0x07)+loop_INVERT, (RUN_0 & 0x3F)+((loop_till_ini
+                          M         list
+                      00673         ;cannot play here due to interrupted event: 8/1/19
+                      00674 
+                      00675         ;THIS CODE IS INTERRUPTED (see above)
+                      00676         BRANCH_TO       CH12SC0_SKIP_STOPR2
+                          M         
+                          M         if      (CH12SC0_SKIP_STOPR2-SKEME_BASE) > 0xFFF            ;check branch size in SCHEME
+                          M                 error   CH12SC0_SKIP_STOPR2 range over 4096 bytes -- MUST USE BRANCH_EXT for >4k
+                          M         else
+0001F2 F4C1               M                 DB      CMD_GOTO_SND + ((high (CH12SC0_SKIP_STOPR2-SKEME_BASE)) & 0x0F) , low (CH12SC0_S
+                          M         endif
+                          M                 
+                      00677         
+0001F4                00678 CH12SC0_SKIP_STOPR2
+                      00679         END_SOUND
+0001F4 0000               M                 DB      CMD_END_SND,0
+                      00680         
+                      00681         ;END CH1_ ===============================================================
+                      00682 
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 34
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00683         PAGE
+                      00684         
+                      00685         ;//////////////////// TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+                      00686 
+                      00687 ;---------------------------------------------
+                      00688 ;  START CHANNEL 2
+                      00689 ;---------------------------------------------
+0001F6                00690 CHNL_02_S0
+                      00691    CHANNEL_START        2
+0001F6 0281               M                 DB      CMD_START_CHNL,2
+                          M ;CTEMP += 1
+                      00692 ;---------------------------------------------
+                      00693 
+                      00694    ; Enable Motor
+                      00695    INITIATE_SOUND    TRIG_SND_ACTV11,NORMAL
+0001F8 0F90               M                 DB      CMD_INITIATE_SND + ((NORMAL) & 0x07), TRIG_SND_ACTV11 +((NORMAL) & 0x80)
+  00000006                M ICNT += 1
+                          M 
+                      00696 
+                      00697    LOAD_MODIFIER     MTYPE_WORK_IMMED,FMATH_OR+WORK_STATUS_BITS,WKSB_RUN_MASK,MERGE_ALL_MASK ; Enable Mo
+0001FA 47E6 0004          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_OR+WORK_STATUS_BITS,WKSB_RUN_MASK,
+                      00698 
+                      00699    LOAD_MODIFIER     MTYPE_WORK_IMMED, FMATH_LODE+WORK_DISTANCE,0,0 ; Reset work register
+0001FE 18E6 0000          M                 DB      CMD_LOAD_MODIFY+(MTYPE_WORK_IMMED&0x0F),FMATH_LODE+WORK_DISTANCE,0,0
+                      00700    LOAD_MODIFIER     MTYPE_SNDCV, SCV_139,31,0 ; Set to ~4.5 minutes
+000202 8AE5 001F          M                 DB      CMD_LOAD_MODIFY+(MTYPE_SNDCV&0x0F),SCV_139,31,0
+                      00701    
+                      00702    END_SOUND
+000206 0000               M                 DB      CMD_END_SND,0
+                      00703 
+                      00704 ;---------------------------------------------
+                      00705 ;  START CHANNEL 3
+                      00706 ;---------------------------------------------
+000208                00707 CHNL_03_S0
+                      00708    CHANNEL_START   3
+000208 0381               M                 DB      CMD_START_CHNL,3
+                          M ;CTEMP += 1
+                      00709 ;---------------------------------------------
+                      00710 
+                      00711 ;---------------------------------------------
+                      00712 ;  START CHANNEL 4
+                      00713 ;---------------------------------------------
+00020A                00714 CHNL_04_S0
+                      00715    CHANNEL_START   4
+00020A 0481               M                 DB      CMD_START_CHNL,4
+                          M ;CTEMP += 1
+                      00716 ;---------------------------------------------
+                      00717 
+00020C                00718 CHNL_05_S0
+                      00719    CHANNEL_START   5
+00020C 0581               M                 DB      CMD_START_CHNL,5
+                          M ;CTEMP += 1
+                      00720 
+                      00721 ;  END OF SCHEME 0              
+                      00722 ;---------------------------------------------
+                      00723    SKEME_END   0
+00020E                    M SKEME_NEXT0
+  00000001                M SCNT += 1
+                          M ;CCNT=CTEMP                             ;xfer MAX value seen in last scheme
+                          M ;CTEMP = 0
+                      00724 ;---------------------------------------------
+                      00725 ;  MARK END OF SDL      
+                      00726 ;---------------------------------------------
+                      00727    SKEME_START   CLOSE_SKEME   ;REQUIRED
+  0000020E                M SKEME_BASE      SET     $                               ;for offset calc
+00020E 1FF1 0400          M                 DB      CMD_SKEME_START,(CLOSE_SKEME &0x1F), high((SKEME_NEXT1-$)+2),     low((SKEME_NEX
+                      00728    SKEME_END   CLOSE_SKEME   ;REQUIRED
+000212                    M SKEME_NEXT1
+  00000002                M SCNT += 1
+MPASM  5.30                        HYBRID.ASM   3-19-2025  21:27:35         PAGE 35
+JRE235 Author: Maciej Swic
+SOUND PROCESSOR SOUND COMMAND macros for DIGITRAX scalable sound engine TECHNOLOGY.  (C) 2004,2005,2006,2012,2013,2018 Digitrax Inc.
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M ;CCNT=CTEMP                             ;xfer MAX value seen in last scheme
+                          M ;CTEMP = 0
+                      00729 
+                      00730 ;This should run in all assmeblies to confirm limits not exceeded for VERSION assumed
+000212                00731 VERSION_CHECKS
+                      00732         IF      ICNT>MAX_INITIATES
+                      00733    INITIATE EXCEEDS DEFINED LIMIT FOR THIS VERSION
+                      00734          ELSE
+                      00735         ENDIF
+                      00736         IF      CCNT> (MAX_CHANNELS+1) 
+                      00737    CHANNELS USED EXCEEDS DEFINED LIMIT FOR THIS VERSION
+                      00738          ELSE
+                      00739         ENDIF
+                      00740         IF      SCNT>MAX_SCHEMES
+                      00741    SCHEMES USED EXCEEDS DEFINED LIMIT FOR THIS VERSION
+                      00742          ELSE
+                      00743         ENDIF  
+Warning[207]: Found label after column 1. (ICNT)
+  00000007            00744         ICNT = ICNT+1
+Warning[207]: Found label after column 1. (TEMP)
+  000000F9            00745         TEMP = MAX_INITIATES-ICNT
+Warning[207]: Found label after column 1. (MAX_SCHEMES)
+  00000040            00746         MAX_SCHEMES = MAX_SCHEMES +0
+Warning[207]: Found label after column 1. (MAX_INITIATES)
+  00000100            00747         MAX_INITIATES = MAX_INITIATES +0
+Warning[207]: Found label after column 1. (MAX_CHANNELS)
+  00000008            00748         MAX_CHANNELS = MAX_CHANNELS +0
+                      00749 
+000212                00750 END_SDF   ;REQUIRED
+                      00751    END   ;REQUIRED
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0200 : XXXXXXXXXXXXXXXX XX-------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Bytes Used:   530
+Program Memory Bytes Free: 15854
+
+
+Errors   :     0
+Warnings :     7 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
