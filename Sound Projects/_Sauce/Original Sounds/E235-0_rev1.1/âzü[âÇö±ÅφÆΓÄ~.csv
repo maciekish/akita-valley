@@ -1,0 +1,8 @@
+label,START,,,
+if,fnc==0,START,,
+play,E231_駅緊急停止ブザー_前.wav,1,0,
+play,E231_駅緊急停止ブザー_Loop.wav,0,0,
+label,PLAY_LOOP,,,
+if,fnc==1,PLAY_LOOP,,
+play,E231_駅緊急停止ブザー_後.wav,1,0,
+exit,,,,

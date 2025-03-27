@@ -1,0 +1,7 @@
+Warning[202] C:\SPJ_PROJECTS\DN7C4X6D30\../SFX3P0_SND_MACS.INC 41 : Argument out of range.  Least significant bits used.
+Warning[202] C:\SPJ_PROJECTS\DN7C4X6D30\../SFX3P0_SND_MACS.INC 51 : Argument out of range.  Least significant bits used.
+Warning[207] C:\SPJ_PROJECTS\DN7C4X6D30\DN7C4X6D30.ASM 642 : Found label after column 1. (ICNT)
+Warning[207] C:\SPJ_PROJECTS\DN7C4X6D30\DN7C4X6D30.ASM 643 : Found label after column 1. (TEMP)
+Warning[207] C:\SPJ_PROJECTS\DN7C4X6D30\DN7C4X6D30.ASM 644 : Found label after column 1. (MAX_SCHEMES)
+Warning[207] C:\SPJ_PROJECTS\DN7C4X6D30\DN7C4X6D30.ASM 645 : Found label after column 1. (MAX_INITIATES)
+Warning[207] C:\SPJ_PROJECTS\DN7C4X6D30\DN7C4X6D30.ASM 646 : Found label after column 1. (MAX_CHANNELS)

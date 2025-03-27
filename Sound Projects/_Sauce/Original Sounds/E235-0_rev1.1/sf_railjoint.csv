@@ -1,0 +1,13 @@
+label,START,,,
+if,fnc==0,START,,
+if,spd<25,START,,
+pit,512,1900,,
+play,rjoint_C76_IN.wav,1,0,
+play,rjoint_C76_LOOP.wav,0,0,
+label,PLAY_LOOP,,,
+if,fnc==0,STOP_LOOP,,
+if,spd>20,PLAY_LOOP,STOP_LOOP,
+label,STOP_LOOP,,,
+play,rjoint_C76_END.wav,1,0,
+stop,,,,
+ret,,,,

@@ -1,0 +1,52 @@
+注意事項・利用と頒布のルール
+OPEN SOUND DATA 利用規約 第4版 2020年8月21日
+Terms of use OPEN SOUND DATA
+
+URL: https://desktopstation.net/sounds/
+Copyright(C)2019- DesktopStation
+------------------------------------------------------------
+
+- 日本語版
+
+本ページでは、サウンドデータをダウンロードした方、利用する方を"ユーザー"と記述します。
+本ページで公開されているサウンドデータをダウンロードもしくは入手した場合には、本利用規約に同意したものとします。
+同意されない場合、利用規約をオープンサウンドデータのデータを利用中に遵守できない場合は、オープンサウンドデータを利用することができません。直ちにダウンロードしたデータの削除を行ってください。
+
+・オープンサウンドデータのコンセプト・趣旨に賛同または共感していること
+・本サービスの管理者、クリエイター、他のユーザーまたはその他の第三者に不利益，損害，不快感を与える行為を行わないこと
+・利用規約を遵守するユーザーは、本ページに掲載されているサウンドデータを無料で自身の保有するDCCデコーダに書き込んで、利用することができます。
+・もし、このサウンドデータ自体を有償で、もしくは書き込まれたデコーダや搭載車両を本来の価格を超える金額で受け取った場合には、販売した者に返金請求しなければなりません。また、不正にサウンドデータを販売目的で利用した者の詳細な情報をDesktopStationに通知しなければなりません。
+・ユーザーは、本ページのサウンドデータを改変することは可能です。ただし、その改変したデータを後述する鉄道模型店・模型メーカーが行えるサービスを除き、不特定多数の他人に渡す行為や、Webやその他の媒体を通じて再頒布を行う際にはDesktopStationまで連絡を行い、本ページの中で配布しなければなりません。また、利用規約をそのまま適用しなければなりません。
+・本ページのサウンドデータを改変することが許容されていますが、改変したデータ単独の販売は行ってはいけません。デコーダへの書込みサービスでの提供、書き込んだ模型の販売が許容されます。なお、販売やサービスを行う際には、オープンサウンドデータをベースに作成したことを顧客に明示しなければなりません。
+・頒布されるサウンドデータを用いてデコーダに書き込む行為、または書き込んだデコーダ自体・もしくはデコーダを搭載した車両の販売を、生業（ビジネス）の一環として行うユーザー（企業または個人事業主、個人）は、サービスを開始する旨を事前に、DesktopStationに許諾（無償）を得るために連絡をしなければならない事、有償サービスで実施する場合には作業金額を店舗内またはホームページで明示すること、サウンドデータまたはそのサウンドデータ自体によって発生する価値に相当する費用・代金を、最終的に支払う顧客に対して請求・上乗せしないこと、を制約事項として設けます。なお、過去の経緯や評判、与信情報、その他の情報から、DCCの活動を阻害する、もしくは公序良俗として不適切と判断される場合には、サウンドデータの利用を許可しない・許可を取り消す場合があります。
+・本ページのサウンドデータファイルへの直接リンクを禁止します。リンクは必ず本ページに行ってください。
+・本ページのサウンドデータファイルの他のページへの転載、DVD等の媒体での不特定多数への頒布を禁止します。許可は出しません。
+・オープンサウンドデータ自体、関連するデータ、開発者、協力者等に、根拠無く違法性を公の場で指摘・公開し、活動を妨害するといった行為を禁止します。
+・サウンドデータを不正に利用した業者・個人事業主が、不正利用の補償について解決に応じない場合、業者の名称・住所・代表者の名前を不特定多数の場で掲示することをダウンロードもしくは入手の時点で了承したものとします。
+・サウンドデータの著作権は放棄されていません。
+・サウンドデータによって引き起こされる故障、事故、損害などについて、一切の保証を行わない旨を承諾すること。個別のサポートは実施しないことを了承すること。
+・本利用規約は予告・通告なしに変更されることがある。
+
+- English
+
+All trademarks and logos are the properties of their respective holders.
+If you do not agree, or are unable to comply with the terms of use while using the OPEN SOUND DATA, you may not use the OPEN SOUND DATA. Please delete the downloaded data immediately.
+
+- You agree or sympathize with our concept and purpose of OPEN SOUND DATA.
+- Do not commit any act that may cause disadvantage, damage, or discomfort to the administrator of this service, creators, other users, or other third parties.
+- Users who comply with the terms of use may use the sound data on this page by writing it to their own DCC decoders for free.
+- If you receive the sound data itself for a fee, or if you receive the decoder or vehicle in which it was written for a price that exceeds the original price, you must request a refund from the seller. You must also notify DesktopStation of any unauthorized use of the sound data for sale.
+- You may modify the sound data on this page. However, you must contact DesktopStation and distribute the modified sound data in this page to unspecified people or redistribute it via web or other media, except for the services provided by model railroad stores and model manufacturers as described below. You must also apply the Terms of Service as is.
+- You are allowed to modify the sound data on this page, but you must not sell the modified data alone. It is permissible to offer it as a writing service to decoders and to sell the written models. In addition, when selling or providing services, it must be clearly indicated to the user that the data was created based on open sound data.
+- Users (companies, sole proprietors, or individuals) who write to decoders using distributed sound data, or sell decoders themselves or vehicles equipped with decoders as part of their livelihood (business), must obtain prior permission from DesktopStation to start the service. DesktopStation must be notified in advance of your intention to start the service (free of charge), the price of the service must be clearly indicated in the store or on the website, and the cost of the sound data or the value of the sound data itself must be charged to the final paying customer. We will not charge the final paying customer for any costs or charges that are equivalent to the value of the sound data or the sound data itself. In addition, DCC reserves the right to deny or revoke permission for the use of sound data if, based on past history, reputation, credit information, or other information, it is determined that the use of the sound data would interfere with DCC's activities or be inappropriate in terms of public order and morals.
+- Direct links to the sound data files on this page are prohibited. Please make sure to link to this page.
+- Reprinting the sound data files on this page on other pages or distributing them on DVDs or other media to an unspecified number of people is prohibited. No permission will be given.
+- It is prohibited to point out or disclose the illegality of OPEN SOUND DATA itself, related data, developers, collaborators, etc. in public without evidence, or to obstruct their activities.
+- If a vendor or individual who uses sound data illegally does not agree to settle for compensation for the illegal use, you agree at the time of downloading or obtaining the data that the vendor's name, address, and representative will be posted in an unspecified place.
+- The copyright of the sound data is not waived.
+- You agree to disclaim all warranties for any malfunction, accident, or damage caused by the sound data.
+- You agree that no individual support will be provided.
+- These terms of use are subject to change without notice.
+- This Agreement is written in Japanese and translated into English and other languages. The Japanese version is the original, and the English and other language versions are for reference only. In the event of any conflict between these two language versions, the Japanese version shall take precedence.
+
+

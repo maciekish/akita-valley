@@ -1,0 +1,9 @@
+label,START,,,
+if,fnc==1,PLAY_ON,START,
+label,PLAY_ON,,,
+play,E233_ドア開_リニア_横浜線.wav,1,0,
+let,share1=share1-10,,,
+label,PLAY_LOOP,,,
+if,fnc==1,PLAY_LOOP,,
+play,E233_ドア閉_リニア_横浜線.wav,1,0,
+exit,,,,

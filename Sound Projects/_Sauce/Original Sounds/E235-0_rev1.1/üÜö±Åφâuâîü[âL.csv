@@ -1,0 +1,11 @@
+label,START,,,
+if,fnc==1,PLAY_ON,START,
+label,PLAY_ON,,,
+emg,1,,,
+play,非常吐出弁.wav,1,0,
+label,PLAY_LOOP,,,
+if,spd>0,PLAY_LOOP,,
+if,fnc==1,PLAY_LOOP,,
+play,E233_Bユルメ.wav,1,0,
+emg,0,,,
+exit,,,,

@@ -1,0 +1,7 @@
+label,START,,,
+if,fnc==0,START,,
+play,metro17000_合図ブザー2.wav,1,0,
+label,PLAY_LOOP,,,
+if,fnc==1,PLAY_LOOP,,
+stop,,,,
+exit,,,,

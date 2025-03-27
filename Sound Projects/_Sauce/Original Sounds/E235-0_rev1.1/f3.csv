@@ -1,0 +1,7 @@
+aux,1,0,,
+label,START,,,
+if,fnc==0,START,,
+aux,1,1,,
+label,PLAY_LOOP,,,
+if,fnc==1,PLAY_LOOP,,
+ret,,,,

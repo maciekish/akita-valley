@@ -1,0 +1,14 @@
+1 Diesel_idle
+2 Diesel_idle_run
+3 Diesel_run
+4 Diesel_run_idle
+5 Diesel_turnon
+6 Diesel_horn_begin
+7 Diesel_horn_cont
+8 Diesel_horn_end
+9 Diesel_bell
+10 Diesel_popoff
+11 Diesel_pump_start
+12 Diesel_pump_cont
+13 Diesel_pump_end
+14 Diesel_MilePost

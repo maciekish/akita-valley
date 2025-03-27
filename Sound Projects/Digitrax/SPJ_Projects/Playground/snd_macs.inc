@@ -1,0 +1,108 @@
+
+
+	page
+;===============
+;thes MACROS define the SDL used by DIGITRAX products
+; (C) 2004,2005 Digitrax Inc.
+;MACROS,  hi byte second in DB order!
+
+;[4 BYTE COMMANDS] 
+  
+;DEFINE scheme   =  [0xF1][000s-ssss][hi LEN][lo LEN],  LEN encodes total BYTES in SCHEME
+
+
+SCNT		SET	0		;scheme COUNT
+ICNT		SET	0		;initiates COUNT
+CCNT		SET	0		;channel COUNT
+CTEMP		SET	0		;max chnl in this scheme
+
+SKEME_START	MACRO	SKEME_NO
+SKEME_BASE	SET	$				;for offset calc
+		DB	CMD_SKEME_START,(SKEME_NO &0x1F), high((SKEME_NEXT#V(SCNT)-$)+2), low((SKEME_NEXT#V(SCNT)-$)+2)
+		ENDM
+
+SKEME_END	MACRO	SKEME_NO
+SKEME_NEXT#V(SCNT)
+SCNT += 1
+;CCNT=CTEMP				;xfer MAX value seen in last scheme
+;CTEMP = 0
+		ENDM
+
+
+
+;===========
+; laod moodifier REGS
+
+LOAD_MODIFIER	MACRO	MOD_TYPE,ARG1,ARG2,ARG3
+		DB	CMD_LOAD_MODIFY+(MOD_TYPE&0x0F),ARG1,ARG2,ARG3
+		ENDM
+
+;
+MASK_COMPARE	MACRO	SRC,IMMED,TARG,MASK,SKIP
+		DB	CMD_MASK_COMPARE+SKIP+IMMED,SRC,TARG,MASK
+		ENDM
+
+;==========================================================
+;[2 BYTE COMMANDS]
+
+;-------------------
+;CHNL_END	EQU	0xFF		;this CHNL number stops SCHEME evaluation
+; CHNL in current scheme ENDS with new SCHEME
+
+CHANNEL_START	MACRO	CHNL_NO
+		DB	CMD_START_CHNL,CHNL_NO
+;CTEMP += 1
+		ENDM
+;----
+
+SDL_VERSION	MACRO	VERSION_NO
+		DB	CMD_MARK_VERSION,VERSION_NO
+		ENDM
+;----
+
+INITIATE_SOUND	MACRO	TRIGGER,PREMPT
+		DB	CMD_INITIATE_SND + ((PREMPT) & 0x07), TRIGGER +((PREMPT) & 0x80)
+ICNT += 1
+
+		ENDM
+
+;----RESERVED
+;CALL_SOUND	MACRO	ADR
+;		DB	CMD_CALL_SND + ((high ADR) & 0x0F) , low ADR   
+;		ENDM
+
+;---------
+BRANCH_TO	MACRO	ADR						
+		DB	CMD_GOTO_SND + ((high (ADR-SKEME_BASE)) & 0x0F) , low (ADR-SKEME_BASE)  
+		ENDM
+;----RESERVED
+;REPEAT_SOUND	MACRO	COUNT,BREAK
+;		DB	CMD_REPEAT_SND + (COUNT & 0x0F), BREAK  
+;		ENDM
+
+DELAY_SOUND	MACRO	MODE,VALUE,GLBL
+		DB	CMD_DELAY_SND + (GLBL & 0x01), (VALUE & 0x7F)+MODE  
+		ENDM
+
+SKIP_ON_TRIGGER	MACRO	LOGIC,TRIG_VALUE
+		DB	CMD_SKIP_ON_TRIGGER + (LOGIC & 0x03), TRIG_VALUE  
+		ENDM
+GENERATE_TRIGGER MACRO	TRIG_VALUE
+		DB	CMD_BLIP_TRIGGER, TRIG_VALUE  
+		ENDM
+;----
+END_SOUND	MACRO
+		DB	CMD_END_SND,0
+		ENDM
+
+;============================
+;HANDLE play conditions-  allows HANDLE looping on WAVBRK events
+
+PLAY		MACRO	HANDLE,BREAK,WAVBRK_FLGS			;Play wave fragment
+		DB	CMD_PLAY_SND+((BREAK>>2)&0x07)+WAVBRK_FLGS, (HANDLE & 0x3F)+((BREAK<<6)&0xC0)	
+		ENDM
+
+;dropped USAGE in VERSION 2 S/W!! do NOT use
+;PLAY_END	MACRO	HANDLE,BREAK,WAVBRK_FLGS			;Play wave fragment
+;		DB	CMD_PLAY_SND_LAST+((BREAK>>2)&0x07)+WAVBRK_FLGS, (HANDLE & 0x3F)+((BREAK<<6)&0xC0)	
+;		ENDM

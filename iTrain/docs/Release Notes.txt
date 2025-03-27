@@ -1,0 +1,2435 @@
+iTrain Release Notes
+====================
+
+5.1.14
+------
+- A demo folder with zipped layouts/images/sounds folders are put in the installation folder.
+- In a turntable you can only click on a connection or the opposite side to control it manually.
+- Use CV programming command which allows higher indices with LoDi-Rektor version 3 and higher.
+- Use minimal speed of 0,1 km/h for shunting over a distance (1 km/h for more than 10 cm).
+- Bug fix: Light with DCC aspect not shown correctly in the Keyboard.
+- Improve selection of BiDIB accessory node for keyboard or remote controls in case there are many generators.
+- New interface 'DCC-EX Network' added for testers.
+
+5.1.13
+------
+- Better handling of locomotives without a train in Dinamo.
+- Bug fix: Dutch warning/distant signal with display not always showing correct value.
+- Bug fix: Very wide block elements in switchboard not always updated correctly.
+- Bug fix: Add selection of booster control in CC-Schnitte.
+- XpressNet 4.0 support for switching accessories with address > 1024.
+- Bug fix: General accessory input lacks icon for crossing or shift table.
+- Bug fix: Interface images also written to export external inclusive.
+- Bug fix: Triple accessory address sometimes incorrectly converted to range.
+- Bug fix: Roco WLAN-Maus removed from list after log off.
+- Bug fix: Network ports on master client could be negative.
+- Bug fix: No BiDiB-signature message with IF-Net at first connect.
+
+5.1.12
+------
+- Better error handling when sending/receiving an image over the network (client/server).
+- Bug fix: Action for random waiting time cannot handle zero for the delay.
+- Detection of incorrect polarity in block with alarm message and stopping the train.
+- Bug fix: Improve FCC protocol with new protocol values and always initialize the direction on SX2.
+- If step delay (e.g. in turntable) is not defined and interface offline, switch to end state after state delay.
+- Bug fix: Restore the selection in the list on the left after an underlying data model change.
+- Bug fix: Initial state for crossing had no icon.
+- Bug fix: Aspect not correctly initialized when using template function.
+- Interface 'DCC++ EX' allows flow control selection again.
+
+5.1.11
+------
+- Some fixes for Zimo MX10 protocol initialization.
+- Bug fix: Selecting a turntable or transfer table item in the browser of the editor should not group it.
+- Bug fix: Show all elements that are grouped to a block in the block editor even some outsiders.
+- Bug fix: Canadian triple high signal was incorrect for 'Slow to Limited'.
+- Default BiDiB receiver port changed to 62800 to differentiate it from netBiDiB.
+- Extra state delay for turntables, transfer table and shift table.
+- LoDi-S88-Commander-LX also gets a watchdog.
+- Roco Z21 function group support check improved.
+- Do not cache file chooser at startup as it only used for export/import.
+- Bug fix: Cancel waiting time on client did not work anymore.
+- Option 'Short block' only used for evaluating a signal state if the signaling system supports it.
+- BiDiB acknowledge of accessory notify only done if final state reached.
+- Massoth better processing of vehicle announcement reply.
+- Bug fix: Roco WLAN-maus with non-default accessory protocol.
+- Context menu with select all/none for allowed routes.
+
+5.1.10
+------
+- Store iTrain version information also in ZIP-file comments.
+- Prevent some event firing during loading of the project.
+- Lookup IP address of LocoNet device via mDNS for YaMoRC and netBiDiB.
+- Bug fix: Action conditions sometimes add extra lines when loading, because of a cleanup issue.
+- Bug fix: Functions on TAMS via P50X with Motorola function decoder in wagon.
+- Process LocoNet detector messages in Z21 Protocol for MD hardware.
+- Bug fix: Changing length of crossing does not apply.
+- Context menu for a lane in the switchboard also has car properties.
+- Select box only fires change event if selection changes and not when underlying model has changes.
+- Z21 Dual booster can be switched on/off individually.
+- Bug fix: Warning signals in combination with blocks of type shunt were not always correct.
+- Context menu for start route button with option to start manually or semi-automatic.
+- Improved reading of data from Massoth interface by skipping incorrect data as much as possible.
+- Command line action also support @TIME@ as a replacement for the actual model time.
+- Also allow device number 0 for the LinkS88 CS2/3 or specify it via command-line.
+- The action to set a train type allows no train type as a value.
+- Update of Spanish text in user interface.
+
+5.1.9
+-----
+- Higher maximum speeds allowed in settings and per block.
+- Bug fix: Initial state for a warning signal not persistent if 'None' is used.
+- Do not read accessories from XPressNet or LocoNet at connection time as the data could be invalid.
+- General setting that if turned off prevents correction of trains by RailCom in non-empty blocks.
+- Bug fix: NCE setting accessories not working as expected.
+- Double clicking on interface in train overview will open the interface editor.
+- Better synchronization of turnout and signal types for ECoS.
+
+5.1.8
+-----
+- Bug fix: No language change message if language not changed.
+- Import of vehicles from CS2/3 further streamlined.
+- Programming on service track added to FCC protocol for testing with a ZS2+.
+- Do not poll controlled vehicles on the Roco Z21.
+- Longer timeout for LoDi-S88-Commander.
+- Export of total time and distance for locs.
+- Bug fix: Action item with signal state 'None' should not change to 'Hold'.
+- Bug fix: Action to change train type should not offer the option to set the train type to 'None'.
+- Improve operation of accessories with multiple states with the same aspect.
+- Bug fix: Disabled train magazine connections are sometimes enabled again and cause issues.
+- Bug fix: Sending to many accessory messages in a short time to the same BiDiB node could give issues.
+- Support for LoDi-20A-Booster.
+- Processing of RailSpeed events in both Manager and LoDi-Rektor the same.
+- Do not import loc/wagon address from CS2/3 if the vehicle is controlled by another interface.
+- Bug fix: Changing the decoder step on the client is not direct, but with mass simulation.
+- Bug fix: Better pairing for netBiDiB.
+- Bug fix: Turnouts attached to a release block are not always released properly.
+
+5.1.7
+-----
+- Swiss L signal prefers lower expected speed over current restricted speed.
+- Bug fix: Reference to removed feedback of turnout in train position could give issues.
+- Reading of feedbacks at start with Dinamo on UCCI module optimized.
+- Prevent Roco 10787 feedbacks from overwriting other feedbacks (LocoNet or CAN) on Z21.
+- Bug fix: Only stop centered in a table block (including train magazine) if stop position is zero.
+- Bug fix: Writing LocoNet messages to the Z21 was incorrect (only used with report address).
+- Bug fix: Position in block only corrected if the direction of the train also changes.
+- Manual control will be saved in the project file.
+- Bug fix: LocoNet programming sloSoubt not interpreted correctly for locs after support for accessory.
+- Extra check on length of train for block type 'Handover'.
+- Bug fix: After resetting the totals the fuel should be set to 100% and again count down.
+- Support on Z21 with firmware 1.42 for function groups up to f68.
+- Bug fix: Route could change the direction of a previous train after a split.
+- Extra check on stop position in the clearance area added to the diagnosis.
+- No length or other check for block of type 'Turnout' as it is a dummy block.
+- Improved import of vehicles from CS2/3.
+
+5.1.6
+-----
+- Command line action will use @CAR@ as a placeholder for name of the actual car.
+- Cancel waiting for cars in context menu of the lane.
+- Bug fix: Release of vehicles from refresh on BiDiB.
+- Bug fix: Booster ID not always translated to node description in editor.
+- Action editor list on the left shows more detailed icons based on the condition.
+- Delay error message at startup until main window is available.
+- Preselect last used tab in settings editor.
+- Default port for LocoNet TCP/IP set to 5560 to match the new YaMoRC products.
+- BiDiB: virtual (s88) nodes retrieved sequentially to prevent overload on main node (TAMS Zeus).
+- Block of type 'Handover' always shows address field.
+- Import of wagons improved on ECoS.
+- On MacOS the downloaded disk image now also shows a folder called Apps to make installation easier.
+- Bug fix: DCC turnouts via Roco WLAN-Maus.
+- Bug fix: Shunt distance action should work until the stop position.
+
+5.1.5
+-----
+- Faster BiDiB nodes retrieval.
+- Calculated mass simulation uses higher step size if step delay becomes too low.
+- Better hand over from Dinamo to other system.
+- Bug fix: BiDiB node address not visible on master client in node overview.
+- Bug fix: Interface node identify button not enabled.
+- Bug fix: Better clearing of current and address data if feedback is inactive.
+- Bug fix: Single slip for roads drawn incorrectly.
+- Corrected French screen messages.
+- Platform side handling improved.
+- Import of vehicles does not copy node ID, but only decoder ID.
+- Bug fix: Manual feedback state change in switchboard incorrect in feedback monitor of LinkS88.
+- Additions to Massoth protocol for better error handling.
+- Bug fix: Model clock weekday check not correct in an AND.
+- Time action not only changes the time, but also starts the time if paused.
+- Bug fix: Formatting of feedbacks could suddenly change in feedback editor.
+- Add special (servo) turnout command to DCC++ EX interface.
+- Handling of feedback in block in combination with on/off relais improved.
+- Bug fix: Direction of ghost train in block with one feedback improved.
+- Better scaling of fonts on Linux for HiDPI monitors.
+- Turntable direction choices are based on the train direction (for a loc train this is the same).
+
+5.1.4
+-----
+- Skip inactive boards in project file preview.
+- Functions 'Decouple front/rear' are dynamic when used in actions.
+- Bug fix: Closing floating windows does not always save data.
+- Bug fix: Allow long train to cross a turntable.
+- Bug fix: LoDi-Shift-Commander module names not read correctly.
+- LoDi-8-GBM: Ignore current if feedback is not active and show it otherwise even when it is low.
+- Bug fix: Model time does not move to next day if the end time is on the same day as the start time.
+- Bug fix: Dead end blocks that were initially inactive cannot be entered later on when active.
+- Improved Spanish screen messages.
+- FlatLaf version 2.6.
+
+5.1.3
+-----
+- Bug fix: Drawing sound wave form could result in white area.
+- New block type 'Handover' for changing the system optionally with overlapping feedbacks.
+- BiDiB DCC accessory node selection for default selects second in system with two generators.
+- Improved refresh in all editors if data model is changed externally via clients.
+- Better usage of worker threads when executing routes.
+- Bug fix: Train speed slider does now follow the speed unit selected in the preferences.
+- Input fields with time do not use overwrite mode anymore.
+- Daisy 2 wireless can be used on a stand-alone LocoNet configured with iTrain as a virtual master.
+- Action condition for turnout state added.
+- Bug fix: Percentage in car fuel condition not always applied.
+- Bug fix: DTC turntable wait until motor is off before driving.
+- Bug fix: Release by feedback in block saved, but not loaded correctly.
+- FlatLaf version 2.5.
+
+5.1.2
+-----
+- Bug fix: Stop cars if crossing barriers are still opening.
+- Support for LinkS88 on SRSEII.
+- Linking tabs now also possible via turnout groups.
+- Tooltips also shown in switchboard if element is behind a text element.
+- Brake position always zero with waiting position on decoupler.
+- Report address for LocoNet feedbacks on Z21 improved.
+- Save global sound off in project file.
+- Add train name in last column of the export of wagons.
+- Bug fix: Warning signal at the end of a block could show incorrect state.
+- Switchboard editor only enable OK button if form is valid.
+- Bug fix: Using keys for controlling items in the switchboard did not work.
+- LoDi-Shift-Commander outputs displayed starting with one in dropdown list.
+- Bug fix: Block margin in classic mode not read correctly.
+- FlatLaf version 2.4.
+
+5.1.1
+-----
+- Bug fix: RMX process changes for higher functions f17-f28.
+- Bug fix: Type of new turnout or signal in switchboard editor reset to none.
+- Bug fix: RailCom feedback address on ECoS shifted one module.
+- View mode possible via command line parameter.
+- Improved formatting of bus and address for feedbacks on the LinkS88. 
+- Bug fix: Quit handler on MacOS should save all window states.
+- Bug fix: Item not selected on first tab after double clicking in switchboard editor.
+- Bug fix: DicoStation feedback offset of 1.
+- Bug fix: Selecting red/green in keyboard for Selectrix does not reset other state.
+
+5.1.0
+-----
+- General
+  - To get a beautiful and consistent look and feel on all platforms 'Flat light' is the default.
+  - A new feedback monitor system that can also show module based feedbacks such as in BiDiB.
+  - A new keyboard that also shows the state of unassigned addresses if changed.
+  - New view mode: no client-server, no interface control, but you can read any file.
+- Interfaces
+  - A suddenly disconnected interface will cause other interfaces to be stopped (option dependent).
+  - Added support for MD electronics (MZSPro and 30Z) via WLAN with the Z21 protocol.
+  - Better network discovery with button 'Find' showing more information.
+  - New interface for netBiDiB added. Pairing must be done at first time on the interface side.
+  - Module selection for LinkS88 for easier addressing and and better feedback monitor representation.
+  - Support for DCC++ EX with an Arduino.
+  - Control BiDiB accessories with a throttle via a pseudo address.
+  - Write CV values to MCC decoders.
+  - A protocol message logger window per interface for testing purposes.
+  - Support for LoDi-Rektor LX with TCP instead of UDP.
+  - Support for functions f0-f68 and binary states with Lenz LZV200 with firmware v4.
+  - Filter on commonly used interfaces with option to show all of them.
+  - Support for uCon-Manager-Reloaded (firmware v4).
+  - Virtual support for Rautenhaus RMX, so you can use their handhelds with other systems.
+  - Support for DCC functions f17-f28 with Rautenhaus RMXnet as an option.
+- Accessories
+  - Trackroute has three states: off, reserved and set.
+  - Support for 256 aspects (0-255) for the Aspect object.
+  - French signals improved and extended.
+  - Repeat/loop option for sound files.
+  - Sound off/mute button to switch off sound.
+  - Relay, Light and Sound can also have a permanent output signal when using a half address and zero switching time.
+  - DTC sensor count zero then follow position count in iTrain.
+- Blocks
+  - Hidden block option to reduce acceleration and deceleration.
+  - Margin replaced by Clearance when using positions, to indicate the free space at the start of the block.
+  - The position of decouplers in the block can be specified for extra stop positions.
+  - Signal in block set to red if train occupies the reserved track route (except for Swiss signals).
+  - Accelerating when a higher speed is allowed only when the train is completely in the block.
+  - Use first feedback on turnouts between blocks to correct the position.
+- Routes
+  - Improved support for shuttle trains that occupy two blocks in a station.
+  - New station permissions to select which stations can be selected next.
+  - Option to make reservations beyond a station while waiting to prevent others to leave.
+  - Extra actions allowed in train route such as shunting for splitting and joining trains.
+  - Dropping a train on the side of a block element will interpret this as a direction choice.
+  - A route of type shunt does not wait on a station threshold.
+- Trains
+  - New train weight categories in train type to correct the mass simulation of the locomotive.
+- Actions  
+  - Split train route actions in three separate actions (change route, change type, start/stop).
+  - Add aspect change action with integer operations on the aspect value.
+  - New conditions in actions for interface, train route state and train direction.
+  - New random condition with a chance that can be used with an AND operator.
+  - New random delay in execution part of an action.
+  - Action to set the info for a train or car.
+  - Action to change the booster state and one to change the interface status.
+  - Action added to route train to a station.
+  - Command line action will use @TRAIN@ as a placeholder for name of the actual train.
+  - Action to route/shunt train to a block has a position where to stop.
+  - New condition on position in block.
+  - Decoupler action can have duration to switch back to inactive after some time without waiting for it.
+- Switchboard
+  - Block items in the switchboard can have a fixed size and an alignment for text.
+  - Only use corners of turntable if necessary to make it look better.
+  - Better context menu for touchscreens (long left click with mouse dropped, only right click).
+  - New curved feedback item.
+  - Arrows for side next drawn differently.
+  - Tabs in the switchboard can be made inactive so you only see them in the editor.
+ - Others
+  - Server box on status bar when running in client mode.
+  - Extra column in list of the wagon editor with the name of the train.
+  - Save and load state of vehicle functions so they will be restored when connecting.
+  - Accessory keyboard upgraded with flexible number of columns.
+  - Split of train inside the wagons improved by using common name in wagons for train name.
+  - In case a train is not in a block no signal will be displayed in the train panel or grid.
+  - Specific signal in case of a dead end track.
+  - Select all/none active in popup menu.
+  - Tabs have scrolling bars and a popup menu if they are too wide.
+
+5.0.20
+------
+- Block ID set to none when interface is removed for a block.
+- Bug fix: Quit handler on MacOS should save all window states.
+- Bug fix: Actions not working via keys in switchboard.
+- Bug fix: Diagnosis complains that a feedback condition cannot deliver an actual car.
+
+5.0.19
+------
+- Bug fix: Detecting ghost trains improved.
+- Upgrade to FlatLaf version 2.3
+- Bug fix: In finding waiting blocks with the same track number.
+- Bug fix: ECoS ignore addresses and protocols that are not supported.
+- Bug fix: Reading accessories from programming track on Z21.
+
+5.0.18
+------
+- Bug fix: Extended accessory for Z21 always uses RCN-213 now.
+- Bug fix: Turntable DSD does turn 180 degrees if the same position is activated twice.
+- Bug fix: Turntables and others do not simulate when online and feedbacks are defined per state.
+- BiDiB: Ignore feedback addresses for global detector.
+- Bug fix: Station with no tracks to pass in route works better now.
+
+5.0.17
+------
+- Populate sub folders in base path that do not exist with data, if possible.
+- Change the preferences folder for Linux and migrate automatically.
+- Improve the sequence numbering in BiDiB.
+- Bug fix: Better handling of failed decoder speed write to interface.
+- Bug fix: Pasting function definitions skips f0.
+- Manually edited descriptions for functions are not overwritten when changing the type.
+- Improved communication with BiDiB resulting in better throughput when using the Wizard.
+- Improve line reading for text based protocols.
+- Upgrade to FlatLaf version 2.
+
+5.0.16
+------
+- Bug fix: Try both directions to leave a block that contains multiple trains.
+- Bug fix: Prevent assigning block group to turnout in special cases.
+- Bug fix: DCC extended accessory with LocoNet used wrong offset.
+- Italian translation of screens texts updated.
+- DCC vendor list updated (CV8).
+- Bug fix: Could not reserve multiple blocks via drag and drop.
+- Bug fix: Timeout in network connection info not stored.
+
+5.0.15
+------
+- Z21 and its boosters can be used as smart boosters in the switchboard.
+- Delay reservation of a just released block a bit.
+- Watchdog for LoDi-S88-Commander.
+- Import locomotives again on CS2/3 when ALT clicking on the interface.
+- Improve replacing BiDiB IDs when upgrading firmware that changes ClassID.
+- Universal binary for D2XX library on macOS, so it will work with Apple Silicon (M1).
+
+5.0.14
+------
+- Support for LoDi GBM-8-P.
+- Bug fix: Closing clients should not give warning that server is lost.
+- Z21 IP address finder does not bind to fixed port.
+- Bug fix: Signal in train panel not always correctly updated.
+- Bug fix: Template for event action does not copy items.
+- Bug fix: View -> Extra menu items not always correctly hidden.
+- Bug fix: Pause state not read when starting client.
+
+5.0.13
+------
+- Make it possible to change the state of a booster or start an action via keys.
+- Improve resetting the turnout state after release if this option is selected.
+- Disable Nagle's algorithm for network connections using TCP.
+- Do not allow a direction change in a block of type 'Shunt' when not shunting.
+- Check if turnout state can be set before resetting it.
+- Bug fix: Direction for wagon only trains not stored properly.
+- Improving splitting of train with only locs.
+- After awakening client from sleep detect loss of server connection and ask to reconnect.
+- Improved interface command queue that ignores duplicates to prevent overload.
+- Dinamo interface communication improved throughput when not idle.
+- Support for LoDi Power Booster 10A.
+- Sort CAN feedback devices according to assigned ID on CS2/3.
+
+5.0.12
+------
+- Bug fix: Better parsing of switchboard in client/server.
+- Bug fix: Newly added object on master client can be renamed safely.
+- Separate turntable decoder for Märklin 74861 to accommodate for small differences.
+- Support for Lenz Drehgleis.
+- Extra check for missing address in block when using Dinamo.
+- Bug fix: Train split of extra loc that is not the active one should still use the loc train.
+- Bug fix: Show better names when using multiple 4-SC-LED modules.
+
+5.0.11
+------
+- Better support for MD-electronics devices via the Z21 interface.
+- Diagnosis for wagons now follows the same rules as the locomotives.
+- New default turntable decoder to select tracks directly.
+- New Märklin turntable 74861 supported via decoder 7687 with 30 possible connections.
+- Support for new features LoDi-Rektor.
+- Support for TAMS MasterControl 2 and LS Infinity Cube with P50X over network.
+- Automatic driving without routes in loops improved, preventing direction changes.
+
+5.0.10
+------
+- Bug fix: Selection of module node not correct when changing input device.
+- Extended accessory addressing according to RCN-213.
+- Support for extended accessory aspects on the Roco Z21. 
+- Bug fix: First allowed in automatic routing without routes.
+- Bug fix: Problem when removing feedback from table accessory.
+- Bug fix: Selecting the turnout option 'State feedback' will not wait for state feedback when offline.
+- Bug fix: Decoupler of type pulse can be controlled via the WLAN-Maus.
+- Bug fix: Turntable might turn in wrong direction when more trains are competing for it.
+- Bug fix: Starting a route in a block with multiple trains that has to change direction first.
+- Bug fix: Implicit emergency stop feedback not always effective.
+
+5.0.9
+-----
+- Bug fix: Text in turntable not displayed correctly if direction is not horizontal.
+- Bug fix: Ignore vehicles in ECoS without a name to prevent empty names in iTrain.
+- Bug fix: Repeated LocoNet virtual interface speed commands should be filtered.
+- Bug fix: Create the complete path of the base directories and not only the sub-directories.
+- Virtual interface speed commands not processed when train is in automatic mode.
+- Improved streaming of images over network.
+- Improved path finding between two blocks as part of the route creation.
+- Bug fix: Reading LocoNet feedbacks connected to the L-Bus of Z21 at startup. 
+- Allowed to start train in block for which there is no permissions.
+- Dinamo support for 'OC32X aspect' with up to 128 (virtual) ports per module.
+
+5.0.8
+-----
+- Enlarge text when resizing the aspect item on the switchboard.
+- Bug fix: Critical reservation into a block should only be skipped if the train is already in and no others are.
+- Bug fix: Also check the reserved state of the turnout to determine the signal state.
+- Bug fix: Incorrect model time used in input if model time was not already set.
+- Bug fix: Text in switchboard not always fits correctly in box.
+- Bug fix: Transfer table connections not correct in one of the four directions.
+- Bug fix: Do not reset initial state of turnout if this state is disabled.
+- Bug fix: FCC/ZS2+ function changes for f9-32 not read back from device.
+- Bug fix: CC-Schnitte interface UID not handled correctly.
+- Better display of unsupported sound files.
+- Native support for Macs with the new M1 processor.
+
+5.0.7
+-----
+- Bug fix: Prevent reservations to both sides of a train when continuing after a pause.
+- Bug fix: SPROG sends incorrect hex characters.
+- Better check for change of control types in an interface.
+- Bug fix: BiDiB Wizard message of type local should be forwarded with number 0.
+- Beep in action or as alarm also sent to clients in case the server cannot be heard.
+- Bug fix: E-Mail address validator for entering license key was to strict.
+- Bug fix: Virtual interface doesn't not react to individual function changes.
+- Bug fix: Switching accessories via a virtual interface does not work properly.
+- Bug fix: Colors in train overview for maintenance not correct.
+- Bug fix: Prevent oscillation of direction changes with LocoNet.
+- Extra popup menu on tab of the train panel to set the grid size directly.
+- Bug fix: Position in train overview should also be updated when the train is expanded.
+- Inactive locs or wagons cannot be controlled anymore from train panel or train overview.
+- Bug fix: Do not create a turnout group when selecting a turnout via the overview.
+- Ignore inactive routes in execution of actions.
+- Bug fix: Waiting for threshold in station improved and visible in info column in train overview.
+- Improved RMX database synchronization when connecting.
+- BiDiB: Filter out extra mirror messages from a receiver for acknowledgment of a feedback event.
+- Improve station handling when running automatically without routes.
+
+5.0.6
+-----
+- Improve searching for alternatives in routes.
+- Allow locomotives or wagons to be selected from other single vehicle trains in the composition editor.
+- Check modifier keys Shift and Alt in block popup menu after drag & drop of a train.
+- Allow wildcards for minutes in time condition. This can be combined with a time condition with a wildcard for hours.
+- Bug fix: Motorola C90X decoder with 14/27 steps sends wrong speed steps on Intellibox.
+- Bug fix: Only change the actual state when changing the initial state if it is allowed to change the state.
+- Bug fix: Better manual downloading from iTrain via https and with better buffers.
+- Stop the model clock if one of the interfaces is in stop mode and the clock runs faster (factor greater than one).
+- New 'Flat' Look and Feel with light and dark background.
+- Use 'Monospaced' font for comments to make it easier to align text.
+- Improved license code input with basic e-mail verification.
+- Bug fix: Default fit will work on client and on resize of the switchboard (so more auto fit now).
+- Bug fix: Signals not always correct in train overview.
+- Bug fix: OpenCar Ready RF-Basis V2.0 nor recognized as car node.
+- Extra confirmation asked when closing iTrain when the interfaces are still connected.
+- BiDiB communication throughput optimized.
+- Improve finding starting point in route to start from current position of train.
+- Limit the search depth in finding a next block in a route in case that a lot of blocks have been specified.
+- Only show option 'Shunt' in instant route when the destination block is a shunt block.
+- LoDi-Rektor: Localize speed measurement statusbar messages.
+- Boosters in interface info window with black background just as in switchboard.
+- Support for LocoNet expanded slots improved.
+
+5.0.5
+-----
+- Bug fix: Invert not applied on functions in popup menu of train overview.
+- Make use of new Date/Time API in Java 8 (possible because of Android Studio 4).
+- Easier to enter time field manually in settings and model clock settings.
+- Prepare a cleaner path for driving automatically without routes.
+- Bug fix: Only use accessory address offset for DCC with Roco Z21 (so not for Bus or Motorola).
+- Direction of current indicator in feedback element follow the text direction.
+- Only allow locs and wagons not attached to another train in the composition editor.
+- If train type not specified in station then train will not go to this station (even not pass).
+- Only remove trailing white space for text in switchboard (not at the start).
+- Bug fix: Format interface addresses in diagnose panel.
+- Bug fix: New asks to keep locomotives and trains, but should be vehicle data (including wagons and train types).
+- Bug fix: Streaming flow control has error so no flow control can appear as Xon/Xoff.
+- Bug fix: Selectrix when switching aspect with multiple addresses check all others with these addresses.
+- Bug fix: Keep block connections on side with a link symbol when doing auto fill.
+- Bug fix: Multimaus on BiDiB GBM-Master shows incorrect steps.
+- Aspect states are localized.
+- Station popup menu improved with station state separate from starting/stopping trains.
+- Maximized window state restored in new session.
+- Added distance and time field to Options in Car Control.
+- Better precision in distance field for locomotive and car.
+- Improved loc function mapping for ECoS.
+- Drag & Drop to block with copy modifier will give an extended menu for route/shunt to block.
+- Programming for LocoNet improved with better timeout.
+- Bug fix: Removing allowed routes for a train should also change the selected route if this is not allowed anymore.
+- Only execute action if selected route is available for this train.
+- Support for Walthers turntable decoder.
+
+5.0.4
+-----
+- Action 'Accessory' shows the word 'Toggle' in the last column 'Change'.
+- Bug fix: Problems with 'Table cell rendering' in Nimbus 'Look and Feel'.
+- Relay attached to a turnout also switched at least once.
+- Relay will be reserved and released with the attached turnout.
+- Interface of vehicle changes actively depending on the block/lane it is in.
+- A block with an A/B-relais will change the interface depending on the side block if it is different.
+- Better support for inactive wagons (and locs) in a train.
+- Date/time formatting in resource browser and client overview follows the formatting common for the language.
+- Better support for TAMS Programming on Main (PoM) for accessory decoders.
+- Copy/Paste for function definitions in vehicles.
+- Support for Minibox 2 when using LocoNet as an interface.
+- New DCC126+ decoder with extended functionality (support for extra functions and better refresh).
+- Improved support for DMX-Control with BiDiB and also efficient support of RGB-light with 3 channels.
+- Support for OpenCar Multi-RF-Basis in which you specify the RF-Basis for each lane.
+- Base path selection also possible via dropdown box (mainly cloud drive options).
+- Group function 'light' and 'sound' removed as a more specific one should be used.
+- Bug fix: Accessory state of reservation recovered when starting again.
+- BiDiB support for DCC126+ added.
+- Signal state added as condition to an action.
+- Accessory state feedback also works in case multiple states have the same output.
+- Support for BiDiB StepControl with turntable, transfer table and shift table (train magazine).
+- Fleischmann turntable 6915 supports two modes: programmed without gaps or non-programmed with gaps.
+- Option to invert functions so they show as on when there value is 0 and vice versa.
+- BiDiB module can be selected for all vehicles types to select the generator.
+- Occupied turnouts color differently depending on being reserved or not.
+- Bug fix: Block side ignored when loading file for action route to block.
+- Block labels also show the address if available between parentheses.
+- Dinamo: Support for using block outputs to feed turnouts instead of via relays.
+- Bug fix: Zimo MX10 turnout implementation changed. 
+
+5.0.3
+-----
+- Function 'Direct control' should not influence mass simulation in iTrain.
+- Remove Dinamo specific option 'Shunt acceleration' as not applicable anymore.
+- Remove the action to reset the totals when double clicking on the time/distance labels.
+- Shunt actions: Check engine sound function and if necessary delay before driving with distance or speed step.
+- Train route input only shows active train routes and in the defined order.
+- Lookup of sound device improved with automatic refresh.
+- Rocomotion has additional accessory offset option in specifics and programming on service track improved.
+- Bug fix: NCE PowerCab support should work with USB-interface.
+- Bug fix: Staerz ZS2+ connection start with ZS2 interface works properly.
+- Staerz ZS1 and ZS2 with more baudrate options and default 38400 baud.
+- Decoder programming on service track for BiDiB-ReadyBoost implemented by selecting this module.
+- Address grouping of 6 for Lenz LS150 decoders.
+- Bug fix: Sudden direction change could cause a locomotive to drive with the old speed.
+- Bug fix: Accessory change action not working properly for decouplers.
+- Bug fix: Second pseudo address for signals cannot be used by remote controllers.
+- Dinamo block linker improved and added better logging.
+- Negative delay in action executor means wait until previous lines have finished and then add delay.
+- Improved LocoNet server network reading.
+- Bug fix: Turnout speeds should be initialized properly with restricted when necessary.
+- Speed and length fields do not use overwrite mode anymore.
+- Baudrate of 38400 added for Dinamo system.
+- Bug fix: State 'Clear signal (405)' missing for Canadian signals with two heads (high).
+- New option for Rautenhaus RMX to skip initialization of all vehicles and only read the state from the interface.
+- Calculate total block length with (Auto) Fill if it is still unspecified, but the feedbacks have a length.
+- Connection loss will now invoke the internal alarm instead of just beeping three times.
+- RMX serial interface with watchdog functionality to stop trains in case of connection loss.
+- RMX support for DCC accessories via DCC direct command.
+- Change to the Z21 interface so that it also works with the MD-Electronics command stations.
+- Bug fix: Extra block reservation check improved in routing.
+- TAMS Programming on Main (PoM) added support for read byte and accessory decoders.
+
+5.0.2
+-----
+- Only sending GO before programming on main if interface does not have this status.
+- Only save once during closing even if you close multiple times.
+- Bug fix: Count direction changes in all reserved blocks towards the turntable.
+- Better check on calculated negative distance to prevent mismatch desired and actual speed.
+- Bug fix: No warning in diagnosis for action if condition cannot deliver actual if actual train already retrieved from block.
+- Bug fix: Vertical block text in turntable or transfer table not centered.
+- Bug fix: Do not use step delay of transfer table when online and using no decoder.
+- Set desired speed and the decoder step to zero before changing the direction of a loc.
+- Bug fix: Undefined sound mixer could cause an exception when saving.
+- Bug fix: Reading control type in route to block action not loaded correctly.
+- Bug fix: Reading project with shift table in reserved state failed.
+- Preselect the first interface when creating a new object with an interface.
+- Parsing command line action string to support arguments with support for single and double quotes.
+- Station block properties rearranged and column with length added.
+- Bug fix: EcoS/CS1 prevent overloading by splitting function initialization.
+- Bug fix: Function keys F6 and F8 could not be used when the toolbar is invisible.
+- In manual mode the middle mouse button can be used to change direction.
+- Stop cars when in inactive lane.
+- Cars should stop for blocked traffic lights (for example because of a pause).
+- Improved POM read support for LocoNet (DR5000 with DR5088RC).
+- Bug fix: Lenz LZV200 POM read for long DCC address fixed.
+- Improved speed measurements (including the Speedbox).
+- Action drive distance adapted so for > 10 cm choose at least 1.0 km/h
+
+5.0.1
+-----
+- Better binding of MFX-UID and address for protocol M3 on TAMS.
+- Bug fix: Making block connections fails if no 'Shift table' is assigned to a shift table board item.
+- Bug fix: Rautenhaus turntable decoder only has end state feedback and no intermediate state feedback.
+- Loading of sound levels improved and in background.
+- Bug fix: Manual track routes not at least switched one time.
+- Counter to check how often an accessory has been set, will be reset when going online.
+- More connections allowed with transfer table and shift table.
+- Bug fix: Turnout speeds adds unnecessary lines for an unknown state.
+- Bug fix: Opening train, loc or wagon via dropdown box should stay open.
+- Bug fix: Next block is inactive and current block is active then signal should be red.
+- Hide car profile box when not using MCC.
+- Improved mass simulator.
+- Red border in switchboard editor if text falls outside scope.
+- RMX better timeout for database reading.
+- Bug fix: Sorting on decoder in train overview.
+- P50X protocol changes in case the command station is in STOP.
+- Only switch accessories with the same address together if they have the same protocol.
+
+5.0.0
+-----
+- General
+  - Dependency on Java 8 and using lambdas.
+  - Plastic Look & Feel removed, because it is outdated and to get one less external dependency.
+  - All form layouts refactored and made more consistent (JGoodies).
+  - Support for serial remote control such as DIR removed.
+  - New license key structure and formatting (Base64) with more space for address data.
+  - New file browser for layout files (.tcd*) with preview: version, counts and switchboard.
+  - Retrieval of directories uses new library (NIO.2) for faster retrieval over network.
+- Interfaces
+  - Interface slots (with numbers) removed and interface editor just as all other objects with names.
+  - Improved serial port lookup (RS232) for Linux.
+  - Interface error over network so master client will show it.
+  - FCC: Support reading of new longer SX2 slots when using firmware 1.13 or higher.
+  - ArtNet: Added a transmission interval to set how often a universe packet will be sent in case of a change.
+  - Support for roller track stand of KPF Zeller (Speed-Cat).
+  - LocoNet virtual to control locs and accessories on other interfaces via a throttle or device on a LocoNet interface.
+  - LocoNet: Switch acknowledgement can be set starting at a specific address instead of for all.
+  - LocoNet extended functions from Daisy 2 are translated back to DCC commands for Digitrax command stations.
+  - BiDiB: Replace IDs for new modules with the same user name as the old one.
+  - NCE Power Pro/Cab support added for locs and accessories. AIU support still experimental.
+  - Support for RZTec Speedbox added.
+  - Digikeijs DR5000 in list of interfaces with LocoNet over USB as a comfort choice.
+  - BiDiB support for binary functions.
+  - BiDiB adds selection for feedback input devices.
+  - Remove pseudo addresses for feedback monitor for BiDiB and OC32.
+  - Selectrix virtual to control locs and accessories on other interfaces via a throttle.
+  - LoDi-S88-Commander integration improved with current and short-circuit detection.
+  - Support for Lenz LZV200 command station reading CV values via main track.
+  - Support for TAMS RedBox reading MFX UID and setting UID/SID combination.
+-Accessories  
+  - Turnout gets option spring tongue in addition to the manual option.
+  - Crossing gets the same state feedback as turnout so you can be sure the bridge has closed.
+  - Light item can be enlarged over multiple cells to show levels per channel.
+  - Sound item displays the playing time in a bar and can be paused and dragged.
+  - Sound item can be enlarged to display a level meter per channel.
+  - Multiple addresses for OM32 and OC32 when using more than one output.
+  - Pseudo addresses for accessories without an address to control them via a remote or other interface.
+  - SBB N signals with display.
+  - Searchlight signals for US (mix of BNSF/UP) and Canada.
+  - British signals for 3 and 4 aspects with and without diverging.
+  - Matching restricted speeds in signal states to the turnout speeds.
+  - New general accessory type called 'Aspect' with 32 states.
+  - Signal displays which can show different digits can be controlled via an 'Aspect' and be attached to a signal.
+  - Belgian signals extended with speed displays for home and warning signals.
+  - Digiturn DR5052 added as decoder type.
+  - Relay and aspect state names can be adjusted.
+  - Release of individual turnouts based on length with margin for better throughput.  
+  - Turnout editor shows grouped elements on tab 'Board item'.
+  - Transfer table redesigned so it also works with decoders to set the step directly.
+  - New accessory type 'Shift table' that resembles either a Fiddle Yard or Lift.
+  - Number of relais per state for a turnout can be extended by double clicking the header of the table.
+  - Before using an actual turnout it will be switched actively at least once even if the state seems already correct.
+  - Option to select device output for sound files.
+  - Relay mappings for signals to switch a relay when a signal changes state.
+- Blocks
+  - Priority settings for path when one block has multiple paths to another block.
+  - New viewer for block connections in a table in which only the priority can be changed.
+  - Side of platform can be specified already. Not used currently.
+- Routes
+  - Rewritten block reservations that takes the priority of the train type into account when a block becomes available.
+  - Blocks and turnouts are reserved together at once or not at all.
+  - Reserved start count added to train type so you can use this also when driving without routes.
+  - Enter, wait and leave functions replaced with a limited set of action items.
+  - Waiting position can be specified in route to alternatively let a train stop at the start or end.
+  - Train routes should be specified per train to be able to select them.
+- Actions
+  - New action to change the actual train based on a block to make locomotive change more flexible.
+  - New action to execute something on the command line to start external processes.
+  - Light state has duration parameter to gradually change levels over time.
+  - Aspect accessory can be used as condition and as execution.
+  - New accessory change action to toggle the state of an accessory the same as clicking on it.
+  - New track route action to activate or release a track route.
+  - New booster condition to take action on a booster status change.
+  - New station action to change the state of station.
+  - New time action to set the model clock to a specific day and time.
+  - Actions to route and shunt a train from the current block to a specific block with a specific control type.
+- Trains
+  - New train overview in which you can expand and collapse trains to see the composition.
+  - Use Drag & Drop and delete key to change composition in overview.
+  - New train panel with tabs for locs and wagons.
+  - Short code for passenger coaches introduced.
+- Cars
+  - Preferred direction added that can only be used in the non-preferred direction when using blue flash light.
+  - Extra speed allowed when driving with blue flash light.
+  - No check on space in next lane when no limit on number of cars.
+  - Intersection extended with group numbers and duration of green light.
+  - OpenCar: Choosing no node will send the information to all available RF-Basis nodes.
+  - Partial release of track route items if it cannot release all when entering a new lane.
+  - Experimental: Extra partial release of track route items while driving on them.
+  - Action to start car route has been changed. First item set to 'No route' instead of 'Route unchanged'.
+  - Car option to switch light on/off automatically.
+  - Better recovery and release of reservations when car moves to unexpected lane.
+  - Control over usage of blinking lights per destination lane.
+  - Five way turnout added.
+- Switchboard
+  - Ruler at the sides of the board to display selection and to size it.
+  - Show feedback current if available as bar at the bottom.
+  - Show short-circuit in block or feedback by blinking.
+  - New curved turnouts introduced.
+- Others
+  - Extra address column for feedbacks, accessories, boosters and blocks in left table of editor.
+  - Auto connect option removed. Will be replaced with an action that is activated at startup later on.
+  - Use 'Direction' instead of 'Side' for blocks and lanes to allow them in one direction.
+  - Comment tab added to settings. Can be used for general comments or comments on settings.
+  - New extension .tcdz supported and the new default instead of .tcd.zip that is still allowed.
+  - Current file path relative to the base path visible at the title bar on the Master Client.
+  - Show UID for MFX-locs and used with TAMS firmware 2.0 when using M3.
+  - Export with correct length and speed unit.
+  - Opening another project will ask for confirmation to save the changes.
+  - Background color of some tabbed panes not white anymore in Windows.
+  - Some long forms made with a scrollbar when necessary.
+  - Drop down lists not sorted alphabetically on name anymore, but in order of definition.
+  - New functions for vehicles.
+  - Improve drawing performance switchboard.
+  - Manual now downloaded into base path in folder docs.
+  
+4.1.18
+------
+- Support for .tcdz extension for putting layout files on the forum according to the new policy.
+- Bug fix: Z21 reading of accessories after connecting generates incorrect packet.
+
+4.1.17
+------
+- Bug fix: Default decoupler state mappings incorrect.
+- Bug fix: Interface options not correct on master client.
+- macOS version notarized
+  
+4.1.16
+------
+- Bug fix: Binary state changes for LoDi-Rektor.
+- Support reading of CV values on Main (PoM) for Lenz LZV200.
+- Bug fix: Multimaus on BiDiB GBM-Master ignores functions f17+.
+  
+4.1.15
+------
+- Do not use disk caching for small images.  
+- Bug fix: LocoNet immediate packet bit missing.
+- Bug fix: Extra check if car is already in next lane to prevent sudden stop.
+- Bug fix: Single threaded executors
+- Bug fix: Transmission interval not stored for Dinamo interface
+  
+4.1.14
+------
+- Bug fix: Creation of UniqueID not always correct.
+- Bug fix: Focus in spinner component not detected.
+- Bug fix: Gauge not set after splitting.
+- Bug fix: Check for address and ID when clicking on a feedback attached to a connected interface.
+- Dinamo support for 256 blocks for new RM-C/2.
+- Bug fix: Problem with shunting distance in actions.
+- Bug fix: Correction of position in block when using different types of feedbacks in one block.
+- Installer runs in privileged mode on Windows to make install in 'Program Files' easier.
+- Better support for non-Oracle Java installations (JRE & JDK) on MacOS.
+
+4.1.13
+------
+- Bug fix: Manual shunt signal changes not reflected in block.
+- Bug fix: Improved booster missing in block check for diagnosis.
+- Bug fix: ECoS detector mixed with S88-modules might have wrong offset.
+- Bug fix: Platform center position not always handled properly.
+- Bug fix: Changing block speeds on Windows.
+- Bug fix: Drawing sound icon.
+- Links to website in help menu will use secure https.
+- Bug fix: BiDiB state changes GO/STOP will also be sent to receiver.
+
+4.1.12
+------
+- Bug fix: Check box group fires change events even when hovering.
+- Bug fix: Improved route finding for shunting with a train with no cabin on the rear.
+
+4.1.11
+------
+- OpenCar IRM/FeedCar has ports from 0-65535.
+- New version of Launch4j so that it does not need Oracle Java 8 to install on Windows.
+- Better handling of event counter for LoDi-S88-Commander.
+- More efficient accessory loading for LoDi-Shift-Commander.
+
+4.1.10
+------
+- Bug fix: Track routes associated with a train in a block should be handled correctly after a split.
+- LoDi TrainSpeed added as measurement device.
+- Intersection changes in lane table not detected.
+- Do not remove occupancy for Z21 CAN feedback module when sending address 0.
+- Bug fix: Key mappings for switchboard elements ignores modifiers (Shift, Ctrl, Alt).
+- Add extra loc request command to support z21 via S88XpressNetLI.
+- Better support for AdoptOpenJDK/JRE and others on macOS.
+- Bug fix: Interface also copied in template function.
+
+4.1.9
+-----
+- Bug fix: Train route direction side should always allow both directions for shunting.
+- Bug fix: LocoNet programming of accessories on service track responds only when vehicles checked in interface.
+- Address feedback with Z21 in combination with GBMX16XN and the XPressNet interface.
+- Bug fix: To turn 90 or 180 degrees the selection direction should not matter.
+- Bug fix: External export index file does not have fixed encoding. Should be UTF-8.
+- Bug fix: RMX should allow service track for programming decoders.
+- XpressNet also reports accessory decoders with feedbacks as normal feedbacks.
+- Bug fix: LocoNet function f4 always zero when changing direction.
+- Removed check to improve driving automatically without a route.
+
+4.1.8
+-----
+- Bug fix: Cabin view not copied with template function. 
+- Task bar image set for Java 9 and higher.
+- Bug fix: LocoNet unexpected direction change.
+- OM/OC32 accessories also changes other accessories with the same address if the interface is online.
+- Bug fix: Occupancy feedbacks for turnouts not all checked when one is released.
+- Bug fix: Toggle of feedback by clicking does not work with inverted.
+ 
+4.1.7
+-----
+- Bug fix: S88 module counts not saved for OpenDCC interface.
+- Bug fix: Fix problem with optimizing car layout.
+- Bug fix: Function limit for FCC incorrect when using multiple addresses with SX-format.
+- Do not use reservations of accessories on derived P50X implementations.
+- Bug fix: Light and sound not supported for key mappings in switchboard.
+ 
+4.1.6
+-----
+- Add support for IBM JVM to support PowerPC on Linux for PowerMacs including serial port.
+- Serial support added for Armv8 (64 bit) architecture on Linux.
+- Solved problem with signing for macOS.
+- Bug fix: Refresh of devices and enabled state of buttons not always correct with speed measurement via device.
+- Register changed to trial license in Help menu.
+- Port for BiDiB-receiver made adjustable in case multiple BiDiB-interfaces are used.
+
+4.1.5
+-----
+- Bug fix: Booster changes in block not streamed correctly over network.
+- FCC: Support for extra functions above f16 for DCC and SX2 when using firmware 1.13 or higher.
+- Bug fix: Block/Lane element should keep its direction when no direction/arrow element is available.
+- BiDiB: Vendor ID for Fichtelbahn added.
+- Exception handling in input stream improved.
+- Bug fix: Duplicate addresses for feedbacks in diagnosis.
+- Optimize display of waveforms in sound preview.
+- Bug fix: Selection in comment field does not always enable popup menu Copy.
+
+4.1.4
+-----
+- Support for macOS Mojave.
+- Deeper signing of macOS application.
+- Add module-info for Java 9 and higher. 
+- Bug fix: Removal of decoupler should also apply to switchboard.
+- ECoS: Import of accessories creates light object instead of relay.
+- Bug fix: Selection of port for LDT HSI-88 was disabled.
+- Also diagnose serial ports and network addresses on master client.
+
+4.1.3
+-----
+- Bug fix: Not taking the correct track route length when measuring distance to car in next lane.
+- Shift-Commander: Maximum request of 32 names in one call.
+- Improved mass simulator when going from acceleration into deceleration as happens with cars.
+- Route element in switchboard shows tooltip with info and warning triangle in case of a warning.
+- Bug fix: Green state of Dutch dwarf signal not always chosen correctly.
+- Bug fix: RMX should only import vehicles if it controls vehicles.
+- Allow a longer train to cross a transfer table without moving.
+- Small improvements for LoDi-system.
+- Bug fix: Warning signals for German H/V system can be used with main signal object again.
+- Z21: Support for Roco detector 10808 on CAN-bus.
+- BiDiB: Use feature BM_ADDR_AND_DIR to see if polarity info is available.
+- LocoNet: Better support of multiple transponder addresses including new command for DR5088RC.
+- Bug fix: Pulse decoupler switches off in accessory queue as well.
+
+4.1.2
+-----
+- Vehicle momentary function with duration will be activated for that time when clicking the button.
+- Auto fill does also change positions of feedbacks in block just as with the button 'Fill'.
+- POM programming for ECoS added (requires firmware 4.2.3 or higher).
+- Bug fix: Booster address change not applied directly.
+- PM32 interface: Also send switching time with command.
+- Loc polarity can be unknown to prevent direction changes because of RailCom for specific locs.
+- Bug fix: With opening dialog via keys.
+- Block directly synchronizes wired state with feedbacks when updated.
+- Bug fix: Decoupler of type pulse not activated when connecting.
+- Bug fix: Strict option now works correctly in route.
+- French and Spanish screen text corrections.
+- Roco WLAN-Maus switch accessories without a DCC address with number in name before the underscore.
+- Extra check so that critical does not try to reserve the same block again after a direction change.
+- Bug fix: Feedbacks that are not wired (relay in block) should not influence the feedback monitor state.
+- Dinamo: Align DCC packets in blocks at the borders between two RM-U/C devices.
+- Dinamo support jumbo frames.
+- Bug fix: iCar problem with cars reserving a lane that is shorter than the car.
+- Bug fix: iCar keeping distance has improved.
+- Shunt action for direction change has parameter to explicitly choose the direction.
+
+4.1.1
+-----
+- Prepare for recognition of DR5000 in LocoNet with initials DR to use another POM strategy.
+- OC32 with 32 aspects for special purposes.
+- Better handling of dwarf signals SBB. 
+- Bug fix: Cannot set speed for cars on client.
+- Bug fix: WLAN-Maus with 126/128 speed steps
+- Bug fix: DTC status message only 5 seconds and showing turntable name.
+- Station block has passing allowed by default.
+- Interface status bar: Popup menu on name label now also works when inactive.
+- WLAN-Maus control refined so the direction icon does not flicker anymore with specific interfaces.
+- Using 'localhost' for network address should use loopback address again as in 4.0.
+- Bug fix: With signal handling.
+- Path finder optimized so that direction changes are less expensive for shunting.
+- Bug fix: Block option "Direction change forbidden" does not work when driving automatically without routes.
+- Bug fix: Turntable connections not always corrects when two tracks connect to the same cell of the turntable.
+- Bug fix: Do not update decoder if protocol did not change in import of locs for CS2/3.
+- Bug fix: CV-programming of Massoth had an offset of 1 and writing was not confirmed.
+- Bug fix: Combination of expect stop and shunt did not result in shunt speed.
+- Bug fix: Better device versions reading on CAN-bus so all devices are scanned in time.
+
+4.1.0
+-----
+- Client/server
+  - Special Master client with all editing options introduced for a headless server or server with small screen.
+  - General resource selector used everywhere to select images and sounds on the server.
+  - All resource paths stored relatively to the root path in the preferences (of the server).
+  - Internal images removed from program (itrain.jar) and delivered separately (put in iTrain/images via the installer).
+  - Serial port retrieval redesigned to make it selectable on master clients.
+  - Speed measurements improved to make it available on clients and more general for other devices.
+- Interfaces
+  - Interfaces can be fully configured on master client.
+  - Image and comment added to interface for documentation purposes.
+  - Popup menu for interface on status bar with option to make interface inactive.
+  - Allow BiDiB-Tools to connect directly to a running BiDiB interface via a new option 'Receiver'.
+  - Light accessories can directly control outputs with BiDiB without creating accessories and macros.
+  - TAMS: Allow MFX/m3 with 32 functions.
+  - Feedback with aspect 127 in OC32 acts as a pulse (so on and off again).
+  - CS2/3 also imports wagon when defined as 'Sonstige'.
+  - New interfaces LoDi-Shift-Commander, LoDi-S88-Commander and LoDi-Rektor.
+  - System clock synchronization with BiDiB and LoDi-Shift-Commander.
+  - Art-Net interface added to support DMX-512-systems.
+  - Dinamo shows sub system devices with version in info window of interface.
+- Vehicles & Trains
+  - Wagon panel gets slider for decoder step to be able to control this manually.
+  - Replace control car option for wagon with more general cabin view for both loc and wagon.
+  - Pseudo address for analog loc to control it via an address based remote.
+  - Train can be split at any position.
+- Accessories
+  - New decoupler type 'on/off' introduced to distinguish it from the original pulse type that uses only one output of an address.
+  - Sound type introduced that works with .wav files as well as with stationary decoders in the layout.
+  - Light type introduced for light bulbs and LEDs. Can be used for on/off as well with dimming.
+  - Shape of relay in switchboard changed to square to distinguish it from light.
+  - Sound files can be previewed with play/pause/stop and waveform with tracking.
+  - Accessory editor improved with type selection only when creating a new one.
+  - BiDiB turntable decoder support via aspects and with state feedback.
+  - New relay mappings for turnouts for Dinamo systems.
+  - Always two occupancy feedbacks for turnouts available.
+  - Feedback with state feedback can be simulated in offline mode without activating feedbacks.
+  - French, Austrian and German Ks + Hl signals added.
+- Blocks
+  - Rebuild of block (and lane) connections. All turnouts need to be filled in per side.
+  - Take total length of blocks and turnouts into account when calculating optimal path.
+- Routes
+  - Automatic driving is only allowed according to cabin view. Same with routes with option dependent on train.
+  - Station has different states to end or pass all trains.
+  - Optimization of chosen paths based on path length. Short blocks without signals should be of type Shunt.
+  - Station pass and shunt levels are interpreted differently now. Lower number has higher priority So 1 is first choice, 2 is second choice.
+- Actions
+  - Action editors made more logical with in place editor at the bottom depending on type in the table.
+  - Rebuild of action conditions with AND and OR in a tree table structure.
+  - Actions extended with Light, Sound and Decoupler.
+  - Shunt actions added to manipulate a train, loc or wagon inside a block.
+  - Actions for making blocks and lanes (in)active and to set the dynamic speed of a lane.
+  - Action to add or remove a permission for a train or car.
+  - Routes can also be selected in an action for an actual train. Only executed if train has this route.
+- Switchboard
+  - Automatically make all connections between the blocks (and lanes) on one switchboard tab in the editor.
+  - Switchboard pane only shows tabs if there are multiple boards to save space on small screens.
+  - Ultimate license owners get two switchboards in Extra menu.
+  - Prevent multiple single items without direction to be drawn over each other.
+  - Possible to turn the switchboard 90 degrees instead of 180 if the selection is square or all cells.
+  - A block split into two parts, with link items on same page, will be filled in automatically as if it was one.
+  - Extra dots only in the editor for block and lane element to indicate the direction of the block.
+  - Extra dot for crossings and slips to indicate the top (next to B).
+  - Better visualization of multiple trains in block in switchboard.
+  - New route state button available in switchboard to quickly start/stop trains.
+- Cars
+  - Weight for lane added to influence the random selection.
+  - Dynamic speed introduced for lanes that is an extra maximum speed for the whole lane.
+  - Intersection gets three states (auto, manual, blocked) that can also be set via an action.
+  - Transition time in which all the traffic lights are red editable for an intersection.
+  - BiDiB IRM position feedbacks support added.
+  - Fuel percentage check condition added to actions.
+  - New lane type charge that is not used in random driving.
+- Others 
+  - Support for Roco WLAN-Maus as a remote control via preferences to control vehicles, accessories and track routes (address >= 2000).
+  - Support for weekdays in model clock for external systems like BiDiB and for actions.<
+  - Export for interfaces, boosters, train types, cars and lanes in export tabular.
+  - Warning icon in info column of loc overview to quickly notice them.
+  - New feedback type 'Value' allows a feedback with an 8-bit value (0-255).
+  - Default OK button for input dialogs and Escape to cancel.
+  - New static properties handling with less overhead.
+  - Chart with speed measurements also shows a legend when there is more than one line.
+  - Small About box for small screens (Pi 7").
+
+4.0.11
+------
+- Bug fix: Turning of turntable and transfer table in switchboard did not reset connection points.
+- Bug fix: Application menu on macOS was not translated anymore.
+- Do not use reflection anymore with Java 9+ to detect HiDpi displays.
+- Device type for Zimo MX10 has changed in protocol.
+
+4.0.10
+------
+- Bug fix: Auto fill for crossing with multiple roads.
+- Improved lane car control.
+- Bug fix: Clicking manually on crossing will activate it twice.
+- Bug fix: All formatting of numbers follows the language if the system language has not been chosen.
+- Bug fix: Changes on SX-bus should only affect SX1-locomotives.
+- Scroll wheel scrolling in switchboard improved.
+
+4.0.9
+-----
+- Bug fix: Block linking Dinamo with DC 3-rail.
+- Menu problem on macOS High Sierra solved with patch 10.13.1.
+
+4.0.8
+-----
+- Use high resolution icons on HiDpi displays on Windows with Java 9.
+- Improvements in communication with Zimo MX10 and adding POM.
+- Bug fix: Link item for roads did not work properly.
+- Bug fix: Empty client IP address should look up available server.
+- Märklin CS2/3: Also check for wagons when importing vehicles from the command station.
+
+4.0.7
+-----
+- Bug fix: Train splitting improved.
+- Loading of internal images improved so it will work with Java 9.
+- Bug fix: Car route action should only start with available lane.
+- All included images optimized so they take less space without losing quality.
+- Small improvements to speed info calculations.
+- Desktop integration for Java 9 added.
+
+4.0.6
+-----
+- Bug fix: Actual train (or car) not used in route actions.
+- Bug fix: When splitting a loc from a train do not give the loc description to the train.
+- Only allow events on client after it has been initialized.
+- Bug fix: Not all properties of accessories copied in template.
+- Bug fix: Reading initial feedback states for LinkS88 should not use range.
+- New command line argument -clean to start without reading preferences.
+- Bug fix: ALT + delete to empty a vehicle panel, so the delete key is free for actions on a loc.
+- TAMS: Allow MFX/m3 with 16 functions.
+- Bug fix: Occupancy feedbacks of turnouts not streamed correctly over network when changed.
+- Send a second request for a POM read with CV >= 897 for SUSI.
+
+4.0.5
+-----
+- LocoNet: Support for Hans Deloof
+- Allow analog loc to drive in occupied block with train without decoders.
+- Bug fix: Pasting decoder configuration does not always change type.
+- Translation changes for Spanish for the new manual.
+- Bug fix: Road signal in car panel not always correct for blinking on sight.
+- Bug fix: Feedbacks on CS2/3 with LinkS88 not processed correctly.
+- Decoder will not be changed by MS2 if the protocol does not change.
+- ESU ECoS: Do not write function definitions of second address to prevent the ECoS from crashing.
+- Turning on free track should have no extra costs for shunting.
+- Position and size of model time settings window made persistent.
+- Blink yellow used for shunting with NS-signals.
+- Activate the engine sound for all locs in the train when activating this train function.
+- Bug fix: Initial reading of feedbacks and inputs for BiDiB modules when only inputs are available not correct.
+- More efficient reading of feedbacks on CAN-Bus (CS2/CS3/CDB).
+- Bug fix: Train direction not correct with RailCom-feedbacks when loc is reversed in train.
+- Bug fix: Filling in the lane connections with a crossing sets the wrong CLOSED state.
+
+4.0.4
+-----
+- Better feedbacks for CS2/3 when using LinkS88 and S88 connector.
+- BiDiB module definitions extended.
+- BiDiB: Option to select DCC module for cars to separate it from trains.
+- Model clock can be paused with CMD/CTRL + click and is visible as disabled time.
+- Model clock on status bar can be adjusted with slider after double clicking.
+- Block enter condition will only activate action when train has speed to prevent start up activations.
+- Bug fix: Cannot reserve same block twice in one atomic action.
+- Car fuel percentage shown when available via RailCom.
+- Better margins for inplace dropdown editors.
+- Manual control will make shunt reservations with drag & drop or keys possible in occupied blocks.
+- GleisReporter: You can enter an ID on which the modules can be found.
+- LocoNet/Z21: Option if polarity/direction info is available in RailCom message (for DR5088RC)
+- Full screen support for Linux on ARM for Raspberry PI with small touchscreen.
+- Baudrate setting for SPROG with Pi.
+
+4.0.3
+-----
+- Bug fix: OC32 inputs not correctly handled when event happens.
+- Special S88 grouping for LinkS88 in which 1.1.1 is address 1001 (bus 1, module 1, input 1).
+- Special DCC configuration template for accessories with low address in CV1 and high address in CV9.
+- Configuration: Double clicking on header 'Use' or 'Nr' toggles between showing all numbers and only the used ones.
+- Configuration: Templates do not overwrite existing values or descriptions, but only enhance the type.
+- Diagnosis: No network or serial port check on client.
+- Block element without text also turns in switchboard with the direction just as the feedbacks.
+- Bug fix: Release feedback did not work anymore, because of new detection options.
+- French translation update
+- Manual control will make shunt reservations with drag & drop.
+- Bug fix: Train split now also works well with more than one train in a block.
+
+4.0.2
+-----
+- French translation update
+- Continuous route option to indicate that there is no stop before repeating.
+- Bug fix: Reservation state compare not always good for turntables.
+- Bug fix: Braking at the start of the block should use brake position zero.
+- Bug fix: State type not always set for an action item with an accessory.
+- Bug fix: Removed feedback, not removed from turnout when used as occupancy feedback.
+- Bug fix: Allowed number of actions for iCar.
+- Bug fix: BiDiB off state also clears address info in feedback.
+- Function 'Sound off' added.
+- Action without actual train input does not need a condition.
+- Car routes implementation available.
+- Extra checks in diagnosis for booster feedbacks and relays.
+- Bug fix: Overview of switchboard in window not always correctly handled.
+- Signal option 'Shared signal' added for shared exit signal.
+- Interface for CS2 is also for CS3. Special CS3 support added to interface.
+- Support for MFX with 32 functions in CAN-protocol.
+- Bug fix: Block condition Wait and Ready now also direction dependent.
+- Lane condition in action now has separate Ready and Leave after waiting.
+- Better release on position for long trains spanning multiple blocks.
+- Separate release of blocks and turnouts. Block side option 'Coupled' to prevent it.
+- New configuration parameter type 'Function mapping' added to map a function to a key.
+- Bug fix: Small things for wagons such as interface.
+- Better diagnosis checks on brake/stop shift on feedbacks in block.
+- Action can only be started when active. To change the active state use ALT + click.
+- Decoder configuration value editing made simpler by improved parsing. You can type text or use +/- to add bits.
+- Bug fix: Extra interface status info displayed after the status icon if available.
+- Bug fix: ECoS and S88, problem with modules of 8 solved.
+- Bug fix: Sub-editors of switchboard editor should not have main frame as parent.
+- Bug fix: Form warning signal should always show Vr0 when main signal shows halt.
+
+4.0.1
+-----
+- French translation of diagnosis problems.
+- Bug fix: State feedback of turnout did not allow states with and without a feedback.
+- Bug fix: Opening Action editor from switchboard editor may change selected execution items.
+- Short delay when action has been finished so there is a visual feedback in the switchboard.
+- Bug fix: Loc and wagon images scaled down to 360x160 when larger.
+- Bug fix: Swiss shunting signal did not show correct state.
+
+4.0.0
+-----
+- Client/server
+  - Allow client mode, but not server mode with a limited license.
+  - Only in case of changes the switchboards are pushed to clients (better compare added).
+  - Better caching of images, both on client and server. Same image only once sent to clients.
+- Interfaces
+  - Support for CT-Elektronik ZF5 for vehicles and accessories.
+  - Basic support for Zimo MX10 (both USB and Network), but not finished yet.
+  - Bug fix: Multicast network interface better restored.
+  - BiDiB: Better support for 'Flat Port Model' and for both occupancy feedbacks and keys/buttons for OneControl.
+  - Support for BiDiB protocol 0.7 with new queries for ports on OneControl.
+  - BiDiB: Extra queues for accessories so not all will switch at the same time.
+  - OpenDCC setting of number of s88 modules on every s88 output.
+  - OC32 aspects support multiple addresses.
+  - RMX reading database before rail power, mode via option -Drmx.mode=2
+  - RMX: Allow control of DCC accessories.
+  - Possible to load project with HSI-88-USB interface on non-Windows systems.
+- Decoders
+  - Configuration variables/parameters can be stored for locs, wagons, cars and accessories.
+  - New decoder programming tool for setting and reading decoder configuration.
+  - Support for decoder programming (DCC and SX2) for selected interfaces only.
+  - Copy/Paste for decoder configuration to duplicate selected values.
+- Vehicles & Trains
+  - Extra column with addresses when editing vehicles.
+  - Separate offsets for occupancy feedbacks and reed contacts.
+  - Train composition preselects type and removes empty items (unknown needs at least a length).
+  - Extra functions to switch off the main light on the inside of the train.
+- Accessories
+  - German semaphore (arm) signals available.
+  - Reservation limit for crossing. Only this reservation activates the crossing.
+  - Support for turntable decoder Fleischmann 6915 and Muet.
+  - Option to block signal, optionally via a feedback, so routes do not continue beyond it.
+- Blocks
+  - Use positions by default.
+  - No entry feedback entry when using positions. Entry feedback is determined dynamically.
+  - Allow additional non-occupancy feedback for entry as well. Useful when shunting.
+  - Safer block release on position when multiple feedbacks in block. Extra option for feedback release.
+  - Option in block to allow shunting into an occupied block by specifying the distance to keep.
+- Routes
+  - Shunting light automatically on when using a drag & drop shunt route.
+  - Train route type introduced: Default, Shunt or Mixed.
+  - List of routes can be selected per train. No selection means 'all routes apply' for compatibility.
+- Switchboard
+  - Redesign of the switchboard to make it portable to JavaFX and Android.
+  - Text in switchboard on top of tracks/road.
+  - Images in switchboard can be turned in four directions.
+  - Crossing drawn more compact when using multiple tracks or roads.
+  - Clock item in switchboard added.
+  - Actions as items in switchboard to check if they are running and to start/stop(shift) them manually.
+- Others
+  - Model clock added with factor.
+  - Event actions implemented for timestamps, feedbacks, blocks and lanes.
+  - New diagnostic window to show errors, warnings and tips concerning your layout.
+  - Option to move a module with feedbacks (for S88) via the feedback monitor.
+  - Export split into 'Tabular (.csv)' and 'External inclusive' to save with all external images included.
+  - Interface column added to export for spreadsheets.
+  - Intersection 'Expect Stop' duration depending on max speed at the end of the lane.
+  - Copy/Paste for speed measurements to add measurements from external sources.
+  - Polish translation added for screen texts.
+  - Manual will install the latest manual if there is an update, but only check once per session.
+  
+3.3.8
+-----
+- Bug fix: Train split now also works well with more than one train in a block.
+- Bug fix: Filling in the lane connections with a crossing sets the wrong CLOSED state.
+- Bug fix: Comparing feedback positions not correct.
+
+3.3.7
+-----
+- Bug fix: ECoS and S88, problem with modules of 8 solved.
+
+3.3.6
+-----
+- macOS Sierra added to names.
+- Better detection of screen of restored window.
+- Bug fix: Crossing type should not be reset to none in editor.
+- Version check changed to other location on website.
+    
+3.3.5
+-----
+- Dinamo: RM-C recognized on interface bar
+- Bug fix: Dinamo with multiple RMU/RMC error solved when loc is controlled by another RMU.
+- Bug fix: Quotes in text in export not escaped properly.
+- Bug fix: Delayed feedbacks not always handled correctly.
+- Rautenhaus RMX: Unknown characters for loc names translated to ? instead of null character.
+- Bug fix: Selectrix 2 step count not stored in .tcd
+- Bug fix: Route does not always continue if the train changes direction in a block shorter than the train.
+- Turnout feedback change without reservation will change all grouped elements.
+- Bug fix: Recalculate feedback offset of train when it changes for a wagon.
+
+3.3.4
+-----
+- BiDiB: Allow ports 0-127 for feedbacks when flat port model is active.
+- Bug fix: Serial port libraries were not installed on Linux with IzPack.
+
+3.3.3
+-----
+- Dinamo support for DCC with 126 steps and/or functions f13-f28 with new protocol 3.1.2
+- Dinamo: Emergency stop introduced in 3.1.2 for highest speed step (31, 127).
+- Comment pane for vehicles with preferred number of rows of columns for better sizing in grid.
+- Bug fix: Prevent setting a track route twice when manually clicking so it cannot be released anymore.
+- Bug fix: Copying properties in import or template method did not cover all.
+- OpenDCC: Default baudrate 19200 and better version and serial number parsing
+- Bug fix: Emergency stop ECoS send incorrectly.
+- Manually reserve next block will use shunting when driving manually.
+- Bug fix: Reading initial feedback states for LinkS88 with CS2.
+- CC-Schnitte: Failed version check does not give a timeout when no vehicles are controlled.
+- ECoS: Better feedback management for modules with 4 ports
+- Installer (IzPack) upgraded to version 5.0.
+
+3.3.2
+-----
+- Maximum car count per lane for iCar.
+- Bug fix: Sometimes loc stops on turntable and doesn't move on until a change is made.
+- Bug fix: Swap states of relay on/off (or light) for ECoS when using direct access without addresses.
+- Bug fix: Show next main signal jumping over shunting blocks for every block type.
+- Shunt block made effective critical for normal routes so that it will not stop in this block.
+- Bug fix: Prevent oscillation in signals by only propagating warning signal in shunt blocks.
+- Bug fix: Stopping at start of block should also work if other direction does not use positions.
+- Bug fix: Drawing problem if no limits available.
+- Bug fix: Release reserved track routes via block popup possible on clients.
+- Bug fix: Refine communication with the ECoS for the more strict firmware 4.1
+- Big fix: Changing trains in a block on the client was not sent to the server.
+
+3.3.1
+-----
+- Swiss signals keep their current signal state (for example shunt) in a releasing block.
+- Use signal position of other side as minimum when stopping early in block to change direction.
+- Roco Z21: Second feedback group on R-Bus not read in on correct address.
+- Improved serial port server.
+- Bug fix: Exception cause of allowing accessories with the same name.
+- Bug fix: Joining two trains may lead to duplicate names for trains.
+- Bug fix: Also wait on engine sound via step 1 when lower speed steps are zero.
+- Bug fix: Prevent popup of editor when double clicking on item in master detail/view.
+- Better handling of DCC/Motorola commands for Generator firmware 3.2.
+- CS2 communication via TCP instead of UDP to make gateway settings easier.
+
+3.3.0
+-----
+- Extra grid (locs, wagons, cars) has a vertical scroll bar.
+- Turnout item can be made critical to fill it in both sides of the block connections.
+- Bug fix: Switchboard look also used in item editor.
+- New address link interface to make it possible to use multiple addresses for vehicles.
+- Station block: block side can be specified and check length is optional
+- Motorola support for µCon-Generator with firmware 3.1
+- Pause button added to toolbar to block new block reservations in automatic driving.
+- Maintenance and fuel period for locs and cars to indicate how long it can drive.
+- No reservation over turnouts allowed if there are occupied turnouts in the path.
+- Option in popup to cancel waiting in block.
+- Turnout options for manual turnout and auto reset to initial state.
+- Only use pass through blocks of stations when not waiting.
+- State delay of signals used to delay departure of trains.
+- Cannot manually change state of a turnout that is coupled (via address) with a reserved turnout.
+- Warning signal before shunt block should indicate correct state now.
+- Extra column in overview with position in block.
+- Show item count in title of window for all editors.
+- Support for multiple RailCOM addresses in one section via BiDiB.
+- Drag & drop of loc without train to switchboard now works on the client as well.
+- Shunting supported via drag & drop with other signals and maximum speed in block and other color for reservation in switchboard.
+- Block can contain multiple trains for splitting and joining trains.
+- Dinamo and UCCI interface can set queues for accessories in OM32/OC32.
+- Speed columns in gray when speed is zero to better see when a train is driving.
+- Scroll wheel in loc panel to control the speed only works when Shift has been pressed or when Manual is selected.
+- Route/Shunt with automatically inserted stops to change direction will stop early in block when using positions.
+- Shunt is allowed to drive all blocks in both directions.
+- Shunt light added to loc functions.
+- Decouple function activates a split of the train.
+- RailCom notification of unknown loc in occupied block causes an unexpected train alarm.
+- Duration for functions introduced. The duration of the engine sound will delay the acceleration at step 1.
+- Negative feedback positions allowed in block in case a feedback starts already in the turnout.
+- Support for S88-Master firmware 2.0 with check for lost events.
+- Better error message when it cannot connect including the interface name.
+- Position in block is corrected with every next feedback when there is only one train in the block.
+- Emergency stop feedback not necessary anymore and removed, because position corrections will cover this functionality.
+- OC32 firmware 3 support with extended addressing, feedbacks and 'OC32X aspect' with more than 32 virtual outputs.
+- DTC motor config removed as it is ignored by DTC firmware v3 and belongs in the DTC config tool.
+- Manual with screenshots in Retina quality for a clearer picture on paper or on a tablet with high resolution.
+- Manual item in menu always available and if not installed it is downloaded automatically (click with Shift to reload manual).
+
+3.2.6
+-----
+- Better Motorola support for Z21 including 28 speed steps for MFX decoders.
+- Preselect relay type on/off when creating a new relay.
+
+3.2.5
+-----
+- Wrong text in German when name already exist.
+- Bug fix: Parallel check for Dinamo block linking does not always work correctly when driving turning loop.
+- Do not put invisible control characters in XML unless it is a CR, LF or TAB.
+- Accessory refresh for DCC generator.
+- Transfer table can be released with Shift+Alt.
+- Bug fix: When sending aspect do not also send normal switching command.
+
+3.2.4
+-----
+- Only start all the active trains.
+- State of feedback recalculated when option inverted changes.
+- Bug fix: Changing the turnout of an item in the switchboard did not change it properly in the turnout group.
+- Bug fix: Streaming of accessory state in turnout reservation incorrect.
+- Bug fix: Creating trains by template did not work, because of wrong type input.
+
+3.2.3
+-----
+- Z21: No default receive port used so multiple Z21 command stations can be used.
+- Windows shortcut: use itrain.jar directly without javaw.exe to start
+- Better default initial state for signals when no type selected.
+- List of all server IP addresses retrieved without using host name.
+- Alternative way of retrieving hostname for server and client if no DNS available.
+- Bug fix: BiDiB retrieving unknown features does not give problems anymore.
+
+3.2.2
+-----
+- Bug fix: When transfer table has already correct position (no movement) the train does not start.
+- Tool windows to front when starting and when double clicking on toolbar.
+- Windows: itrain.exe introduced that starts itrain.jar to solve the problem with the java path not found
+- Dinamo: Block linker made single threaded to prevent race conditions.
+- Spanish manual for version 3.2
+- Bug fix: Dropping a loc without a train on a block is not possible on client to prevent duplicates.
+- BiDiB: Also read all loc addresses of RailCOM-feedbacks after initialization.
+- uCON: Different timeouts for manager and s88-Master. 
+
+3.2.1
+-----
+- Support for old DCC function decoder based on 14 step protocol.
+- Bug fix: Dinamo functions f5-f8 could not be used as momentary functions.
+- Bug fix: Reading turnout lengths was not correct if all states had the same length.
+- Fix: Accessory state mappings more forgiving for wrong output specification.
+- Bug fix: Transfer table did not stop at end position.
+- French manual for version 3.2
+
+3.2.0
+-----
+- Properties:
+  - Selection of address usage: Single, Double, Triple, Range or Extra (=Range + separate address)
+  - Crossing and relay can also use multiple addresses and state mapping table.
+  - For turnouts different lengths for every state can be specified in a new tab.
+  - Extra unknown polarity for blocks and better RailCom direction detection in trains.
+- Routes:
+  - Option to check if trains have arrived in time and if not stop their route and activate the alarm.
+  - Alarm state will not release reservation on next block and turnouts.
+  - Extra train route option to use train type permissions in defined route. By default and for drag & drop it is off.
+  - Extra block option 'Direction change forbidden' to prevent unexpected direction changes in specific blocks.
+  - Strict option in route editor to assure strict order of specified blocks will be followed.
+- Switchboard:
+  - Long click in switchboard made less sensitive to small movements of the mouse.
+  - Turnout group added so track and road items can be added to a turnout to show the reservation state.
+- Boosters:
+  - Diagnostics (voltage, current, temp) stored per booster object to display info in the switchboard.
+  - Active booster management: Cannot reserve block with inactive booster and signal to inactive booster section will be red.
+- Interface specific:
+  - Full BiDiB support with UniqueIDs and features.
+  - SProg devices supported with DCC generation via slots/refresh cycle, but not for programming.
+  - Support for uCON-Manager as stand-alone DCC generator so you don't need a command station. 
+  - Support for DCC aspects for extended accessory decoders in LocoNet, TAMS, OpenDCC, BiDiB, SPROG and uCON-Manager.
+  - Use framing character with D2XX driver for faster transmission of packets with BiDiB, Gbm16XN and Zimo.
+  - LocoNet slots made IDLE after initialization with speed zero and no functions active.
+  - Feedback grouping for Massoth defaults to 2 for A and B.
+  - CS2 also supports boosters via the ID of the device, including switching on/off and showing alarm status.
+  - Dinamo analog: Use internal acceleration value if speed is increased too fast (measurements).
+  - Dinamo: Added support for 126 speed steps and extra functions (f13-f28 and binary states) in upcoming firmware.
+- Clients:
+  - Better support for Android and RoboVM for iOS in service layer.
+  - Clients using less threads than the stand-alone or server instance for small devices.
+  - Client has no restrictions on number of interfaces and number of items and follows the server.
+- Others:
+  - Turntable and transfer table: Make distinction between intermediate state and final state and show with line that it should be moving.
+  - Search field added to every editor dialog at the top on the left to find items by typing.
+  - Feedback system actions blocked when other button is still active. Cannot use GO when STOP is still active.
+  - Better window management with multiple screens especially on OSX.
+  - Extra option sort on no item in loc and wagon overview to keep original order of the editor list.
+  - Possibility to remove license from computer by entering only the e-mail and no license key.
+
+3.1.4
+-----
+- Bug fix: Booster with attached relais does not change state correctly when clicking on it.
+- Bug fix: Gauge not parsed correctly when default gauge is not set to normal.
+
+3.1.3
+-----
+- Checksum error solved in BiDiB.
+- Some bugs in direct DCC message generation solved (binary state long form).
+- Dinamo RMU option DC 3-rail changed in XML to start with a letter.
+- Bug fix: Delayed relais release for Dinamo fixed.
+- Bug fix: General signal did contain two road signal states.
+
+3.1.2
+-----
+- French and Spanish manual included now
+- BiDiB small fixes made, real improvements in version 3.2.
+- Extra check if system clock has been set appropriately. If not the license will not work.
+- Track existing of two blocks can be partially waiting so it will be extended only in one direction.
+- Extra fields for loc in export file.
+- Fix for cars that are waiting indefinitely when route was blocked first.
+- Parking lane for cars also has waiting time.
+- Better parsing of e-mail and license key in registration.
+
+3.1.1
+-----
+- µCON-tools do not use fixed port on receiver side.
+- Make it possible to open the manual via the help menu if the manual is in a default folder.
+- Format accessory addresses according to grouping in export.
+- Bug fix: Rounding problem in positions of feedbacks in block solved.
+- CS2: Replace the address of an MFX loc with the one supplied by the command station during an import when the ID is the same.
+- Bug fix: Problem with opening lane editor when using Nimbus.
+- Use PNG for sending images with an alpha channel (transparency) over the network.
+- Handle of Quit in OS X improved for Java 7 and 8.
+- Mac OS X install (iTrain_mac.dmg) uses Apple Java 5 or 6 and is not signed (so change security settings on OS X 10.8 and higher or start via popup menu and select Open).
+- OS X install (iTrain_osx.dmg) uses Oracle Java 7 or 8 and can be used on 10.7 and higher and supports Retina displays.
+- Bug fix: New Serial port library packaged with OS X installers with higher baudrates. 
+- Linux ARM: Automatic selection of ABI for soft or hard float libraries (both are packaged).
+- Link to forum also sets language in case of a new registration.
+- Prefer passing tracks over waiting tracks in stations when finding path from block to block in routes.
+- Bug fix: RailCom feedback info not always streamed correctly over network
+- Bug fix P50X: Setting of individual functions could reset previous function when in same group of four.
+- Bug fix: Use correct delay when main loc is defined backwards in train.
+- Do not check length in block with 'Optimal length' when the train will not have a stop in the station.
+- System properties for setting VID/PID for FTDI USB devices (-Dd2xx.name=rmx|bidib|opendcc|mobasbs|gbm16xn).
+- AppNap disabled for OS X Mavericks and later in OSX build.
+- TAMS MC correction for Motorola 27 speed steps. Half steps for C90X decoder done by TAMS and 27 steps will be sent.
+- Website references changed, because of new structure.
+
+3.1.0
+-----
+- New reservation system with counters so an accessory can be reserved more than once if it is for the same state.
+- Bug fix: Relay group for Dinamo only listens to blocks of the same interface.
+- Signal state always returns to a stop state after clicking on a non-stop state.
+- Optimal path selection between two blocks based on both forward and backward path.
+- Make it easier to use turnout type Single and Double Slip with one address by generating the state mapping automatically.
+- Cannot choose turnout type CROSS anymore in editor. Existing Cross types still works, but shows up in red in editor.
+- Tooltip in loc control now contains name, address and description instead of only the description.
+- Swiss warning signal shows restricted if next main signal shows 'Kurze Fahrt' (=expect stop).
+- Dinamo can also handle wagons with decoders and will initialize a block again after it is switched on again.
+- Bug fix: Critical block defined in route not always applied.
+- Serial port sets RTS first, waits 50 ms and checks for CTS to prevent 'Not clear to send'.
+- Bug fix: Measuring with 3 feedbacks improved so it will work when not changing direction.
+- Vehicle released by iTrain when using shift + click on vehicle image in control panel or overview.
+- Auto fill should leave emergency brake feedback empty.
+- Beep three times when connection was forced to close, because of an unexpected connection loss.
+- Change direction of loc at the end of a speed measurement so it is ready for the next measurement.
+- Bug fix: Allow editing of feedback position in direction previous when length of feedback is zero.
+- TAMS uses 126 steps and 16 functions for MFX decoder by using the m3 setting. To use 14 steps use C90 decoder.
+- Network streaming optimized and start/end markers added while project loading.
+- Improved key mappings of switchboard for booster, turntable and other objects.
+- Bug fix: Could not select crossing state in track route editor.
+- Auto fill now replaces the feedbacks in the block editor and puts them in drawing order.
+- A turnout for which not all states are enabled shows a small X in the switchboard.
+- Selectrix based interface: Change the feedback state if an accessory changes that is on the same bus.
+- Wagon decoder step can be controlled in wagon overview with +/- and backspace keys.
+- OS X Mavericks: Support for full screen on all tool windows for multiple screens.
+- Some changes required for Java 8.
+- Basic support for BiDiB added (UniqueID, control of DCC and feedbacks), only for testers.
+- Bug fix: P50X protocol has 2048 instead of 1024 accessory addresses.
+- Double clicking items in the item overview of the switchboard editor will select associated objects as well.
+- Feedbacks of type button are drawn without a line and can initiate system actions when name starts with SYSTEM_.
+- Relay with name SYSTEM_ALARM and of type on/off will be activated when an alarm situation arises.
+- New sections for general, train and car options in Edit->Settings for enabling ghost train detection and others.
+- Option to replace reservation by zombie state if feedback activation in reserved block is unexpected for extra safety.
+- Extra options for train types to align a train along the platform or stop at the stop position.
+- Network streaming of all objects made more consistent for iOS client and others.
+- Crossing (railroad or bridge) will be reserved with a lock when the blocks have been reserved.
+- Car support in license so that you can use iTrain as an 'iCar' only.
+- Larger images (more than 64x64) streamed over network as jpg instead of png to start up iOS clients faster.
+- Bug fix Dinamo: Reading all feedbacks when connecting was incorrect and will now only read feedbacks for enabled TM-H modules.
+- Bug fix: Possible to display multiple feedback monitors when using interface dependent formats.
+- Use number format via the locale of the messages.
+- Bug fix: iTrain in headless mode supports streaming of images to clients.
+- Turntable decoder DSD of digital-bahn.de supported (small difference with TT-DEC).
+- Bug fix: ECoS only reads cars if license allows it to prevent cars being read in the background.
+- Reading of cars skipped if license does not permit it to remove hidden cars introduced by ECoS.
+- FTDI D2XX drivers for Linux ARM now compiled with Hard-Float.
+
+3.0.1
+-----
+- Firmware upload option for µCon-Manager 2.0 added.
+- Z21: Accessory protocol 'Bus' added for direct commands on LocoNet bus (for example 63410).
+- Z21: Report address added for reading out LocoNet feedback modules (63320).
+- ECoS: Empty Wagon (no address, description and no functions) will be loaded from ECoS to guarantee that a wagon is created.
+- Routing: Do not continue route deeper in already reached destination in case alternatives are behind each other.
+- Bug fix: Copy on Train does copy train, but will change the composition, because the same locomotives and wagons cannot be used.
+- Bug fix: Could not select block in permissions editor of wagon.
+- Added FMZ as accessory protocol for the Twin Center.
+- Block direction side for single sided block always 'Next' and not editable in route editor.
+- Bug fix: Keys assigned to switchboard control elements were not loaded.
+- Add RMXnet Server support for the RMX-PC-Zentrale 2.0.
+- RMX: Improve handling of control channel in use.
+- Switchboard editor: Use Alt+G key to group elements below another element.
+- Switchboard editor: Only replace existing groupable/line elements with keys B, F, P, S and L.
+- Use Alt+Shift to remove waiting time and let train continue with its route.
+- Wagons can also have a direction so that control cars can change lights depending on direction.
+- Extra Selectrix function decoder with direction and only 2 functions instead of 8.
+- Bug fix: Turntable and transfer table not used in route when train too long.
+- Bug fix: Turntable can be used when driving automatically without a route now.
+- Bug fix: The feedbacks on the Märklin CS2 will now be read by a new command when connecting.
+- Bug fix: Only store project file when successfully loaded so it will not be overwritten.
+- Use position feedback on ECoS to check if a turnout has been switched.
+- Programming network devices with an IP/Mac-address for µCON added.
+- Go/Stop actions via keys now available on all floating windows (keyboard, feedback monitor and extra windows).
+- Bug fix: Changing between the locomotive and wagon tab does not affect the switchboard anymore.
+
+3.0.0
+-----
+- Remote Control:
+  - Support for new Fahrpult de Luxe.
+  - Remote control visible on status bar (left side).
+- Boosters:
+  - Booster object added, so blocks can be assigned to a booster. 
+  - Works well with µCON-Manager/Booster
+  - Booster can also be switched via relay and feedback for LDT and LocoNet boosters.
+- Serial port:
+  - New serial port library created for Mac OS X and Linux (higher speeds, better labels for USB).
+  - Improved serial port lookup for Mac, Linux and Solaris.
+  - Option in Interface preferences to specify one or more serial servers for remote serial ports.
+  - Serial port library for Linux ARM compiled with Hard Float ABI for Java 7u40 and Java 8.
+- Look & Feel:
+  - Table renderers improved so that Nimbus Look and Feel works correctly.
+  - Look & Feel choice in general preferences.
+- Client/server:
+  - Prepared for running iTrain server headless with no GUI, but only command line.
+  - Network streaming with markers added for easier skipping parts on clients (iOS).
+  - Client will find server hosts automatically when no host is specified.
+- Interfaces:
+  - MC 2004 protocol now also supports using multiple busses combined with addressing via channels >= 1000.
+  - Support for Roco Z21 command station according to Roco LAN protocol specification including LocoNet feedbacks.
+  - Support for f9 with Motorola via f0 of second address for most interfaces.
+  - The Bluecher GBM16XN via USB is supported including current measurements per channel.
+  - Able to find network address for UDP interfaces via broadcast (CS2, Z21, µCON).
+  - µCON-RailSpeed support on speed measurements dialog and measurements also displayed on status bar.
+  - Dinamo support for more than one RMU with crossing boundaries.
+  - Support for µCON-Manager v2 with events when booster changes status.
+- Cars:
+  - DIR can control both locomotives and cars.
+  - Extra car overview and car grid available.
+  - Switch between internal loc and car grid with ALT+Enter
+  - Traffic light added with blinking yellow/orange when not in control
+  - Lane and car route objects added for car control.
+  - Cars all drive on position (feedbacks only there to calculate position).
+  - Intersections introduced for automatic control of traffic lights.
+  - Speed measurements also for cars when driving in circles.
+  - Control: automatic, manual for cars added.
+  - Interface selection per lane. Car controlled by interface of lane.
+- Locomotives:
+  - Feedback offset added to provide the position of wheels or magnet that triggers a feedback.
+  - Reaction delay for both directions available.  
+  - New functions added and also existing functions such as light, sound and horn now with suffix 1,2,3.
+- Trains:
+  - New concept of trains consisting of loc(s) and wagons, also replacing separate consists.
+  - Train contains exact position and direction of locs and wagons in the train.
+  - User-definable train types can be attached to a train.
+  - Blocks contain trains now instead of locs so that trains without locs can also be placed in a block.
+  - Routes are attached to trains now. You can change the loc while the train keeps the same route.
+  - For a loc without a train a new train with the same name will be created when dragged to the switchboard.
+  - Automatic conversion of older .tcd files to the new concept with correct lengths.
+  - Selected functions will be activated on start and/or deactivated on stop of the route depending on the selected action.
+  - Wagons also in separate overview and in their own grid to control the function decoders.
+- Blocks:
+  - Detection of train in unexpected block improved also when turnout has not been set correctly including a beep sound.
+  - Tabs of block definition restyled.
+  - Blocks can have an interface now.
+  - Reservations and reserved track route items also stored when saving.
+  - Brake on position to start braking at a fixed position for more smooth braking in block.
+- Routes:
+  - Auto routing introduced when no route is attached to a train and start is pressed.
+  - New user-definable train type introduced to make it easier to supply information for the auto route.
+  - Station extended with waiting options per train type such as waiting time and direction change.
+  - New 'Threshold' option in station to limit the number of leaving trains that are in a route for shadow station.
+  - Block side can be specified per block in route to allow a route in a specific direction only.
+  - Random waiting time in route by specifying minimum and maximum waiting time and chance of waiting.
+  - New route selection based on direction of block and train. Non-preferred will be chosen last and the rest randomly.
+  - Press and hold mouse pressed to get popup menu for station to start, finish and stop all trains.
+  - Track number per station block to combine two blocks if length needed.
+  - Default light functions activated on start and deactivated on stop of the route.
+  - Train functions activated before reservations are made and deactivated after the route stops.
+- Switchboard:
+  - Show feedback names in editor when zoom >= 200%. Longer names will be truncated to fit in one cell.
+  - Double click or Command click will change the feedback state twice.
+  - Turnout drawn with occupied color when occupancy feedback is active.
+  - Popup menu is context sensitive and allows you to edit the properties of the underlying object.
+  - Drag & drop in editor more flexible. For example dragging a feedback on a turnout sets its occupancy feedback.
+  - Click on block with Alt (+ Shift) toggles active state.
+  - Overview in editor allows you to directly edit the object.
+  - Crossing added for railway and bridge. It can be added to a block and be on the side of a lane.
+  - Grouping of elements into a block or lane by pressing G (instead of B).
+  - Quick edit keys for replacing a line element with a block (B), feedback (F), signal (S), arrow (P) or back to a line (L) again. 
+- Others:
+  - Use switching time and state delay of signal to delay the starting time or speed changes.
+  - Accessories not switched when command station in STOP mode to prevent missed commands.
+  - Check for Updates in Options menu for manual check with improved messages.
+  - Links to website (downloads, register, buy) and forum from Help menu (only Java 6 and higher).
+  - Full screen support on Mac OS X Lion and higher.
+  - Every feedback change gets a timestamp for measurements. This timestamp is visible in the tooltip of the feedback monitor.
+  - Speed measurements with two feedbacks, three feedbacks or via a µCON-RailSpeed device.
+  - A button and menu option to finish all active routes.
+  - Extra popup menu items to select speed step interval to measure.
+  - Name of license shown in about box (Lite, Standard, Pro).
+  - Import adds extra checkbox so that existing locs can be updated with info from the import instead of adding a new loc.
+  - Extension .tcd.zip or .tcd proposed if no or other extension is used when using save dialog.
+  - Kickstart setting added for analog locs that will be used in combination with a Dinamo system.
+  - Export of basic properties of objects to a zip archive with a .csv file (tab separated) per object type.
+  - Activating keyboard addresses of not defined accessories visible in keyboard on other clients and server.
+  - Option to reconnect client with server if connection with server is lost.
+  - Possible to click in feedback monitor to toggle a feedback for testing purposes in offline mode.
+  - Switchboard can be hidden in main windows so that it is only used for vehicles.
+  - A bridge that is not closed cannot be reserved and will set signal to red.
+  - Mac OS X Application signed with Developer ID Berros. This prevents Damaged image messages.
+
+2.1.8
+-----
+- Bug solved: Autofill in block for combined signal in direction previous puts warning signal in wrong position.
+- Bug solved: External images not loaded in HiDpi image so they will not immediately work with drag & drop.
+
+2.1.7
+-----
+- Bug solved: Turnout state feedbacks not always shown correctly if number of outputs changes.
+- Bug solved: Adding items with numbers in names does not work properly after number 10.
+- Bug solved: Waiting time presented with local decimal separator instead of dot.
+- Bug solved: Using keyboard on client does not work when using addresses without an accessory object.
+- Bug solved: Decoder step count for ZIMO explicitly set to 14, 28 or 126 steps with every speed change.
+
+2.1.6
+-----
+- Bug solved: Reset of totals not directly visible in speedometer.
+- S88XpressNetLI interface in combination with a Multimaus supports setting functions f13-f20, but not reading them from the Multimaus.
+- Bug solved: In routing with the path finder.
+- Bug solved: Drawing window and using buttons failed in Java 1.6.0_51 on Mac after java update.
+- Bug solved: MobaSbS with long DCC-addresses should be corrected.
+
+2.1.5
+-----
+- HSI-88 protocol improved with new reader and retransmission support to work around bug in HSI-88 at startup.
+- Support for direct DCC messages over LocoNet for sending and receiving higher loc functions.
+- Bug solved: reading state of extra functions in Lenz XpressNet (f13-f28) not correct.
+- Support for RailCom via LocoNet via Transponder command for example Bl&uuml;cher GBM16XN.
+- Support for Lissy packets from Uhlenbrock MARCo with RailCom info.
+- Automatic retry in LocoNet accessory commands that are negatively acknowledged.
+- Bug solved: Locomotive numbers in feedback item refreshed correctly.
+- Changing feedback states when online with ALT key instead of Shift.
+- Current µCON-Booster ranges from 0-127 for 0 - 2.5 A.
+- Image 'Find external' button disabled in client mode, because it cannot be used.
+
+2.1.4
+-----
+- Some buffer optimizations for UDP packets.
+- Check for loading HiDPI images (locs and icons) now works with Apple Java 1.6 on a Retina MacBook.
+- Polarity now also enabled for non-analog locs and used in direction detection with RailCom.
+- Server information (name, address, interfaces) to send to client only resolved once at startup.
+- Bug solved: Client host name not resolved on server anymore to prevent delays without DNS.
+- Bug solved: Improved polarity handling for Dinamo for turning loops.
+- Switching time for CS2/CC-Schnitte optimized to prevent ghost messages.
+
+2.1.3
+-----
+- Bug solved: Exception when using MC 2004 with one bus.
+- Bug solved: Empty feedback in turnout feedbacks could result in exception.
+- Bug solved: Initial status of connect/disconnect button in client mode could be wrong.
+- Spanish and French manual available and some screen texts are corrected.
+- Inactive block gets a penalty of 12 in calculation of path to next block.
+- Arrow element in element without a block will reset the counter (more than 10 empty elements and auto fill does not search any further).
+- Dutch signal state blink yellow is coupled to internal state expect stop and restricted.
+- CS2: Number of functions for DCC decoder increased from 13 (f0-f12) to 29 (f0-f28).
+
+2.1.2
+-----
+- Bug: Time column in overview was not updated if distance column was not available as well.
+- Response on events in interface/remote commands scheduled.
+- Better handling of combined serial port libraries. 
+- Removal of support for obsolete COMM library.
+- Support FTDI direct drivers for ARM architecture (for example Raspberry PI).
+- Location (time, distance) events filtered to reduce the number of redraws and improve performance on devices with slow graphics.
+- Support ECoS for loc functions f22 and f23 with firmware 3.6.0
+- Bug solved: Reservation of turntable suddenly disappears and route stops.
+- Bug solved: Auto fill station blocks incorrect. Should be dependent of station type.
+- Bug solved: Could not set loc on block by drag & drop on client.
+- No command queue used on client interface.
+
+2.1.1
+-----
+- End state feedback also used when step delay is zero.
+- Reading of file version before writing backup only reads first tag.
+- DIR can also show function state via text/menu button.
+- Correct signal state check for block of type Shunt with dead end.
+- Extra check for alternative paths that lead to the same end path and must be dropped.
+- Handling of internet address changed. No delay because of resolving name when writing address.
+- Prefixing host input on network tab of interface editor with a @ resolves the full name.
+- Analyzing the switchboard for 'Auto fill' optimized and returns early when no blocks have been marked.
+- Bug: direction change on interface 6051 did not work properly on the real Märklin 6051.
+- Image path separator conversion for relative paths when moving from Windows to Mac or Linux.
+
+2.1.0
+-----
+- Protocols for Selectrix, P50 and P50X partially rewritten by splitting them.
+- P50 protocol supports reading feedbacks while new commands come in. Made for Raptor.
+- Raptor supported as extra interface using P50X, with support for f0-f28 with DCC.
+- TAMS interface (P50X) with support for f0-f28 via new XFunc34 command.
+- Open DCC supported as extra interface using P50X with support for f0-f28 via new XFunc34 command.
+- MRdirect supported as extra interface using P50X, with some minor changes and support for f0-f16.
+- New 'Motorola 27' decoder that can be used if the command station supports the half-steps already in comparison with the C90X decoder in which iTrain generates the half-steps.
+- Empty project stays empty over session. Does not go back to previous file.
+- New recently opened file list to select other projects.
+- Support for Lissy: Detector status shown in feedback for 1 second to transfer it to the block.
+- Loc function activated in route on a loc in a consist will be executed on a sub loc if not available on the main loc.
+- Support for LocoNet over a multicast network connection for use with the MGV 101.
+- Option in LocoNet if request echo is available or not for TCP version of MGV 101.
+- All columns of items in editors now sortable.
+- Switchboard preferences added: Default grid or not.
+- New station types with allowed block types so a shed exists of sidings.
+- Report address for LocoNet can now be a range to prevent all decoders to report at once.
+- Feedback delay introduced, both at interface and individual level, for on and off switching.
+- Refresh button for serial ports for USB devices that have been plugged in recently.
+- Initial support for cars based on MCC system.
+- Support for Littfinski HSI-S88 USB only on Windows with Java 7, but with support for multiple devices.
+- Support X-Bus V1 and V2 for version and loc commands.
+- DiCoStation: Digital-S-Inside (DSI) 2 support via new XML protocol.
+- Navigate between loc panels in grid with Shift + cursor keys.
+- Signal in loc panel sizes and adds text dynamically with the width. 
+- Signal blinking rewritten and optimized. Signals can blink in the loc panel now.
+- DTC: Relay with address 99 switches polarity and it with address 98 the emergency stop.
+- DTC: Auto polarity setting possible for 2-rail (via offset > 0). The first half of the table starting at the offset has normal polarity and the second inverted.
+- Prevent that block connections point to the block itself by skipping floating elements from the same block.
+- Packet streaming improved for faster reaction times.
+- Support for µCON-S88-Master from Lokstore Digital.
+- Basic support for µCON-Manager from Lokstore Digital with voltage and current display.
+- Option for automatic signals available in block, mainly for free blocks.
+- Speeds in block definition show effective values even when maximum adapted.
+- Server and client exchange version, operating system and programming language at the start.
+- Client info in toolbar contains client version, operating system and programming language.
+- Instant route: Drag with link option to create a temporary route to a destination and execute it.
+- Progress bar when going online until initialization has been done.
+- Second run of progress bar only if still busy with setting accessories in background.
+- Popup after holding mouse pressed on turnout or signal for selecting states directly.
+- Support for CAN WeichenChef with feedback by choosing accessory protocol 'Bus'.
+- Speedometer uses maximum allowed speed to calculate range (0-60, 0-120, 0-240, 0-480).
+- Support for Müt 2004 command station with two SX busses and events.
+- Track gauge and rail rack (=Zahnrad) added to loc and block.
+- Occupancy feedback per turnout to see if trackroute can be released.
+- Shunt signal added per block in addition to the main signal.
+- Free block will use signal state that would normally apply to following block if it is a shunt block and allowed to pass.
+- Loc image label can use multiple lines in loc editor so long file names give no problem anymore.
+- Support for higher resolution loc images for Retina displays on iPad/iPhone.
+- Support for feedback interface with loc addresses fed from 'Games on Track'.
+- ZIP archives: Opening zipped files automatically. Saving with extension .zip keeps them zipped.
+- Accessory state delay for the extra time it takes above the switching/activation time before the end state is reached (servos).
+- Selection of train for loc and loc in block reduced to allowed choices (gauge, etc.)
+- Block speeds can be defined per direction.
+- List of feedbacks with their position added to blocks for better release control.
+- Import function for locs and trains with input dialog to select the items.
+- Better sorting of decoder types based on type and step count and not on name alone.
+- Better checks on dropped objects because of a limited license when loading resulting in a decent error.
+- Language can be set from General tab of Preferences. Effective only after a restart of the application.
+- Switchboard editor has extra Apply and Save buttons that both apply current changes and the second also saves.
+- Switchboard look selection from a limited set via Preferences.
+- Drop of loc on switchboard without a modifier key (Shift, Ctrl, Alt) results in a popup menu to select the action.
+- Popup after holding mouse pressed on block item for controlling routes, reservations and releases based on current context.
+- Double-clicking (or pressing ENTER) on link item in switchboard editor also selects other tab.
+- Added popup menu items for moving a switchboard tab to the left or the right.
+- Length of turnouts can be specified to calculate a minimum distance between two blocks.
+- Using OM32/OC32 for pulse based accessories via output device 'OM32 Pulse'.
+- Preference to automatically size all switchboards on loading so that they will fit.
+- Entry feedback can be used to release previous blocks/turnouts when it is being released (only for fully detected trains).
+- Release of blocks based on loc position calculation, position of feedback in block rewritten.
+- Info field also shows remaining time when a loc is waiting.
+- Decoder protocol subtype set for DCC loks with CS2 and CC-Schnitte (14, 28 or 126 steps long/short).
+- Block margin (length - margin decides if a train fits into a block) made configurable and default margin depending on block type.
+- Turnout speed type can be set to Standard, Fast (=no restrictions) and Slow (always restrictions).
+- Columns in loc overview reordered so train next to loc name and route info next to route name.
+- Allowance of change of direction can be set for whole route in route options.
+- Application icons reorganized and higher resolutions added for HiDPI (retina) displays.
+- Mac OS X: The .tcd files get a document icon based on the iTrain logo and can be opened by double-clicking.
+- Auto fill does not overwrite block connection on side with a link item.
+- Turntable decoder type introduced and support for Draai15 added.
+- Improved speed measurements when measuring over existing values and axis of graph improved.
+- Release on stop feedback delayed until loc has really stopped to include brake distance.
+- Extra Fill button on Feedbacks tab of Block editor to fill in positions when lengths filled in and feedbacks correctly ordered.
+- Release on position triggered half the block marge later to prevent a release when just leaving the turnout.
+- Block type Shunt drawn differently from type Siding.
+- Route block selection 'Shortest path' added to order on shortest path to next route item.
+- Matching of forward and backward path of turnouts between blocks rewritten.
+- Auto/instant route also might also consider some alternative routes in case of parallel tracks.
+- Route finder decisions made in lower priority threads not to disturb higher priority events.
+- P50X XLogCfgSet supported so that decoder information is sent for devices that support it.
+- Check box added for acceleration and brake delay and a minimum of 100 ms.
+- Change 'Optional' to 'Critical' in routes to make a block critical only for this route.
+- Switchboard data (XML) sent compressed over network for WAN connections.
+- Automatic relay groups for Dinamo when blocks with same address have a relay.
+- Signals will show short dark phase during switching time.
+- Delay track route release until loc stops for a turntable so that it does not start turning too early.
+- TAMS RC-Link: support added for detecting locs without RailCom when RCD2 has been updated.
+- New loc function icons with HiDPI versions based on vector graphics.
+
+2.0.7
+-----
+- Bug fix: Three way turnout cannot set disabled states or change reserved states anymore by clicking.
+- Bug fix: Back path of track route items between two blocks better matched with forward path.
+- Small path finder optimizations.
+
+2.0.6
+-----
+- Synchronize input streams.
+- Bug fix: Possible problem in OM32/OC32 accessory switching.
+- Bug fix: Positions could be slightly wrong when enter speed is higher than max speed in block.
+- Bug fix: Problem with feedback off/on causing a problem with loc following around turntable solved.
+- Init for Gleis processor also send for the CS2 interface.
+- RouteInfo was not initially streamed to network clients.
+- Extra check in path finder so that no turn is done in a block in which you cannot stop.
+- Rocomotion implementation improved and tested.
+- Better speed changes at entry of block.
+- More efficient track route searches between blocks.
+- Bug fix: Turnout should not be set when a state feedback comes in.
+- Allow second/function address to be a Motorola address when the first is an MFX address.
+
+2.0.5
+-----
+- Bug fix: Loading properties of accessory editor could cause an exception.
+- Bug fix: Problem if input stream has too much data available (mostly on ECoS).
+
+2.0.4
+-----
+- Bug fix: Properties of accessory editor (open tab, etc.) were not save with unique id per tab.
+- Bug fix: Address set before interface and output device, might lead to unwanted conversions.
+- Bug fix: DTC problem connection count used instead of step count.
+- DTC: Sensor count read in from interface via version command.
+- CC-Schnitte: Initialize the Gleisbox always to prevent connection problems.
+- CC-Schnitte: MFX registration improved with better timeouts and more logging.
+- Bug fix: Signal on turntable sometimes stays red if table not moved since startup.
+- P50X: Remove timeout on reaction of event poll, because some systems react to slowly.
+- Optimization of automatic fill to prevent deep trees with empty turnouts and blocks.
+- More forgiving when the elements belonging to a block in the switchboard are not consecutive.
+- Make LocoNet protocol reader more fail safe.
+- Remove power from track when going offline.
+- Bug fix: Problem with port type of DinaSys Remote Control.
+- Compile FTDI direct driver for Windows so that you don't need MSVCR100.dll
+- Rewrite input reader of FTDI direct stream to prevent blocking on Windows.
+- Bug fix: Event and reader thread priority too low on ECoS.
+
+2.0.3
+-----
+- Use single threaded executor for feedback control to guarantee ordered feedback processing.
+- Bug fix: Only react on manual changes in warning signal if no main signal defined.
+- Feedback processing for Rocomotion rewritten.
+- Locomotive mass simulator improved to prevent no reaction on desired speed change.
+- Reserve next block will also work in circles with two blocks and follows the current direction.
+- Internal DTC positions calculated on step index and connection count.
+- Show block type in route definition panel.
+- LocoNet: Update of slot status after receiving SLOT_STAT1 and INPUT_REP always considered as event.
+- Switch off active state of relay always when track route released.
+- Check feedback count per side to decide if you need to brake in previous block.
+- Bug fix Mac OS X: FTDI Direct drivers made independent of version in /usr/local/lib
+- New input stream reading.
+- Better support for matching LocoNet requests and responses and prepared for expanded slots.
+- Bug solved: Some signal states where erroneously converted in track routes.
+- Bug solved: Incorrect signal in back direction for Swiss signals possible, because of late red.
+- ZS2 and Lenz IP/Ethernet added to demo version.
+- Focus in loc grid: focus border around image, traversal forward with F3 and backward with Shift + F3 possible, selection of loc with ENTER.
+- Change from 'Only access to' to 'Access forbidden' after Apply if no blocks selected to prevent errors.
+
+2.0.2
+-----
+- Bug fix: Auto fill does not work on block attached to corner SouthWest of turntable.
+- Big fix: Changes in accessories not correctly handled in track route.
+- Bug fix: When not using speed measurements calculations from speed to index should not be higher than the decoder step count.
+- Bug fix: Transfer table initial state not streamed to network client.
+- Bug fix: Relay not removed from block when relay has been deleted.
+- P50X protocol: Allow extra functions (f9-f16) for TwinCenter and TAMS.
+- Bug fix: Delayed start to execute leave functions in route calculated only based on available functions.
+- Cancel execution of delayed loc functions when route has been stopped.
+- Bug fix: Start route with manual driving possible again with shift-click.
+- Looping without waiting allowed in routes.
+- Possible to use second address on CS2 with MFX or other protocol.
+
+2.0.1
+-----
+- Danish added
+- Bug fixed: Event interval for TAMS not saved.
+- Check start of loc after direction change in case of control type 'Automatic'.
+- Extra check for reservations in tail of loc.
+- Bug: Lissy data were not processed correctly.
+- Bug fix: Setting a block side to 'Critical' did sometimes not work.
+- Zimo protocol improved with better timeout and nack processing.
+- Bug fix: After a 'Route cannot start' sometimes the route could not be started again even if the changed conditions should allow it.
+- Bug fix: Direction kept in whole path so that a train without a control car will never turn.
+- Bug fix: Problem with reservation behind the release/tail block after a turning loop solved.
+
+2.0.0
+-----
+- Support for the OC32 programmed aspects via the OM32 interface.
+- Support for the OC32 interface with bi-directional communication.
+- Support for the PM32 optionally combined with the OM32 via RS485 and USB to RS485 converter.
+- Support for the parallel outputs of the RM-H.
+- Support for Gleisreporter of CAN-Digital-Bahn on CAN-bus CS2.
+- Support for the new Lenz LAN/USB adapter 23151.
+- Support for the Stärz ZS1 and ZS2 command station.
+- Support for eComStation (OS/2) 2.0 with Java 6.
+- Improved support for the Massoth with logout.
+- Preliminary support for the Decoder63 via the OM32 or OC32 interface.
+- Open file chooser in iTrain/layouts at first start.
+- Polarity added for analog locs to assure they all drive in the same direction.
+- Slope property added in block in percentage (+ for up and - for down in direction Next). Not used currently.
+- Separate mass simulation for acceleration and deceleration.
+- Total distance and time traveled measurements with reset option.
+- Grid in switchboard by default off.
+- Switchboard overview can also be put on a separate window.
+- Extra check on start/finish marker to bypass direction check in repeat.
+- Network changes for iOS.
+- Decoder step count and maximum function count stored in loc on change instead of retrieved from interface.
+- Support for the DinaSys Turntable Control (DTC) with feedback of position of table and sidings that share one block card via relays.
+- Consist behavior improved with one mass simulation for the whole consist.
+- Two state signal can also use second address for special decoder types.
+- One feedback can be used for both brake and stop with shifts.
+- Switchboard editor:
+  - Select all with key A (with shift for only selecting all cells that contain elements).
+  - Turn selection 180 degrees (shift + R or T key).
+  - Allow straight or half line elements to fill a selection to draw multiple line elements.
+  - Better auto fill for feedbacks and signals depending on direction.
+- Feedback:
+  - Extra type 'Light barrier'.
+  - Option 'Invert' to interpret 0=on and 1=off (in feedback monitor border is always interface state).
+- Real speeds:
+  - All real speeds are now floating point values displayed with one decimal for ultra low speeds.
+  - Option in preferences to display all speeds in km/h, mph or m/s. Internally km/h is used.
+  - All speed input boxes can be entered with a speed unit.
+- Extra track scale option '-' for 1:1 in case you want to use model speeds.
+- Individual delays for items in track routes.
+- Block type 'Shunt' drawn as 'diamonds'.
+- Improved speed measurements with multiple measurements possible and dirty flag for applying changes.
+- Station object added to make routes simpler in the future.
+- New immutable set and list objects for faster collections.
+- Mass simulation improved for manual driving.
+- Initial state of accessories remembered over sessions so you can always initialize to original.
+- Turnout feedback can be used twice based on selected state (1) or unselected state (0).
+- Second column with signals in switchboard editor so it fits better on small screens.
+- Improvement in position and locations calculations and higher thread priorities for feedbacks.
+  - Possible to calculate brake and stop shifts based automatically on entry feedback.
+  - Possibility to release previous block and turnouts as soon as whole train is located in the new block.
+  - Stop positions before signal and location of platform to wait in the middle. With absolute and relative (<= 0) values.
+- Loc direction arrow click now changes direction of loc. Shift + click to change direction within block.
+- Alt + click on non-reserved block to release the turnouts to the previous block.
+- Warning signals can have extra state 'None' for combination with main signals.
+- Route system rewritten as a preparation for random or not completely specified routes.
+- Automatic fill now also detects side of attached block immediately when direction item has been drawn in side block.
+- Selectrix bus: Support for multiple bits change of accessory at the same time for signal decoder SLX813N.
+- Support for the Rautenhaus turntable control (SLX815).
+- Preliminary support for the transfer table/traverser (no control on interface yet).
+- Preliminary support for the Hornby Elite.
+- Support for the TAMS RC-Link (RailCom). 
+  - Address shown in feedback element with text box and in tooltip.
+  - CV value shown on status bar for some time while programming with programming on main (PoM). 
+- Default speeds in 'Settings' that can be overridden per block when value is not zero.
+- Separate block speeds for restricted and expect stop.
+- Red icon changes to yellow when a route is being finished.
+- Track route has option to reset their accessories to their initial state after releasing it.
+- Blocks signals in a block of type 'Free' are only automatically set to green when no turnout follows.
+- External images always saved with a relative path to home directory (if possible) to make it more portable.
+- Extra option for XpressNet based interfaces to swap to interpret the output of accessories the other way.
+- Drag & drop of locs over multiple blocks possible to create a reservation including the turnouts.
+- Version of loaded file shown in title and version in backup name retrieved from original file.
+- Interface selection box shows type (Serial or Network) and control types in tooltip [LAF].
+- Indication of number of clients on status bar and overview of all connected clients available by clicking on icon.
+- Device information of CS2 improved: information of voltage, current and temp including that of all boosters shown in window when clicking on info icon.
+- Two interfaces for CAN-Control-Schnitte (CC-Schnitte): One based on raw CAN and one on Lenz XpressNet.
+- Routes rewritten:
+  - Possible to only specify stop and end points and intermediate blocks are determined on the fly.
+  - Multiple blocks can be reserved at once to prevent deadlock. Done automatically for single track blocks.
+  - Concept of critical block introduced to guarantee that next block will be reserved as well.
+  - Info available in loc panel and summary with blocks of next stop or other info.
+  - Specified optional blocks in route are obsolete and discarded, because they will be found automatically.
+  - New check for train called 'Control Car' to specify if a train can be pushed.
+  - Modified train route editor with support for stations in route.
+- Block permissions for locs and trains to restrict access to blocks in routes.
+- Loc functions in routes can now have a delay before the function starts and the pulse duration can be specified.
+- Extra wait functions in a route that are activated when waiting starts.
+- Leave functions only activated after a wait so they won't be played twice when entering the next block. Use enter functions in next block to simulate leave of previous block for non-waiting blocks.
+- New 'Long address offset' property in Interface->Specific for RMX, FCC and ZS2 to treat DCC addresses as long addresses that are equal or greater than this value.
+- Direct control of FTDI based USB devices by choosing IDs and names and prevent COM port change problems.
+- Swiss 'Kurze fahrt' implemented and delayed setting of previous signal to red for Swiss signals.
+- General signal now has all states internally available in a block.
+- Checkbox for block speeds to indicate if they should be changed or the default should be used.
+- Support for the ECoSDetector with four RailCom inputs.
+
+1.5.6
+-----
+- Closing behavior changed to prevent empty switchboard in some rare cases.
+- ECoS: Support for loc functions until f21.
+- Allow flow control setting on Lenz XpressNet protocol for Hornby support.
+- Bug fix: Turntable could not be set to less than 48 persistently.
+- Do not process speed and direction info from locs that are unknown in the CS2.
+- Bug in drawing Dutch warning signal with yellow light solved.
+- Bug solved: feedback in the middle will not make a block occupied
+
+1.5.5
+-----
+- Bug solved: Turntable with one connection will cause endless loop.
+- Improved handling of no or incorrect name of tab for switchboard.
+- Use new symbols on ESU ECoS for accessory types.
+- Bug solved: Three-way turnout side not correct when angle is 45 degrees.
+- Digitrax LocoNet license notices. Loconet only available with license and not in Demo version anymore.
+
+1.5.4
+-----
+- Bug solved: Does not read file if the network name of the CS2 is not known.
+- Block shift delay timer only active when block controls loc.
+- Support for compressed license files used by version 2.0.
+- Better handling of XpressNet acknowledged messages with USB protocol when broadcasts are not withheld.
+- Intellibox P50X commands recover better from wrongly configured baudrate.
+- Track routes defined in ECoS/CS1 skipped in synchronization process so they cannot be removed.
+- Linux: Automatic discovery of available serial ports and connected USB VCP devices.
+- Correction for position locks at accessories on the switchboard.
+
+1.5.3
+-----
+- Some improvements in M&auml;arklin CAN protocol so that it works better with the Gleisbox 60113.
+- Support for new license format so it will recognize it when entered.
+- Bug solved when assigning a relay to a block node without specifying the relay.
+- RMX protocol improved.
+- Fixes in FCC protocol for SX2 extensions.
+- Bugfix: Interface slot sent for feedback module changes when multiple interfaces used with feedbacks.
+- Bugfix: Halt for CS2 not correctly implemented.
+- Bugfix: Sometimes last loc in list not imported.
+
+1.5.2
+-----
+- Signal item drawn with other depth so that they are on top of tracks even if they are larger than a cell.
+- O Scale split into 1:43.5 (UK) and 1:45 (Europe)
+- Extra check on start/finish marker to bypass direction check in repeat.
+- Bug solved: Only last enter function remembered.
+- Bug solved: Reading individual accessory delays from file.
+- Possible to use two or more addresses for all signals.
+- Support for Gleisreporter of CAN-Digital-Bahn on CAN-bus CS2.
+- French manual 'mise en route' available and improved French messages in user interface.
+- Accessory editor layout of 'Default' check boxs improved.
+- Track route item editor automatically selects valid state after selecting accessory.
+- Bug solved: Relay drop down now shows icon.
+- Bug solved: Follow of long straight line not correct so that parts shift after saving.
+- Bug solved: Block not removed from switchboard item internally when deleting block only from text.
+- All comment fields have automatic line wrap.
+- Bug solved: Comparison of loc blocks for release blocks not correct.
+
+1.5.1
+-----
+- Support for the OC32 programmed aspects via the OM32 interface.
+- Bug solved: Default decoder did not parse well when reading tcd-file.
+- Bug solved: Problem when converting existing signals to a type of another signaling system.
+- Bug: Tractions imported from CS2 skipped to prevent problems.
+- Speed measurements info optimized and sorted so that values will not decrease and give bad index values.
+- Open file chooser in iTrain/layouts at first start.
+- For analog locs: Choose initial block direction based on loc direction to prevent sync errors.
+- Overhead length for turntable block reduced from 18 cm to 5 cm in H0.
+- Grouping of 10 added for Uhlenbrock 63410 Schaltmodul.
+
+1.5.0
+-----
+- French demo_fr.tcd added.
+- Some spelling or translation errors solved in resource files for screen texts.
+- Bug solved: draw items might be overlapping when next item is drawn around cell of previous.
+- Route editor: when adding route blocks the new route item is made visible by scrolling to it if necessary.
+- When interface is connected the state of the feedback is always determined by the interface even when address changes.
+- Restricted (for example) now used when turnout is branched between blocks.
+- Warning signal shows 'Expect stop' in earlier block when it is not possible to stop in the block before the home signal.
+- Consist shown in switchboard via the name of the loc and a number of '*' characters after (or before) the name representing the other locs.
+- Multiple locs with same address allowed, but warning given. Useful for large collections of motorola locs.
+- Different maximum speed in backward direction possible.
+- Different speed measurements in backward direction possible.
+- Improved input for default accessory activation time (showing the actual default).
+- Distribution of loc functions over multiple rows in loc panel.
+- Accessory protocol input added so you can mix different accessory protocols on systems that allow it.
+- Support for multiple interfaces improved and enhanced.
+  - Status of interfaces on status bar together with version information in tooltip.
+- New interfaces added:
+  - Support for OM32 as a standalone interface.
+  - Support for CAN Digital Bahn 'Gleisreporter'.
+  - Separate interface created for TwinCenter. Current TwinCenter users can better select this interface.
+  - New interface introduced for TAM MasterControl based on Intellibox P50X with no reservations and specific version info.
+  - S88XPressNetLI (for Roco Multimaus) now listed as separate interface.
+  - Support for ZIMO MX1 interface.
+  - Support for the Massoth protocol for the DiMax.
+  - Support for the MoBaSbS including synchronization of loc database and loc events for speed and functions.
+  - Selectrix support on one bus.
+  - Rautenhaus Selectrix (SLX) support for both SLX-825 with one bus as for SLX-852 with two busses.
+  - Rautenhaus RMX protocol support including reading and writing loc definitions.
+  - Future-Central-Control (FCC) support from Doehler & Haass / MTTM.
+- Improvements in interfaces:  
+  - Improved slot handling for Loconet for Digitrax stations.
+  - Lenz XPressNet: Support for functions f13-f28 for version 3.6 and higher.
+  - Central Station 2
+  	- Support for DCC protocol for both locs and accessories (also mixed with Motorola and MFX).
+  	- Import of locs from database of Central Station 2 when going online.
+  	- Display of current (on main and programming track), voltage and temperature on status bar.
+  - Intellibox/TwinCenter also reads version info and shows more status (heat, halt).
+  - TAMS interface sets number of S88 modules used for feedback automatically.
+  - Problem with initial feedback state for Lenz XPressNet solved.
+  - Changes made for ECoS 3.2 update (including CS1 reloaded) so that loc functions work again after the update.
+  - Fix so that Dinamo also works with consists (only one analog loc per consist of course).
+ - Support for feedback modules with size 8 in ECoS/CS1 instead of conversion to 16.
+ - Communication between switchboard editor and object browser improved (two way).
+ - Extra scale for SM32/SM45 (1:19) and better showing of scale names with 0 instead of O.
+ - Serial port library source improved.
+ - Extra option to use one feedback to switch multiple accessories (via a track route) without reservation by assigning the feedback to both the activate and release feedback.
+ - Extra option 'Default' for address grouping that will take a default format for interface used with the object.
+ - New installer with separate folder in user folder with layouts and multiple manuals in one download.
+ - Turnout can have attached feedbacks for state feedback.
+ - Networking improved
+   - Packets created and queued so multiple clients do not cost extra performance.
+   - All loc images streamed over network (including external ones).
+   - Changes in switchboard immediately visible in all clients.
+ - Swiss L signals added.
+ - Cells for speed measurements can be emptied by using 'Delete' button.
+ - Menu item and key for swapping outputs of an accessory in 'State mappings'.
+ - State mappings improved for turnout on OM32 with '0' and '1' instead of different addresses.
+ - Support for range of addresses for signals with more than four states.
+ - Signals drawn with all light bulbs (switched off bulbs in dark grey).
+ - Turntable support
+   - turntable, block and feedback object attached to one switchboard item.
+   - support for turntable in routes
+ - Preliminary support for the Dinasys remote control (only for testers).
+ - Type added for relais.
+ - Sharp curve (90 degrees) added for cases where there is not much space such around a turntable.
+ - Bug solved: blocks now automatically removed from train route when they are deleted.
+ - English, German, Dutch and Spanish manual updated with features of 1.5.0.
+ - Backup directory created for backup of files. Files added with date, time, version and extension .tcd
+ - Version written in file and checked in load to give better errors when loading a new project in an old version of iTrain.
+ - Organization of included loc images improved and many loc images added and some images replaced with others.
+ - Natural sorting of strings with numbers.
+ - Better bounds check for limited licenses to prevent problems with loading.
+  
+1.4.5
+-----
+- Version written in file and checked in load to give better errors when loading a new project in an old version of iTrain.
+- Bug solved in function state of locs retrieval at connect time.
+- Better bounds check for limited licenses to prevent problems with loading.
+
+1.4.4
+-----
+- Serious bug in Rocomotion implementation solved so that it might work now.
+- Small bug in ESU software solved when creating an accessory on the ECoS while being online.
+- Spelling errors fixed in Dutch manual.
+- Bug solved that may lead to delays being introduced with shifts in blocks when feedback is not stable.
+- Bug solved that after a popup message iTrain does not close at once.
+
+1.4.3
+-----
+- Extra scale for SM32/SM45 (1:19) and better showing of scale names with 0 instead of O.
+- Minimum brake speed of 5 km/h.
+- New installer with separate folder in user folder with layouts and multiple manuals in one download.
+- Fixed: Problem in trackroute with signal state not belonging to the signal when only signal is changed.
+- Fixed: Problem with drop on multi-object switchboard item when scale is not 100%.
+- Better handling of new license keys.
+
+1.4.2
+-----
+- Better keyboard and feedback monitor refresh.
+- Initial feedback state solved for Lenz XPressNet.
+- Problem with Loconet, mass simulation and routes solved.
+- Changes made for ECoS 3.2 update (including CS1 reloaded) so that loc functions work again after the update.
+- Fix so that Dinamo also works with consists (only one analog loc per consist of course).
+- Some improvements in XPressNet protocol (Lenz).
+
+1.4.1
+-----
+- French demo_fr.tcd added.
+- Some spelling or translation errors solved in resource files for screen texts.
+- Bug solved: draw items might be overlapping when next item is drawn around cell of previous.
+- Route editor: when adding route blocks the new route item is made visible by scrolling to it if necessary.
+- When interface is connected the state of the feedback is always determined by the interface even when address changes.
+- Bug: Better ordering of drawing when deleting items below other items.
+- Improved slot handling for Loconet for Digitrax stations.
+- Accessory delay input maximum from 1000 ms to 5000 ms. 
+ 
+1.4.0
+-----
+- Manual reservation of next blocks and turnouts in between for a loc (check direction of loc first):
+  - by Command/Control clicking the current block of a loc in the switchboard with the turnouts already set correctly. 
+  - by Command/Control clicking following blocks in switchboard with Command/Control when path from clicked block to loc block is unambiguous.
+  - Drag & drop of a loc on a neighboring block
+ - Undo reservations by Shift + Command/Control click on a block of a loc.
+ - Remove blocks (reserved and current) from a loc by Shift + click on a block of a loc.
+- Loc Grid: Allows a grid of loc panels both below the loc overview as well in an extra window (PRO). 
+  - Use ALT + cursor keys to size when loc panel has focus (F3) to size.
+- Drag & Drop of locs between loc overview, loc panel and block items in switchboard.
+- Support for USB devices on Linux (/dev/ttyUSB0) and Solaris via (/dev/term/0).
+- Bug: No crash anymore on 64-bit Linux when selecting 'Interfaces' with 64-bit Java -> 64-bit library added.
+- Direction arrow now shows dashed arrow for non-preferred direction in edit mode.
+- Block drawing analyzed when editing block properties in switchboard:
+  - Small view of whole block on first tab.
+  - Choose only feedbacks and signals that apply on second tab.'Show all' checkbox to be able see all again.
+  - Auto fill of feedbacks, signals and block connections via new button for both tabs.
+  - An individual block connection can be created automatically via first item in popup menu in block tree.
+  - Only signals or feedbacks for one tab can be filled in via double-clicking on group label.
+- Pack function (P) in switchboard (via popup menu) to reduce size for optimal zoom to fit experience.
+- Control + Drag & Drop in switchboard to change the current block attached to a loc.
+- Control/Alt + Drag & drop in switchboard editor to add objects attached to board elements to other elements. For example to couple a home signal to a warning signal.
+- Multi cell elements can now be drawn in the switchboard:
+  - Mullti-line Text with font, color, horizontal and vertical alignment and direction (horizontal, up, down) (Shift+E).
+  - Platforms between the tracks (Shift+P).
+  - Buildings or houses (Shift+H). For example the station building.
+  - Station boundaries (Shift+S) can be indicated to group tracks, platforms and buildings together. 
+- Shift + Control/Command + cursor keys to move objects in switchboard. Shift is now always necessary.
+- Use Shift + ALT + cursor keys to size multi cell elements in switchboard.
+- External images can be added to the switchboard. Do not use very large images from many mega pixel cameras, but scale first.
+- The example files demo*.tcd have been updated with new possibilities and some bugs have been removed.
+- Print and preview improved.
+- Problem with grayed out buttons on Mac solved.
+- Board items on right side of switchboard editor are grouped and groups can be made (in)visible with popup menu or double click on separator.
+- Link line item in switchboard to jump to another tab where the same block is continued.
+- New locomotive functions added:
+  - Firebox, coupling, generator, relay steps, cylinder, pump, grate shaking, number and destination light.
+  - Extra keys (with shift) for rear functions for head light, cabin light, telex and pantograph.
+  - Only enabled functions visible in popup menu, because list became too large.
+- Object browser added to switchboard editor
+  - Immediately see added objects and rearrange or delete objects.
+  - Possible to drag objects to switchboard elements to couple them
+  - Template: Create multiple objects based with an increasing number in name and description based on another object.
+ - Train (and loc) can be marked detected.
+   - In releasing a previous block it can be based on no occupation (detected) or only on length (not detected).
+- Switchboard editor:
+  - Color of items attached to a block (with B) are shown with a different color to see immediately which element are assigned and what not.
+  - Unassigned feedbacks, trackroutes and accessories are drawn with a gradient fill, because they can have no state.
+  - Block assignments easier by selecting area and pressing B.
+- Improved printing and preview panel.
+- Better path selection when multiple paths between two blocks are possible, but some are reserved.
+- New possibility to stop in two blocks (stop block is too short to keep train in) with shuttle traffic.
+- Improved block state change control prevents incorrect state changes.
+- Defined keys list in appendix manual.
+- Better consist support:
+  - Added support for decoder type MULTI when using consists with a separate loc definition such as on ECoS.
+  - Control + drag of locs on loc panel or overview to create a consist.
+  - Loc overview always shows sub locs below main loc of consist, independent of the sorting that is based on the main loc properties.
+  - Consist indicated with a grouping line before the loc name.
+- Switchboard has extra option 'Interpolated' for more smoothed images in switchboard, but at the cost of some performance.
+- Keys assignments for tabs manipulation in switchboard editor.
+- Automatic selection of function 'Shunt' (= driving without acceleration) when doing speed measurements.
+- Driving according to a route:
+  - Shift + Start route button will start a route without changing the speed. You have to change the speed.
+  - Changing the control type of a loc to 'Manual' or 'Semi' while driving a route will have the same effect.
+  - Changing the control type of a loc to 'Automatic' while driving a route will make it fully automatic again.
+- Timeout for CS2 default to 2000 ms to prevent error on Windows 7 'Cannot reach host', because of firewall.
+
+1.3.0
+-----
+- New Portuguese translation
+- Loc Function 'other' shows f-number instead of icon (bug solved no ... anymore).
+- Loc removed from traction when loc removed.
+- Edit windows not cached, but created again to solve focus problem on Mac OS X.
+- Single item in switchboard editor can now be cut and copied.
+- Single item in switchboard editor can now be moved with Shift + Control/Command.
+- Improvement in speed scaling of CS2. Maximum of 1000 used and higher values give no problem, anymore.
+- Swap block direction button added so that Prev and Next are swapped.
+- Bug: when deleting a feedback no refresh in feedback monitor
+- French translation of user interface.S
+- New entry, brake and stop feedback with delay introduced.
+- Block and feedback type in table of editor.
+- Bug: Intellibox speed mapping (0-127) to decoder steps for DCC, Selectrix improved 
+- Bug: selected text color in block connection tree correct again.
+- Online button changes so that switch is moved.
+- Turnout line gets reserved color when turnout is reserved.
+- Turnout is drawn open while it is switching.
+- Use all functions on Intellibox USB (f0-f28 tested and higher also implemented)
+- Extra function icons and separation of functions for front and rear (telex, head light, pantograph)
+- Turnouts released on stop feedback of next block or when next block is released.
+- Timeout for socket interface (ECoS, CS1).
+- Use of keyboard on ECoS, CS1 improved for undefined accessories (to program signals).
+- Max speed setting imported from ECoS and CS1 and used for speed steps mapping if not yet defined.
+- Bug: Decouplers created as Impulse on ECoS and CS1
+- ECoS and CS1 can now also switch accessories without synchronizing databases by switching directly via addresses.
+- Support for Windows 7 and 64-bits Windows (with 64-bits Java) added to serial port package.
+- New installer currently only used for Windows platform.
+- For all lengths floating point values allowed for example 23.5 cm
+- Lengths can be specified in different units (mm, cm, dm, m, in, ft) by adding a suffix.
+- Release of blocks now done on stop feedback in combination with total length of train and block.
+- The default presentation length unit can be chosen from preferences. Internally cm will be used.
+- Block group definitions also saved when no block attached.
+- Bug: block initialization of signals now done properly when drawing and running immediately.
+- Zoom icons in switchboard editor.
+- Switchboard editor shows block names when zoom >= 125%
+- Block wait introduces so that a loc can stop in a block independent from the signal state.
+- Waiting time in block indicated by yellow decreasing bar.
+- Simple inertia simulation introduced by specifying a delay between change of decoder steps.
+- Previous block released on length of loc so that you can use undetected trains or reed contacts with full safety. 
+- Type icon added to tables in route editor.
+- Key +/- will increase/descrease desired speed with rounded steps of 5 km/h instead of decoder speed with 1.
+- Extra decoder step column in loc overview. You have to reconfigure your column settings once.
+- Auto reservation of next block on stop feedback for manual control of loc in Dinamo.
+- Manual release of reserved and tail blocks possible.
+
+1.2.0
+-----
+- Improved Spanish and Catalan messages.
+- Bug solved: Block removal not noticed everywhere. Related problem with saving/loading configuration.
+- Block numbers and analog decoder added for block controlled systems.
+- Support for Märklin Central Station 2.
+- Locomotive type in overview for column and sort.
+- New locomotive function icons and updated images.
+- Network functionality improved.
+- Max speed for locomotives so that if a loc is actually a train you don't need a dummy train
+- Extra rhythm input for track routes to switch the items more with a fixed interval (0 is old situation)
+- Confirmation to keep changes when closing switchboard editor via window close button (X).
+- Improved combined signal item with full size signal boards.
+- Block types visible with icon.
+- Feedback types introduced and visible in switchboard with different icons.
+- Dutch and Belgium home and warning signals added including blinking.
+- Block node editor improved with extra relay functionality.
+- Dinamo support for both analog and digital control with OM32 support for signals and relays.
+- Distinction in three allowed block direction: single, preferred and both
+- Current direction of loc in block visible via direction item. Change via click.
+- Signals in and before station are always red unless manually changed or next block reserved.
+
+1.1.0
+-----
+- Lenz support (also in combination with S88XPressNetLI)
+- Loconet support (tested with Intellibox IR)
+- HSI-S88 support
+- Multi-interface support (only for PRO version)
+- Improved interface editor
+- Accessory state mapping to map a state to preferred outputs
+- Accessory state enabling/disabling if something is not connected or not working properly anymore.
+- New 'Wide' layout added.
+- Some translation fixes.
+- Added 64-bit library for serial port on Mac OS X for Java 6
+- Bug solved: Previous warning signal in block not saved correctly
+- Bug solved: Comments not saved well for accessories, feedbacks, track routes and blocks
+
+1.0.4
+-----
+- Bug solved: refresh in Keyboard and Feedback Monitor not always good when scale is not 100%
+- Bug solved: SetAlways in TrackRoute and TrainRoute now correctly saved.
+- Basic support for Loconet: Loc (no slot changes/status), switches and feedback changes (initial feedback status only on Intellibox).
+- Better button control for items in Edit menu
+- Bug solved: Train length input up/down buttons
+- Bug solved: After 'Clear' the 'Apply' button may not become enabled.
+- Bug solved: Enter key will enable 'Apply' button.
+- Portuguese translation added.
+- Popup menu with 'Paste' added to license box.
+- Feedback monitor:  New module read immediately when feedback added.
+- MFX/M4 support ECoS 3.0.0
+- New type of decoder Motorola M28 for the following cases:
+  - to be selected for MFX locs when not using M4 on ECoS
+  - to be selected for MFX locs when using ECoS version before 3.0.0
+  - when using ESU Lokpilot 3 with Motorola protocol.
+- Bug: Hp0/2 signal switched correctly now on ECoS
+
+1.0.3
+-----
+- Extra turnout types: cross fixed, single slip and double slip
+- Bug: preselect initial state was not always working
+- Easier editing block node editor by copying items when adding turnout and use of delete button extended.
+- Fixes in demo.tcd
+- Accessory and feedback addresses can both be displayed as is or grouped in the format 'm.a' (m = module, a = address relative to module)
+- Bug solved: When serial port finds no command station it can come in an unknown state.
+- Speed measurements improved.
+
+1.0.2
+-----
+- Extra scales added British HO 1:76 and N 1:148 and some others.
+- Bug: Italian messages without filled in parameters fixed. For example the new version message. 
+- Updated Spanish and Catalan translations
+- Bug in getting flow control of serial port solved that causes no flow control to be used.
+- Extra Y turnout added to switchboard editor.
+- Bug in preselecting the signal or turnout type when drawing a new one.
+- Some spelling errors.
+- Spanish manual added.
+- Remember selection when editing control items.
+
+1.0.1
+-----
+- Updated manual for networking.
+- Better Spanish and Catalan translations
+- Client mode improved: Timeout for connection and buttons and menus disabled that are not available in client mode.
+- Bug: Switching track routes in client mode -> Solved
+
+1.0
+---
+First official release. Changes compared to earlier beta versions:
+- Completely revised manual.
+- New serial port library.
+- Many small bug fixes.

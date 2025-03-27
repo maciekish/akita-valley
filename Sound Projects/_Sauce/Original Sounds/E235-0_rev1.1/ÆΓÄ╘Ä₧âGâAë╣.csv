@@ -1,0 +1,5 @@
+label,START,,,
+if,spd>0,START,,
+wrnd,2000,4000,,
+play,E233_エア抜き.wav,1,0,
+ret,,,,
