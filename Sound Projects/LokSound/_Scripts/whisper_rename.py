@@ -1,7 +1,7 @@
 #!/Users/maciekish/.pyenv/shims/python3
 
 # Requirements
-# pip install pykakasi googletrans==4.0.0-rc1
+# pip install pykakasi googletrans==4.0.0-rc1 tqdm
 # pip install git+https://github.com/openai/whisper.git
 
 # Silence FP16 CPU warning from Whisper and pykakasi deprecation warnings
@@ -15,6 +15,7 @@ import re
 import whisper
 import tempfile
 import subprocess
+from tqdm import tqdm
 from pykakasi import kakasi
 from googletrans import Translator
 
@@ -96,65 +97,75 @@ def sanitize_filename(text):
     return collapse_spaces(filename)
 
 def process_folder(folder_path):
+    # First, count all .wav files
+    all_wav_files = []
     for root, dirs, files in os.walk(folder_path):
         for filename in files:
-            if not filename.lower().endswith(".wav"):
-                continue
+            if filename.lower().endswith(".wav"):
+                all_wav_files.append(os.path.join(root, filename))
 
-            file_path = os.path.join(root, filename)
+    total_files = len(all_wav_files)
+    if total_files == 0:
+        print("No .wav files found.")
+        return
 
+    print(f"Found {total_files} .wav files. Starting transcription...")
+
+    for file_path in tqdm(
+        all_wav_files,
+        desc="Processing",
+        unit="file",
+        dynamic_ncols=True,
+        bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
+    ):
+        filename = os.path.basename(file_path)
+        try:
+            lang = detect_language(file_path)
+            print(f"\nDetected language: {lang}")
+            result = transcribe(file_path, language=lang)
+            text = result["text"].strip()
+        except Exception as e:
+            print(f"\nFailed to transcribe {filename}: {e}")
+            continue
+
+        if not text:
+            print("\nEmpty transcription.")
+            continue
+
+        english = ""
+        if lang != "en":
             try:
-                lang = detect_language(file_path)
-                print(f"Detected language: {lang}")
-                result = transcribe(file_path, language=lang)
-                text = result["text"].strip()
+                english = translate_to_english(text, src_lang=lang)
+                english = sanitize_filename(english)
             except Exception as e:
-                print(f"Failed to transcribe {filename}: {e}")
-                continue
+                print(f"\nTranslation failed: {e}")
 
-            if not text:
-                print("Empty transcription.")
-                continue
+        special_prefix = get_special_prefix(filename)
 
-            english = ""
-            if lang != "en":
-                try:
-                    english = translate_to_english(text, src_lang=lang)
-                    english = sanitize_filename(english)
-                except Exception as e:
-                    print(f"Translation failed: {e}")
+        if lang == "ja":
+            romaji = convert_romaji_only(text).replace(" ", "_")
+            romaji = sanitize_filename(romaji)
+            new_name = f"{special_prefix}{romaji} ({english}).wav" if english else f"{special_prefix}{romaji}.wav"
+        else:
+            source = sanitize_filename(text.replace(" ", "_"))
+            new_name = f"{special_prefix}{source}.wav"
 
-            special_prefix = get_special_prefix(filename)
+        MAX_FILENAME_LENGTH = 250
+        base, ext = os.path.splitext(new_name)
+        if len(base) > MAX_FILENAME_LENGTH:
+            base = base[:MAX_FILENAME_LENGTH].rstrip()
+            new_name = f"{base}{ext}"
 
-            if lang == "ja":
-                romaji = convert_romaji_only(text).replace(" ", "_")
-                romaji = sanitize_filename(romaji)
+        new_path = os.path.join(os.path.dirname(file_path), new_name)
 
-                new_name = f"{special_prefix}{romaji} ({english}).wav" if english else f"{special_prefix}{romaji}.wav"
-            else:
-                source = sanitize_filename(text.replace(" ", "_"))
-                new_name = f"{special_prefix}{source}.wav"
+        if len(new_path.encode('utf-8')) > 255:
+            print("\nWarning: final path too long, truncating further...")
+            base = base[:200]
+            new_name = f"{base}{ext}"
+            new_path = os.path.join(os.path.dirname(file_path), new_name)
 
-            # Limit the full path length to avoid OSError 63
-            MAX_FILENAME_LENGTH = 250  # Keep well under 255 bytes
-
-            # Trim the name if needed
-            base, ext = os.path.splitext(new_name)
-            if len(base) > MAX_FILENAME_LENGTH:
-                base = base[:MAX_FILENAME_LENGTH].rstrip()
-                new_name = f"{base}{ext}"
-
-            new_path = os.path.join(root, new_name)
-
-            # Just in case the full path is too long, truncate even more
-            if len(new_path.encode('utf-8')) > 255:
-                print("Warning: final path too long, truncating further...")
-                base = base[:200]
-                new_name = f"{base}{ext}"
-                new_path = os.path.join(root, new_name)
-
-            os.rename(file_path, new_path)
-            print(f"Renamed to: {new_name}")
+        os.rename(file_path, new_path)
+        print(f"\nRenamed to: {new_name}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
