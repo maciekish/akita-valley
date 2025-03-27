@@ -42,7 +42,7 @@ def get_special_prefix(filename):
 
 def collapse_spaces(text):
     spaces = re.sub(r'\s+', ' ', text).strip()
-    return re.sub(r'\.+', ' ', text).strip()
+    return re.sub(r'\.+', ' ', spaces).strip()
 
 def convert_to_whisper_compatible(file_path):
     temp_wav = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
@@ -51,11 +51,11 @@ def convert_to_whisper_compatible(file_path):
 
     subprocess.run([
         "ffmpeg",
-        "-y",  # Overwrite if exists
+        "-y",
         "-i", file_path,
-        "-ar", "16000",     # Sample rate
-        "-ac", "1",         # Mono
-        "-c:a", "pcm_s16le",  # 16-bit PCM
+        "-ar", "16000",
+        "-ac", "1",
+        "-c:a", "pcm_s16le",
         temp_wav_path
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
@@ -96,8 +96,25 @@ def sanitize_filename(text):
     filename = text.strip().strip(". ").replace("/", "-").replace("\\", "-").replace(":", "-").replace("?", "").replace("。", ".").replace("_", " ").replace("、", ",")
     return collapse_spaces(filename)
 
+class StickyTqdm:
+    def __init__(self, iterable, **kwargs):
+        self.progress = tqdm(iterable, **kwargs)
+
+    def write_above(self, text):
+        self.progress.clear()
+        sys.stdout.write(text + "\n")
+        sys.stdout.flush()
+        self.progress.refresh()
+
+    def __iter__(self):
+        return self._wrap_iter()
+
+    def _wrap_iter(self):
+        for item in self.progress:
+            yield item
+        self.progress.close()
+
 def process_folder(folder_path):
-    # First, count all .wav files
     all_wav_files = []
     for root, dirs, files in os.walk(folder_path):
         for filename in files:
@@ -109,27 +126,29 @@ def process_folder(folder_path):
         print("No .wav files found.")
         return
 
-    print(f"Found {total_files} .wav files. Starting transcription...")
+    print(f"Found {total_files} .wav files. Starting transcription...\n")
 
-    for file_path in tqdm(
+    sticky_bar = StickyTqdm(
         all_wav_files,
         desc="Processing",
         unit="file",
         dynamic_ncols=True,
         bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
-    ):
+    )
+
+    for file_path in sticky_bar:
         filename = os.path.basename(file_path)
         try:
             lang = detect_language(file_path)
-            print(f"\nDetected language: {lang}")
+            sticky_bar.write_above(f"Detected language: {lang}")
             result = transcribe(file_path, language=lang)
             text = result["text"].strip()
         except Exception as e:
-            print(f"\nFailed to transcribe {filename}: {e}")
+            sticky_bar.write_above(f"Failed to transcribe {filename}: {e}")
             continue
 
         if not text:
-            print("\nEmpty transcription.")
+            sticky_bar.write_above("Empty transcription.")
             continue
 
         english = ""
@@ -138,7 +157,7 @@ def process_folder(folder_path):
                 english = translate_to_english(text, src_lang=lang)
                 english = sanitize_filename(english)
             except Exception as e:
-                print(f"\nTranslation failed: {e}")
+                sticky_bar.write_above(f"Translation failed: {e}")
 
         special_prefix = get_special_prefix(filename)
 
@@ -159,13 +178,13 @@ def process_folder(folder_path):
         new_path = os.path.join(os.path.dirname(file_path), new_name)
 
         if len(new_path.encode('utf-8')) > 255:
-            print("\nWarning: final path too long, truncating further...")
+            sticky_bar.write_above("Warning: final path too long, truncating further...")
             base = base[:200]
             new_name = f"{base}{ext}"
             new_path = os.path.join(os.path.dirname(file_path), new_name)
 
         os.rename(file_path, new_path)
-        print(f"\nRenamed to: {new_name}")
+        sticky_bar.write_above(f"Renamed to: {new_name}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
