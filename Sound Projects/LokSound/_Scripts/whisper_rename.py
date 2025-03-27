@@ -72,7 +72,6 @@ def detect_language(file_path):
     return detected_lang
 
 def transcribe(file_path, language=None):
-    print(f"Transcribing: {os.path.basename(file_path)}")
     converted_path = convert_to_whisper_compatible(file_path)
     result = model.transcribe(converted_path, language=language)
     os.remove(converted_path)
