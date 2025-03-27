@@ -135,7 +135,24 @@ def process_folder(folder_path):
                 source = sanitize_filename(text.replace(" ", "_"))
                 new_name = f"{special_prefix}{source}.wav"
 
+            # Limit the full path length to avoid OSError 63
+            MAX_FILENAME_LENGTH = 250  # Keep well under 255 bytes
+
+            # Trim the name if needed
+            base, ext = os.path.splitext(new_name)
+            if len(base) > MAX_FILENAME_LENGTH:
+                base = base[:MAX_FILENAME_LENGTH].rstrip()
+                new_name = f"{base}{ext}"
+
             new_path = os.path.join(root, new_name)
+
+            # Just in case the full path is too long, truncate even more
+            if len(new_path.encode('utf-8')) > 255:
+                print("Warning: final path too long, truncating further...")
+                base = base[:200]
+                new_name = f"{base}{ext}"
+                new_path = os.path.join(root, new_name)
+
             os.rename(file_path, new_path)
             print(f"Renamed to: {new_name}")
 
