@@ -79,11 +79,11 @@ def transcribe(file_path, language=None):
 
 def convert_romaji_only(text):
     kakasi_inst = kakasi()
-    kakasi_inst.setMode("H", "a")
-    kakasi_inst.setMode("K", "a")
-    kakasi_inst.setMode("J", "a")
-    kakasi_inst.setMode("r", "Hepburn")
-    kakasi_inst.setMode("s", True)
+    kakasi_inst.setMode("H", "a")       # Convert Hiragana to ascii
+    kakasi_inst.setMode("K", "a")       # Convert Katakana to ascii
+    kakasi_inst.setMode("J", "a")       # Convert Kanji to ascii
+    kakasi_inst.setMode("r", "Hepburn") # Use Hepburn romanization
+    kakasi_inst.setMode("s", True)      # Add space (split words)
     conv = kakasi_inst.getConverter()
     return conv.do(text)
 
@@ -92,7 +92,14 @@ def translate_to_english(text, src_lang):
     return translator.translate(text, src=src_lang, dest="en").text
 
 def sanitize_filename(text):
-    filename = text.strip().strip(". ").replace("/", "-").replace("\\", "-").replace(":", "-").replace("?", "").replace("。", ".").replace("_", " ").replace("、", ",")
+    filename = text.strip().strip(". ") \
+        .replace("/", "-") \
+        .replace("\\", "-") \
+        .replace(":", "-") \
+        .replace("?", "") \
+        .replace("。", ".") \
+        .replace("_", " ") \
+        .replace("、", ",")
     return collapse_spaces(filename)
 
 class StickyTqdm:
@@ -138,8 +145,15 @@ def process_folder(folder_path):
     for file_path in sticky_bar:
         filename = os.path.basename(file_path)
         try:
-            lang = detect_language(file_path)
-            sticky_bar.write_above(f"Detected language: {lang}")
+            detected_lang = detect_language(file_path)
+            # CHANGED: Force only 'en' or 'ja'. If not 'en', use 'ja'.
+            if detected_lang == "en":
+                sticky_bar.write_above(f"Detected language: en")
+                lang = "en"
+            else:
+                sticky_bar.write_above(f"Detected {detected_lang} - forcing 'ja'")
+                lang = "ja"
+
             result = transcribe(file_path, language=lang)
             text = result["text"].strip()
         except Exception as e:
@@ -152,6 +166,7 @@ def process_folder(folder_path):
 
         english = ""
         if lang != "en":
+            # If language is "ja", attempt to translate to English
             try:
                 english = translate_to_english(text, src_lang=lang)
                 english = sanitize_filename(english)
@@ -165,6 +180,7 @@ def process_folder(folder_path):
             romaji = sanitize_filename(romaji)
             new_name = f"{special_prefix}{romaji} ({english}).wav" if english else f"{special_prefix}{romaji}.wav"
         else:
+            # English source
             source = sanitize_filename(text.replace(" ", "_"))
             new_name = f"{special_prefix}{source}.wav"
 
@@ -182,8 +198,22 @@ def process_folder(folder_path):
             new_name = f"{base}{ext}"
             new_path = os.path.join(os.path.dirname(file_path), new_name)
 
-        os.rename(file_path, new_path)
-        sticky_bar.write_above(f"Renamed to: {new_name}")
+        # Keep incrementing filename suffix if a file exists
+        try:
+            os.rename(file_path, new_path)
+            sticky_bar.write_above(f"Renamed to: {new_name}")
+        except FileExistsError:
+            suffix_number = 2
+            while True:
+                new_name_try = f"{base} ({suffix_number}){ext}"
+                new_path_try = os.path.join(os.path.dirname(file_path), new_name_try)
+                try:
+                    os.rename(file_path, new_path_try)
+                    sticky_bar.write_above(f"File existed. Renamed to: {new_name_try}")
+                    break
+                except FileExistsError:
+                    suffix_number += 1
+                    # Keep looping until successful
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
